@@ -1,0 +1,93 @@
+{
+  "id": "C43",
+  "injected": "预放 root\\交接表\\fake-session.md（模拟\"交接表被生成\"）→ 冻结被绕过",
+  "result": {
+    "id": "C43",
+    "status": "RED",
+    "summary": "夹具里已经有交接表产物 1 个（例：交接表/fake-session.md）——冻结不成立",
+    "reasons": [
+      "夹具里已经有交接表产物 1 个（例：交接表/fake-session.md）——冻结不成立",
+      "跑 3 tick 后出现了交接表产物 1 个（例：交接表/fake-session.md）——冻结被绕过",
+      "哨兵删除后 3 tick 又出现交接表产物 1 个"
+    ],
+    "evidence": {
+      "lab": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-c43-20261115-132512/lab/root",
+      "preexisting": [
+        "交接表/fake-session.md"
+      ],
+      "fixture": {
+        "relocateState": true,
+        "sessions": 3,
+        "cursors": 3
+      },
+      "ticks1Count": 3,
+      "ticks2Count": 3,
+      "driverParseError": [],
+      "ticks1": [
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        },
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        },
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        }
+      ],
+      "ticks2": [
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        },
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        },
+        {
+          "ok": true,
+          "written": 0,
+          "handoverGenerated": 0,
+          "handoverAdopted": 0,
+          "handoverSkipped": 0,
+          "handoverSealedTotal": 0,
+          "errors": []
+        }
+      ],
+      "driverLog": "证据/判据-1.0-proof-preview4/logs/tick-driver-3t.log",
+      "problems": [
+        "夹具里已经有交接表产物 1 个（例：交接表/fake-session.md）——冻结不成立",
+        "跑 3 tick 后出现了交接表产物 1 个（例：交接表/fake-session.md）——冻结被绕过",
+        "哨兵删除后 3 tick 又出现交接表产物 1 个"
+      ],
+      "caliber": "机主 2026-11-14 早会裁定 C43 反向判据：交接表在 lite 冻结（S-1/§5.3）——造 2 会话各跑 3 tick，交接表目录/文件数必须不增加；删后 3 tick 内不得重建；出现任何交接表生成即 RED"
+    }
+  }
+}

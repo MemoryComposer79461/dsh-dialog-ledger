@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-23",
+  "family": "CH",
+  "acId": "AC-V05-CH-23",
+  "product": "目录",
+  "requirement": "跨月会话（起 10-31、末轮 11-01）：全部原文在 `2026年10月/…`（编码日期段取月）；11 月夹无该会话原文",
+  "implementation": "`index.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-23",
+    "suite": "CH",
+    "status": "PASS"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-23"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

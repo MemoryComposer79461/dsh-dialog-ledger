@@ -1,0 +1,148 @@
+{
+  "schema": "v05-mutation/1",
+  "at": "20261110-135230",
+  "source": "<test-dir>\\work\\v0.5-工作副本",
+  "results": [
+    {
+      "id": "M1",
+      "covers": [
+        "INV-13"
+      ],
+      "desc": "批边界不再让出事件循环 → AbortSignal 回调排不上队，取消失效",
+      "file": "index.js",
+      "caseId": "P0-3-cancel",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] P0-3-cancel（1033ms, RSS峰 69MB）"
+      },
+      "mutant": {
+        "exit": 0,
+        "line": "[FAIL] P0-3-cancel（5335ms, RSS峰 69MB） :: ★ P0-3 未修复：AbortSignal 未生效 —— 400ms 中止后仍跑满 5082ms（stat.cancelled/aborted 均无；stat={\"cancelled\":false,\"written\":448,\"scanned\":1}）"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    },
+    {
+      "id": "M2",
+      "covers": [
+        "INV-14"
+      ],
+      "desc": "持锁进程已死也要等两轮观察 → kill -9 后立即重启被残留锁挡住",
+      "file": "lib/lock.js",
+      "caseId": "P0-3-resume",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] P0-3-resume（2660ms, RSS峰 64MB）"
+      },
+      "mutant": {
+        "exit": 0,
+        "line": "[FAIL] P0-3-resume（922ms, RSS峰 64MB） :: ★ P0-3 未修复：kill -9 后立即重启被残留锁挡住（lockSkipped=true；锁文件未接管）→ 不能从已提交批次续"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    },
+    {
+      "id": "M3",
+      "covers": [
+        "INV-15",
+        "INV-17",
+        "INV-19",
+        "INV-20"
+      ],
+      "desc": "canonical 去掉 sourceRowCount/overflow/supplementCodes 摘要 → 不同数据集的封板哈希撞车",
+      "file": "lib/sealjournal.js",
+      "caseId": "docs/自测-周记账封板.mjs",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] 全部用例通过"
+      },
+      "mutant": {
+        "exit": 1,
+        "line": "[FAIL] ✖ ⑥ 解包冒烟：ZIP 结构完整、sheet XML 解得出、关键字符串都在、封板hash 可只凭文件复算（stored+deflate） (17.4849ms)"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    },
+    {
+      "id": "M4",
+      "covers": [
+        "INV-01",
+        "INV-02",
+        "INV-03"
+      ],
+      "desc": "文件缩小也走 unchanged 快路径（恢复审计 A-02 的老逻辑）→ 新 Turn 永久漏记",
+      "file": "index.js",
+      "caseId": "P0-1c",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] P0-1c（106ms, RSS峰 49MB）"
+      },
+      "mutant": {
+        "exit": 0,
+        "line": "[FAIL] P0-1c（95ms, RSS峰 49MB） :: ★ P0-1 未修复：文件字节数回到旧值（3082B）且头部未变，新 Turn 3 被当成\"未变化\"漏记（written=0 unchanged=1）"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    },
+    {
+      "id": "M6",
+      "covers": [
+        "INV-11"
+      ],
+      "desc": "批大小不再受 eventBatchTurns 约束（一次取全部 todo）→ 报告里只剩 1 批",
+      "file": "index.js",
+      "caseId": "docs/自测-index-integration.mjs",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] 全部用例通过"
+      },
+      "mutant": {
+        "exit": 1,
+        "line": "[FAIL] ✖ INV-11：40 轮会话必须分多批，且每批轮数 ≤ eventBatchTurns，批内之和 == 总轮数 (282.5216ms)"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    },
+    {
+      "id": "M7",
+      "covers": [
+        "INV-12"
+      ],
+      "desc": "单轮字节超预算不标 oversize（预算只看事件数/轮数）",
+      "file": "index.js",
+      "caseId": "docs/自测-index-integration.mjs",
+      "baseline": {
+        "exit": 0,
+        "line": "[PASS] 全部用例通过"
+      },
+      "mutant": {
+        "exit": 1,
+        "line": "[FAIL] ✖ INV-12：单轮事件字节超 eventBatchBytes → 单独成批且 oversize=true，该轮仍入账 (28.7542ms)"
+      },
+      "patchOk": true,
+      "patchErr": "",
+      "baselineOk": true,
+      "mutantRed": true,
+      "verdict": "反证成立（删掉修复 → 变红）"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "proven": 6
+  }
+}

@@ -1,0 +1,1091 @@
+{
+  "schema": "dsh-device-selfcheck/1",
+  "tool": "docs/工具-设备自检.mjs",
+  "toolVersion": "1.0.0",
+  "generatedAt": "2026-11-15T13:27:28+08:00",
+  "elapsedMs": 7263,
+  "host": {
+    "hostname": "TSG-35",
+    "platform": "Windows 10 Pro（10.0.19044）",
+    "arch": "x64",
+    "node": "26.13.1",
+    "dshVersion": "0.2.2-rc.3",
+    "plugin": "lite 1.0.0-preview4 preview"
+  },
+  "inputs": {
+    "out": "<work-dir>\\selfev-p4",
+    "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+    "package": "<work-dir>\\pkg",
+    "sessions": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions",
+    "only": null,
+    "json": true,
+    "argv": [
+      "--out=<work-dir>/selfev-p4",
+      "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+      "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions",
+      "--package=<work-dir>/pkg",
+      "--expect-gaps=<work-dir>/deliver/02-语料/预期缺口.json",
+      "--json"
+    ]
+  },
+  "packageRoot": "<work-dir>\\pkg",
+  "summary": {
+    "total": 10,
+    "green": 7,
+    "red": 0,
+    "warn": 3,
+    "na": 0,
+    "error": 0,
+    "ok": true,
+    "verdict": "warn",
+    "exitCode": 0
+  },
+  "firstAction": "最该先看：无红项，黄项 3 项（doctor、run-report、tick-metrics）—— 逐条看 MD 的黄项证据",
+  "checks": [
+    {
+      "id": "env",
+      "name": "环境与设备指纹",
+      "status": "green",
+      "ok": true,
+      "detail": "Windows 10 Pro / 内存 7.65 GiB（可用 0.86 GiB） / node v26.13.1 / DSH 0.2.2-rc.3 / 插件 lite 1.0.0-preview4 preview",
+      "evidence": {
+        "generatedAt": "2026-11-15T13:27:21+08:00",
+        "os": {
+          "type": "Windows_NT",
+          "platform": "win32",
+          "release": "10.0.19044",
+          "version": "Windows 10 Pro",
+          "arch": "x64",
+          "hostname": "TSG-35",
+          "uptimeHours": 4.71
+        },
+        "node": {
+          "version": "26.13.1",
+          "v8": "14.6.202.34-node.40",
+          "execPath": "C:\\Program Files\\nodejs\\node.exe"
+        },
+        "dsh": {
+          "version": "0.2.2-rc.3",
+          "source": "<test-dir>\\resources\\runtime\\primary-runtime\\runtime.json",
+          "desktopVersion": "0.2.2-rc.3",
+          "bundledNode": "24.21.0",
+          "tried": [
+            "<test-dir>\\resources\\app.asar\\dsh\\node_modules\\@deepseek-ai\\dsh\\package.json",
+            "<test-dir>\\resources\\runtime\\primary-runtime\\runtime.json"
+          ],
+          "hint": ""
+        },
+        "memory": {
+          "totalBytes": 8214945792,
+          "freeBytes": 918163456,
+          "totalGiB": 7.65,
+          "freeGiB": 0.86
+        },
+        "disks": [
+          {
+            "label": "账库所在盘",
+            "path": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+            "freeBytes": 100202291200,
+            "totalBytes": 161063366656,
+            "freeGiB": 93.32,
+            "totalGiB": 150
+          },
+          {
+            "label": "结果盘",
+            "path": "<work-dir>\\selfev-p4",
+            "freeBytes": 93268926464,
+            "totalBytes": 107372802048,
+            "freeGiB": 86.86,
+            "totalGiB": 100
+          }
+        ],
+        "plugin": {
+          "version": "1.0.0-preview4",
+          "type": "preview",
+          "line": "lite",
+          "baselineTag": "lite-v0.9.4",
+          "gate": [
+            "C01",
+            "C02",
+            "C03",
+            "C04",
+            "C05",
+            "C06",
+            "C07",
+            "C08",
+            "C09",
+            "C10",
+            "C11",
+            "C12",
+            "C13",
+            "C14",
+            "C15",
+            "C16",
+            "C17",
+            "C18",
+            "C19",
+            "C20",
+            "C21",
+            "C22",
+            "C23",
+            "C24",
+            "C25",
+            "C26",
+            "C27",
+            "C28",
+            "C29",
+            "C30",
+            "C31",
+            "C32",
+            "C33",
+            "C34",
+            "C35",
+            "C36",
+            "C37",
+            "C38",
+            "C39",
+            "C40",
+            "C41",
+            "C42",
+            "C43",
+            "C44",
+            "C45"
+          ],
+          "tests": {
+            "total": 635,
+            "pass": 593,
+            "fail": 42,
+            "skip": 0,
+            "retired": 42,
+            "unexplained": 0,
+            "note": "v1.0.0-preview4 全量跑：635/593/42/0 skip（与 preview3 同；本版未改 KERNEL/测试用例）；看护逐名对账「红数 42 == 登记退役 42，未登记红点 0、销号 0」。"
+          }
+        },
+        "thresholds": {
+          "ramGb": 8,
+          "diskFreeGb": 60,
+          "nodeMajor": 18,
+          "note": "内存/磁盘门槛来自《三台设备测试-准备清单》§一；node 门槛是本脚本自身下限"
+        },
+        "warnings": []
+      },
+      "brief": [
+        "主机：TSG-35（Windows_NT 10.0.19044，x64）",
+        "内存：7.65 GiB（可用 0.86 GiB）",
+        "node：v26.13.1（C:\\Program Files\\nodejs\\node.exe）",
+        "DSH：0.2.2-rc.3（<test-dir>\\resources\\runtime\\primary-runtime\\runtime.json）",
+        "插件：lite 1.0.0-preview4 preview（基线 lite-v0.9.4）",
+        "账库所在盘 C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data：可用 93.32 GiB / 共 150.00 GiB",
+        "结果盘 <work-dir>\\selfev-p4：可用 86.86 GiB / 共 100.00 GiB"
+      ],
+      "ms": 5
+    },
+    {
+      "id": "package",
+      "name": "包完整性（MANIFEST.sha256）",
+      "status": "green",
+      "ok": true,
+      "detail": "MANIFEST 726 项 / 盘上 726 个文件：缺 0、改 0、多 0",
+      "evidence": {
+        "package": "<work-dir>\\pkg",
+        "manifestPath": "<work-dir>\\pkg\\MANIFEST.sha256",
+        "counts": {
+          "manifestEntries": 726,
+          "diskFiles": 726,
+          "missing": 0,
+          "changed": 0,
+          "extra": 0,
+          "badEntries": 0,
+          "duplicateEntries": 0,
+          "walkProblems": 0,
+          "skippedSymlinks": 0
+        },
+        "excluded": [
+          ".git/",
+          "MANIFEST.sha256（自指）"
+        ],
+        "missing": [],
+        "changed": [],
+        "extra": [],
+        "badEntries": [],
+        "walkProblems": [],
+        "skippedSymlinks": []
+      },
+      "brief": [
+        "MANIFEST 逐文件校验通过：726 项全符"
+      ],
+      "ms": 282
+    },
+    {
+      "id": "ledger",
+      "name": "台账四数（行数/唯一 code/唯一 sid,turn/坏行）",
+      "status": "green",
+      "ok": true,
+      "detail": "台账 1,558 行（46 个日文件）/ 唯一 code 1,558 / 唯一 (sid,turn) 1,558 / 坏行 0 / 读错 0",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+        "dir": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data\\ledger",
+        "dirExists": true,
+        "files": 46,
+        "fileNames": [
+          "2026-09-24.jsonl",
+          "2026-09-25.jsonl",
+          "2026-09-26.jsonl",
+          "2026-09-27.jsonl",
+          "2026-09-28.jsonl",
+          "2026-09-29.jsonl",
+          "2026-09-30.jsonl",
+          "2026-10-01.jsonl",
+          "2026-10-02.jsonl",
+          "2026-10-03.jsonl",
+          "2026-10-04.jsonl",
+          "2026-10-05.jsonl",
+          "2026-10-06.jsonl",
+          "2026-10-07.jsonl",
+          "2026-10-08.jsonl",
+          "2026-10-09.jsonl",
+          "2026-10-10.jsonl",
+          "2026-10-11.jsonl",
+          "2026-10-12.jsonl",
+          "2026-10-13.jsonl",
+          "2026-10-14.jsonl",
+          "2026-10-15.jsonl",
+          "2026-10-16.jsonl",
+          "2026-10-17.jsonl",
+          "2026-10-18.jsonl",
+          "2026-10-19.jsonl",
+          "2026-10-20.jsonl",
+          "2026-10-21.jsonl",
+          "2026-10-22.jsonl",
+          "2026-10-23.jsonl",
+          "2026-10-24.jsonl",
+          "2026-10-25.jsonl",
+          "2026-10-26.jsonl",
+          "2026-10-27.jsonl",
+          "2026-10-28.jsonl",
+          "2026-10-29.jsonl",
+          "2026-10-30.jsonl",
+          "2026-10-31.jsonl",
+          "2026-11-01.jsonl",
+          "2026-11-02.jsonl",
+          "2026-11-03.jsonl",
+          "2026-11-04.jsonl",
+          "2026-11-05.jsonl",
+          "2026-11-06.jsonl",
+          "2026-11-07.jsonl",
+          "2026-11-08.jsonl"
+        ],
+        "ledgerRows": 1558,
+        "codeUnique": true,
+        "duplicateCodeGroups": 0,
+        "duplicateCodeExtraRows": 0,
+        "duplicateCodeSample": [],
+        "sidTurnUnique": true,
+        "duplicateSidTurnGroups": 0,
+        "duplicateSidTurnExtraRows": 0,
+        "duplicateSidTurnSample": [],
+        "badLines": 0,
+        "badLineDetails": [],
+        "readErrorCount": 0,
+        "readErrors": [],
+        "emptyProven": false,
+        "tornTailRepaired": 0,
+        "statusCounts": {
+          "ok": 1558
+        },
+        "tsRange": {
+          "first": "2026-09-24T00:07:08+08:00",
+          "last": "2026-11-08T19:57:53+08:00"
+        },
+        "readOnly": {
+          "requireLedgerRows": true,
+          "repairTornTail": false
+        },
+        "missingTurns": null,
+        "missingTurnsNote": "缺轮=预期行数-台账行数，由 e3（需 --sessions）判；本项只做账本侧四数"
+      },
+      "brief": [
+        "账库：C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data\\ledger（dirExists=true，files=46）",
+        "行数 1,558；坏行 0；读错 0"
+      ],
+      "ms": 28
+    },
+    {
+      "id": "tick-metrics",
+      "name": "逐 tick 度量（ms/写入/读盘/预算）",
+      "status": "warn",
+      "ok": false,
+      "detail": "最近 4 tick（窗口 7.87 KiB）；ms 25–7,813；写入 0–631（合计 1,558）；读盘估算 35.65 KiB–38.80 MiB；消费 0 B–16.49 MiB；预算硬顶 28.00 s；超限 0",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+        "file": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data\\ledger\\.tick-metrics.jsonl",
+        "fileBytes": 8062,
+        "windowBytes": 8062,
+        "windowStart": 0,
+        "limit": 10,
+        "lineCountInWindow": 4,
+        "parsed": 4,
+        "badLines": [],
+        "thresholds": {
+          "msLimit": 30000,
+          "consumedLimitBytes": 17825792,
+          "readLimitBytes": 41943040,
+          "steadyReadLimitBytes": 1048576,
+          "scope": "C25/S-9①（38.82 MB 语料口径：单 tick ≤30 s、消费 ≤17 MiB、读放大 ≤2.5×/≤40 MiB）+ C21（稳态 ≤1 MiB）"
+        },
+        "ticks": [
+          {
+            "tickId": "28528-1794720420545",
+            "ts": "2026-11-15T13:27:06+08:00",
+            "ms": 6363,
+            "written": 472,
+            "scanned": 16,
+            "readBytes": 40680076,
+            "readBytesKind": "estimate-product-side",
+            "consumedSourceBytes": 17272821,
+            "budget": {
+              "scanBudgetMs": 30000,
+              "effectiveMs": 28000,
+              "hardMs": 28000,
+              "readBytes": 17825792,
+              "saturated": true
+            },
+            "sessionsErrored": 0,
+            "errors": 0,
+            "warnings": 1,
+            "firstRun": true
+          },
+          {
+            "tickId": "28528-1794720426913",
+            "ts": "2026-11-15T13:27:14+08:00",
+            "ms": 7813,
+            "written": 631,
+            "scanned": 3,
+            "readBytes": 35926597,
+            "readBytesKind": "estimate-product-side",
+            "consumedSourceBytes": 17292350,
+            "budget": {
+              "scanBudgetMs": 30000,
+              "effectiveMs": 28000,
+              "hardMs": 28000,
+              "readBytes": 17825792,
+              "saturated": false
+            },
+            "sessionsErrored": 0,
+            "errors": 0,
+            "warnings": 0,
+            "firstRun": false
+          },
+          {
+            "tickId": "28528-1794720434730",
+            "ts": "2026-11-15T13:27:21+08:00",
+            "ms": 6381,
+            "written": 455,
+            "scanned": 3,
+            "readBytes": 28920048,
+            "readBytesKind": "estimate-product-side",
+            "consumedSourceBytes": 12863212,
+            "budget": {
+              "scanBudgetMs": 30000,
+              "effectiveMs": 28000,
+              "hardMs": 28000,
+              "readBytes": 17825792,
+              "saturated": false
+            },
+            "sessionsErrored": 0,
+            "errors": 0,
+            "warnings": 0,
+            "firstRun": false
+          },
+          {
+            "tickId": "28528-1794720441115",
+            "ts": "2026-11-15T13:27:21+08:00",
+            "ms": 25,
+            "written": 0,
+            "scanned": 1,
+            "readBytes": 36502,
+            "readBytesKind": "estimate-product-side",
+            "consumedSourceBytes": 0,
+            "budget": {
+              "scanBudgetMs": 30000,
+              "effectiveMs": 28000,
+              "hardMs": 28000,
+              "readBytes": 17825792,
+              "saturated": false
+            },
+            "sessionsErrored": 0,
+            "errors": 0,
+            "warnings": 0,
+            "firstRun": false
+          }
+        ],
+        "redReasons": [],
+        "warnings": [
+          "28528-1794720420545：budget.saturated=true（预算饱和，可能被截断）",
+          "28528-1794720420545：warnings 1 条"
+        ],
+        "writtenSum": 1558,
+        "firstRunSeen": true,
+        "readBytesKind": "estimate-product-side",
+        "note": "readBytes 是插件侧估算口径（readBytesKind 明示）；不是 OS 计数器"
+      },
+      "brief": [
+        "告警：28528-1794720420545：budget.saturated=true（预算饱和，可能被截断）",
+        "告警：28528-1794720420545：warnings 1 条"
+      ],
+      "ms": 2
+    },
+    {
+      "id": "run-report",
+      "name": "最近运行报告（gate/counts/errors）",
+      "status": "warn",
+      "ok": false,
+      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+        "file": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data\\ledger\\.run-report-20261115.json",
+        "reports": [
+          ".run-report-20261115.json"
+        ],
+        "reportDate": "2026-11-15",
+        "generatedAt": "2026-11-15 13:27:21",
+        "reportSha256": "95926996cda0418ceecb982cc8e585b4e6d0d02d3172c87263a861fe0a8451fa",
+        "expectedGapCitations": [
+          "session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）"
+        ],
+        "ageDays": 0,
+        "gate": {
+          "conclusion": "degraded",
+          "reason": "未闭合轮=1（源已静止 >2×interval，逐项见 run-report.openTurns）",
+          "okStrict": true,
+          "knownGaps": [
+            "未闭合轮=1（源已静止 >2×interval，逐项见 run-report.openTurns）"
+          ]
+        },
+        "counts": {
+          "ledgerRows": 472,
+          "ledgerEmptyProven": false,
+          "originalMissing": 0,
+          "originalOrphan": 0,
+          "weeklyGroupsMissing": 0,
+          "lostGaps": 0,
+          "receiptBreaks": 0,
+          "legacyUnverifiable": 0,
+          "legacyUnmarkedNoEvidence": 0,
+          "legacyMarksMismatched": 0,
+          "legacyMarksChainOk": null,
+          "dirMissing": 0,
+          "weeklyDraftMissing": 0,
+          "sealedBookMissing": 0,
+          "voucherMissing": 0,
+          "handoverSealedMissing": 0,
+          "actions": 0,
+          "repaired": 0,
+          "errors": 0,
+          "warnings": 0,
+          "blockedSources": 0,
+          "stuckSources": 0,
+          "batches": 0
+        },
+        "errors": [],
+        "reconcile": {
+          "ok": true,
+          "okStrict": true,
+          "ledgerRows": 472,
+          "originalMissing": null,
+          "originalOrphan": null,
+          "lostGaps": null
+        },
+        "batches": {
+          "count": 0,
+          "turns": 0,
+          "bytes": 0
+        },
+        "unavailable": [
+          "stuckSources",
+          "integrityFailures"
+        ],
+        "unexpectedUnavailable": [],
+        "redReasons": [],
+        "warnings": [
+          "已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）",
+          "报告快照陈旧：counts.ledgerRows=472（对账快照）但写入时真实行数=1558"
+        ]
+      },
+      "brief": [
+        "告警：已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.json…",
+        "告警：报告快照陈旧：counts.ledgerRows=472（对账快照）但写入时真实行数=1558"
+      ],
+      "ms": 2
+    },
+    {
+      "id": "e3",
+      "name": "E3 语料只读统计（不灌库）",
+      "status": "green",
+      "ok": true,
+      "detail": "只读统计 16 个源（v4 11 / v3-only 5）；帧 5,877；闭合轮 1,558；open 1；坏帧 0；账库 1,558 行 → 一致（差 0）；未灌库",
+      "evidence": {
+        "sessions": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions",
+        "readOnly": true,
+        "ingest": false,
+        "note": "只数帧/闭合轮/预期行数，不写账、不灌库；灌库是插件 tick 的职责",
+        "sources": [
+          {
+            "sid": "session-44671553-2f37-3b8f-7c73-80601d9ef2f9",
+            "source": "v4",
+            "version": 4,
+            "file": "c01\\session-44671553-2f37-3b8f-7c73-80601d9ef2f9\\session.v4.jsonl.zstd",
+            "bytes": 143594,
+            "frames": 9,
+            "lines": 9,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 2,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca",
+            "source": "v4",
+            "version": 4,
+            "file": "c01\\session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca\\session.v4.jsonl.zstd",
+            "bytes": 161752,
+            "frames": 25,
+            "lines": 25,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 6,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-b64f994c-3dce-981d-723a-11c73ac034a4",
+            "source": "v4",
+            "version": 4,
+            "file": "c01\\session-b64f994c-3dce-981d-723a-11c73ac034a4\\session.v4.jsonl.zstd",
+            "bytes": 148890,
+            "frames": 17,
+            "lines": 17,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 4,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-e14d448f-97ff-20af-3e66-508e08618cc5",
+            "source": "v4",
+            "version": 4,
+            "file": "c01\\session-e14d448f-97ff-20af-3e66-508e08618cc5\\session.v4.jsonl.zstd",
+            "bytes": 1110,
+            "frames": 2,
+            "lines": 2,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 0,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-4c514189-c239-ad5f-bb7c-614c5843a6af",
+            "source": "v4",
+            "version": 4,
+            "file": "c02\\session-4c514189-c239-ad5f-bb7c-614c5843a6af\\session.v4.jsonl.zstd",
+            "bytes": 477495,
+            "frames": 6,
+            "lines": 6,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 1,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "8f3c679b-6817-84a1-4505-027bb451357b",
+            "source": "v3",
+            "version": 3,
+            "file": "c03\\8f3c679b-6817-84a1-4505-027bb451357b\\session.v3.jsonl.zstd",
+            "bytes": 274902,
+            "frames": 5,
+            "lines": 5,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 1,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "fc994498-8b52-4fd8-859a-c4471d3c0b7a",
+            "source": "v3",
+            "version": 3,
+            "file": "c03\\fc994498-8b52-4fd8-859a-c4471d3c0b7a\\session.v3.jsonl.zstd",
+            "bytes": 398967,
+            "frames": 6,
+            "lines": 6,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 1,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-040dfdd1-7f1a-5628-30aa-4efcfc24a82b",
+            "source": "v3",
+            "version": 3,
+            "file": "c03\\session-040dfdd1-7f1a-5628-30aa-4efcfc24a82b\\session.v3.jsonl.zstd",
+            "bytes": 1091578,
+            "frames": 3,
+            "lines": 129,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 32,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-0b7f564c-b01c-a604-731a-3c6d0bb167c1",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-0b7f564c-b01c-a604-731a-3c6d0bb167c1\\session.v4.jsonl.zstd",
+            "bytes": 1141135,
+            "frames": 37,
+            "lines": 37,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 9,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-1152c67a-3fe5-f2c6-d7c0-cee99b44f38f",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-1152c67a-3fe5-f2c6-d7c0-cee99b44f38f\\session.v4.jsonl.zstd",
+            "bytes": 1272858,
+            "frames": 33,
+            "lines": 33,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 8,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-62d9d7c3-5b6f-1996-761b-b29c05271a34",
+            "source": "v3",
+            "version": 3,
+            "file": "c03\\session-62d9d7c3-5b6f-1996-761b-b29c05271a34\\session.v3.jsonl.zstd",
+            "bytes": 1090884,
+            "frames": 3,
+            "lines": 129,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 32,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-6fdff1b1-75ea-5017-2846-a47dd7e8dab0",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-6fdff1b1-75ea-5017-2846-a47dd7e8dab0\\session.v4.jsonl.zstd",
+            "bytes": 368,
+            "frames": 2,
+            "lines": 2,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 0,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-88b7fd91-1304-6174-d5ad-696a0a8781a5",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-88b7fd91-1304-6174-d5ad-696a0a8781a5\\session.v4.jsonl.zstd",
+            "bytes": 220767,
+            "frames": 9,
+            "lines": 9,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 2,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-a64f755f-d332-1407-cfd2-1b9be14f633a",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a\\session.v4.jsonl.zstd",
+            "bytes": 38843108,
+            "frames": 5356,
+            "lines": 5356,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 1338,
+            "open": 1,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-c06650c0-c38e-12bf-8050-b7d42e6197e7",
+            "source": "v3",
+            "version": 3,
+            "file": "c03\\session-c06650c0-c38e-12bf-8050-b7d42e6197e7\\session.v3.jsonl.zstd",
+            "bytes": 1091072,
+            "frames": 3,
+            "lines": 129,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 32,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          },
+          {
+            "sid": "session-e0ee5f07-d1c5-3edf-a135-af7ac926f8a2",
+            "source": "v4",
+            "version": 4,
+            "file": "c03\\session-e0ee5f07-d1c5-3edf-a135-af7ac926f8a2\\session.v4.jsonl.zstd",
+            "bytes": 1098808,
+            "frames": 361,
+            "lines": 361,
+            "badLines": 0,
+            "failedFrames": 0,
+            "closed": 90,
+            "open": 0,
+            "malformed": 0,
+            "formatError": "",
+            "lossGap": false
+          }
+        ],
+        "totals": {
+          "sources": 16,
+          "closed": 1558,
+          "open": 1,
+          "frames": 5877,
+          "failed": 0,
+          "badLines": 0,
+          "lines": 6255,
+          "malformed": 0,
+          "bytes": 47457288,
+          "sessionsBytes": 47457288
+        },
+        "pairs": [
+          {
+            "dir": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a",
+            "note": "v3 与 v4 并存：按「v4 优先」纳入 v4；v3 只作并存资料，由 auditPairs() 核验是否超集"
+          }
+        ],
+        "unsupported": [],
+        "comparison": {
+          "expectedRows": 1558,
+          "ledgerRows": 1558,
+          "delta": 0,
+          "verdict": "一致"
+        },
+        "redReasons": [],
+        "warnings": []
+      },
+      "brief": [
+        "预期行数 1,558 = 闭合轮数；台账 1,558 行",
+        "源 session-44671553-2f37-3b8f-7c73-80601d9ef2f9：v4，140.23 KiB，帧 9，闭合轮 2",
+        "源 session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca：v4，157.96 KiB，帧 25，闭合轮 6",
+        "源 session-b64f994c-3dce-981d-723a-11c73ac034a4：v4，145.40 KiB，帧 17，闭合轮 4",
+        "v3+v4 并存 1 对：按 ingest 口径选 v4（v3 不计行数，属正常口径而非缺数据）"
+      ],
+      "ms": 413
+    },
+    {
+      "id": "c19",
+      "name": "C19 日检重放对账",
+      "status": "green",
+      "ok": true,
+      "detail": "重放/比对 1,558 轮（台账 1,558 行，坏行 0）→ 一致；exit=0；2.29 s",
+      "evidence": {
+        "tool": "<work-dir>\\pkg\\docs\\replay-verify.mjs",
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+        "sessions": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions",
+        "exit": 0,
+        "mode": "fields",
+        "ledgerRows": 1558,
+        "replayedTurns": 1558,
+        "compared": 1558,
+        "mismatchCount": 0,
+        "mismatches": [],
+        "counts": {
+          "ledgerFiles": 46,
+          "ledgerBadLines": 0,
+          "ledgerReadErrors": 0,
+          "ledgerDirExists": true,
+          "ledgerEmptyProven": false,
+          "replayedSessions": 16,
+          "v4Sources": 11,
+          "v3Sources": 5,
+          "v3PrefixSessions": 0,
+          "pairs": 1558,
+          "missing": 0,
+          "extra": 0,
+          "codeUnique": true,
+          "sidTurnUnique": true
+        },
+        "skipped": {
+          "v3": 1,
+          "unparsable": 0,
+          "unsupported": 0,
+          "v3Rows": 0,
+          "frameFailedSources": 0
+        },
+        "notes": [
+          {
+            "kind": "V3_NOT_COMPARED",
+            "detail": "v3 不参与比对（被 v4 覆盖，且无需补前缀；只读、未修改）: C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a\\session.v3.jsonl.zstd"
+          }
+        ],
+        "elapsedMs": 2211,
+        "redReasons": []
+      },
+      "brief": [
+        "重放 1,558 轮 / 比对 1,558 轮 / 不一致 0",
+        "台账 1,558 行（坏行 0、读错 0）",
+        "notes：[object Object]"
+      ],
+      "ms": 2290
+    },
+    {
+      "id": "doctor",
+      "name": "doctor 五类体检",
+      "status": "warn",
+      "ok": false,
+      "detail": "5 类：ok 4 / warn 1 / red 0 / unknown 0；data-integrity=ok，code-consistency=ok，ingest-health=ok，storage-health=ok，run-report=warn",
+      "evidence": {
+        "tool": "<work-dir>\\pkg\\tools\\doctor.mjs",
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
+        "sessions": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions",
+        "exit": 0,
+        "ok": true,
+        "summary": {
+          "ok": 4,
+          "warn": 1,
+          "red": 0,
+          "unknown": 0
+        },
+        "checks": [
+          {
+            "id": "data-integrity",
+            "name": "①数据完整性",
+            "ok": true,
+            "severity": "ok",
+            "message": "台账 1558 行（有效 1558）/ 原文视图 1558 / 附件 1558；坏行 0、读错 0；缺凭证 0、孤儿 0；缺口留痕 0",
+            "ms": 3723
+          },
+          {
+            "id": "code-consistency",
+            "name": "②编码一致性",
+            "ok": true,
+            "severity": "ok",
+            "message": "code 唯一 / (sid,turn) 唯一；抽样 20 份全文 sha256 全符；entryHash 已被 S-6 否决，不检",
+            "ms": 45
+          },
+          {
+            "id": "ingest-health",
+            "name": "③采集健康",
+            "ok": true,
+            "severity": "ok",
+            "message": "源会话 16 / 可见 16 / 不支持版本 0 / v3 只读源 5；state 正常（lastRunAt 2026-11-15T13:27:21+08:00，0.0h 前）；pending 5 条",
+            "ms": 10
+          },
+          {
+            "id": "storage-health",
+            "name": "④存储健康",
+            "ok": true,
+            "severity": "ok",
+            "message": "体积 144.97 MB / 文件 3252；最大单文件 700.9 KB（上限 4.00 MB）；pending 3.6 KB / 1.00 MB；语料倍率 skipped",
+            "ms": 240
+          },
+          {
+            "id": "run-report",
+            "name": "⑤运行报告",
+            "ok": true,
+            "severity": "warn",
+            "message": "最近 7 天：1 天有报告 / 缺 0 天；最近 gate=degraded；采集字节 0 B（耗时口径无数据源）；告警：最近一份 gate=degraded：未闭合轮=1（源已静止 >2×interval，逐项见 run-report.openTurns）",
+            "ms": 1
+          }
+        ],
+        "storage": {
+          "totalBytes": 152011640,
+          "fileCount": 3252,
+          "maxFileBytes": 717717
+        },
+        "reportPath": null,
+        "noWrite": true,
+        "redReasons": [],
+        "warnings": [
+          "run-report=warn"
+        ]
+      },
+      "brief": [
+        "未绿：run-report=warn"
+      ],
+      "ms": 4117
+    },
+    {
+      "id": "boundary",
+      "name": "核心边界（0 violation）",
+      "status": "green",
+      "ok": true,
+      "detail": "core 22 文件 / violation 0 / index→tools 提示 0（不计违规）",
+      "evidence": {
+        "tool": "<work-dir>\\pkg\\tools\\core-boundary.mjs",
+        "toolFromPackage": true,
+        "package": "<work-dir>\\pkg",
+        "exit": 0,
+        "ok": true,
+        "coreCount": 22,
+        "coreFiles": [
+          "catalog.js",
+          "checkup.js",
+          "collector.js",
+          "encoder.js",
+          "frames.js",
+          "gate.js",
+          "layout.js",
+          "ledger.js",
+          "ledgerroot.js",
+          "legacy.js",
+          "lock.js",
+          "original.js",
+          "pending.js",
+          "receipt.js",
+          "reconcile.js",
+          "report.js",
+          "sealjournal.js",
+          "tickmetrics.js",
+          "week.js",
+          "weekly.js",
+          "weeklystate.js",
+          "xlsx.js"
+        ],
+        "violations": [],
+        "hints": [],
+        "indexToolsEdges": [
+          {
+            "from": "index.js",
+            "to": "tools/shadow.js",
+            "line": 55
+          },
+          {
+            "from": "index.js",
+            "to": "tools/toolface.js",
+            "line": 93
+          },
+          {
+            "from": "index.js",
+            "to": "tools/panelapi.js",
+            "line": 96
+          },
+          {
+            "from": "index.js",
+            "to": "tools/pointerindex.mjs",
+            "line": 102
+          }
+        ]
+      },
+      "brief": [
+        "core 文件 22 个，0 violation"
+      ],
+      "ms": 63
+    },
+    {
+      "id": "kernel",
+      "name": "内核边界（基线 PASS/FAIL）",
+      "status": "green",
+      "ok": true,
+      "detail": "PASS（result=kernel-unchanged）/ 基线 内核基线-v1.0-lite.sha256（自动选版本号最大） / KERNEL 6 文件 / CONTROLLED 变更 0（允许）",
+      "evidence": {
+        "tool": "<work-dir>\\pkg\\docs\\验收-v0.5\\工具-内核边界检查.mjs",
+        "toolFromPackage": true,
+        "package": "<work-dir>\\pkg",
+        "exit": 0,
+        "result": "kernel-unchanged",
+        "verdict": "PASS",
+        "baseline": "<work-dir>\\pkg\\docs\\内核基线\\内核基线-v1.0-lite.sha256",
+        "baselineName": "内核基线-v1.0-lite.sha256",
+        "baselineAuto": true,
+        "kernelChanged": [],
+        "controlledChanged": [],
+        "controlledMissing": [],
+        "totals": {
+          "kernel": 6,
+          "controlled": 7
+        },
+        "redReasons": []
+      },
+      "brief": [
+        "PASS：result=kernel-unchanged，基线 内核基线-v1.0-lite.sha256",
+        "KERNEL 六文件未动；CONTROLLED 变更 0 个（按边界检查允许）"
+      ],
+      "ms": 60
+    }
+  ],
+  "unverified": [
+    {
+      "id": "tick-metrics",
+      "name": "逐 tick 度量（ms/写入/读盘/预算）",
+      "status": "warn",
+      "detail": "最近 4 tick（窗口 7.87 KiB）；ms 25–7,813；写入 0–631（合计 1,558）；读盘估算 35.65 KiB–38.80 MiB；消费 0 B–16.49 MiB；预算硬顶 28.00 s；超限 0"
+    },
+    {
+      "id": "run-report",
+      "name": "最近运行报告（gate/counts/errors）",
+      "status": "warn",
+      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203"
+    },
+    {
+      "id": "doctor",
+      "name": "doctor 五类体检",
+      "status": "warn",
+      "detail": "5 类：ok 4 / warn 1 / red 0 / unknown 0；data-integrity=ok，code-consistency=ok，ingest-health=ok，storage-health=ok，run-report=warn"
+    }
+  ],
+  "reds": [],
+  "artifacts": {
+    "json": "<work-dir>\\selfev-p4\\设备自检.json",
+    "md": "<work-dir>\\selfev-p4\\设备自检.md"
+  },
+  "readOnly": {
+    "ledger": "readAll(requireLedgerRows:true, repairTornTail:false)；不开 quarantine",
+    "sessions": "scanSessionSources/readSourceTurns 不传 root（零副作用）；e3 只读统计不灌库",
+    "doctor": "--no-write",
+    "replay": "普通模式零写盘",
+    "writes": "仅 <out>/设备自检.json 与 <out>/设备自检.md"
+  }
+}

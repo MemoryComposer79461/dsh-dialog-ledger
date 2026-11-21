@@ -1,0 +1,15 @@
+{
+  "id": "C43",
+  "injected": "预放 root\\交接表\\fake-session.md（模拟\"交接表被生成\"）→ 冻结被绕过",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "删掉预放的 交接表\\ 目录",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "夹具里已经有交接表产物 1 个（例：交接表/fake-session.md）——冻结不成立",
+  "greenSummary": "冻结未被绕过：6 tick 全程 handover* 计数全 0、交接表产物 0 个；删除哨兵后 3 tick 未重建",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C43-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C43-green.json",
+  "detail": "注入只在 c01 副本上做；原 lab 只读",
+  "residual": ""
+}

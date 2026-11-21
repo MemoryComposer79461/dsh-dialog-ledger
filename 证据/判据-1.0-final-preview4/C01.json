@@ -1,0 +1,35 @@
+{
+  "schema": "criteria-1.0/1#C01",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C01",
+  "status": "GREEN",
+  "summary": "1 项全过（语料四数）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "语料四数",
+        "file": "docs/工具-语料四数.mjs",
+        "exit": 0,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "A 保存正确",
+  "gate": "P1",
+  "source": "真实 N 会话 → 台账行数 ＝ 真实轮数（当前基准 1558）、(sid,turn) 唯一、code 唯一、坏行 0",
+  "how": "四个数同时对（别把 1558 当永久阈值）",
+  "zonggang": "总纲 §7 L545",
+  "caliber": ""
+}

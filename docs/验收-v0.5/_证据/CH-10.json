@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-10",
+  "family": "CH",
+  "acId": "AC-V05-CH-10",
+  "product": "`.errors.jsonl`",
+  "requirement": "同现场两轮只追加 1 条（fingerprint 幂等）；`attempts` 累加；**节流（R-02）**：同 `(kind,source,offset)` 每 `errorLogThrottleMs` 最多 1 行，24h 模拟行数 ≤ ceil(24h/throttle)+1，报告 `errors[].count` 反映真实次数；短读必须报错/标未覆盖区间",
+  "implementation": "`lib/frames.js`、`lib/ledger.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-10",
+    "suite": "CH",
+    "status": "PASS"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-10"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

@@ -1,0 +1,27 @@
+$ node docs/工具-语料四数.mjs --sessions=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root
+exit=0
+
+=== C01 语料四数：台账行数＝真实轮数 ｜ (sid,turn)/code 唯一 ｜ 坏行 0 ===
+工具 : docs/工具-语料四数.mjs（只读：不 appendTurn / 不写 state / 不修撕裂尾巴）
+模式 : 重放 + 账库对账
+语料 : C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions
+账库 : C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root
+时间 : 2026-11-15 13:23:47
+
+[① 现场重放：真实轮数的唯一来源（lib/legacy.js scanSessionSources + readSourceTurns）]
+  支持源=3（v4=3 ｜ v3 只读历史源=0） ｜ v3/v4 并存=0（v3 不参与）｜ 不支持版本=0
+  · 逐源闭合轮:
+      - session-c01lab0001-1111-2222-3333-444444444401 [v4] 508B closed=4 open=-
+      - session-c01lab0002-1111-2222-3333-444444444402 [v4] 488B closed=4 open=-
+      - session-c01lab0003-1111-2222-3333-444444444403 [v4] 482B closed=4 open=-
+  应有关闭合轮数=12 ｜ open（不落账）=0 ｜ abandoned=0 ｜ malformed=0 ｜ 坏帧=0 ｜ 坏行=0 ｜ 重放干净=true
+
+[② 台账读数：lib/ledger.js readAll({requireLedgerRows:true, repairTornTail:false})]
+  台账行数=12 ｜ code 唯一=true ｜ (sid,turn) 唯一=true ｜ 坏行=0 ｜ 日文件=3 ｜ 读错误=0 ｜ 读全=true
+
+[③ 对账（真实轮数 vs 台账）]
+  台账行数 12 == 现场重放闭合轮数 12
+  (sid,turn) 集合：台账 12 == 重放 12（双向一致）
+
+判定：PASS — 台账行数==重放轮数=12，且 code 唯一、(sid,turn) 唯一、坏行=0、(sid,turn) 集合双向一致
+

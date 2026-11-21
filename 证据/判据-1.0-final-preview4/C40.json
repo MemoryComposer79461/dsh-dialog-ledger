@@ -1,0 +1,73 @@
+{
+  "schema": "criteria-1.0/1#C40",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C40",
+  "status": "GREEN",
+  "summary": "版本台账 24 行（v0.9.0-lite-base … v1.0.0-preview4）；编号连续/版本唯一/正式版由同号 -re 升；builtFrom/baselineTag/builtFromCommit 三链对上；副本追加第 24 行链仍成立；删中间行可抓；04 演练 A/B/C 已填",
+  "reasons": [],
+  "evidence": {
+    "ledger": "版本台账.md",
+    "rows": 24,
+    "first": "v0.9.0-lite-base",
+    "last": "v1.0.0-preview4",
+    "currentVersion": "1.0.0-preview4",
+    "chainProblems": [],
+    "links": [
+      {
+        "name": "builtFrom",
+        "declared": "lite-v1.0.0-preview3",
+        "matched": "v1.0.0-preview3",
+        "ok": true
+      },
+      {
+        "name": "baselineTag",
+        "declared": "lite-v0.9.4",
+        "matched": "v0.9.4",
+        "ok": true
+      }
+    ],
+    "rollbackDrill": {
+      "keys": [
+        "A_gitReset",
+        "B_snapshotRestore",
+        "C_checkoutFiles"
+      ],
+      "filled": [],
+      "f04Filled": false
+    },
+    "appendTest": {
+      "appendedRow": 24,
+      "rows": 25,
+      "lastN": 24,
+      "ok": true,
+      "problems": []
+    },
+    "breakTest": {
+      "removedRow": 12,
+      "ok": true,
+      "problems": [
+        "第 13 行编号应为 12，实际 13",
+        "第 14 行编号应为 13，实际 14",
+        "第 15 行编号应为 14，实际 15",
+        "第 16 行编号应为 15，实际 16",
+        "第 17 行编号应为 16，实际 17",
+        "第 18 行编号应为 17，实际 18",
+        "第 19 行编号应为 18，实际 19",
+        "第 20 行编号应为 19，实际 20",
+        "第 21 行编号应为 20，实际 21",
+        "第 22 行编号应为 21，实际 22",
+        "第 23 行编号应为 22，实际 23",
+        "第 24 行编号应为 23，实际 24"
+      ]
+    },
+    "appendOnlyNote": "append-only 的\"从未删过旧行\"在无 git 史下无法证明；本判据验的是：①表结构编号连续/版本唯一/正式版由同号 -re 升；②VERSION.json 的 builtFrom/baselineTag/builtFromCommit 三链在台账里可对上；③\"追加一条\"后链仍成立（副本上做）；④删中间一行能被抓（副本反证）。不写产品台账、不做 git 操作",
+    "caliber": "总纲 §7.7 C40 + R-9：版本台账链（保留，防改版历史）≠ 封板链（砍）；\"怎么验：追加一条验链\"",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "F 交付纪律",
+  "gate": "P4",
+  "source": "版本台账 append-only，**版本台账链**不断（≠ 封板链，R-9）",
+  "how": "追加一条验链",
+  "zonggang": "总纲 §7 L609",
+  "caliber": "R-9：版本台账链（保留，防改版历史）≠ 封板链（砍，只留封板事实）"
+}

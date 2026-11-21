@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "BC-14",
+  "family": "BC",
+  "acId": "AC-V05-BC-14",
+  "product": "周记账",
+  "requirement": "补录行出现在周记账草稿/待封板册：B 列四态正确（有 doc+文件→绑定；无 doc→补记）；十列结构不变",
+  "implementation": "`lib/weekly.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "只读计划由 docs\\自测-backfill.mjs 覆盖；入口执行器未接线（见 05 未覆盖）",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-backfill.mjs",
+    "result": "docs\\自测-backfill.mjs（22 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

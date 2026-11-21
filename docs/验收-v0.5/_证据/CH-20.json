@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-20",
+  "family": "CH",
+  "acId": "AC-V05-CH-20",
+  "product": "周记账 B 列/解析",
+  "requirement": "v1.3 新格式、v0.4 旧格式、>50 条附录 CSV（BOM/引号）三种来源均正确；第 51+ 条状态可见",
+  "implementation": "`lib/weekly.js`、`lib/cleanup.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-20",
+    "suite": "CH",
+    "status": "PASS"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-20"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

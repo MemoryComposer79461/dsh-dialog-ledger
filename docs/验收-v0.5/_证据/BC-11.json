@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "BC-11",
+  "family": "BC",
+  "acId": "AC-V05-BC-11",
+  "product": "文件 sha",
+  "requirement": "消费前后已封板 xlsx 字节 sha256 不变；补记册只追加（旧前缀 sha 不变）",
+  "implementation": "`lib/weekly.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "只读计划由 docs\\自测-backfill.mjs 覆盖；入口执行器未接线（见 05 未覆盖）",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-backfill.mjs",
+    "result": "docs\\自测-backfill.mjs（22 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

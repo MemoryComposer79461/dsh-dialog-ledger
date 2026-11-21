@@ -1,0 +1,527 @@
+$ node 判据-0.9.1.mjs --json --lab=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab --only=C01,C02,C03,C04,C05,C06,C07,C08,C09,C10,C11,C12,C13,C14,C15,C16,C17,C18 --evid-dir=<work-dir>\pkg\证据\判据-1.0-final-preview4\0.9.3-沿用-判据-0.9.1-存档 --work-dir=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work
+exit=0 ms=64773
+
+--- stdout ---
+{
+  "ok": true,
+  "counts": {
+    "green": 18,
+    "red": 0,
+    "na": 0,
+    "skipped": 0
+  },
+  "lab": {
+    "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+    "sessions": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions"
+  },
+  "results": [
+    {
+      "id": "C01",
+      "title": "台账行数=真实轮数、(sid,turn)/code 唯一、坏行 0",
+      "redProof": "工具对\"行数≠轮数/重复主键/坏行\"三类破坏给 FAIL（见工具内负例）",
+      "checks": [
+        {
+          "name": "语料四数",
+          "file": "docs/工具-语料四数.mjs",
+          "args": [
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C01-语料四数.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C02",
+      "title": "重复 ingest 幂等（第二次 written=0）",
+      "redProof": "自测-index case E：连跑两次 written=0、账本总数不变",
+      "checks": [
+        {
+          "name": "自测-index",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-index.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C02-自测-index.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C03",
+      "title": "追加一轮只写 1 行，不重复旧轮",
+      "redProof": "自测-v02：追加一轮 inc=1/written=1；再跑 written=0",
+      "checks": [
+        {
+          "name": "自测-v02",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-v02.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C03-自测-v02.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C04",
+      "title": "未闭合轮只进 pending，不进台账",
+      "redProof": "半截轮夹具：两扫只留 pending，补 end 后恰 1 条 ok",
+      "checks": [
+        {
+          "name": "自测-index+边界",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-index.mjs",
+            "docs/自测-边界.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C04-自测-index+边界.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C05",
+      "title": "单实例：第二个跳过并留日志",
+      "redProof": "守卫 ③·日志：捕获 LOCK_HELD…本轮跳过，且账本零写入",
+      "checks": [
+        {
+          "name": "自测-守卫",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-守卫.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C05-自测-守卫.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C06",
+      "title": "文件变小/尾部不同 → 新内容入账、游标停在新边界",
+      "redProof": "INV-04：截短重写后新 turn 必入账、游标==新文件帧边界",
+      "checks": [
+        {
+          "name": "自测-边界",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-边界.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C06-自测-边界.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C07",
+      "title": "文件正在写（半截）→ 本轮跳过、下轮入账、无 partial 残留",
+      "redProof": "孤儿轮次·进行中 written=0/不写 partial；P1-5 末帧半截游标不推进",
+      "checks": [
+        {
+          "name": "边界+ledger",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-边界.mjs",
+            "docs/自测-ledger.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C07-边界+ledger.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C08",
+      "title": "kill -9 → 重启从游标继续，不重复不丢",
+      "redProof": "P0-3-resume：kill 后从已提交批次续跑",
+      "checks": [
+        {
+          "name": "P0回归",
+          "file": "P0验收/P0回归-v2.mjs",
+          "args": [
+            "--only=P0-3-resume"
+          ],
+          "expectExit": 0,
+          "timeoutMs": 300000,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C08-P0回归.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C09",
+      "title": "每份 原始事件.json 与源会话对应轮次逐字节相等",
+      "redProof": "改一字节/删一份 → exit 1（工具内 --destroy 自检）",
+      "checks": [
+        {
+          "name": "originals",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--originals"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C09-originals.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C10",
+      "title": "每份视图 md 的正文 hash 可独立复算",
+      "redProof": "改正文/改 YAML hash → exit 1（工具内自检）",
+      "checks": [
+        {
+          "name": "views",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--views"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C10-views.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C11",
+      "title": "md 头写\"视图非全集\"且含省略条数",
+      "redProof": "C11 用例：头三行含\"视图非全集/省略 N 条\"，N==YAML 被遮蔽事件数",
+      "checks": [
+        {
+          "name": "自测-original",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-original.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C11-自测-original.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C12",
+      "title": "截断披露行与附件名/sha256 一致",
+      "redProof": "P0-5/D11：三类披露行 + 附件；INV-21/22/23 交叉核（见验收-INV）",
+      "checks": [
+        {
+          "name": "自测-original",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-original.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C12-自测-original.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C13",
+      "title": "编码 date 段 = 会话开始日（跨月不拆）",
+      "redProof": "跨零点/跨月两例，编码日期段均为会话开始日",
+      "checks": [
+        {
+          "name": "自测-边界",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-边界.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C13-自测-边界.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C14",
+      "title": "台账与原文逐字段一致（重放比对）",
+      "redProof": "--mutate/--destroy 注入必红（C15/C16 同源）",
+      "checks": [
+        {
+          "name": "fields",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--fields"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C14-fields.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C15",
+      "title": "改台账任一字段（8 种）→ 重放必红、坏行不得当成功读",
+      "redProof": "每条注入都必须 exit 1；若校验器失效 → exit 3（工具内自检）",
+      "checks": [
+        {
+          "name": "mutate-sid",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=sid"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-sid.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-turn",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=turn"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-turn.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-ts",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=ts"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-ts.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-seq",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=seq"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-seq.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-status",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=status"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-status.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-doc",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=doc"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-doc.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-attachment",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=attachment"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-attachment.log",
+          "error": ""
+        },
+        {
+          "name": "mutate-code",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--mutate=code"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C15-mutate-code.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C16",
+      "title": "删行/伪造行/删附件/改附件一字节 → 必红",
+      "redProof": "四类破坏各一次，全部 exit 1",
+      "checks": [
+        {
+          "name": "destroy-delete-row",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--destroy=delete-row"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C16-destroy-delete-row.log",
+          "error": ""
+        },
+        {
+          "name": "destroy-extra-row",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--destroy=extra-row"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C16-destroy-extra-row.log",
+          "error": ""
+        },
+        {
+          "name": "destroy-delete-attachment",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--destroy=delete-attachment"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C16-destroy-delete-attachment.log",
+          "error": ""
+        },
+        {
+          "name": "destroy-flip-attachment-byte",
+          "file": "docs/replay-verify.mjs",
+          "args": [
+            "--root=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "--sessions=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\dsh-home\\sessions",
+            "--destroy=flip-attachment-byte"
+          ],
+          "expectExit": 1,
+          "exit": 1,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C16-destroy-flip-attachment-byte.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C17",
+      "title": "变异反证：删修复逻辑 → 对应用例必红，且不是一堆红",
+      "redProof": "工具判定\"新增红==预期红\"；出现一堆红 → exit 2；有变异未变红 → exit 1",
+      "checks": [
+        {
+          "name": "变异反证",
+          "file": "docs/工具-变异反证.mjs",
+          "args": [
+            "--json",
+            "--work-dir=C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证"
+          ],
+          "expectExit": 0,
+          "timeoutMs": 1800000,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C17-变异反证.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    },
+    {
+      "id": "C18",
+      "title": "gate 三级输入 4 项，每项都有 degraded 构造",
+      "redProof": "G-02..G-06：4 项各构造一次；G-07/G-08 degraded",
+      "checks": [
+        {
+          "name": "自测-gate",
+          "file": "docs/跑测试.mjs",
+          "args": [
+            "docs/自测-gate.mjs"
+          ],
+          "expectExit": 0,
+          "exit": 0,
+          "log": "证据\\判据-1.0-final-preview4\\0.9.3-沿用-判据-0.9.1-存档\\C18-自测-gate.log",
+          "error": ""
+        }
+      ],
+      "status": "GREEN",
+      "reasons": []
+    }
+  ]
+}
+
+--- stderr ---

@@ -1,0 +1,41 @@
+$ node docs/跑测试.mjs docs/自测-original.mjs
+exit=0
+
+[看护] 物理内存: 0.94 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-original.mjs
+
+✔ renderOriginal：五节齐全，注入内容被过滤并记入备注 (3.05ms)
+✔ renderOriginal：前置块含编码/会话/时间/hash，且 hash 覆盖正文 (0.3375ms)
+✔ renderOriginal：YAML 19 键（顺序）/ 会话短ID 12 位 + 代次 / 正文hash算法 / 未启用标记 / 被遮蔽真算 / 非文本占位（OR-03/05/07/12/17/26） (0.8905ms)
+✔ C11：md 头三行写「视图非全集」+ 省略 N 条，且 N == YAML 被遮蔽事件数 (0.8051ms)
+✔ writeOriginal：落在第 3 级目录，文件名 = 编码 + 完整原文 (8.6139ms)
+✔ readTurnEventsBatch：一次扫描只取需要的轮次（O(n)，不逐轮重读） (2.7153ms)
+✔ 强绑定：原始凭证四态落在 B 列（绑定 / 补记 / 已清理(RPT-…) / 缺凭证） (27.2189ms)
+✔ INV-24：跨月会话（1/31 开始、2/1 那轮）必须绑定到 01 月的凭证，不得按 ts 取月 (9.3604ms)
+✔ P0-5/D11：≤2000 码点不截断；2001/4517 截断必须有披露行，且附件可逐字恢复 (21.0491ms)
+✔ P0-5/D11：多字节（中文+emoji）超 2000 码点 → 不拆代理对、附件逐字恢复 (8.8492ms)
+✔ P0-5/D11：工具结果正文是独立展示块，同样 2000 上限 + 披露 + 附件可恢复 (8.3939ms)
+✔ P1-1：writeOriginal 返回 bodyHash/fullHash，且与磁盘字节独立复算一致 (12.9329ms)
+✔ P1-1：verifyOriginal 正常通过；改 YAML / 改正文 / 改名 / 附件不符 各自检出 (15.1257ms)
+✔ P1-1：正文相同但 YAML 被改 → writeOriginal 拒绝静默复用（ORIGINAL_CONFLICT/full-hash-mismatch） (18.6526ms)
+✔ P0-5/D11：JSON 外壳参数按内容计长披露（对齐 P0回归-v2 夹具），附件逐字恢复 (7.8411ms)
+✔ P0-5/D11：附件已存在且内容不同 → ATTACHMENT_CONFLICT（停摆不覆盖） (10.9758ms)
+✔ 原子写：成功后不留 .tmp-*；扫描/盘点/对账三处读取端都看不见 .tmp-* (15.5934ms)
+✔ 原子写：清理只清"写者已死"的残留，绝不清活进程正在写的临时文件 (13.6533ms)
+✔ 原子写：写失败不留临时文件且红线不变（目标被占用 → 仍 ORIGINAL_CONFLICT） (4.6863ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 270.0104
+
+[看护] 结束: exit=0 用时 0.3s
+[看护] 物理内存: 0.94 GB 可用（跑完）
+[看护] 用例统计: tests=19 pass=19 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-report-27124-mwhe3x3j.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

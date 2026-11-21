@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-27",
+  "family": "INV",
+  "acId": "AC-V05-INV-27",
+  "product": "目录/编号",
+  "requirement": "dry-run 后无正式 RPT 新增；随后首次正式编号==01（dry-run 不占号）",
+  "implementation": "`lib/cleanup.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-27",
+    "suite": "INV",
+    "status": "PASS"
+  },
+  "scenario": {
+    "caseId": "P0-6",
+    "note": "P0-6 断言 dry-run 不占正式编号（随后首次正式编号为 01）"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-27"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

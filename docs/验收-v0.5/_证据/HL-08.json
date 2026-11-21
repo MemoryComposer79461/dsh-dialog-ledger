@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "HL-08",
+  "family": "HL",
+  "acId": "AC-V05-HL-08",
+  "product": "文件清单",
+  "requirement": "自愈后档案区文件集合不变（除白名单补建）；运行区只新增/更新 `.run-report-*.json`（允许 journal/pending 的既有追加）；无新增一级档案文件",
+  "implementation": "`lib/selfheal.js`、`index.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "运行报告由 docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs 覆盖；自愈周期接线未做",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

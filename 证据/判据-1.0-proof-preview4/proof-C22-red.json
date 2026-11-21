@@ -1,0 +1,35 @@
+{
+  "id": "C22",
+  "injected": "往副本 ledger/ 新增 2099-01-01.jsonl（3 MB 合法台账行）→ 套账/压缩语料 0.0328→≈0.104 >0.05（单文件 3 MB<4 MiB，只红 r3 子项）",
+  "result": {
+    "id": "C22",
+    "status": "RED",
+    "summary": "套账/压缩语料 = 12.239% > 0.05×（S-9② ①）",
+    "reasons": [
+      "套账/压缩语料 = 12.239% > 0.05×（S-9② ①）"
+    ],
+    "evidence": {
+      "corpusBytes": 35812336,
+      "ingestableBytes": 35812336,
+      "ledgerDayBytes": 4234199,
+      "indexBytes": 148770,
+      "originalsBytes": 47622603,
+      "originalsCount": 1338,
+      "viewsBytes": 9065871,
+      "viewsCount": 1338,
+      "attachmentBytes": 47622603,
+      "r3_settle": 0.12238712939585958,
+      "r2_original_view": 1.1903690774735687,
+      "r1_decompress_report_only": 1.32978208961292,
+      "maxFile": {
+        "rel": "ledger/2099-01-01.jsonl",
+        "size": 3000101
+      },
+      "maxIndexShard": {
+        "rel": "ledger/.index/.idx-state.json",
+        "size": 3603
+      },
+      "caliber": "S-9②：套账(台账日文件+索引) ≤0.05× 压缩语料；原文+视图(原始事件.json+完整原文.md) = 1.00–1.35× 解压语料（Σ台账 attachment.bytes，S-10⑤ doctor 同一分母代理）；§5.9② 单文件 ≤4 MB（xlsx 除外）；S-10④ 索引分片 ≤4 MiB。r1 只报告（S-9 实测解压 3.49× 是全语料；E3 现存语料子集 r1=1.3298，差异已登记）"
+    }
+  }
+}

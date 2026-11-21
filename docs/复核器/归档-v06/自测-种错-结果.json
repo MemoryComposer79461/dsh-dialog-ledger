@@ -1,0 +1,43 @@
+{
+  "at": "2026-11-10T05:00:13.104Z",
+  "sessions": "<test-dir>\\work\\复核器-v06\\_corpus\\sessions",
+  "root": "<test-dir>\\work\\复核器-v06\\_corpus\\dialog-ledger",
+  "target": {
+    "sid": "session-<redacted-uuid-01>",
+    "turn": 1,
+    "code": "20261021-0d62769b9424-A-00000001"
+  },
+  "cases": [
+    {
+      "name": "基线：A/B/C/D = 0",
+      "ok": true,
+      "detail": "A=0 B=0 C=0 D=0 E=0"
+    },
+    {
+      "name": "基线：源轮次与台账行均 > 0",
+      "ok": true,
+      "detail": "sourceTurns=1559 ledgerRows=1558"
+    },
+    {
+      "name": "A：删除一行 → 报 A 并定位 (sid,turn)",
+      "ok": true,
+      "detail": "missing-in-ledger"
+    },
+    {
+      "name": "B：追加假行 → 报 B 并定位 (sid,turn)",
+      "ok": true,
+      "detail": "source-session-has-no-such-turn"
+    },
+    {
+      "name": "C：状态篡改 → 报 C 并定位 (sid,turn)",
+      "ok": true,
+      "detail": "status-mismatch"
+    },
+    {
+      "name": "D：附件篡改 → 报 D 并定位 (sid,turn)",
+      "ok": true,
+      "detail": "attachment-sha-mismatch"
+    }
+  ],
+  "ok": true
+}

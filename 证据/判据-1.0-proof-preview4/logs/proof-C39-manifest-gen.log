@@ -1,0 +1,7 @@
+$ node 工具-manifest.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\proof-c39-20261115-132512\lite
+exit=0 ms=311
+
+--- stdout ---
+[MANIFEST 生成] C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\proof-c39-20261115-132512\lite\MANIFEST.sha256  673 个文件 / 10318392 B
+
+--- stderr ---

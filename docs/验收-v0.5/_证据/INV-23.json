@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-23",
+  "family": "INV",
+  "acId": "AC-V05-INV-23",
+  "product": "视图文本",
+  "requirement": "`> [截断] 原始长度=4517字符 附件=<code> 原始事件.json sha256=<64hex>` 逐字；N=码点数；前缀可解码",
+  "implementation": "`lib/original.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-23",
+    "suite": "INV",
+    "status": "PASS"
+  },
+  "scenario": {
+    "caseId": "P0-5",
+    "note": "P0-5 断言截断披露行逐字格式与可解码前缀"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-23"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

@@ -1,0 +1,27 @@
+$ node docs/跑测试.mjs docs/自测-v02.mjs
+exit=0
+
+[看护] 物理内存: 0.99 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-v02.mjs
+
+✔ v0.2 格式守卫：session.v5 文件名 → 零写入 + unsupported 报错 (33.0484ms)
+✔ v0.2 格式守卫：会话头 type 不对 → format rejected，零写入 (22.0117ms)
+✔ v0.2 增量：首跑写 1；追加一轮后 inc=1/written=1；再跑 same=1/written=0 (80.248ms)
+✔ v0.2 截断：文件被截短 → 回退全量重读（不崩），已记轮次不重写 (42.0714ms)
+✔ v0.3 记录形状：v=3，带 doc / docHash / docFrom，且原文文件真实存在 (39.0267ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 317.0727
+
+[看护] 结束: exit=0 用时 0.4s
+[看护] 物理内存: 0.98 GB 可用（跑完）
+[看护] 用例统计: tests=5 pass=5 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-report-27704-mwhe32on.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

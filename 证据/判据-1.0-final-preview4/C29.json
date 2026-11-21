@@ -1,0 +1,57 @@
+{
+  "schema": "criteria-1.0/1#C29",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C29",
+  "status": "GREEN",
+  "summary": "删 .index（3 分片/12 行）→ stat 检出 index-missing → 重建 3 分片逐字节相等、rows=12、stat.ok=true；形态=按日分片≤4 MiB（S-10④）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c29\\run-2\\root",
+      "rowsBefore": 12,
+      "rowsAfter": 12,
+      "shards": 3,
+      "deletionDetected": true,
+      "deletionProblems": [
+        "index-missing",
+        "count-mismatch",
+        "missing-index-row",
+        "missing-index-row",
+        "missing-index-row"
+      ],
+      "rebuilt": {
+        "ok": true,
+        "written": 3,
+        "removed": 0,
+        "ms": 9
+      },
+      "mismatchedShards": [],
+      "missingShards": [],
+      "statOk": true,
+      "stateMatch": true,
+      "shardForm": {
+        "rule": "S-10④：按日分片 idx-YYYYMMDD.jsonl，单分片 ≤4 MiB",
+        "badFormShards": [],
+        "dayShardOk": true,
+        "shardLimitBytes": 4194304
+      }
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "★ 删掉索引文件 → 能从台账重建（索引是派生物，不是权威）",
+  "how": "删了重建，逐行等",
+  "zonggang": "总纲 §7 L593",
+  "caliber": ""
+}

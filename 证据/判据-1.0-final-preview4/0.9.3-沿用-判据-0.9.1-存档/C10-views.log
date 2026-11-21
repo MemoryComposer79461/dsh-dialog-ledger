@@ -1,0 +1,12 @@
+$ node docs/replay-verify.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root --sessions=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions --views
+exit=0
+
+C10 视图正文 hash 独立复算（离线只读，不进 tick）· --views
+  root = C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root
+
+【扫】 * 完整原文.md=12 份 ｜ 已查=12 ｜ 有红=0 ｜ 不符=0 ｜ 正文字节=4159
+【实现】 正文=行首 `## 1.`→EOF（含末尾换行）→ sha256(UTF-8)；复算=本文件独立实现（未调用 original.verifyOriginal / originalBodyHash）
+【时】 5 ms
+
+结论：全绿 —— 每份「完整原文.md」的 YAML 正文hash 均可独立复算一致（C10）。
+

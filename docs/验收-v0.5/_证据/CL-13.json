@@ -1,0 +1,17 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CL-13",
+  "family": "CL",
+  "acId": "AC-V05-CL-13",
+  "product": "附录 CSV",
+  "requirement": "文件名 `{report_id}-明细.csv`；>50 时存在、UTF-8 BOM、5 列、数据行==planned、`appendix_rows` 相符",
+  "implementation": "同上",
+  "coverage": "未覆盖",
+  "status": "未覆盖",
+  "note": "清册 v1.3 全量重写未做（W4），物理删除仍默认关闭",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": null,
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

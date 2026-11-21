@@ -1,0 +1,68 @@
+{
+  "schema": "criteria-1.0/1#C36",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C36",
+  "status": "GREEN",
+  "summary": "E3 索引 141.8 KB/台账 1.18 MB=11.76%（主判）；/整库包 0.250%；含 state 12.05% → 均 ≤15%",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/child-判据-0.9.4",
+    "childEvidence": {
+      "per": [
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+          "label": "大库",
+          "shardFiles": 45,
+          "shardBytes": 145167,
+          "stateBytes": 3603,
+          "indexTotalBytes": 148770,
+          "ledgerFiles": 45,
+          "ledgerBytes": 1234098,
+          "packageFiles": 2773,
+          "packageBytes": 58091053,
+          "ratioLedger": 0.117630042346718,
+          "ratioLedgerWithState": 0.12054958358250317,
+          "ratioPackage": 0.0024989562506295073,
+          "threshold": 0.15,
+          "ok": true
+        },
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+          "label": "小库",
+          "shardFiles": 3,
+          "shardBytes": 1284,
+          "stateBytes": 521,
+          "indexTotalBytes": 1805,
+          "ledgerFiles": 3,
+          "ledgerBytes": 10968,
+          "packageFiles": 42,
+          "packageBytes": 621662,
+          "ratioLedger": 0.11706783369803063,
+          "ratioLedgerWithState": 0.16456965718453684,
+          "ratioPackage": 0.002065431054174133,
+          "threshold": 0.15,
+          "ok": true
+        }
+      ],
+      "problems": [],
+      "threshold": 0.15,
+      "caliber": "S-10② 分母＝整包体积（排除 .git 与 MANIFEST）；VERSION/签字单\"11.8×%\"可复现的读法是\"索引分片/台账日文件\"，本执行器两种都算：①索引分片/台账日文件（主判，E3 实测 11.81%）；②索引分片/整库包（排除 .git/MANIFEST，E3 0.10%）；③参考：含 .idx-state.json / 台账（E3 12.00%）。三者都 ≤15% 才判绿 → 任一读法下都过。"
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "索引总大小 ≤ 台账总大小 15%",
+  "how": "量目录（R-5 口径下 ≈49 MB vs 104 GB，远低于 15%）",
+  "zonggang": "总纲 §7 L600",
+  "caliber": "S-10②：分母＝整包（排除 .git/MANIFEST）＋台账双读法，两者都 ≤15%"
+}

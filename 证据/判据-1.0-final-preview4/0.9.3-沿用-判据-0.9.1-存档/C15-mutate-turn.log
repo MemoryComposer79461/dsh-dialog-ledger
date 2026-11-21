@@ -1,0 +1,18 @@
+$ node docs/replay-verify.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root --sessions=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions --mutate=turn
+exit=1
+
+重放核验（离线只读，不进 tick）· C14–C16 · 自检模式
+  root     = C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root
+  sessions = C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions
+
+自检：--mutate=turn
+【基线】 克隆副本：全绿（12/12 配对，0 不符）
+【注入】 code=20261005-c01lab000111-A-00000001 行#1 turn
+         turn: 1 → 1001
+【结果】 ✅ 如期变红：FIELD_MISMATCH turn（code=20261005-c01lab000111-A-00000001）
+         期望=1
+         实际=1001
+【隔离】 原账库未被改动：✓（27 个见证文件 sha256 前后一致）
+结论：校验器有效 —— 注入必红（C15）。exit=1（预期红）
+【时】 44 ms
+

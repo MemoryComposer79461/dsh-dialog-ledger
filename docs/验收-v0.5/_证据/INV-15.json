@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-15",
+  "family": "INV",
+  "acId": "AC-V05-INV-15",
+  "product": "xlsx A4/journal",
+  "requirement": "120/121/122 及\"122 不同溢出码\"共 4 组封板 hash 两两不同；journal `sourceRowCount/overflow` 正确",
+  "implementation": "`lib/weekly.js`、`lib/sealjournal.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-15",
+    "suite": "INV",
+    "status": "PASS"
+  },
+  "scenario": {
+    "caseId": "P0-4a",
+    "note": "P0-4a 断言 120/121/122 三组 hash 互异；\"122 不同溢出码\"第四组未单独构造"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-15"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

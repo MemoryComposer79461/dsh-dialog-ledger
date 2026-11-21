@@ -1,0 +1,101 @@
+# 日常会话记录插件 · bundle 层（v1.0.0）
+#
+# 这是本插件被 DSH 加载时用的 patch 文件。
+# `dsh plugin add <本目录>` 会把「包名」加进 profile 的 bundles，从而挂上下面这条 insert；
+# 本包在 package.json 里声明了 `dsh.bundle.patch`（= 本文件）与 `dsh.client`（web 平台面板）。
+#
+# ⚠️ 只用一种接入方式：包名列进 bundles（本文件生效），或手写 insert。
+#    二者都做会 duplicate loader entry id。
+# ⚠️ 同一 profile 不要同时挂 v0.4（dsh-dialog-ledger-v04）与本版（dsh-dialog-ledger-v05）：
+#    会同时加载两个实例、各写各的。升级前先移除 v0.4（详见 README「安装」）。
+#
+# ★ 配置面口径（2026-11-13 审计修复后核对；M-02/m-02）：
+#   `index.js` 的 readConfig() 实际读 **27 个输入**，其中本文件显式写 **21 个稳定键**；
+#   其余 6 个由 readConfig / DEFAULTS 默认值兜底，本文件**故意不写**（写了会覆盖默认值）：
+#     · manifestAnchorRoot / deliveryPackageDir            空；V0.8 库外 manifest 锚在 lite 冻结，不消费
+#     · backfillExecEnabled                                false；补记执行器 lite 0.9.2 起未接线，不消费
+#     · ingest.mode / ingest.shadowPendingMs / ingest.shadowMaxSessions
+#                                                          disk / 120000 / 50；影子双轨，默认 disk = 零行为变化
+#   加键/删键必须三处同步：本文件 config、readConfig 输入、README「配置」表。
+#   自检：`node docs\工具-身份一致性.mjs`（版本、工具数、配置键集、locale 三键、描述失真）。
+#   注意：`enabled`/`weeklyEnabled`/`handoverEnabled`/`checkupEnabled` 的取值语义是
+#   「!== false」（缺省视为开，体检缺省视为关，见 readConfig），下面显式写全。
+#
+# ★ 运行期无消费者的配置键（保留不删，仅冻结/legacy 占位；删键会改「21 键」配置面口径）：
+#   handoverEnabled / handoverAppendixMaxBytes
+#       交接表能力在 lite 冻结（index 不生成、不认领、不封板）→ 冻结占位，恒不消费。
+#   cleanupToolEnabled / cleanupAllowPhysicalDelete
+#       Agent 清理工具在 lite 已退役（0.9.2 工具面 9→3），实现体只在审查层 freeze/
+#       （运行期不可达）→ **legacy 保留占位，无运行期消费者**；恒 false，两键都不得当作"已启用清理"。
+#
+# config 说明（括号内为默认值）：
+#   root                    数据总库根目录。留空 = <当前用户桌面>/会话账本（v0.6.2 起；旧默认根 <DSH_HOME>/dialog-ledger 首次运行尝试同盘收养）
+#   enabled                 总开关（true）
+#   intervalSeconds         扫描周期（秒，60）
+#   offsetMinutes           时区偏移分钟（480 = UTC+08:00）。★ 绝不取本机时区
+#   hotWindowSeconds        只处理 mtime 在这么多秒内变过的会话（3600）
+#                           设为 0 = 每次全扫（慢，但彻底）
+#                           ★ 首次运行（ledger/.state.json 里 initialized=false）会被强制按 0 处理；
+#                             平时还会用 lastRunAt 兜底"停机超过热窗口"的缺口，避免永久漏账
+#   quietSeconds            安静检测阈值（秒，120）
+#                           只见到 turn/start、没有 turn/end 的轮次，必须同时满足
+#                           「本次读未截断 + 两轮确认文件未增长 + 安静够久」才允许记成 pending
+#                           （v0.5 P0-2 起：未闭合轮次不再写 partial 账行，只写 ledger/.pending.jsonl）
+#   pendingMaxBytes         未闭合轮次证据文件 .pending.jsonl 的大小上限（字节，1048576；0 = 不留证据）
+#   scanBudgetMs            单轮时间预算（毫秒，30000）
+#                           0.9.3 P2-4 同键改值 3000 → 30000（E3 实测 3 s 会在批边界反复截断大语料）；
+#                           到点收工，剩下的下一轮继续；硬顶 TICK_HARD_MS=28000 ms 仍在入口，留 2 s 收尾
+#   maxBytesPerSession      单会话单次读取上限（字节，16777216 = 16 MiB）；超了停在帧边界，下一轮续读
+#   headFingerprintBytes    文件身份指纹取样字节数（4096，P0-1）
+#                           判"文件没变"= 大小相同 + 头部 N 字节 sha256 相同 + 上次已读到尾；
+#                           只比 size 会把"同大小重写"误判成没变（新轮次永久漏记）
+#   eventBatchTurns         事件采集第 1 维预算：每批最多多少轮（32；P0-3 契约值）
+#   eventBatchEvents        事件采集第 2 维预算：每批最多多少事件（500；P0-3 契约值）
+#   eventBatchBytes         事件采集第 3 维预算：每批最多多少字节（4194304 = 4 MiB；P0-3 契约值）
+#                           ★ 三维任一触顶即收批：批内取事件 → 批内落账 → 批后立即释放；
+#                             单轮超 bytes 预算时单独成批并计 eventOversize（放行不丢）
+#                           ★ 32/500/4 MiB 是 v0.5 契约 P0-3 的默认值（v0.5-P0不变量契约.md:46）；
+#                             index.js DEFAULTS 已对齐同一组值（2026-11-09 核对）
+#   weeklyEnabled           周记账（记账凭证，主产物）开关（true）
+#   handoverEnabled         交接表（表头目录）开关（true）——★ lite 冻结：运行期不消费（冻结占位）
+#   handoverAppendixMaxBytes 交接表附表「接管前上下文」前缀读取上限（2097152 = 2 MiB）
+#                           ——★ lite 冻结：运行期不消费（冻结占位）
+#   checkupEnabled          体检开关（false，实验性，不进验收）
+#                           注意：缺省=false（不是"缺省即开"）；体检报告只增不减，没保留策略前不开
+#   checkupIntervalMs       体检节流（毫秒，3600000）
+#   receiptAnchorRoot       ★ REC 日结摘要输出目录（默认空 = 关闭）。
+#                           lite（S-1）收据已降级为"当天记了什么"的日结摘要：不写 ledgerSha256、
+#                           不写 prevReceiptSha256、不强制锚在库外、坏了重写；空 = 不生成任何收据。
+#                           非空时示例（机主桌面固定目录）：'C:\Users\<user>\Desktop\账本锚'
+#                           ★ 机主约定：Agent 不读写 U 盘；收据先落桌面，由机主手动搬入 U 盘，
+#                             再用 `docs/工具-核验收据.mjs --anchor=<U盘目录>` 只读自检。
+#   cleanupToolEnabled      ★ legacy 保留占位（false）。V0.9 Agent 清理工具已随 lite 0.9.2 工具面 9→3 退役，
+#                           实现体只在审查层 freeze/（运行期不可达）→ **本键无任何运行期消费者**；
+#                           保留仅为维持 21 键配置面不漂移，不得当作"清理已启用"。
+#   cleanupAllowPhysicalDelete ★ legacy 保留占位（false）。物理删除第二把锁随清理工具一起退役 →
+#                           **无任何运行期消费者**；两键恒 false，本版不提供销毁能力。
+- insert:
+    - id: dsh-dialog-ledger
+      name: dsh-dialog-ledger
+      config:
+        root: ''
+        enabled: true
+        intervalSeconds: 60
+        offsetMinutes: 480
+        hotWindowSeconds: 3600
+        quietSeconds: 120
+        pendingMaxBytes: 1048576
+        scanBudgetMs: 30000
+        maxBytesPerSession: 16777216
+        headFingerprintBytes: 4096
+        eventBatchTurns: 32
+        eventBatchEvents: 500
+        eventBatchBytes: 4194304
+        weeklyEnabled: true
+        handoverEnabled: true
+        handoverAppendixMaxBytes: 2097152
+        checkupEnabled: false
+        checkupIntervalMs: 3600000
+        receiptAnchorRoot: ''
+        cleanupToolEnabled: false
+        cleanupAllowPhysicalDelete: false

@@ -1,0 +1,74 @@
+{
+  "schema": "criteria-1.0/1#C20",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C20",
+  "status": "GREEN",
+  "summary": "34.15 MiB 语料端到端 3 个 tick 入账 1338 行（written 合计 1338，code/(sid,turn) 唯一 1338/1338，坏行 0）；⚠ 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+  "reasons": [],
+  "evidence": {
+    "metrics": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-labs-1.0.0-preview4/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+    "ticks": [
+      {
+        "written": 626,
+        "ms": 6032,
+        "consumed": 16750779,
+        "readBytes": 34173302,
+        "stateBytes": 0,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 626,
+        "ms": 6717,
+        "consumed": 16758963,
+        "readBytes": 34196863,
+        "stateBytes": 7193,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 86,
+        "ms": 1101,
+        "consumed": 2302594,
+        "readBytes": 4718598,
+        "stateBytes": 7016,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 0,
+        "ms": 13,
+        "consumed": 0,
+        "readBytes": 12396,
+        "stateBytes": 4204,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 0,
+        "ms": 12,
+        "consumed": 0,
+        "readBytes": 11992,
+        "stateBytes": 3800,
+        "headFp": 4096,
+        "tailFp": 4096
+      }
+    ],
+    "rowsCount": 1338,
+    "uniqueCode": 1338,
+    "uniqueSidTurn": 1338,
+    "endToEndTicks": 3,
+    "writtenTotal": 1338,
+    "corpusBytesTotal": 35812336,
+    "ingestableBytes": 35812336,
+    "caveat": "语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+    "caliber": "R-3：48 MB 语料端到端 ≤3 tick；E3 度量口径 = ledger/.tick-metrics.jsonl 的 written 逐 tick 累计",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "D 续航稳产",
+  "gate": "P2",
+  "source": "48 MB 语料端到端 ≤ **3** 个 tick（原 2 作废 → R-3）",
+  "how": "压测",
+  "zonggang": "总纲 §7 L579",
+  "caliber": "R-3：48 MB 语料与单会话 38.82 MB 统一取 ≤3 tick"
+}

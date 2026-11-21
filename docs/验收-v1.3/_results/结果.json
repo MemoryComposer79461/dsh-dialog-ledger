@@ -1,0 +1,4811 @@
+{
+  "meta": {
+    "target": "<build-host>\\Desktop\\记忆插件v0.4.0-正式版-交付\\01-代码",
+    "frozenAt": "2026-11-09T06:03:07.904Z",
+    "mergedAt": "2026-11-09T06:04:24.043Z",
+    "nodeVersion": "v24.21.0",
+    "python": "<build-host>\\.dsh\\dsh-runtimes\\dsh-primary-runtime\\dependencies\\python\\python.exe",
+    "codeHashes": {
+      "README.md": "c9b8bee77a9740411232850d11634bb1c71508d238a316b604d90ced2fe6aa69",
+      "cordis.patch.yml": "4c61e13368dc681287ba7c390ffdbafde27b86c7a421275315f8a4ff2d16f7a6",
+      "docs/交接表-设计.md": "59998ad8bc5019a393e1934a5eb5fd5a5b75bdaafa8a04b608924beae3a0d67c",
+      "docs/口径定稿-v0.4.md": "4b2846e1a6f2ed4980db441a1cb6534cdb4b318386d5dfc0bb53c9f3da7e8d47",
+      "docs/工具-v02-分批压测.mjs": "dbb7c7a9dc2ed8a98c08ea0bc6894b8705824e82872ee0e3e7f5472eb6c4b7aa",
+      "docs/工具-v02-增量压测.mjs": "be411e0e7515e590a8dbdc8317c4b8e76384ac1c1ada6abb28a31b6242aaa017",
+      "docs/工具-v03-历史补记.mjs": "983d3a52d79951f6c40836118afddead011914abca2a7e5025be47dc5fd96e66",
+      "docs/工具-v03-压力测试.mjs": "b308d6cc78cf0ee9ba41622a91c6357f5395c3cb11c18f4151a2cdfe427cf396",
+      "docs/工具-v03-清理.mjs": "78bd80defbe5a5c7b7feea978ed30fa20b867182ef501b3a90b2f13369af915c",
+      "docs/工具-核验v3并存.mjs": "d500ac36329ac64f60ea045aaec104bfae19daa23e82e4d1229a70e6b7320554",
+      "docs/自测-checkup.mjs": "234f57126d0d8cd050eb4251963a0462d8a871acf7ac92d82c732bad0d1cb9a5",
+      "docs/自测-cleanup.mjs": "89c1a87af317249895abf157dffa16e7b6ba14e20b0150d454c859890d64a8dc",
+      "docs/自测-encoder.mjs": "92a03ed6bfc2308e06f597fae61a3796868b76c55a757210da9a810392a6d225",
+      "docs/自测-index.mjs": "72850b7b689ec37d1a52d5af3ade43367750be6b569576f403071bee700fb9ac",
+      "docs/自测-ledger.mjs": "5db8d061930aa875b90be800898efd121a16fd5ff8ecaafc7b61c0375974aa1c",
+      "docs/自测-legacy.mjs": "49c7c09fb093cc6f679b5cf488936b9782af48c5595d6a0ab5b30f016e61fe71",
+      "docs/自测-original.mjs": "fc1bf2884d653ab9e8aad26b5430647fcabea3eaa3994a84a536b2d1f1f7a815",
+      "docs/自测-v02.mjs": "e01b7d65c813f3105ca01ec621b176a2af402ba997f6e285881dd812785c3c9a",
+      "docs/自测-week.mjs": "feed105ee362f8298fa32f920e11a9d91ad03c6f2745c54a168fdfbde069c015",
+      "docs/自测-weekly.mjs": "1877cd2522ab6c938675daeb43be9ea52f88e28e84aefc3c03f6d51e22c3b7d6",
+      "docs/自测-交接表模板.mjs": "7074fde7656e07b5e1c2df8f89a41e9e2716db81d49a55ba9b36c26ffc787010",
+      "docs/自测-周记账封板.mjs": "eb181f93bb5cb675ae5fa35d560353fec720c0378576ac953ed0e7a6d7f279ae",
+      "docs/自测-回归-v03.mjs": "fc3c5074d76e658c8b5706bae5fec776a5106a72f0b11962125f27295acba147",
+      "docs/自测-守卫.mjs": "5dd7037225de0c559541129d84e36653bbdf39709935ff90c10606506fe5a864",
+      "docs/自测-边界.mjs": "121d30ebe32095af066bd840aa23ecc1ae531456625f624e7a5a3956e92940c6",
+      "docs/自测-黄金样本.mjs": "5f5c650fccf860e5903c674591fa319f5b78c40fad2d8a3366717708de67b80a",
+      "docs/迁移-4b-计划.md": "a0da41e7e9ab2ac4c1d037abb9bc23a5b71361e65e81d31c56c14894bf6d2fda",
+      "docs/验收清单.md": "518a4f57b2543395b08d426c3fefbb5c6fd7ff73432a57f5b2abd276bdde44b7",
+      "docs/验收清单.备份-1108-1552.md": "c89c0283aae8d7078ecfe98f6ae2b90e3e0ce235648b7bb9a432fd842174a328",
+      "docs/黄金样本/校验.mjs": "64ac56fa968f9e3ac8a99fab1b71724f2c3915ebf7b12680b20041d04eaa1d73",
+      "docs/黄金样本/用例.json": "0d80970fad2fd9102d153848bfe4b26f00589abfe557865cd846ee0f1da97433",
+      "index.js": "4a6ccdffcceefb6ad99272e7cc6b8a743b246ddcdd615924f9753aef07877f30",
+      "lib/checkup.js": "53cf17c9b754cca86d3af8bbba824c9b51a122c6e183c76d705234b83b436f89",
+      "lib/cleanup.js": "17c90febe94972562a579c3bc1cfa51856126d34f4233cfab7195636af53283b",
+      "lib/encoder.js": "ffbe0417a37eb825094af1212824a39a66be090ebdda21efcce1f3099e274fae",
+      "lib/frames.js": "e445b45684dcc57a125394171c7aaeb5ce67a559d49bea7a68e39627ee197503",
+      "lib/handover.js": "05117998f6e5c862c13a68ed272bbe2a6b06535df820b8294c1a0cb60c7abd54",
+      "lib/ledger.js": "e1c67e1eb5267b03240214f6f1d5a030f5654ff1c5da57f66befafb2612802c4",
+      "lib/legacy.js": "1276db46a27b078f7cea242177a1cb11387a76fc6037a4cb951afdd3fe7db074",
+      "lib/lock.js": "a7f411d247f8b5ac56f065713d70c60bcd4300012abf5778968156067bc23774",
+      "lib/original.js": "9964d707d59f3f371dac654c2a2a473ed8e3bbd3427ce3eecf20c062389e7a6f",
+      "lib/week.js": "56c9b761935f965eb52ea8c42205b9e6c2493352e317056bf6d60d884d7b3125",
+      "lib/weekly.js": "23aab89749a7c393c5d2ffed5d0cffd3665d7fa64637887327dea464b64d9c9b",
+      "lib/xlsx.js": "3c1bbe61df94c599ab8f0dd741aa79c5dbe9884e7c48a728b2378c1c7e484cca",
+      "package.json": "6d1481b9c235e44261d2d5c5d160b0d4109562490cfb9e212d95113b6157d752"
+    },
+    "packageJsonHash": "6d1481b9c235e44261d2d5c5d160b0d4109562490cfb9e212d95113b6157d752",
+    "resourceNote": "本机可用内存约 0.9GB：全量验收（38MB 会话 + 11 个合成实验室 + openpyxl 子进程）不可跑；终验改为「上一轮全量基线 + 3 个定向复验（≤1.5MB 小会话素材）」合并。",
+    "baseline": {
+      "path": "<test-dir>\\work\\验收终验\\_results\\上一轮全量-134-2-7-1.json",
+      "summary": {
+        "pass": 134,
+        "fail": 2,
+        "manual": 7,
+        "na": 1,
+        "miss": 0,
+        "failIds": [
+          "OR-12",
+          "OR-14"
+        ],
+        "manualIds": [
+          "HO-19",
+          "OR-15",
+          "OR-18",
+          "OR-20",
+          "GL-09",
+          "GL-12",
+          "GL-16"
+        ],
+        "naIds": [
+          "OR-16"
+        ],
+        "missIds": []
+      },
+      "runTarget": "<build-host>\\Desktop\\记忆插件v0.4.0-正式版-交付\\01-代码",
+      "runStartedAt": "2026-11-09T05:58:44.059Z",
+      "runFinishedAt": "2026-11-09T05:58:57.684Z"
+    },
+    "targetedRuns": [
+      {
+        "name": "e2e",
+        "path": "<test-dir>\\work\\验收终验\\_results\\复验-e2e\\结果.json",
+        "startedAt": "2026-11-09T06:01:48.291Z",
+        "finishedAt": "2026-11-09T06:01:49.141Z",
+        "summary": {
+          "pass": 107,
+          "fail": 0,
+          "manual": 7,
+          "na": 1,
+          "miss": 29,
+          "failIds": [],
+          "manualIds": [
+            "HO-19",
+            "OR-15",
+            "OR-18",
+            "OR-20",
+            "GL-09",
+            "GL-12",
+            "GL-16"
+          ],
+          "naIds": [
+            "OR-16"
+          ],
+          "missIds": [
+            "HO-23",
+            "HO-24",
+            "HO-25",
+            "HO-26",
+            "HO-30",
+            "HA-06",
+            "HA-07",
+            "HA-08",
+            "HA-09",
+            "HA-10",
+            "HA-11",
+            "HA-12",
+            "HA-14",
+            "HA-15",
+            "OR-22",
+            "OR-23",
+            "OR-27",
+            "CL-29",
+            "CL-30",
+            "WK-33",
+            "WK-35",
+            "WK-39",
+            "WK-40",
+            "WK-41",
+            "WK-42",
+            "WK-43",
+            "WK-45",
+            "WK-46",
+            "GL-08"
+          ]
+        }
+      },
+      {
+        "name": "originalspecial",
+        "path": "<test-dir>\\work\\验收终验\\_results\\复验-originalspecial\\结果.json",
+        "startedAt": "2026-11-09T06:02:01.648Z",
+        "finishedAt": "2026-11-09T06:02:02.475Z",
+        "summary": {
+          "pass": 108,
+          "fail": 0,
+          "manual": 7,
+          "na": 1,
+          "miss": 28,
+          "failIds": [],
+          "manualIds": [
+            "HO-19",
+            "OR-15",
+            "OR-18",
+            "OR-20",
+            "GL-09",
+            "GL-12",
+            "GL-16"
+          ],
+          "naIds": [
+            "OR-16"
+          ],
+          "missIds": [
+            "HO-23",
+            "HO-24",
+            "HO-25",
+            "HO-26",
+            "HO-30",
+            "HA-06",
+            "HA-07",
+            "HA-08",
+            "HA-09",
+            "HA-10",
+            "HA-11",
+            "HA-12",
+            "HA-14",
+            "HA-15",
+            "OR-22",
+            "OR-23",
+            "CL-29",
+            "CL-30",
+            "WK-33",
+            "WK-35",
+            "WK-39",
+            "WK-40",
+            "WK-41",
+            "WK-42",
+            "WK-43",
+            "WK-45",
+            "WK-46",
+            "GL-08"
+          ]
+        }
+      },
+      {
+        "name": "v3pair",
+        "path": "<test-dir>\\work\\验收终验\\_results\\复验-v3pair\\结果.json",
+        "startedAt": "2026-11-09T06:02:05.611Z",
+        "finishedAt": "2026-11-09T06:02:06.420Z",
+        "summary": {
+          "pass": 107,
+          "fail": 0,
+          "manual": 7,
+          "na": 1,
+          "miss": 29,
+          "failIds": [],
+          "manualIds": [
+            "HO-19",
+            "OR-15",
+            "OR-18",
+            "OR-20",
+            "GL-09",
+            "GL-12",
+            "GL-16"
+          ],
+          "naIds": [
+            "OR-16"
+          ],
+          "missIds": [
+            "HO-23",
+            "HO-24",
+            "HO-25",
+            "HO-26",
+            "HO-30",
+            "HA-06",
+            "HA-07",
+            "HA-08",
+            "HA-09",
+            "HA-10",
+            "HA-11",
+            "HA-12",
+            "HA-14",
+            "HA-15",
+            "OR-22",
+            "OR-23",
+            "OR-27",
+            "CL-29",
+            "CL-30",
+            "WK-33",
+            "WK-35",
+            "WK-39",
+            "WK-40",
+            "WK-41",
+            "WK-42",
+            "WK-43",
+            "WK-45",
+            "WK-46",
+            "GL-08"
+          ]
+        }
+      },
+      {
+        "name": "conflict",
+        "path": "<test-dir>\\work\\验收终验\\_results\\复验-conflict\\结果.json",
+        "startedAt": "2026-11-09T06:03:03.984Z",
+        "finishedAt": "2026-11-09T06:03:04.812Z",
+        "summary": {
+          "pass": 109,
+          "fail": 0,
+          "manual": 7,
+          "na": 1,
+          "miss": 27,
+          "failIds": [],
+          "manualIds": [
+            "HO-19",
+            "OR-15",
+            "OR-18",
+            "OR-20",
+            "GL-09",
+            "GL-12",
+            "GL-16"
+          ],
+          "naIds": [
+            "OR-16"
+          ],
+          "missIds": [
+            "HO-23",
+            "HO-24",
+            "HO-25",
+            "HO-26",
+            "HO-30",
+            "HA-06",
+            "HA-07",
+            "HA-08",
+            "HA-09",
+            "HA-10",
+            "HA-11",
+            "HA-12",
+            "HA-14",
+            "HA-15",
+            "OR-27",
+            "CL-29",
+            "CL-30",
+            "WK-33",
+            "WK-35",
+            "WK-39",
+            "WK-40",
+            "WK-41",
+            "WK-42",
+            "WK-43",
+            "WK-45",
+            "WK-46",
+            "GL-08"
+          ]
+        }
+      },
+      {
+        "name": "crverbatim",
+        "path": "<test-dir>\\work\\验收终验\\_results\\复验-crverbatim\\结果.json",
+        "startedAt": "2026-11-09T06:03:07.905Z",
+        "finishedAt": "2026-11-09T06:03:08.707Z",
+        "summary": {
+          "pass": 113,
+          "fail": 0,
+          "manual": 7,
+          "na": 1,
+          "miss": 23,
+          "failIds": [],
+          "manualIds": [
+            "HO-19",
+            "OR-15",
+            "OR-18",
+            "OR-20",
+            "GL-09",
+            "GL-12",
+            "GL-16"
+          ],
+          "naIds": [
+            "OR-16"
+          ],
+          "missIds": [
+            "HO-23",
+            "HO-24",
+            "HO-25",
+            "HO-26",
+            "HO-30",
+            "HA-06",
+            "HA-12",
+            "HA-15",
+            "OR-22",
+            "OR-23",
+            "OR-27",
+            "CL-29",
+            "CL-30",
+            "WK-33",
+            "WK-35",
+            "WK-39",
+            "WK-40",
+            "WK-41",
+            "WK-42",
+            "WK-43",
+            "WK-45",
+            "WK-46",
+            "GL-08"
+          ]
+        }
+      }
+    ],
+    "coverage": {
+      "total": 144,
+      "targetedVerified": [
+        "GL-01",
+        "GL-02",
+        "GL-03",
+        "GL-04",
+        "GL-05",
+        "GL-06",
+        "GL-07",
+        "GL-09",
+        "GL-10",
+        "GL-11",
+        "GL-13",
+        "GL-14",
+        "GL-15",
+        "GL-17",
+        "GL-18",
+        "HA-01",
+        "HA-02",
+        "HA-03",
+        "HA-04",
+        "HA-05",
+        "HA-07",
+        "HA-08",
+        "HA-09",
+        "HA-10",
+        "HA-11",
+        "HA-13",
+        "HA-14",
+        "HA-16",
+        "HA-17",
+        "HA-18",
+        "HA-19",
+        "HA-20",
+        "HO-01",
+        "HO-02",
+        "HO-03",
+        "HO-04",
+        "HO-05",
+        "HO-06",
+        "HO-07",
+        "HO-08",
+        "HO-09",
+        "HO-10",
+        "HO-11",
+        "HO-12",
+        "HO-13",
+        "HO-14",
+        "HO-15",
+        "HO-16",
+        "HO-17",
+        "HO-18",
+        "HO-20",
+        "HO-21",
+        "HO-22",
+        "HO-27",
+        "HO-28",
+        "HO-29",
+        "HO-31",
+        "OR-01",
+        "OR-02",
+        "OR-03",
+        "OR-04",
+        "OR-05",
+        "OR-06",
+        "OR-07",
+        "OR-08",
+        "OR-09",
+        "OR-10",
+        "OR-11",
+        "OR-12",
+        "OR-13",
+        "OR-14",
+        "OR-17",
+        "OR-19",
+        "OR-21",
+        "OR-22",
+        "OR-23",
+        "OR-24",
+        "OR-25",
+        "OR-26",
+        "OR-27",
+        "WK-01",
+        "WK-02",
+        "WK-03",
+        "WK-04",
+        "WK-05",
+        "WK-06",
+        "WK-07",
+        "WK-08",
+        "WK-09",
+        "WK-10",
+        "WK-11",
+        "WK-12",
+        "WK-13",
+        "WK-14",
+        "WK-15",
+        "WK-16",
+        "WK-17",
+        "WK-18",
+        "WK-19",
+        "WK-20",
+        "WK-21",
+        "WK-22",
+        "WK-23",
+        "WK-24",
+        "WK-25",
+        "WK-26",
+        "WK-27",
+        "WK-28",
+        "WK-29",
+        "WK-30",
+        "WK-31",
+        "WK-32",
+        "WK-34",
+        "WK-36",
+        "WK-37",
+        "WK-38",
+        "WK-44"
+      ],
+      "baselineOnly": [
+        "HO-19",
+        "HO-23",
+        "HO-24",
+        "HO-25",
+        "HO-26",
+        "HO-30",
+        "HA-06",
+        "HA-12",
+        "HA-15",
+        "OR-15",
+        "OR-16",
+        "OR-18",
+        "OR-20",
+        "CL-29",
+        "CL-30",
+        "WK-33",
+        "WK-35",
+        "WK-39",
+        "WK-40",
+        "WK-41",
+        "WK-42",
+        "WK-43",
+        "WK-45",
+        "WK-46",
+        "GL-08",
+        "GL-12",
+        "GL-16"
+      ]
+    }
+  },
+  "summary": {
+    "pass": 136,
+    "fail": 0,
+    "manual": 7,
+    "na": 1,
+    "miss": 0,
+    "failIds": [],
+    "manualIds": [
+      "HO-19",
+      "OR-15",
+      "OR-18",
+      "OR-20",
+      "GL-09",
+      "GL-12",
+      "GL-16"
+    ],
+    "naIds": [
+      "OR-16"
+    ],
+    "missIds": []
+  },
+  "criteria": {
+    "HO-01": {
+      "ac": "AC-HO-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] [E2E 96dea353bbb4A] 96dea353bbb4A的记忆数据库的启用及交接表.md 存在且文件名合法",
+        "[通过] [E2E 3b9ad92506f3A] 3b9ad92506f3A的记忆数据库的启用及交接表.md 存在且文件名合法"
+      ],
+      "verification": "targeted"
+    },
+    "HO-02": {
+      "ac": "AC-HO-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] BOM=false CR=false 末尾单换行=true"
+      ],
+      "verification": "targeted"
+    },
+    "HO-03": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 11 键顺序正确：名称/会话标识/代差/委托人/执行/记录/生成器/生成时间/附表/封板/封板hash"
+      ],
+      "verification": "targeted"
+    },
+    "HO-04": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 名称=“96dea353bbb4A的记忆数据库的启用及交接表”；H1=“# 96dea353bbb4A的记忆数据库的启用及交接表”",
+        "[通过] 名称=“3b9ad92506f3A的记忆数据库的启用及交接表”；H1=“# 3b9ad92506f3A的记忆数据库的启用及交接表”"
+      ],
+      "verification": "targeted"
+    },
+    "HO-05": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 会话标识=96dea353bbb4 代差=A 与文件名前 13 位一致",
+        "[通过] 会话标识=3b9ad92506f3 代差=A 与文件名前 13 位一致"
+      ],
+      "verification": "targeted"
+    },
+    "HO-06": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 委托人=user 执行=日常会话记录插件（Tool） 记录=系统（Cordis）"
+      ],
+      "verification": "targeted"
+    },
+    "HO-07": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 生成器=“dsh-dialog-ledger-v0.4/handover”"
+      ],
+      "verification": "targeted"
+    },
+    "HO-08": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 生成时间=“2026-11-09 14:01:48” 与运行窗口相差 0s",
+        "[通过] 生成时间=“2026-11-09 14:02:01” 与运行窗口相差 1s",
+        "[通过] 生成时间=“2026-11-09 14:02:05” 与运行窗口相差 1s",
+        "[通过] 生成时间=“2026-11-09 14:03:04” 与运行窗口相差 0s",
+        "[通过] 生成时间=“2026-11-09 14:03:08” 与运行窗口相差 0s",
+        "[通过] 生成时间=“2026-11-09 14:03:07” 与运行窗口相差 1s"
+      ],
+      "verification": "targeted"
+    },
+    "HO-09": {
+      "ac": "AC-HO-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 附表字段=“96dea353bbb4A的记忆数据库的启用及交接表——附表.md” 且存在",
+        "[通过] 附表字段=“3b9ad92506f3A的记忆数据库的启用及交接表——附表.md” 且存在"
+      ],
+      "verification": "targeted"
+    },
+    "HO-10": {
+      "ac": "AC-HO-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 封板 为裸字面量 true"
+      ],
+      "verification": "targeted"
+    },
+    "HO-11": {
+      "ac": "AC-HO-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 封板hash='fbbdbfee76c1080907ab862fa2c787b67e4e711a78bd9bbad2a3af72680204ab'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='1ff69777ac9143b22c2d5ace629d8efbe9a96c1db269d669b3a45050154611d6'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='f8ff1a8b4ef9e524276f25a45ef01b9264c317f6dfef53f4249dde0669a174f6'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='dc88916956b16bb59e9a5af76f15fc2d2df60863190460780a64e4d7adf9b4b1'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='b31844afcad1b517923aac4b24760c7546f06ad2e0bf236ec1a196990d235258'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='bf500a0559f6c13125e5e9701ef4c576b752885d9933ecf0b7681377677f9984'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='be1d6b8d8f30e6ed4da7f981fc288e67ddefb08684b50da8ed29e427855dbb16'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='8ea84f7ded3d86ebc4641a0e7d0b693cd8317fc3cb59232fb459d2363aeb2a08'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='04500f773241a71273821b8a0e1833c7f6f7407a6ab5ece69fca9f57262ae5bf'（单引号包裹 64 位小写 hex）",
+        "[通过] 封板hash='67d5e2a20a1f6aa5472897e2be69cec0e5aafdeb3a149023fdcd6cb4e4dbe5ed'（单引号包裹 64 位小写 hex）"
+      ],
+      "verification": "targeted"
+    },
+    "HO-12": {
+      "ac": "AC-HO-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 抬头表 8 行：名称/会话标识/代差/委托人/执行/记录/生成时间/附表"
+      ],
+      "verification": "targeted"
+    },
+    "HO-13": {
+      "ac": "AC-HO-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 抬头表 8 个内容单元格与 YAML 逐字段匹配"
+      ],
+      "verification": "targeted"
+    },
+    "HO-14": {
+      "ac": "AC-HO-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 声明 4 条；第4条=“4. 该数据库为共享库，不对任何会话进行屏蔽。★ 会话不默认知晓自己的 Session ID，须先自查（调用本插件工具 / 问 user）方可定位自己的账。…”"
+      ],
+      "verification": "targeted"
+    },
+    "HO-15": {
+      "ac": "AC-HO-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 相关文件 2 行；第1行=“《96dea353bbb4A的记忆数据库的启用及交接表——附表.md》”；第2行含完整原文=true",
+        "[通过] 相关文件 2 行；第1行=“《3b9ad92506f3A的记忆数据库的启用及交接表——附表.md》”；第2行含完整原文=true"
+      ],
+      "verification": "targeted"
+    },
+    "HO-16": {
+      "ac": "AC-HO-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 三级结构=true 存放规则3条=true 未写运行区=true"
+      ],
+      "verification": "targeted"
+    },
+    "HO-17": {
+      "ac": "AC-HO-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 末行=“**结束** · 96dea353bbb4A · 生成器 dsh-dialog-ledger-v0.4/handover”",
+        "[通过] 末行=“**结束** · 3b9ad92506f3A · 生成器 dsh-dialog-ledger-v0.4/handover”"
+      ],
+      "verification": "targeted"
+    },
+    "HO-18": {
+      "ac": "AC-HO-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 正文（# 行首→EOF）sha256=fbbdbfee76c1080907ab862fa2c787b67e4e711a78bd9bbad2a3af72680204ab == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=1ff69777ac9143b22c2d5ace629d8efbe9a96c1db269d669b3a45050154611d6 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=f8ff1a8b4ef9e524276f25a45ef01b9264c317f6dfef53f4249dde0669a174f6 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=dc88916956b16bb59e9a5af76f15fc2d2df60863190460780a64e4d7adf9b4b1 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=b31844afcad1b517923aac4b24760c7546f06ad2e0bf236ec1a196990d235258 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=bf500a0559f6c13125e5e9701ef4c576b752885d9933ecf0b7681377677f9984 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=be1d6b8d8f30e6ed4da7f981fc288e67ddefb08684b50da8ed29e427855dbb16 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=8ea84f7ded3d86ebc4641a0e7d0b693cd8317fc3cb59232fb459d2363aeb2a08 == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=04500f773241a71273821b8a0e1833c7f6f7407a6ab5ece69fca9f57262ae5bf == YAML 封板hash",
+        "[通过] 正文（# 行首→EOF）sha256=67d5e2a20a1f6aa5472897e2be69cec0e5aafdeb3a149023fdcd6cb4e4dbe5ed == YAML 封板hash"
+      ],
+      "verification": "targeted"
+    },
+    "HO-19": {
+      "ac": "AC-HO-07",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] 写后复核故障注入（mock 渲染后改一字节）需白盒注入，黑盒不可达；已验「正常产物封板hash 可独立复算」HO-18"
+      ],
+      "verification": "baseline"
+    },
+    "HO-20": {
+      "ac": "AC-HO-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 无占位符残留；无 CR"
+      ],
+      "verification": "targeted"
+    },
+    "HO-21": {
+      "ac": "AC-HO-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 首跑 generate 2 份，日志含 handover=generate reopened=true"
+      ],
+      "verification": "targeted"
+    },
+    "HO-22": {
+      "ac": "AC-HO-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已封板再跑：主表字节与 mtime 均不变（96dea353bbb4A的记忆数据库的启用及交接表.md）",
+        "[通过] 已封板再跑：主表字节与 mtime 均不变（3b9ad92506f3A的记忆数据库的启用及交接表.md）"
+      ],
+      "verification": "targeted"
+    },
+    "HO-23": {
+      "ac": "AC-HO-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 封板后删主表：不重建，errors 含「sealed but file missing（不重建）」"
+      ],
+      "verification": "baseline"
+    },
+    "HO-24": {
+      "ac": "AC-HO-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] adopt：认领 1 份、旧文件字节不变、state 出现 sealedAt/sealHash（==独立复算 d0a4f385…）"
+      ],
+      "verification": "baseline"
+    },
+    "HO-25": {
+      "ac": "AC-HO-11",
+      "status": "PASS",
+      "evidence": [
+        "[通过] state 丢失后重跑：adopt 并显式告警 reopened=true"
+      ],
+      "verification": "baseline"
+    },
+    "HO-26": {
+      "ac": "AC-HO-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] generate 重建：旧附表被 rename 为 arch00000002A的记忆数据库的启用及交接表——附表.md.旧-20261109-135847，内容 sha256 与原字节一致，不删除；新主表/附表已生成"
+      ],
+      "verification": "baseline"
+    },
+    "HO-27": {
+      "ac": "AC-HO-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 主表存在 ⇒ 附表存在（同批生成路径）"
+      ],
+      "verification": "targeted"
+    },
+    "HO-28": {
+      "ac": "AC-HO-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 运行结束 root 下无 *.tmp"
+      ],
+      "verification": "targeted"
+    },
+    "HO-29": {
+      "ac": "AC-HO-13",
+      "status": "PASS",
+      "evidence": [
+        "[通过] handoverSealed 2 条，字段齐全且 sealHash==产物封板hash"
+      ],
+      "verification": "targeted"
+    },
+    "HO-30": {
+      "ac": "AC-GL-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 子进程持锁时第二个进程不写交接表（lockSkipped=true、零产物；锁文件 <root>/ledger/.lock 存在）"
+      ],
+      "verification": "baseline"
+    },
+    "HO-31": {
+      "ac": "AC-HO-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 重复触发 3 次后目录中仍只有 2 个主表、2 个附表"
+      ],
+      "verification": "targeted"
+    },
+    "HA-01": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] [E2E 96dea353bbb4A] 96dea353bbb4A的记忆数据库的启用及交接表——附表.md 存在且文件名合法",
+        "[通过] [E2E 3b9ad92506f3A] 3b9ad92506f3A的记忆数据库的启用及交接表——附表.md 存在且文件名合法",
+        "[通过] [CRVERBATIM 附表] 10e000000001A的记忆数据库的启用及交接表——附表.md 存在且文件名合法"
+      ],
+      "verification": "targeted"
+    },
+    "HA-02": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 7 键顺序正确：名称/会话标识/代差/父表/上下文条数/生成器/生成时间"
+      ],
+      "verification": "targeted"
+    },
+    "HA-03": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 父表=“96dea353bbb4A的记忆数据库的启用及交接表.md” 且存在",
+        "[通过] 父表=“3b9ad92506f3A的记忆数据库的启用及交接表.md” 且存在",
+        "[通过] 父表=“10e000000001A的记忆数据库的启用及交接表.md” 且存在"
+      ],
+      "verification": "targeted"
+    },
+    "HA-04": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 名称=“96dea353bbb4A的记忆数据库的启用及交接表——附表”",
+        "[通过] 名称=“3b9ad92506f3A的记忆数据库的启用及交接表——附表”",
+        "[通过] 名称=“10e000000001A的记忆数据库的启用及交接表——附表”"
+      ],
+      "verification": "targeted"
+    },
+    "HA-05": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 生成时间=“2026-11-09 14:01:48”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）",
+        "[通过] 生成时间=“2026-11-09 14:02:01”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）",
+        "[通过] 生成时间=“2026-11-09 14:02:05”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）",
+        "[通过] 生成时间=“2026-11-09 14:03:04”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）",
+        "[通过] 生成时间=“2026-11-09 14:03:08”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）",
+        "[通过] 生成时间=“2026-11-09 14:03:07”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+      ],
+      "verification": "targeted"
+    },
+    "HA-06": {
+      "ac": "AC-HA-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] block role 序列=[\"system/message\",\"user/message\",\"assistant/message\",\"tool/call\",\"tool/result\"]"
+      ],
+      "verification": "baseline"
+    },
+    "HA-07": {
+      "ac": "AC-HA-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 被过滤 kind 未出现；user block 数=1"
+      ],
+      "verification": "targeted"
+    },
+    "HA-08": {
+      "ac": "AC-HA-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 各 block 元信息 [seq N] 严格升序：[0]"
+      ],
+      "verification": "targeted"
+    },
+    "HA-09": {
+      "ac": "AC-HA-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 编号 1..1 连续且 == 上下文条数"
+      ],
+      "verification": "targeted"
+    },
+    "HA-10": {
+      "ac": "AC-HA-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 1 个 block 的元信息行格式合法"
+      ],
+      "verification": "targeted"
+    },
+    "HA-11": {
+      "ac": "AC-HA-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 逐条照录：1 条原文全部出现，block 数=上下文条数"
+      ],
+      "verification": "targeted"
+    },
+    "HA-12": {
+      "ac": "AC-HA-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 内容形态：thinking 折叠、tool_use 指针、tool/call JSON 两空格、tool/result 状态 ok"
+      ],
+      "verification": "baseline"
+    },
+    "HA-13": {
+      "ac": "AC-HA-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 空表：上下文条数=0、无 block、正文含「无」"
+      ],
+      "verification": "targeted"
+    },
+    "HA-14": {
+      "ac": "AC-HA-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 未截断（无“已截断”字样），block 数=1 == 上下文条数=1"
+      ],
+      "verification": "targeted"
+    },
+    "HA-15": {
+      "ac": "AC-HA-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 含决定9#7固定句；上下文条数=2814 == 实际 block 数=2814（应录 3200）"
+      ],
+      "verification": "baseline"
+    },
+    "HA-16": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 无 v0.4 旧串（「已截断：本节之后…」「### 2026-」）"
+      ],
+      "verification": "targeted"
+    },
+    "HA-17": {
+      "ac": "AC-HA-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:01:48",
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:02:01",
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:02:05",
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:03:04",
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:03:08",
+        "[通过] 主表/附表同批生成，生成时间均为 2026-11-09 14:03:07"
+      ],
+      "verification": "targeted"
+    },
+    "HA-18": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] UTF-8 无 BOM、恰好一个结尾换行；生成部分无 CR/占位符（block 正文逐字照录不参与，Lead 裁定①）",
+        "[通过] 附表生成部分无 CR/占位符（正文逐字内容不参与，Lead 裁定①）"
+      ],
+      "verification": "targeted"
+    },
+    "HA-19": {
+      "ac": "AC-HA-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] H1=“# 96dea353bbb4A的记忆数据库的启用及交接表——附表” == YAML 名称",
+        "[通过] H1=“# 3b9ad92506f3A的记忆数据库的启用及交接表——附表” == YAML 名称",
+        "[通过] H1=“# 10e000000001A的记忆数据库的启用及交接表——附表” == YAML 名称"
+      ],
+      "verification": "targeted"
+    },
+    "HA-20": {
+      "ac": "AC-HA-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已封板再跑：附表字节不变（96dea353bbb4A的记忆数据库的启用及交接表——附表.md）",
+        "[通过] 已封板再跑：附表字节不变（3b9ad92506f3A的记忆数据库的启用及交接表——附表.md）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-01": {
+      "ac": "AC-OR-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] [E2E 20260925-96dea353bbb4-A-00000001] 20260925-96dea353bbb4-A-00000001 文件名合法：20260925-96dea353bbb4-A-00000001 完整原文.md",
+        "[通过] [E2E 20261012-3b9ad92506f3-A-00000001] 20261012-3b9ad92506f3-A-00000001 文件名合法：20261012-3b9ad92506f3-A-00000001 完整原文.md",
+        "[通过] [E2E 20261012-3b9ad92506f3-A-00000002] 20261012-3b9ad92506f3-A-00000002 文件名合法：20261012-3b9ad92506f3-A-00000002 完整原文.md",
+        "[通过] [SHADOW] 20261109-555555556666-A-00000001 文件名合法：20261109-555555556666-A-00000001 完整原文.md",
+        "[通过] [IMGFILE] 20261109-777777778888-A-00000001 文件名合法：20261109-777777778888-A-00000001 完整原文.md",
+        "[通过] [PARTIAL] 20261109-99999999aaaa-A-00000001 文件名合法：20261109-99999999aaaa-A-00000001 完整原文.md"
+      ],
+      "verification": "targeted"
+    },
+    "OR-02": {
+      "ac": "AC-OR-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] [E2E 20260925-96dea353bbb4-A-00000001] 20260925-96dea353bbb4-A-00000001 位置合法：2026年09月/09月总“完整原文”/20260925-96dea353bbb4-A-00000001 完整原文.md",
+        "[通过] [E2E 20261012-3b9ad92506f3-A-00000001] 20261012-3b9ad92506f3-A-00000001 位置合法：2026年10月/10月总“完整原文”/20261012-3b9ad92506f3-A-00000001 完整原文.md",
+        "[通过] [E2E 20261012-3b9ad92506f3-A-00000002] 20261012-3b9ad92506f3-A-00000002 位置合法：2026年10月/10月总“完整原文”/20261012-3b9ad92506f3-A-00000002 完整原文.md",
+        "[通过] [SHADOW] 20261109-555555556666-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-555555556666-A-00000001 完整原文.md",
+        "[通过] [IMGFILE] 20261109-777777778888-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-777777778888-A-00000001 完整原文.md",
+        "[通过] [PARTIAL] 20261109-99999999aaaa-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-99999999aaaa-A-00000001 完整原文.md"
+      ],
+      "verification": "targeted"
+    },
+    "OR-03": {
+      "ac": "AC-OR-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 19 键顺序正确"
+      ],
+      "verification": "targeted"
+    },
+    "OR-04": {
+      "ac": "AC-OR-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 编码=“20260925-96dea353bbb4-A-00000001” 名称=“20260925-96dea353bbb4-A-00000001 完整原文”",
+        "[通过] 编码=“20261012-3b9ad92506f3-A-00000001” 名称=“20261012-3b9ad92506f3-A-00000001 完整原文”",
+        "[通过] 编码=“20261012-3b9ad92506f3-A-00000002” 名称=“20261012-3b9ad92506f3-A-00000002 完整原文”",
+        "[通过] 编码=“20261109-555555556666-A-00000001” 名称=“20261109-555555556666-A-00000001 完整原文”",
+        "[通过] 编码=“20261109-777777778888-A-00000001” 名称=“20261109-777777778888-A-00000001 完整原文”",
+        "[通过] 编码=“20261109-99999999aaaa-A-00000001” 名称=“20261109-99999999aaaa-A-00000001 完整原文”"
+      ],
+      "verification": "targeted"
+    },
+    "OR-05": {
+      "ac": "AC-OR-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 会话短ID=96dea353bbb4 代次=A 会话ID 非空 本轮序号=1",
+        "[通过] 会话短ID=3b9ad92506f3 代次=A 会话ID 非空 本轮序号=1",
+        "[通过] 会话短ID=3b9ad92506f3 代次=A 会话ID 非空 本轮序号=2",
+        "[通过] 会话短ID=555555556666 代次=A 会话ID 非空 本轮序号=1",
+        "[通过] 会话短ID=777777778888 代次=A 会话ID 非空 本轮序号=1",
+        "[通过] 会话短ID=99999999aaaa 代次=A 会话ID 非空 本轮序号=1"
+      ],
+      "verification": "targeted"
+    },
+    "OR-06": {
+      "ac": "AC-OR-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 对话开始/结束均为 ISO +08:00，生成字段无 Z 时间（正文逐字照录不参与，Lead 裁定①）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-07": {
+      "ac": "AC-OR-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 固定元信息一致；正文hash算法=“sha256（对『## 1.』至文件末尾的全部字节计算）”"
+      ],
+      "verification": "targeted"
+    },
+    "OR-08": {
+      "ac": "AC-OR-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 事件范围=“seq 5 – 207”",
+        "[通过] 事件范围=“seq 24 – 79”",
+        "[通过] 事件范围=“seq 81 – 128”",
+        "[通过] 事件范围=“seq 0 – 6”",
+        "[通过] 事件范围=“seq 0 – 5”",
+        "[通过] 事件范围=“seq 0 – 2”"
+      ],
+      "verification": "targeted"
+    },
+    "OR-09": {
+      "ac": "AC-OR-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 事件范围 seq 5 – 207 覆盖 turn/start.seq=5 ~ turn/end.seq=207；正文 seq 全部在区间内",
+        "[通过] 事件范围 seq 24 – 79 覆盖 turn/start.seq=24 ~ turn/end.seq=79；正文 seq 全部在区间内",
+        "[通过] 事件范围 seq 81 – 128 覆盖 turn/start.seq=81 ~ turn/end.seq=128；正文 seq 全部在区间内",
+        "[通过] 事件范围 seq 0 – 6 覆盖 turn/start.seq=0 ~ turn/end.seq=6；正文 seq 全部在区间内",
+        "[通过] 事件范围 seq 0 – 5 覆盖 turn/start.seq=0 ~ turn/end.seq=5；正文 seq 全部在区间内",
+        "[通过] 事件范围 seq 0 – 2 覆盖 turn/start.seq=0 ~ turn/end.seq=null；正文 seq 全部在区间内"
+      ],
+      "verification": "targeted"
+    },
+    "OR-10": {
+      "ac": "AC-OR-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 五节标题逐字且顺序正确（索引 [26,62,161,1015,1085]）",
+        "[通过] 五节标题逐字且顺序正确（索引 [26,32,58,360,386]）",
+        "[通过] 五节标题逐字且顺序正确（索引 [26,30,64,669,699]）",
+        "[通过] 五节标题逐字且顺序正确（索引 [26,32,38,42,48]）",
+        "[通过] 五节标题逐字且顺序正确（索引 [26,36,42,46,52]）",
+        "[通过] 五节标题逐字且顺序正确（索引 [26,32,36,40,44]）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-11": {
+      "ac": "AC-OR-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] ## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=1 == 被过滤数=1，逐 kind 匹配=true",
+        "[通过] ## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=3 == 被过滤数=3，逐 kind 匹配=true",
+        "[通过] ## 1. 段落标记=0 == kind=user 数=0；备注按 kind 合计=1 == 被过滤数=1，逐 kind 匹配=true",
+        "[通过] ## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=0 == 被过滤数=0，逐 kind 匹配=true"
+      ],
+      "verification": "targeted"
+    },
+    "OR-12": {
+      "ac": "AC-OR-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 被遮蔽事件数=0（独立复算=0；期望=0）",
+        "[通过] 被遮蔽事件数=2（独立复算=2；期望=2）",
+        "[通过] 被遮蔽事件数=0（独立复算=0；期望=(实时源)）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-13": {
+      "ac": "AC-OR-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 被遮蔽且应在正文展示的 seq 全部可见：[]",
+        "[通过] 被遮蔽且应在正文展示的 seq 全部可见：[2,3]"
+      ],
+      "verification": "targeted"
+    },
+    "OR-14": {
+      "ac": "AC-OR-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 正文（## 1.→EOF）sha256=f4de558e47ddb5492bb12561c2f66be7931d3b84e75120ba1a4fa9734d5d8fd5 == YAML 正文hash",
+        "[通过] 正文（## 1.→EOF）sha256=89bc2f5513e435f0d6bee2402b89a920e8b791a365890dce71194f8b48a962cf == YAML 正文hash",
+        "[通过] 正文（## 1.→EOF）sha256=52008ca7d8972fdaddc72b52763cdee248a01ec4a696a24b240390028f47e077 == YAML 正文hash",
+        "[通过] 正文（## 1.→EOF）sha256=0122dbe9dce13900801f88aaebea54affc19f8d143654d4d864b602aafc007af == YAML 正文hash",
+        "[通过] 正文（## 1.→EOF）sha256=d8a90df46f96232fd0116e4c796e919f564cbeae32647574671560bc1c953096 == YAML 正文hash",
+        "[通过] 正文（## 1.→EOF）sha256=f3e644b1884761572cd6464dab91dac09ca0f2c37e4a5bd46687e5dd2d882bc6 == YAML 正文hash"
+      ],
+      "verification": "targeted"
+    },
+    "OR-15": {
+      "ac": "AC-OR-07",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] 写入后自检复核的故障注入需白盒；黑盒已验「产物正文hash 可独立复算」OR-14 与冲突不覆盖 OR-22"
+      ],
+      "verification": "baseline"
+    },
+    "OR-16": {
+      "ac": "AC-OR-08",
+      "status": "NA",
+      "evidence": [
+        "[不适用] v1.3 允许「未启用采集」降级（决定 3：真实采集排 v0.5），启用形态本期不判"
+      ],
+      "verification": "baseline"
+    },
+    "OR-17": {
+      "ac": "AC-OR-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 未启用形态成对：文件数=0 文件=[] 备注首行=“- 文件清单：未启用（真实采集排 v0.5）”"
+      ],
+      "verification": "targeted"
+    },
+    "OR-18": {
+      "ac": "AC-OR-08",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] 渲染期「谎报负例」自检需构造内部非法输入，黑盒不可达；相关产物形态按 OR-17 判"
+      ],
+      "verification": "baseline"
+    },
+    "OR-19": {
+      "ac": "AC-OR-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 备注四类顺序可读：首行=“- 文件清单：未启用（真实采集排 v0.5）”"
+      ],
+      "verification": "targeted"
+    },
+    "OR-20": {
+      "ac": "AC-OR-09",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] open(\"wx\") 排他创建机制不可黑盒观测；代理证据：目标不存在→文件创建成功；已存在时同 hash 复用（OR-21）/异 hash 冲突停摆（OR-22）"
+      ],
+      "verification": "baseline"
+    },
+    "OR-21": {
+      "ac": "AC-OR-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 3 份原文在第二/三轮字节不变（已存在凭证零写入）",
+        "[通过] 同名同 hash 二次写：返回复用、文件字节与 mtime 不变，（无冲突）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-22": {
+      "ac": "AC-OR-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 异内容冲突停摆：抛 ORIGINAL_CONFLICT、文件字节不变、台账零新增；错误含路径与两个 hash（bf6d713c… vs fdab84fc…）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-23": {
+      "ac": "AC-OR-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已存在凭证从未发生写入（含追加）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-24": {
+      "ac": "AC-OR-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] UTF-8 无 BOM、恰好一个结尾换行；生成部分无 CR/占位符（正文逐字照录不参与，Lead 裁定①）",
+        "[通过] 完整原文正文逐字保留（CR/LF、Z 时间串、花括号纹理原样出现）；生成部分仍无 CR/占位符（Lead 裁定①）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-25": {
+      "ac": "AC-GL-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] v3-only 会话入账 1 行、src 全部为 session.v3.jsonl.zstd；v3 文件 sha256 前后不变（4bbf9aec0106…）"
+      ],
+      "verification": "targeted"
+    },
+    "OR-26": {
+      "ac": "AC-OR-11",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 本产物无 image/file 内容块（不触发）",
+        "[通过] 非文本块占位：[图片]=true [文件]=true"
+      ],
+      "verification": "targeted"
+    },
+    "OR-27": {
+      "ac": "AC-OR-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] partial 轮：结束原因=partial、对话结束==对话开始（2026-11-09T09:30:00+08:00）"
+      ],
+      "verification": "targeted"
+    },
+    "CL-29": {
+      "ac": "AC-CL-18",
+      "status": "PASS",
+      "evidence": [
+        "[通过] v1.3 新格式清册解析：20261001-samesess0001-A-00000004 → 已清理(RPT-20261008-01)"
+      ],
+      "verification": "baseline"
+    },
+    "CL-30": {
+      "ac": "AC-CL-18",
+      "status": "PASS",
+      "evidence": [
+        "[通过] v0.4 旧格式清册解析：20261001-samesess0001-A-00000005 → 已清理(RPT-20261008-02)"
+      ],
+      "verification": "baseline"
+    },
+    "WK-01": {
+      "ac": "AC-WK-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] [E2E 09月第4周-96dea353bbb4A的周记账.xlsx] 2026年09月/09月第4周-96dea353bbb4A的周记账.xlsx 文件名/位置合法",
+        "[通过] [E2E 10月第3周-3b9ad92506f3A的周记账.xlsx] 2026年10月/10月第3周-3b9ad92506f3A的周记账.xlsx 文件名/位置合法"
+      ],
+      "verification": "targeted"
+    },
+    "WK-02": {
+      "ac": "AC-WK-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] openpyxl 打开成功；9 sheet 顺序正确：说明/周一/周二/周三/周四/周五/周六/周日/周统计"
+      ],
+      "verification": "targeted"
+    },
+    "WK-03": {
+      "ac": "AC-WK-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] A1=“周记账模板 v1.3”；A2 含“生成时间 ”与“（UTC+08:00）”"
+      ],
+      "verification": "targeted"
+    },
+    "WK-04": {
+      "ac": "AC-WK-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 本产物为已封板册，草稿头判据由草稿产物（Lab APP）覆盖"
+      ],
+      "verification": "targeted"
+    },
+    "WK-05": {
+      "ac": "AC-WK-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:01:48（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:01:48（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:02:01（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:02:01（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:02:05（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:02:05（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:03:04（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:03:04（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:03:08（UTC+08:00）”",
+        "[通过] 已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:03:08（UTC+08:00）”"
+      ],
+      "verification": "targeted"
+    },
+    "WK-06": {
+      "ac": "AC-WK-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 说明页章节齐备（约定9/字段10/规则8/封板7/已定3）；负例0命中；编码日期段规则=true；第3/7条如实=true"
+      ],
+      "verification": "targeted"
+    },
+    "WK-07": {
+      "ac": "AC-WK-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] A6=“会话键: 96dea353bbb4A ｜ 周段: 2026-09-21 ~ 2026-09-27 ｜ 所属月份: 2026年09月 ｜ 周序: 第4周 ｜ 记录数: 1 ｜ 生成器: dsh-dialog-ledger-v0.4/weekly”",
+        "[通过] A6=“会话键: 3b9ad92506f3A ｜ 周段: 2026-10-12 ~ 2026-10-18 ｜ 所属月份: 2026年10月 ｜ 周序: 第3周 ｜ 记录数: 2 ｜ 生成器: dsh-dialog-ledger-v0.4/weekly”"
+      ],
+      "verification": "targeted"
+    },
+    "WK-08": {
+      "ac": "AC-WK-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 7 张日表十列表头逐字正确"
+      ],
+      "verification": "targeted"
+    },
+    "WK-09": {
+      "ac": "AC-WK-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 7 张日表 A1:J121、freeze=A2"
+      ],
+      "verification": "targeted"
+    },
+    "WK-10": {
+      "ac": "AC-WK-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 每张日表 4 条 dataValidations，sqref 集合正确：custom:A2:A121 list:D2:D121 list:H2:H121 list:I2:I121"
+      ],
+      "verification": "targeted"
+    },
+    "WK-11": {
+      "ac": "AC-WK-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] A2:A121 编码校验公式逐字正确"
+      ],
+      "verification": "targeted"
+    },
+    "WK-12": {
+      "ac": "AC-WK-05",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 三列下拉序列逐字正确、allow_blank=true、showErrorMessage=false"
+      ],
+      "verification": "targeted"
+    },
+    "WK-13": {
+      "ac": "AC-WK-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] A 列 1 条编码全部匹配 32 位正则",
+        "[通过] A 列 2 条编码全部匹配 32 位正则"
+      ],
+      "verification": "targeted"
+    },
+    "WK-14": {
+      "ac": "AC-WK-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 非空行从第 2 行连续、每日 ≤120 行"
+      ],
+      "verification": "targeted"
+    },
+    "WK-15": {
+      "ac": "AC-WK-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] C 列格式合法且同表内非降序"
+      ],
+      "verification": "targeted"
+    },
+    "WK-16": {
+      "ac": "AC-WK-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] C 列 1 行与台账 ts 换算 +08:00 HH:MM 逐行相等",
+        "[通过] C 列 2 行与台账 ts 换算 +08:00 HH:MM 逐行相等"
+      ],
+      "verification": "targeted"
+    },
+    "WK-17": {
+      "ac": "AC-WK-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] B 列全部为四态之一（绑定）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-18": {
+      "ac": "AC-WK-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 四态逐行独立复算一致（绑定/补记/已清理/缺凭证）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-19": {
+      "ac": "AC-WK-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] H 列状态默认值正确（ok→已完成 / partial→待确认）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-20": {
+      "ac": "AC-WK-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] I 列全部为「待审」"
+      ],
+      "verification": "targeted"
+    },
+    "WK-21": {
+      "ac": "AC-WK-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] D/E/F/G/J 列机器初值全部为「—」"
+      ],
+      "verification": "targeted"
+    },
+    "WK-22": {
+      "ac": "AC-WK-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 编码日期段=会话开始日（20260925）；行日期按 ts 归属；B 列锚点=周段内日期（[\"2026-09-21\",\"2026-09-22\",\"2026-09-23\",\"2026-09-24\",\"2026-09-25\",\"2026-09-26\",\"2026-09-27\"]）",
+        "[通过] 编码日期段=会话开始日（20261012）；行日期按 ts 归属；B 列锚点=周段内日期（[\"2026-10-12\",\"2026-10-13\",\"2026-10-14\",\"2026-10-15\",\"2026-10-16\",\"2026-10-17\",\"2026-10-18\"]）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-23": {
+      "ac": "AC-WK-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 全部编码会话段+代差 == 文件名 {S}{D}=96dea353bbb4A",
+        "[通过] 全部编码会话段+代差 == 文件名 {S}{D}=3b9ad92506f3A"
+      ],
+      "verification": "targeted"
+    },
+    "WK-24": {
+      "ac": "AC-WK-11",
+      "status": "PASS",
+      "evidence": [
+        "[通过] Σ日表行(1) + 溢出(0) == 台账记录数(1)",
+        "[通过] Σ日表行(2) + 溢出(0) == 台账记录数(2)"
+      ],
+      "verification": "targeted"
+    },
+    "WK-25": {
+      "ac": "AC-WK-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 周统计表头/星期/合计行逐字正确"
+      ],
+      "verification": "targeted"
+    },
+    "WK-26": {
+      "ac": "AC-WK-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] C5:C11 均为 =COUNTA(<日表>!$A$2:$A$121)"
+      ],
+      "verification": "targeted"
+    },
+    "WK-27": {
+      "ac": "AC-WK-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] D5:F11 均为 =COUNTIF(<日表>!$I$2:$I$121, …) 且不引用 $H$"
+      ],
+      "verification": "targeted"
+    },
+    "WK-28": {
+      "ac": "AC-WK-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] C12:F12 均为 =SUM(X5:X11)"
+      ],
+      "verification": "targeted"
+    },
+    "WK-29": {
+      "ac": "AC-WK-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] B5:B11 非「—」日期集合 == 周段内日期集合 [\"2026-09-21\",\"2026-09-22\",\"2026-09-23\",\"2026-09-24\",\"2026-09-25\",\"2026-09-26\",\"2026-09-27\"]",
+        "[通过] B5:B11 非「—」日期集合 == 周段内日期集合 [\"2026-10-12\",\"2026-10-13\",\"2026-10-14\",\"2026-10-15\",\"2026-10-16\",\"2026-10-17\",\"2026-10-18\"]"
+      ],
+      "verification": "targeted"
+    },
+    "WK-30": {
+      "ac": "AC-WK-11",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 溢出行为数字 0 == 实际溢出 0；A13=溢出（未写入本册）；D13:F13=—"
+      ],
+      "verification": "targeted"
+    },
+    "WK-31": {
+      "ac": "AC-WK-13",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 无记录日：日表 A 列全空（COUNTA=0，无占位行）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-32": {
+      "ac": "AC-WK-13",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 月界切段：不在段内的日表全空、B=—（本册段 2026-09-21 ~ 2026-09-27）",
+        "[通过] 月界切段：不在段内的日表全空、B=—（本册段 2026-10-12 ~ 2026-10-18）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-33": {
+      "ac": "AC-WK-14",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 无新增行 → 草稿不重写（字节与 mtime 不变）"
+      ],
+      "verification": "baseline"
+    },
+    "WK-34": {
+      "ac": "AC-WK-15",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已封板周记账在后续两轮字节不变"
+      ],
+      "verification": "targeted"
+    },
+    "WK-35": {
+      "ac": "AC-WK-15",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 已封板 xlsx 被删后不重建，并 warn「sealed but file missing」"
+      ],
+      "verification": "baseline"
+    },
+    "WK-36": {
+      "ac": "AC-WK-16",
+      "status": "PASS",
+      "evidence": [
+        "[通过] weeklySealed 2 组，字段齐全（sealedAt/sealHash/file/layout=6/rows）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-37": {
+      "ac": "AC-WK-16",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 封板hash 独立复算一致：28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851（rowCount=1）",
+        "[通过] 封板hash 独立复算一致：c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1（rowCount=2）"
+      ],
+      "verification": "targeted"
+    },
+    "WK-38": {
+      "ac": "AC-WK-16",
+      "status": "PASS",
+      "evidence": [
+        "[通过] state.weeklyLayout=6"
+      ],
+      "verification": "targeted"
+    },
+    "WK-39": {
+      "ac": "AC-WK-17",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 补记册文件名合法：补记-20261109.md（一级目录、md）"
+      ],
+      "verification": "baseline"
+    },
+    "WK-40": {
+      "ac": "AC-WK-17",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 补记条目字段齐全、10 列表格行存在（原编码=20261109-aaaaaaaabbbb-A-00000002）"
+      ],
+      "verification": "baseline"
+    },
+    "WK-41": {
+      "ac": "AC-WK-17",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 补记编号连续：[\"补记-20261109-01\",\"补记-20261109-02\"]"
+      ],
+      "verification": "baseline"
+    },
+    "WK-42": {
+      "ac": "AC-WK-17",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 补记hash 可复算：d7200eed3d142cfaadd63b8074ef6241c04c3120db18b63a498cf0047fc3c96a == 记录值"
+      ],
+      "verification": "baseline"
+    },
+    "WK-43": {
+      "ac": "AC-WK-18",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 补记册只追加（旧字节前缀不变）；正册字节不变"
+      ],
+      "verification": "baseline"
+    },
+    "WK-44": {
+      "ac": "AC-WK-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 工作簿内字符串无 Z 结尾时间"
+      ],
+      "verification": "targeted"
+    },
+    "WK-45": {
+      "ac": "AC-WK-19",
+      "status": "PASS",
+      "evidence": [
+        "[通过] state 丢失 + 已有 xlsx：不重写（产物字节全不变），告警含 state lost / existing book untouched"
+      ],
+      "verification": "baseline"
+    },
+    "WK-46": {
+      "ac": "AC-GL-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 锁释放后正常写入；产物可被 openpyxl 打开且 9 sheet 完整"
+      ],
+      "verification": "baseline"
+    },
+    "GL-01": {
+      "ac": "AC-GL-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 一级目录仅档案产物 + ledger 运行区：2026年09月 | 2026年10月 | 3b9ad92506f3A的记忆数据库的启用及交接表——附表.md | 3b9ad92506f3A的记忆数据库的启用及交接表.md | 96dea353bbb4A的记忆数据库的启用及交接表——附表.md | 96dea353bbb4A的记忆数据库的启用及交接表.md | ledger"
+      ],
+      "verification": "targeted"
+    },
+    "GL-02": {
+      "ac": "AC-GL-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 月份文件夹名合法：2026年09月 | 2026年10月"
+      ],
+      "verification": "targeted"
+    },
+    "GL-03": {
+      "ac": "AC-GL-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 第三级目录/文件名全部合法：09月总“完整原文” | 10月总“完整原文”"
+      ],
+      "verification": "targeted"
+    },
+    "GL-04": {
+      "ac": "AC-GL-01",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 一级目录不出现 *.xlsx"
+      ],
+      "verification": "targeted"
+    },
+    "GL-05": {
+      "ac": "AC-GL-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 全部产物无 Z 结尾 UTC 时间（扫描 583 段文本）",
+        "[通过] 附表 block 正文逐字保留（CR/LF、Z 时间串、花括号纹理原样出现）；生成部分仍无 Z/占位符（Lead 裁定①）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-06": {
+      "ac": "AC-GL-03",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 台账/文件名编码全部为 32 位规范编码、无 -B 后缀"
+      ],
+      "verification": "targeted"
+    },
+    "GL-07": {
+      "ac": "AC-GL-04",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 连跑三轮：(sid,turn) 不增、产物字节不变"
+      ],
+      "verification": "targeted"
+    },
+    "GL-08": {
+      "ac": "AC-GL-08",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 双实例：子进程持锁（pid=18372），第二个实例 lockSkipped=true 且零产物写入",
+        "[通过] 僵死锁被夺取：旧锁 rename 为 .lock.stale-* 留证（.lock.stale-20261109-135857-19552-13e50b）"
+      ],
+      "verification": "baseline"
+    },
+    "GL-09": {
+      "ac": "AC-GL-05",
+      "status": "MANUAL",
+      "evidence": [
+        "[通过] state 可解析、键集合只增不减（10→10）、无 tmp 残留；原子写机制本身不可黑盒观测（见人工待验）",
+        "[待验] state「tmp+rename 原子写」机制不可黑盒观测；已验代理指标（可解析/键只增不减/无 tmp 残留/无损坏）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-10": {
+      "ac": "AC-GL-10",
+      "status": "PASS",
+      "evidence": [
+        "[通过] v3-only 会话可入账（1 轮）且 v3 文件零写入；v4 会话入账 2 轮",
+        "[通过] v3+v4 并存（v4 起点更晚）：v3 前缀已补入账（turns=[1,2]）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-11": {
+      "ac": "AC-GL-06",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 体检默认关闭：未产生 CHK-* 报告、state.checkup 不存在（决定 6：体检不进验收）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-12": {
+      "ac": "AC-GL-07",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] git 基线对比；本轮硬约束不运行 git，无法机器判定（需 Lead/交付负责人用基线清单复核）"
+      ],
+      "verification": "baseline"
+    },
+    "GL-13": {
+      "ac": "AC-GL-07",
+      "status": "PASS",
+      "evidence": [
+        "[通过] package.json 无 dependencies；无 node_modules（零依赖）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-14": {
+      "ac": "AC-GL-09",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 2 个日账文件、3 行；每行 JSON 可解析、文件尾换行、同一 (sid,turn) 唯一"
+      ],
+      "verification": "targeted"
+    },
+    "GL-15": {
+      "ac": "AC-GL-02",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 全部产物无 {{ / }} 占位符残留"
+      ],
+      "verification": "targeted"
+    },
+    "GL-16": {
+      "ac": "AC-GL-11",
+      "status": "MANUAL",
+      "evidence": [
+        "[待验] 桌面交付包目录 sha256 基线清单；本验收未写桌面目录，但无基线清单可对比"
+      ],
+      "verification": "baseline"
+    },
+    "GL-17": {
+      "ac": "AC-GL-11",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 验收过程未安装任何依赖：package.json sha256 未变、无 node_modules（node=v24.21.0；python/openpyxl 为既有环境）"
+      ],
+      "verification": "targeted"
+    },
+    "GL-18": {
+      "ac": "AC-GL-12",
+      "status": "PASS",
+      "evidence": [
+        "[通过] 全部产物未见「与自身实现相矛盾」的说明文字（负例清单 0 命中）"
+      ],
+      "verification": "targeted"
+    }
+  },
+  "checks": [
+    {
+      "id": "HA-06",
+      "status": "PASS",
+      "criteria": [
+        "HA-06"
+      ],
+      "acs": [
+        "AC-HA-02"
+      ],
+      "evidence": "block role 序列=[\"system/message\",\"user/message\",\"assistant/message\",\"tool/call\",\"tool/result\"]"
+    },
+    {
+      "id": "HA-12",
+      "status": "PASS",
+      "criteria": [
+        "HA-12"
+      ],
+      "acs": [
+        "AC-HA-05"
+      ],
+      "evidence": "内容形态：thinking 折叠、tool_use 指针、tool/call JSON 两空格、tool/result 状态 ok"
+    },
+    {
+      "id": "WK-33",
+      "status": "PASS",
+      "criteria": [
+        "WK-33"
+      ],
+      "acs": [
+        "AC-WK-14"
+      ],
+      "evidence": "无新增行 → 草稿不重写（字节与 mtime 不变）"
+    },
+    {
+      "id": "WK-39",
+      "status": "PASS",
+      "criteria": [
+        "WK-39"
+      ],
+      "acs": [
+        "AC-WK-17"
+      ],
+      "evidence": "补记册文件名合法：补记-20261109.md（一级目录、md）"
+    },
+    {
+      "id": "WK-40",
+      "status": "PASS",
+      "criteria": [
+        "WK-40"
+      ],
+      "acs": [
+        "AC-WK-17"
+      ],
+      "evidence": "补记条目字段齐全、10 列表格行存在（原编码=20261109-aaaaaaaabbbb-A-00000002）"
+    },
+    {
+      "id": "WK-41",
+      "status": "PASS",
+      "criteria": [
+        "WK-41"
+      ],
+      "acs": [
+        "AC-WK-17"
+      ],
+      "evidence": "补记编号连续：[\"补记-20261109-01\",\"补记-20261109-02\"]"
+    },
+    {
+      "id": "WK-43",
+      "status": "PASS",
+      "criteria": [
+        "WK-43"
+      ],
+      "acs": [
+        "AC-WK-18"
+      ],
+      "evidence": "补记册只追加（旧字节前缀不变）；正册字节不变"
+    },
+    {
+      "id": "WK-42",
+      "status": "PASS",
+      "criteria": [
+        "WK-42"
+      ],
+      "acs": [
+        "AC-WK-17"
+      ],
+      "evidence": "补记hash 可复算：d7200eed3d142cfaadd63b8074ef6241c04c3120db18b63a498cf0047fc3c96a == 记录值"
+    },
+    {
+      "id": "WK-35",
+      "status": "PASS",
+      "criteria": [
+        "WK-35"
+      ],
+      "acs": [
+        "AC-WK-15"
+      ],
+      "evidence": "已封板 xlsx 被删后不重建，并 warn「sealed but file missing」"
+    },
+    {
+      "id": "HA-15",
+      "status": "PASS",
+      "criteria": [
+        "HA-15"
+      ],
+      "acs": [
+        "AC-HA-08"
+      ],
+      "evidence": "含决定9#7固定句；上下文条数=2814 == 实际 block 数=2814（应录 3200）"
+    },
+    {
+      "id": "HO-24",
+      "status": "PASS",
+      "criteria": [
+        "HO-24"
+      ],
+      "acs": [
+        "AC-HO-10"
+      ],
+      "evidence": "adopt：认领 1 份、旧文件字节不变、state 出现 sealedAt/sealHash（==独立复算 d0a4f385…）"
+    },
+    {
+      "id": "HO-23",
+      "status": "PASS",
+      "criteria": [
+        "HO-23"
+      ],
+      "acs": [
+        "AC-HO-09"
+      ],
+      "evidence": "封板后删主表：不重建，errors 含「sealed but file missing（不重建）」"
+    },
+    {
+      "id": "HO-26",
+      "status": "PASS",
+      "criteria": [
+        "HO-26"
+      ],
+      "acs": [
+        "AC-HO-12"
+      ],
+      "evidence": "generate 重建：旧附表被 rename 为 arch00000002A的记忆数据库的启用及交接表——附表.md.旧-20261109-135847，内容 sha256 与原字节一致，不删除；新主表/附表已生成"
+    },
+    {
+      "id": "HO-25",
+      "status": "PASS",
+      "criteria": [
+        "HO-25"
+      ],
+      "acs": [
+        "AC-HO-11"
+      ],
+      "evidence": "state 丢失后重跑：adopt 并显式告警 reopened=true"
+    },
+    {
+      "id": "WK-45",
+      "status": "PASS",
+      "criteria": [
+        "WK-45"
+      ],
+      "acs": [
+        "AC-WK-19"
+      ],
+      "evidence": "state 丢失 + 已有 xlsx：不重写（产物字节全不变），告警含 state lost / existing book untouched"
+    },
+    {
+      "id": "CL-29",
+      "status": "PASS",
+      "criteria": [
+        "CL-29"
+      ],
+      "acs": [
+        "AC-CL-18"
+      ],
+      "evidence": "v1.3 新格式清册解析：20261001-samesess0001-A-00000004 → 已清理(RPT-20261008-01)"
+    },
+    {
+      "id": "CL-30",
+      "status": "PASS",
+      "criteria": [
+        "CL-30"
+      ],
+      "acs": [
+        "AC-CL-18"
+      ],
+      "evidence": "v0.4 旧格式清册解析：20261001-samesess0001-A-00000005 → 已清理(RPT-20261008-02)"
+    },
+    {
+      "id": "GL-08",
+      "status": "PASS",
+      "criteria": [
+        "GL-08"
+      ],
+      "acs": [
+        "AC-GL-08"
+      ],
+      "evidence": "双实例：子进程持锁（pid=18372），第二个实例 lockSkipped=true 且零产物写入"
+    },
+    {
+      "id": "HO-30",
+      "status": "PASS",
+      "criteria": [
+        "HO-30"
+      ],
+      "acs": [
+        "AC-GL-08"
+      ],
+      "evidence": "子进程持锁时第二个进程不写交接表（lockSkipped=true、零产物；锁文件 <root>/ledger/.lock 存在）"
+    },
+    {
+      "id": "WK-46",
+      "status": "PASS",
+      "criteria": [
+        "WK-46"
+      ],
+      "acs": [
+        "AC-GL-08"
+      ],
+      "evidence": "锁释放后正常写入；产物可被 openpyxl 打开且 9 sheet 完整"
+    },
+    {
+      "id": "GL-08",
+      "status": "PASS",
+      "criteria": [
+        "GL-08"
+      ],
+      "acs": [
+        "AC-GL-08"
+      ],
+      "evidence": "僵死锁被夺取：旧锁 rename 为 .lock.stale-* 留证（.lock.stale-20261109-135857-19552-13e50b）"
+    },
+    {
+      "id": "GL-14",
+      "status": "PASS",
+      "criteria": [
+        "GL-14"
+      ],
+      "acs": [
+        "AC-GL-09"
+      ],
+      "evidence": "2 个日账文件、3 行；每行 JSON 可解析、文件尾换行、同一 (sid,turn) 唯一"
+    },
+    {
+      "id": "GL-07",
+      "status": "PASS",
+      "criteria": [
+        "GL-07"
+      ],
+      "acs": [
+        "AC-GL-04"
+      ],
+      "evidence": "连跑三轮：(sid,turn) 不增、产物字节不变"
+    },
+    {
+      "id": "OR-25",
+      "status": "PASS",
+      "criteria": [
+        "OR-25"
+      ],
+      "acs": [
+        "AC-GL-10"
+      ],
+      "evidence": "v3-only 会话入账 1 行、src 全部为 session.v3.jsonl.zstd；v3 文件 sha256 前后不变（4bbf9aec0106…）"
+    },
+    {
+      "id": "GL-10",
+      "status": "PASS",
+      "criteria": [
+        "GL-10"
+      ],
+      "acs": [
+        "AC-GL-10"
+      ],
+      "evidence": "v3-only 会话可入账（1 轮）且 v3 文件零写入；v4 会话入账 2 轮"
+    },
+    {
+      "id": "HO-21",
+      "status": "PASS",
+      "criteria": [
+        "HO-21"
+      ],
+      "acs": [
+        "AC-HO-08"
+      ],
+      "evidence": "首跑 generate 2 份，日志含 handover=generate reopened=true"
+    },
+    {
+      "id": "HO-31",
+      "status": "PASS",
+      "criteria": [
+        "HO-31"
+      ],
+      "acs": [
+        "AC-HO-09"
+      ],
+      "evidence": "重复触发 3 次后目录中仍只有 2 个主表、2 个附表"
+    },
+    {
+      "id": "HO-27",
+      "status": "PASS",
+      "criteria": [
+        "HO-27"
+      ],
+      "acs": [
+        "AC-HO-12"
+      ],
+      "evidence": "主表存在 ⇒ 附表存在（同批生成路径）"
+    },
+    {
+      "id": "HO-01",
+      "status": "PASS",
+      "criteria": [
+        "HO-01"
+      ],
+      "acs": [
+        "AC-HO-01"
+      ],
+      "evidence": "[E2E 96dea353bbb4A] 96dea353bbb4A的记忆数据库的启用及交接表.md 存在且文件名合法"
+    },
+    {
+      "id": "HO-02",
+      "status": "PASS",
+      "criteria": [
+        "HO-02"
+      ],
+      "acs": [
+        "AC-HO-01"
+      ],
+      "evidence": "BOM=false CR=false 末尾单换行=true"
+    },
+    {
+      "id": "HO-20",
+      "status": "PASS",
+      "criteria": [
+        "HO-20"
+      ],
+      "acs": [
+        "AC-HO-01"
+      ],
+      "evidence": "无占位符残留；无 CR"
+    },
+    {
+      "id": "HO-03",
+      "status": "PASS",
+      "criteria": [
+        "HO-03"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "11 键顺序正确：名称/会话标识/代差/委托人/执行/记录/生成器/生成时间/附表/封板/封板hash"
+    },
+    {
+      "id": "HO-04",
+      "status": "PASS",
+      "criteria": [
+        "HO-04"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "名称=“96dea353bbb4A的记忆数据库的启用及交接表”；H1=“# 96dea353bbb4A的记忆数据库的启用及交接表”"
+    },
+    {
+      "id": "HO-05",
+      "status": "PASS",
+      "criteria": [
+        "HO-05"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "会话标识=96dea353bbb4 代差=A 与文件名前 13 位一致"
+    },
+    {
+      "id": "HO-06",
+      "status": "PASS",
+      "criteria": [
+        "HO-06"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "委托人=user 执行=日常会话记录插件（Tool） 记录=系统（Cordis）"
+    },
+    {
+      "id": "HO-07",
+      "status": "PASS",
+      "criteria": [
+        "HO-07"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成器=“dsh-dialog-ledger-v0.4/handover”"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:01:48” 与运行窗口相差 0s"
+    },
+    {
+      "id": "HO-09",
+      "status": "PASS",
+      "criteria": [
+        "HO-09"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "附表字段=“96dea353bbb4A的记忆数据库的启用及交接表——附表.md” 且存在"
+    },
+    {
+      "id": "HO-10",
+      "status": "PASS",
+      "criteria": [
+        "HO-10"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板 为裸字面量 true"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='fbbdbfee76c1080907ab862fa2c787b67e4e711a78bd9bbad2a3af72680204ab'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-12",
+      "status": "PASS",
+      "criteria": [
+        "HO-12"
+      ],
+      "acs": [
+        "AC-HO-04"
+      ],
+      "evidence": "抬头表 8 行：名称/会话标识/代差/委托人/执行/记录/生成时间/附表"
+    },
+    {
+      "id": "HO-13",
+      "status": "PASS",
+      "criteria": [
+        "HO-13"
+      ],
+      "acs": [
+        "AC-HO-04"
+      ],
+      "evidence": "抬头表 8 个内容单元格与 YAML 逐字段匹配"
+    },
+    {
+      "id": "HO-14",
+      "status": "PASS",
+      "criteria": [
+        "HO-14"
+      ],
+      "acs": [
+        "AC-HO-05"
+      ],
+      "evidence": "声明 4 条；第4条=“4. 该数据库为共享库，不对任何会话进行屏蔽。★ 会话不默认知晓自己的 Session ID，须先自查（调用本插件工具 / 问 user）方可定位自己的账。…”"
+    },
+    {
+      "id": "HO-15",
+      "status": "PASS",
+      "criteria": [
+        "HO-15"
+      ],
+      "acs": [
+        "AC-HO-06"
+      ],
+      "evidence": "相关文件 2 行；第1行=“《96dea353bbb4A的记忆数据库的启用及交接表——附表.md》”；第2行含完整原文=true"
+    },
+    {
+      "id": "HO-16",
+      "status": "PASS",
+      "criteria": [
+        "HO-16"
+      ],
+      "acs": [
+        "AC-HO-06"
+      ],
+      "evidence": "三级结构=true 存放规则3条=true 未写运行区=true"
+    },
+    {
+      "id": "HO-17",
+      "status": "PASS",
+      "criteria": [
+        "HO-17"
+      ],
+      "acs": [
+        "AC-HO-06"
+      ],
+      "evidence": "末行=“**结束** · 96dea353bbb4A · 生成器 dsh-dialog-ledger-v0.4/handover”"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=fbbdbfee76c1080907ab862fa2c787b67e4e711a78bd9bbad2a3af72680204ab == YAML 封板hash"
+    },
+    {
+      "id": "HA-01",
+      "status": "PASS",
+      "criteria": [
+        "HA-01"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "[E2E 96dea353bbb4A] 96dea353bbb4A的记忆数据库的启用及交接表——附表.md 存在且文件名合法"
+    },
+    {
+      "id": "HA-02",
+      "status": "PASS",
+      "criteria": [
+        "HA-02"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "7 键顺序正确：名称/会话标识/代差/父表/上下文条数/生成器/生成时间"
+    },
+    {
+      "id": "HA-03",
+      "status": "PASS",
+      "criteria": [
+        "HA-03"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "父表=“96dea353bbb4A的记忆数据库的启用及交接表.md” 且存在"
+    },
+    {
+      "id": "HA-04",
+      "status": "PASS",
+      "criteria": [
+        "HA-04"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "名称=“96dea353bbb4A的记忆数据库的启用及交接表——附表”"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:01:48”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-16",
+      "status": "PASS",
+      "criteria": [
+        "HA-16"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "无 v0.4 旧串（「已截断：本节之后…」「### 2026-」）"
+    },
+    {
+      "id": "HA-18",
+      "status": "PASS",
+      "criteria": [
+        "HA-18"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "UTF-8 无 BOM、恰好一个结尾换行；生成部分无 CR/占位符（block 正文逐字照录不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-19",
+      "status": "PASS",
+      "criteria": [
+        "HA-19"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "H1=“# 96dea353bbb4A的记忆数据库的启用及交接表——附表” == YAML 名称"
+    },
+    {
+      "id": "HA-13",
+      "status": "PASS",
+      "criteria": [
+        "HA-13"
+      ],
+      "acs": [
+        "AC-HA-06"
+      ],
+      "evidence": "空表：上下文条数=0、无 block、正文含「无」"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:01:48"
+    },
+    {
+      "id": "HO-22",
+      "status": "PASS",
+      "criteria": [
+        "HO-22"
+      ],
+      "acs": [
+        "AC-HO-09"
+      ],
+      "evidence": "已封板再跑：主表字节与 mtime 均不变（96dea353bbb4A的记忆数据库的启用及交接表.md）"
+    },
+    {
+      "id": "HA-20",
+      "status": "PASS",
+      "criteria": [
+        "HA-20"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "已封板再跑：附表字节不变（96dea353bbb4A的记忆数据库的启用及交接表——附表.md）"
+    },
+    {
+      "id": "HO-01",
+      "status": "PASS",
+      "criteria": [
+        "HO-01"
+      ],
+      "acs": [
+        "AC-HO-01"
+      ],
+      "evidence": "[E2E 3b9ad92506f3A] 3b9ad92506f3A的记忆数据库的启用及交接表.md 存在且文件名合法"
+    },
+    {
+      "id": "HO-04",
+      "status": "PASS",
+      "criteria": [
+        "HO-04"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "名称=“3b9ad92506f3A的记忆数据库的启用及交接表”；H1=“# 3b9ad92506f3A的记忆数据库的启用及交接表”"
+    },
+    {
+      "id": "HO-05",
+      "status": "PASS",
+      "criteria": [
+        "HO-05"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "会话标识=3b9ad92506f3 代差=A 与文件名前 13 位一致"
+    },
+    {
+      "id": "HO-09",
+      "status": "PASS",
+      "criteria": [
+        "HO-09"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "附表字段=“3b9ad92506f3A的记忆数据库的启用及交接表——附表.md” 且存在"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='1ff69777ac9143b22c2d5ace629d8efbe9a96c1db269d669b3a45050154611d6'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-15",
+      "status": "PASS",
+      "criteria": [
+        "HO-15"
+      ],
+      "acs": [
+        "AC-HO-06"
+      ],
+      "evidence": "相关文件 2 行；第1行=“《3b9ad92506f3A的记忆数据库的启用及交接表——附表.md》”；第2行含完整原文=true"
+    },
+    {
+      "id": "HO-17",
+      "status": "PASS",
+      "criteria": [
+        "HO-17"
+      ],
+      "acs": [
+        "AC-HO-06"
+      ],
+      "evidence": "末行=“**结束** · 3b9ad92506f3A · 生成器 dsh-dialog-ledger-v0.4/handover”"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=1ff69777ac9143b22c2d5ace629d8efbe9a96c1db269d669b3a45050154611d6 == YAML 封板hash"
+    },
+    {
+      "id": "HA-01",
+      "status": "PASS",
+      "criteria": [
+        "HA-01"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "[E2E 3b9ad92506f3A] 3b9ad92506f3A的记忆数据库的启用及交接表——附表.md 存在且文件名合法"
+    },
+    {
+      "id": "HA-03",
+      "status": "PASS",
+      "criteria": [
+        "HA-03"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "父表=“3b9ad92506f3A的记忆数据库的启用及交接表.md” 且存在"
+    },
+    {
+      "id": "HA-04",
+      "status": "PASS",
+      "criteria": [
+        "HA-04"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "名称=“3b9ad92506f3A的记忆数据库的启用及交接表——附表”"
+    },
+    {
+      "id": "HA-19",
+      "status": "PASS",
+      "criteria": [
+        "HA-19"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "H1=“# 3b9ad92506f3A的记忆数据库的启用及交接表——附表” == YAML 名称"
+    },
+    {
+      "id": "HO-22",
+      "status": "PASS",
+      "criteria": [
+        "HO-22"
+      ],
+      "acs": [
+        "AC-HO-09"
+      ],
+      "evidence": "已封板再跑：主表字节与 mtime 均不变（3b9ad92506f3A的记忆数据库的启用及交接表.md）"
+    },
+    {
+      "id": "HA-20",
+      "status": "PASS",
+      "criteria": [
+        "HA-20"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "已封板再跑：附表字节不变（3b9ad92506f3A的记忆数据库的启用及交接表——附表.md）"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20260925-96dea353bbb4-A-00000001] 20260925-96dea353bbb4-A-00000001 文件名合法：20260925-96dea353bbb4-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20260925-96dea353bbb4-A-00000001] 20260925-96dea353bbb4-A-00000001 位置合法：2026年09月/09月总“完整原文”/20260925-96dea353bbb4-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-03",
+      "status": "PASS",
+      "criteria": [
+        "OR-03"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "19 键顺序正确"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20260925-96dea353bbb4-A-00000001” 名称=“20260925-96dea353bbb4-A-00000001 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=96dea353bbb4 代次=A 会话ID 非空 本轮序号=1"
+    },
+    {
+      "id": "OR-06",
+      "status": "PASS",
+      "criteria": [
+        "OR-06"
+      ],
+      "acs": [
+        "AC-OR-03"
+      ],
+      "evidence": "对话开始/结束均为 ISO +08:00，生成字段无 Z 时间（正文逐字照录不参与，Lead 裁定①）"
+    },
+    {
+      "id": "OR-07",
+      "status": "PASS",
+      "criteria": [
+        "OR-07"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "固定元信息一致；正文hash算法=“sha256（对『## 1.』至文件末尾的全部字节计算）”"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 5 – 207”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 5 – 207 覆盖 turn/start.seq=5 ~ turn/end.seq=207；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,62,161,1015,1085]）"
+    },
+    {
+      "id": "OR-11",
+      "status": "PASS",
+      "criteria": [
+        "OR-11"
+      ],
+      "acs": [
+        "AC-OR-05"
+      ],
+      "evidence": "## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=1 == 被过滤数=1，逐 kind 匹配=true"
+    },
+    {
+      "id": "OR-12",
+      "status": "PASS",
+      "criteria": [
+        "OR-12"
+      ],
+      "acs": [
+        "AC-OR-06"
+      ],
+      "evidence": "被遮蔽事件数=0（独立复算=0；期望=0）"
+    },
+    {
+      "id": "OR-13",
+      "status": "PASS",
+      "criteria": [
+        "OR-13"
+      ],
+      "acs": [
+        "AC-OR-06"
+      ],
+      "evidence": "被遮蔽且应在正文展示的 seq 全部可见：[]"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=f4de558e47ddb5492bb12561c2f66be7931d3b84e75120ba1a4fa9734d5d8fd5 == YAML 正文hash"
+    },
+    {
+      "id": "OR-17",
+      "status": "PASS",
+      "criteria": [
+        "OR-17"
+      ],
+      "acs": [
+        "AC-OR-08"
+      ],
+      "evidence": "未启用形态成对：文件数=0 文件=[] 备注首行=“- 文件清单：未启用（真实采集排 v0.5）”"
+    },
+    {
+      "id": "OR-19",
+      "status": "PASS",
+      "criteria": [
+        "OR-19"
+      ],
+      "acs": [
+        "AC-OR-05"
+      ],
+      "evidence": "备注四类顺序可读：首行=“- 文件清单：未启用（真实采集排 v0.5）”"
+    },
+    {
+      "id": "OR-24",
+      "status": "PASS",
+      "criteria": [
+        "OR-24"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "UTF-8 无 BOM、恰好一个结尾换行；生成部分无 CR/占位符（正文逐字照录不参与，Lead 裁定①）"
+    },
+    {
+      "id": "OR-26",
+      "status": "PASS",
+      "criteria": [
+        "OR-26"
+      ],
+      "acs": [
+        "AC-OR-11"
+      ],
+      "evidence": "本产物无 image/file 内容块（不触发）"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20261012-3b9ad92506f3-A-00000001] 20261012-3b9ad92506f3-A-00000001 文件名合法：20261012-3b9ad92506f3-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20261012-3b9ad92506f3-A-00000001] 20261012-3b9ad92506f3-A-00000001 位置合法：2026年10月/10月总“完整原文”/20261012-3b9ad92506f3-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20261012-3b9ad92506f3-A-00000001” 名称=“20261012-3b9ad92506f3-A-00000001 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=3b9ad92506f3 代次=A 会话ID 非空 本轮序号=1"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 24 – 79”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 24 – 79 覆盖 turn/start.seq=24 ~ turn/end.seq=79；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,32,58,360,386]）"
+    },
+    {
+      "id": "OR-11",
+      "status": "PASS",
+      "criteria": [
+        "OR-11"
+      ],
+      "acs": [
+        "AC-OR-05"
+      ],
+      "evidence": "## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=3 == 被过滤数=3，逐 kind 匹配=true"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=89bc2f5513e435f0d6bee2402b89a920e8b791a365890dce71194f8b48a962cf == YAML 正文hash"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20261012-3b9ad92506f3-A-00000002] 20261012-3b9ad92506f3-A-00000002 文件名合法：20261012-3b9ad92506f3-A-00000002 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[E2E 20261012-3b9ad92506f3-A-00000002] 20261012-3b9ad92506f3-A-00000002 位置合法：2026年10月/10月总“完整原文”/20261012-3b9ad92506f3-A-00000002 完整原文.md"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20261012-3b9ad92506f3-A-00000002” 名称=“20261012-3b9ad92506f3-A-00000002 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=3b9ad92506f3 代次=A 会话ID 非空 本轮序号=2"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 81 – 128”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 81 – 128 覆盖 turn/start.seq=81 ~ turn/end.seq=128；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,30,64,669,699]）"
+    },
+    {
+      "id": "OR-11",
+      "status": "PASS",
+      "criteria": [
+        "OR-11"
+      ],
+      "acs": [
+        "AC-OR-05"
+      ],
+      "evidence": "## 1. 段落标记=0 == kind=user 数=0；备注按 kind 合计=1 == 被过滤数=1，逐 kind 匹配=true"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=52008ca7d8972fdaddc72b52763cdee248a01ec4a696a24b240390028f47e077 == YAML 正文hash"
+    },
+    {
+      "id": "OR-21",
+      "status": "PASS",
+      "criteria": [
+        "OR-21"
+      ],
+      "acs": [
+        "AC-OR-09"
+      ],
+      "evidence": "3 份原文在第二/三轮字节不变（已存在凭证零写入）"
+    },
+    {
+      "id": "WK-01",
+      "status": "PASS",
+      "criteria": [
+        "WK-01"
+      ],
+      "acs": [
+        "AC-WK-01"
+      ],
+      "evidence": "[E2E 09月第4周-96dea353bbb4A的周记账.xlsx] 2026年09月/09月第4周-96dea353bbb4A的周记账.xlsx 文件名/位置合法"
+    },
+    {
+      "id": "WK-02",
+      "status": "PASS",
+      "criteria": [
+        "WK-02"
+      ],
+      "acs": [
+        "AC-WK-01"
+      ],
+      "evidence": "openpyxl 打开成功；9 sheet 顺序正确：说明/周一/周二/周三/周四/周五/周六/周日/周统计"
+    },
+    {
+      "id": "WK-03",
+      "status": "PASS",
+      "criteria": [
+        "WK-03"
+      ],
+      "acs": [
+        "AC-WK-02"
+      ],
+      "evidence": "A1=“周记账模板 v1.3”；A2 含“生成时间 ”与“（UTC+08:00）”"
+    },
+    {
+      "id": "WK-04",
+      "status": "PASS",
+      "criteria": [
+        "WK-04"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "本产物为已封板册，草稿头判据由草稿产物（Lab APP）覆盖"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:01:48（UTC+08:00）”"
+    },
+    {
+      "id": "WK-06",
+      "status": "PASS",
+      "criteria": [
+        "WK-06"
+      ],
+      "acs": [
+        "AC-WK-02"
+      ],
+      "evidence": "说明页章节齐备（约定9/字段10/规则8/封板7/已定3）；负例0命中；编码日期段规则=true；第3/7条如实=true"
+    },
+    {
+      "id": "WK-07",
+      "status": "PASS",
+      "criteria": [
+        "WK-07"
+      ],
+      "acs": [
+        "AC-WK-02"
+      ],
+      "evidence": "A6=“会话键: 96dea353bbb4A ｜ 周段: 2026-09-21 ~ 2026-09-27 ｜ 所属月份: 2026年09月 ｜ 周序: 第4周 ｜ 记录数: 1 ｜ 生成器: dsh-dialog-ledger-v0.4/weekly”"
+    },
+    {
+      "id": "WK-08",
+      "status": "PASS",
+      "criteria": [
+        "WK-08"
+      ],
+      "acs": [
+        "AC-WK-04"
+      ],
+      "evidence": "7 张日表十列表头逐字正确"
+    },
+    {
+      "id": "WK-09",
+      "status": "PASS",
+      "criteria": [
+        "WK-09"
+      ],
+      "acs": [
+        "AC-WK-04"
+      ],
+      "evidence": "7 张日表 A1:J121、freeze=A2"
+    },
+    {
+      "id": "WK-10",
+      "status": "PASS",
+      "criteria": [
+        "WK-10"
+      ],
+      "acs": [
+        "AC-WK-05"
+      ],
+      "evidence": "每张日表 4 条 dataValidations，sqref 集合正确：custom:A2:A121 list:D2:D121 list:H2:H121 list:I2:I121"
+    },
+    {
+      "id": "WK-11",
+      "status": "PASS",
+      "criteria": [
+        "WK-11"
+      ],
+      "acs": [
+        "AC-WK-05"
+      ],
+      "evidence": "A2:A121 编码校验公式逐字正确"
+    },
+    {
+      "id": "WK-12",
+      "status": "PASS",
+      "criteria": [
+        "WK-12"
+      ],
+      "acs": [
+        "AC-WK-05"
+      ],
+      "evidence": "三列下拉序列逐字正确、allow_blank=true、showErrorMessage=false"
+    },
+    {
+      "id": "WK-13",
+      "status": "PASS",
+      "criteria": [
+        "WK-13"
+      ],
+      "acs": [
+        "AC-WK-06"
+      ],
+      "evidence": "A 列 1 条编码全部匹配 32 位正则"
+    },
+    {
+      "id": "WK-14",
+      "status": "PASS",
+      "criteria": [
+        "WK-14"
+      ],
+      "acs": [
+        "AC-WK-06"
+      ],
+      "evidence": "非空行从第 2 行连续、每日 ≤120 行"
+    },
+    {
+      "id": "WK-15",
+      "status": "PASS",
+      "criteria": [
+        "WK-15"
+      ],
+      "acs": [
+        "AC-WK-07"
+      ],
+      "evidence": "C 列格式合法且同表内非降序"
+    },
+    {
+      "id": "WK-16",
+      "status": "PASS",
+      "criteria": [
+        "WK-16"
+      ],
+      "acs": [
+        "AC-WK-07"
+      ],
+      "evidence": "C 列 1 行与台账 ts 换算 +08:00 HH:MM 逐行相等"
+    },
+    {
+      "id": "WK-17",
+      "status": "PASS",
+      "criteria": [
+        "WK-17"
+      ],
+      "acs": [
+        "AC-WK-08"
+      ],
+      "evidence": "B 列全部为四态之一（绑定）"
+    },
+    {
+      "id": "WK-18",
+      "status": "PASS",
+      "criteria": [
+        "WK-18"
+      ],
+      "acs": [
+        "AC-WK-08"
+      ],
+      "evidence": "四态逐行独立复算一致（绑定/补记/已清理/缺凭证）"
+    },
+    {
+      "id": "WK-19",
+      "status": "PASS",
+      "criteria": [
+        "WK-19"
+      ],
+      "acs": [
+        "AC-WK-09"
+      ],
+      "evidence": "H 列状态默认值正确（ok→已完成 / partial→待确认）"
+    },
+    {
+      "id": "WK-20",
+      "status": "PASS",
+      "criteria": [
+        "WK-20"
+      ],
+      "acs": [
+        "AC-WK-09"
+      ],
+      "evidence": "I 列全部为「待审」"
+    },
+    {
+      "id": "WK-21",
+      "status": "PASS",
+      "criteria": [
+        "WK-21"
+      ],
+      "acs": [
+        "AC-WK-09"
+      ],
+      "evidence": "D/E/F/G/J 列机器初值全部为「—」"
+    },
+    {
+      "id": "WK-22",
+      "status": "PASS",
+      "criteria": [
+        "WK-22"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "编码日期段=会话开始日（20260925）；行日期按 ts 归属；B 列锚点=周段内日期（[\"2026-09-21\",\"2026-09-22\",\"2026-09-23\",\"2026-09-24\",\"2026-09-25\",\"2026-09-26\",\"2026-09-27\"]）"
+    },
+    {
+      "id": "WK-23",
+      "status": "PASS",
+      "criteria": [
+        "WK-23"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "全部编码会话段+代差 == 文件名 {S}{D}=96dea353bbb4A"
+    },
+    {
+      "id": "WK-24",
+      "status": "PASS",
+      "criteria": [
+        "WK-24"
+      ],
+      "acs": [
+        "AC-WK-11"
+      ],
+      "evidence": "Σ日表行(1) + 溢出(0) == 台账记录数(1)"
+    },
+    {
+      "id": "WK-25",
+      "status": "PASS",
+      "criteria": [
+        "WK-25"
+      ],
+      "acs": [
+        "AC-WK-12"
+      ],
+      "evidence": "周统计表头/星期/合计行逐字正确"
+    },
+    {
+      "id": "WK-26",
+      "status": "PASS",
+      "criteria": [
+        "WK-26"
+      ],
+      "acs": [
+        "AC-WK-12"
+      ],
+      "evidence": "C5:C11 均为 =COUNTA(<日表>!$A$2:$A$121)"
+    },
+    {
+      "id": "WK-27",
+      "status": "PASS",
+      "criteria": [
+        "WK-27"
+      ],
+      "acs": [
+        "AC-WK-12"
+      ],
+      "evidence": "D5:F11 均为 =COUNTIF(<日表>!$I$2:$I$121, …) 且不引用 $H$"
+    },
+    {
+      "id": "WK-28",
+      "status": "PASS",
+      "criteria": [
+        "WK-28"
+      ],
+      "acs": [
+        "AC-WK-12"
+      ],
+      "evidence": "C12:F12 均为 =SUM(X5:X11)"
+    },
+    {
+      "id": "WK-29",
+      "status": "PASS",
+      "criteria": [
+        "WK-29"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "B5:B11 非「—」日期集合 == 周段内日期集合 [\"2026-09-21\",\"2026-09-22\",\"2026-09-23\",\"2026-09-24\",\"2026-09-25\",\"2026-09-26\",\"2026-09-27\"]"
+    },
+    {
+      "id": "WK-30",
+      "status": "PASS",
+      "criteria": [
+        "WK-30"
+      ],
+      "acs": [
+        "AC-WK-11"
+      ],
+      "evidence": "溢出行为数字 0 == 实际溢出 0；A13=溢出（未写入本册）；D13:F13=—"
+    },
+    {
+      "id": "WK-31",
+      "status": "PASS",
+      "criteria": [
+        "WK-31"
+      ],
+      "acs": [
+        "AC-WK-13"
+      ],
+      "evidence": "无记录日：日表 A 列全空（COUNTA=0，无占位行）"
+    },
+    {
+      "id": "WK-32",
+      "status": "PASS",
+      "criteria": [
+        "WK-32"
+      ],
+      "acs": [
+        "AC-WK-13"
+      ],
+      "evidence": "月界切段：不在段内的日表全空、B=—（本册段 2026-09-21 ~ 2026-09-27）"
+    },
+    {
+      "id": "WK-37",
+      "status": "PASS",
+      "criteria": [
+        "WK-37"
+      ],
+      "acs": [
+        "AC-WK-16"
+      ],
+      "evidence": "封板hash 独立复算一致：28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851（rowCount=1）"
+    },
+    {
+      "id": "WK-44",
+      "status": "PASS",
+      "criteria": [
+        "WK-44"
+      ],
+      "acs": [
+        "AC-WK-02"
+      ],
+      "evidence": "工作簿内字符串无 Z 结尾时间"
+    },
+    {
+      "id": "WK-01",
+      "status": "PASS",
+      "criteria": [
+        "WK-01"
+      ],
+      "acs": [
+        "AC-WK-01"
+      ],
+      "evidence": "[E2E 10月第3周-3b9ad92506f3A的周记账.xlsx] 2026年10月/10月第3周-3b9ad92506f3A的周记账.xlsx 文件名/位置合法"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:01:48（UTC+08:00）”"
+    },
+    {
+      "id": "WK-07",
+      "status": "PASS",
+      "criteria": [
+        "WK-07"
+      ],
+      "acs": [
+        "AC-WK-02"
+      ],
+      "evidence": "A6=“会话键: 3b9ad92506f3A ｜ 周段: 2026-10-12 ~ 2026-10-18 ｜ 所属月份: 2026年10月 ｜ 周序: 第3周 ｜ 记录数: 2 ｜ 生成器: dsh-dialog-ledger-v0.4/weekly”"
+    },
+    {
+      "id": "WK-13",
+      "status": "PASS",
+      "criteria": [
+        "WK-13"
+      ],
+      "acs": [
+        "AC-WK-06"
+      ],
+      "evidence": "A 列 2 条编码全部匹配 32 位正则"
+    },
+    {
+      "id": "WK-16",
+      "status": "PASS",
+      "criteria": [
+        "WK-16"
+      ],
+      "acs": [
+        "AC-WK-07"
+      ],
+      "evidence": "C 列 2 行与台账 ts 换算 +08:00 HH:MM 逐行相等"
+    },
+    {
+      "id": "WK-22",
+      "status": "PASS",
+      "criteria": [
+        "WK-22"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "编码日期段=会话开始日（20261012）；行日期按 ts 归属；B 列锚点=周段内日期（[\"2026-10-12\",\"2026-10-13\",\"2026-10-14\",\"2026-10-15\",\"2026-10-16\",\"2026-10-17\",\"2026-10-18\"]）"
+    },
+    {
+      "id": "WK-23",
+      "status": "PASS",
+      "criteria": [
+        "WK-23"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "全部编码会话段+代差 == 文件名 {S}{D}=3b9ad92506f3A"
+    },
+    {
+      "id": "WK-24",
+      "status": "PASS",
+      "criteria": [
+        "WK-24"
+      ],
+      "acs": [
+        "AC-WK-11"
+      ],
+      "evidence": "Σ日表行(2) + 溢出(0) == 台账记录数(2)"
+    },
+    {
+      "id": "WK-29",
+      "status": "PASS",
+      "criteria": [
+        "WK-29"
+      ],
+      "acs": [
+        "AC-WK-10"
+      ],
+      "evidence": "B5:B11 非「—」日期集合 == 周段内日期集合 [\"2026-10-12\",\"2026-10-13\",\"2026-10-14\",\"2026-10-15\",\"2026-10-16\",\"2026-10-17\",\"2026-10-18\"]"
+    },
+    {
+      "id": "WK-32",
+      "status": "PASS",
+      "criteria": [
+        "WK-32"
+      ],
+      "acs": [
+        "AC-WK-13"
+      ],
+      "evidence": "月界切段：不在段内的日表全空、B=—（本册段 2026-10-12 ~ 2026-10-18）"
+    },
+    {
+      "id": "WK-37",
+      "status": "PASS",
+      "criteria": [
+        "WK-37"
+      ],
+      "acs": [
+        "AC-WK-16"
+      ],
+      "evidence": "封板hash 独立复算一致：c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1（rowCount=2）"
+    },
+    {
+      "id": "WK-34",
+      "status": "PASS",
+      "criteria": [
+        "WK-34"
+      ],
+      "acs": [
+        "AC-WK-15"
+      ],
+      "evidence": "已封板周记账在后续两轮字节不变"
+    },
+    {
+      "id": "GL-01",
+      "status": "PASS",
+      "criteria": [
+        "GL-01"
+      ],
+      "acs": [
+        "AC-GL-01"
+      ],
+      "evidence": "一级目录仅档案产物 + ledger 运行区：2026年09月 | 2026年10月 | 3b9ad92506f3A的记忆数据库的启用及交接表——附表.md | 3b9ad92506f3A的记忆数据库的启用及交接表.md | 96dea353bbb4A的记忆数据库的启用及交接表——附表.md | 96dea353bbb4A的记忆数据库的启用及交接表.md | ledger"
+    },
+    {
+      "id": "GL-02",
+      "status": "PASS",
+      "criteria": [
+        "GL-02"
+      ],
+      "acs": [
+        "AC-GL-01"
+      ],
+      "evidence": "月份文件夹名合法：2026年09月 | 2026年10月"
+    },
+    {
+      "id": "GL-03",
+      "status": "PASS",
+      "criteria": [
+        "GL-03"
+      ],
+      "acs": [
+        "AC-GL-01"
+      ],
+      "evidence": "第三级目录/文件名全部合法：09月总“完整原文” | 10月总“完整原文”"
+    },
+    {
+      "id": "GL-04",
+      "status": "PASS",
+      "criteria": [
+        "GL-04"
+      ],
+      "acs": [
+        "AC-GL-01"
+      ],
+      "evidence": "一级目录不出现 *.xlsx"
+    },
+    {
+      "id": "GL-05",
+      "status": "PASS",
+      "criteria": [
+        "GL-05"
+      ],
+      "acs": [
+        "AC-GL-02"
+      ],
+      "evidence": "全部产物无 Z 结尾 UTC 时间（扫描 583 段文本）"
+    },
+    {
+      "id": "GL-15",
+      "status": "PASS",
+      "criteria": [
+        "GL-15"
+      ],
+      "acs": [
+        "AC-GL-02"
+      ],
+      "evidence": "全部产物无 {{ / }} 占位符残留"
+    },
+    {
+      "id": "GL-06",
+      "status": "PASS",
+      "criteria": [
+        "GL-06"
+      ],
+      "acs": [
+        "AC-GL-03"
+      ],
+      "evidence": "台账/文件名编码全部为 32 位规范编码、无 -B 后缀"
+    },
+    {
+      "id": "GL-18",
+      "status": "PASS",
+      "criteria": [
+        "GL-18"
+      ],
+      "acs": [
+        "AC-GL-12"
+      ],
+      "evidence": "全部产物未见「与自身实现相矛盾」的说明文字（负例清单 0 命中）"
+    },
+    {
+      "id": "HO-29",
+      "status": "PASS",
+      "criteria": [
+        "HO-29"
+      ],
+      "acs": [
+        "AC-HO-13"
+      ],
+      "evidence": "handoverSealed 2 条，字段齐全且 sealHash==产物封板hash"
+    },
+    {
+      "id": "WK-36",
+      "status": "PASS",
+      "criteria": [
+        "WK-36"
+      ],
+      "acs": [
+        "AC-WK-16"
+      ],
+      "evidence": "weeklySealed 2 组，字段齐全（sealedAt/sealHash/file/layout=6/rows）"
+    },
+    {
+      "id": "WK-38",
+      "status": "PASS",
+      "criteria": [
+        "WK-38"
+      ],
+      "acs": [
+        "AC-WK-16"
+      ],
+      "evidence": "state.weeklyLayout=6"
+    },
+    {
+      "id": "HO-28",
+      "status": "PASS",
+      "criteria": [
+        "HO-28"
+      ],
+      "acs": [
+        "AC-HO-12"
+      ],
+      "evidence": "运行结束 root 下无 *.tmp"
+    },
+    {
+      "id": "GL-09",
+      "status": "PASS",
+      "criteria": [
+        "GL-09"
+      ],
+      "acs": [
+        "AC-GL-05"
+      ],
+      "evidence": "state 可解析、键集合只增不减（10→10）、无 tmp 残留；原子写机制本身不可黑盒观测（见人工待验）"
+    },
+    {
+      "id": "GL-11",
+      "status": "PASS",
+      "criteria": [
+        "GL-11"
+      ],
+      "acs": [
+        "AC-GL-06"
+      ],
+      "evidence": "体检默认关闭：未产生 CHK-* 报告、state.checkup 不存在（决定 6：体检不进验收）"
+    },
+    {
+      "id": "GL-13",
+      "status": "PASS",
+      "criteria": [
+        "GL-13"
+      ],
+      "acs": [
+        "AC-GL-07"
+      ],
+      "evidence": "package.json 无 dependencies；无 node_modules（零依赖）"
+    },
+    {
+      "id": "GL-17",
+      "status": "PASS",
+      "criteria": [
+        "GL-17"
+      ],
+      "acs": [
+        "AC-GL-11"
+      ],
+      "evidence": "验收过程未安装任何依赖：package.json sha256 未变、无 node_modules（node=v24.21.0；python/openpyxl 为既有环境）"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:02:01” 与运行窗口相差 1s"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='f8ff1a8b4ef9e524276f25a45ef01b9264c317f6dfef53f4249dde0669a174f6'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=f8ff1a8b4ef9e524276f25a45ef01b9264c317f6dfef53f4249dde0669a174f6 == YAML 封板hash"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:02:01”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:02:01"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='dc88916956b16bb59e9a5af76f15fc2d2df60863190460780a64e4d7adf9b4b1'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=dc88916956b16bb59e9a5af76f15fc2d2df60863190460780a64e4d7adf9b4b1 == YAML 封板hash"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:02:01（UTC+08:00）”"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:02:01（UTC+08:00）”"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[SHADOW] 20261109-555555556666-A-00000001 文件名合法：20261109-555555556666-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[SHADOW] 20261109-555555556666-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-555555556666-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20261109-555555556666-A-00000001” 名称=“20261109-555555556666-A-00000001 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=555555556666 代次=A 会话ID 非空 本轮序号=1"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 0 – 6”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 0 – 6 覆盖 turn/start.seq=0 ~ turn/end.seq=6；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,32,38,42,48]）"
+    },
+    {
+      "id": "OR-11",
+      "status": "PASS",
+      "criteria": [
+        "OR-11"
+      ],
+      "acs": [
+        "AC-OR-05"
+      ],
+      "evidence": "## 1. 段落标记=1 == kind=user 数=1；备注按 kind 合计=0 == 被过滤数=0，逐 kind 匹配=true"
+    },
+    {
+      "id": "OR-12",
+      "status": "PASS",
+      "criteria": [
+        "OR-12"
+      ],
+      "acs": [
+        "AC-OR-06"
+      ],
+      "evidence": "被遮蔽事件数=2（独立复算=2；期望=2）"
+    },
+    {
+      "id": "OR-13",
+      "status": "PASS",
+      "criteria": [
+        "OR-13"
+      ],
+      "acs": [
+        "AC-OR-06"
+      ],
+      "evidence": "被遮蔽且应在正文展示的 seq 全部可见：[2,3]"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=0122dbe9dce13900801f88aaebea54affc19f8d143654d4d864b602aafc007af == YAML 正文hash"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[IMGFILE] 20261109-777777778888-A-00000001 文件名合法：20261109-777777778888-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[IMGFILE] 20261109-777777778888-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-777777778888-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20261109-777777778888-A-00000001” 名称=“20261109-777777778888-A-00000001 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=777777778888 代次=A 会话ID 非空 本轮序号=1"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 0 – 5”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 0 – 5 覆盖 turn/start.seq=0 ~ turn/end.seq=5；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,36,42,46,52]）"
+    },
+    {
+      "id": "OR-12",
+      "status": "PASS",
+      "criteria": [
+        "OR-12"
+      ],
+      "acs": [
+        "AC-OR-06"
+      ],
+      "evidence": "被遮蔽事件数=0（独立复算=0；期望=(实时源)）"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=d8a90df46f96232fd0116e4c796e919f564cbeae32647574671560bc1c953096 == YAML 正文hash"
+    },
+    {
+      "id": "OR-26",
+      "status": "PASS",
+      "criteria": [
+        "OR-26"
+      ],
+      "acs": [
+        "AC-OR-11"
+      ],
+      "evidence": "非文本块占位：[图片]=true [文件]=true"
+    },
+    {
+      "id": "OR-01",
+      "status": "PASS",
+      "criteria": [
+        "OR-01"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[PARTIAL] 20261109-99999999aaaa-A-00000001 文件名合法：20261109-99999999aaaa-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-02",
+      "status": "PASS",
+      "criteria": [
+        "OR-02"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "[PARTIAL] 20261109-99999999aaaa-A-00000001 位置合法：2026年11月/11月总“完整原文”/20261109-99999999aaaa-A-00000001 完整原文.md"
+    },
+    {
+      "id": "OR-04",
+      "status": "PASS",
+      "criteria": [
+        "OR-04"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "编码=“20261109-99999999aaaa-A-00000001” 名称=“20261109-99999999aaaa-A-00000001 完整原文”"
+    },
+    {
+      "id": "OR-05",
+      "status": "PASS",
+      "criteria": [
+        "OR-05"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "会话短ID=99999999aaaa 代次=A 会话ID 非空 本轮序号=1"
+    },
+    {
+      "id": "OR-08",
+      "status": "PASS",
+      "criteria": [
+        "OR-08"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围=“seq 0 – 2”"
+    },
+    {
+      "id": "OR-09",
+      "status": "PASS",
+      "criteria": [
+        "OR-09"
+      ],
+      "acs": [
+        "AC-OR-04"
+      ],
+      "evidence": "事件范围 seq 0 – 2 覆盖 turn/start.seq=0 ~ turn/end.seq=null；正文 seq 全部在区间内"
+    },
+    {
+      "id": "OR-10",
+      "status": "PASS",
+      "criteria": [
+        "OR-10"
+      ],
+      "acs": [
+        "AC-OR-02"
+      ],
+      "evidence": "五节标题逐字且顺序正确（索引 [26,32,36,40,44]）"
+    },
+    {
+      "id": "OR-14",
+      "status": "PASS",
+      "criteria": [
+        "OR-14"
+      ],
+      "acs": [
+        "AC-OR-07"
+      ],
+      "evidence": "正文（## 1.→EOF）sha256=f3e644b1884761572cd6464dab91dac09ca0f2c37e4a5bd46687e5dd2d882bc6 == YAML 正文hash"
+    },
+    {
+      "id": "OR-27",
+      "status": "PASS",
+      "criteria": [
+        "OR-27"
+      ],
+      "acs": [
+        "AC-OR-12"
+      ],
+      "evidence": "partial 轮：结束原因=partial、对话结束==对话开始（2026-11-09T09:30:00+08:00）"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:02:05” 与运行窗口相差 1s"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='b31844afcad1b517923aac4b24760c7546f06ad2e0bf236ec1a196990d235258'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=b31844afcad1b517923aac4b24760c7546f06ad2e0bf236ec1a196990d235258 == YAML 封板hash"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:02:05”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:02:05"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='bf500a0559f6c13125e5e9701ef4c576b752885d9933ecf0b7681377677f9984'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=bf500a0559f6c13125e5e9701ef4c576b752885d9933ecf0b7681377677f9984 == YAML 封板hash"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:02:05（UTC+08:00）”"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:02:05（UTC+08:00）”"
+    },
+    {
+      "id": "GL-10",
+      "status": "PASS",
+      "criteria": [
+        "GL-10"
+      ],
+      "acs": [
+        "AC-GL-10"
+      ],
+      "evidence": "v3+v4 并存（v4 起点更晚）：v3 前缀已补入账（turns=[1,2]）"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:04” 与运行窗口相差 0s"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='be1d6b8d8f30e6ed4da7f981fc288e67ddefb08684b50da8ed29e427855dbb16'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=be1d6b8d8f30e6ed4da7f981fc288e67ddefb08684b50da8ed29e427855dbb16 == YAML 封板hash"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:04”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:03:04"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='8ea84f7ded3d86ebc4641a0e7d0b693cd8317fc3cb59232fb459d2363aeb2a08'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=8ea84f7ded3d86ebc4641a0e7d0b693cd8317fc3cb59232fb459d2363aeb2a08 == YAML 封板hash"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:03:04（UTC+08:00）”"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:03:04（UTC+08:00）”"
+    },
+    {
+      "id": "OR-21",
+      "status": "PASS",
+      "criteria": [
+        "OR-21"
+      ],
+      "acs": [
+        "AC-OR-09"
+      ],
+      "evidence": "同名同 hash 二次写：返回复用、文件字节与 mtime 不变，（无冲突）"
+    },
+    {
+      "id": "OR-22",
+      "status": "PASS",
+      "criteria": [
+        "OR-22"
+      ],
+      "acs": [
+        "AC-OR-10"
+      ],
+      "evidence": "异内容冲突停摆：抛 ORIGINAL_CONFLICT、文件字节不变、台账零新增；错误含路径与两个 hash（bf6d713c… vs fdab84fc…）"
+    },
+    {
+      "id": "OR-23",
+      "status": "PASS",
+      "criteria": [
+        "OR-23"
+      ],
+      "acs": [
+        "AC-OR-09"
+      ],
+      "evidence": "已存在凭证从未发生写入（含追加）"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:08” 与运行窗口相差 0s"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='04500f773241a71273821b8a0e1833c7f6f7407a6ab5ece69fca9f57262ae5bf'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=04500f773241a71273821b8a0e1833c7f6f7407a6ab5ece69fca9f57262ae5bf == YAML 封板hash"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:08”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:03:08"
+    },
+    {
+      "id": "HO-08",
+      "status": "PASS",
+      "criteria": [
+        "HO-08"
+      ],
+      "acs": [
+        "AC-HO-02"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:07” 与运行窗口相差 1s"
+    },
+    {
+      "id": "HO-11",
+      "status": "PASS",
+      "criteria": [
+        "HO-11"
+      ],
+      "acs": [
+        "AC-HO-03"
+      ],
+      "evidence": "封板hash='67d5e2a20a1f6aa5472897e2be69cec0e5aafdeb3a149023fdcd6cb4e4dbe5ed'（单引号包裹 64 位小写 hex）"
+    },
+    {
+      "id": "HO-18",
+      "status": "PASS",
+      "criteria": [
+        "HO-18"
+      ],
+      "acs": [
+        "AC-HO-07"
+      ],
+      "evidence": "正文（# 行首→EOF）sha256=67d5e2a20a1f6aa5472897e2be69cec0e5aafdeb3a149023fdcd6cb4e4dbe5ed == YAML 封板hash"
+    },
+    {
+      "id": "HA-05",
+      "status": "PASS",
+      "criteria": [
+        "HA-05"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "生成时间=“2026-11-09 14:03:07”，生成部分无 Z 时间（逐字照录的 block 正文不参与，Lead 裁定①）"
+    },
+    {
+      "id": "HA-17",
+      "status": "PASS",
+      "criteria": [
+        "HA-17"
+      ],
+      "acs": [
+        "AC-HA-09"
+      ],
+      "evidence": "主表/附表同批生成，生成时间均为 2026-11-09 14:03:07"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: 28f04792c4546fb193d5be456b1ad77137b06b294d556f3095abe61d8e3f8851” A5=“封板时间: 2026-11-09 14:03:08（UTC+08:00）”"
+    },
+    {
+      "id": "WK-05",
+      "status": "PASS",
+      "criteria": [
+        "WK-05"
+      ],
+      "acs": [
+        "AC-WK-03"
+      ],
+      "evidence": "已封板文件头正确：A3=“状态: 已封板（本文件不再重写）” A4=“封板hash: c698e4abceb4ac997d37472cbacc1f04468eb026a30606839b989daa45f052b1” A5=“封板时间: 2026-11-09 14:03:08（UTC+08:00）”"
+    },
+    {
+      "id": "HA-01",
+      "status": "PASS",
+      "criteria": [
+        "HA-01"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "[CRVERBATIM 附表] 10e000000001A的记忆数据库的启用及交接表——附表.md 存在且文件名合法"
+    },
+    {
+      "id": "HA-03",
+      "status": "PASS",
+      "criteria": [
+        "HA-03"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "父表=“10e000000001A的记忆数据库的启用及交接表.md” 且存在"
+    },
+    {
+      "id": "HA-04",
+      "status": "PASS",
+      "criteria": [
+        "HA-04"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "名称=“10e000000001A的记忆数据库的启用及交接表——附表”"
+    },
+    {
+      "id": "HA-19",
+      "status": "PASS",
+      "criteria": [
+        "HA-19"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "H1=“# 10e000000001A的记忆数据库的启用及交接表——附表” == YAML 名称"
+    },
+    {
+      "id": "HA-08",
+      "status": "PASS",
+      "criteria": [
+        "HA-08"
+      ],
+      "acs": [
+        "AC-HA-02"
+      ],
+      "evidence": "各 block 元信息 [seq N] 严格升序：[0]"
+    },
+    {
+      "id": "HA-09",
+      "status": "PASS",
+      "criteria": [
+        "HA-09"
+      ],
+      "acs": [
+        "AC-HA-04"
+      ],
+      "evidence": "编号 1..1 连续且 == 上下文条数"
+    },
+    {
+      "id": "HA-10",
+      "status": "PASS",
+      "criteria": [
+        "HA-10"
+      ],
+      "acs": [
+        "AC-HA-04"
+      ],
+      "evidence": "1 个 block 的元信息行格式合法"
+    },
+    {
+      "id": "HA-07",
+      "status": "PASS",
+      "criteria": [
+        "HA-07"
+      ],
+      "acs": [
+        "AC-HA-03"
+      ],
+      "evidence": "被过滤 kind 未出现；user block 数=1"
+    },
+    {
+      "id": "HA-11",
+      "status": "PASS",
+      "criteria": [
+        "HA-11"
+      ],
+      "acs": [
+        "AC-HA-02"
+      ],
+      "evidence": "逐条照录：1 条原文全部出现，block 数=上下文条数"
+    },
+    {
+      "id": "HA-14",
+      "status": "PASS",
+      "criteria": [
+        "HA-14"
+      ],
+      "acs": [
+        "AC-HA-07"
+      ],
+      "evidence": "未截断（无“已截断”字样），block 数=1 == 上下文条数=1"
+    },
+    {
+      "id": "GL-05",
+      "status": "PASS",
+      "criteria": [
+        "GL-05"
+      ],
+      "acs": [
+        "AC-GL-02"
+      ],
+      "evidence": "附表 block 正文逐字保留（CR/LF、Z 时间串、花括号纹理原样出现）；生成部分仍无 Z/占位符（Lead 裁定①）"
+    },
+    {
+      "id": "HA-18",
+      "status": "PASS",
+      "criteria": [
+        "HA-18"
+      ],
+      "acs": [
+        "AC-HA-01"
+      ],
+      "evidence": "附表生成部分无 CR/占位符（正文逐字内容不参与，Lead 裁定①）"
+    },
+    {
+      "id": "OR-24",
+      "status": "PASS",
+      "criteria": [
+        "OR-24"
+      ],
+      "acs": [
+        "AC-OR-01"
+      ],
+      "evidence": "完整原文正文逐字保留（CR/LF、Z 时间串、花括号纹理原样出现）；生成部分仍无 CR/占位符（Lead 裁定①）"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "E2E-01 首轮 written>0、errors 空、交接表生成数=2、纳入 v3 源=1",
+      "ok": true,
+      "evidence": "written=3 errors=[] handoverGenerated=2 legacySources=1"
+    },
+    {
+      "id": "E2E-02 第二轮/第三轮 written=0",
+      "ok": true,
+      "evidence": "run2.written=0 run3.written=0"
+    },
+    {
+      "id": "E2E-03 第二轮与第三轮产物字节完全一致（幂等）",
+      "ok": true,
+      "evidence": "差异=[]"
+    },
+    {
+      "id": "E2E-04 code 与 (sid,turn) 全局唯一（台账）",
+      "ok": true,
+      "evidence": "台账 3 行，重复=false"
+    },
+    {
+      "id": "E2E-05 v3 会话 src=session.v3.jsonl.zstd 且 v3 文件字节未变",
+      "ok": true,
+      "evidence": "src=[\"session.v3.jsonl.zstd\"] sha 前=4bbf9aec01 后=4bbf9aec01"
+    },
+    {
+      "id": "E2E-06 台账行数 = 原文文件数",
+      "ok": true,
+      "evidence": "台账 3 行 / 原文 3 个文件"
+    },
+    {
+      "id": "E2E-08 逐份完整原文（五节 / YAML / 正文hash 独立复算）已逐一检查",
+      "ok": true,
+      "evidence": "检查 3/3 份"
+    },
+    {
+      "id": "E2E-09 同一会话：台账行数 = 原文文件数 = 周记账行数",
+      "ok": true,
+      "evidence": "逐会话相等：[[\"96dea353bbb4A\",1],[\"3b9ad92506f3A\",2]]"
+    },
+    {
+      "id": "E2E-10 周记账文件均可用 openpyxl 打开且结构合格",
+      "ok": true,
+      "evidence": "2 个 xlsx，openpyxl 全成功=true"
+    },
+    {
+      "id": "LAB-APP 交接表附表收录 5 类 block（user/assistant/tool-call/tool-result/system）且过滤注入 kind",
+      "ok": true,
+      "evidence": "上下文条数=5 roles=[\"system/message\",\"user/message\",\"assistant/message\",\"tool/call\",\"tool/result\"]"
+    },
+    {
+      "id": "LAB-APP 草稿态文件头（A3 草稿/请勿批注、A4/A5 为 —）",
+      "ok": true,
+      "evidence": "headerMode=draft"
+    },
+    {
+      "id": "LAB-APP 已封板文件头与封板hash（A3 已封板 / A4 64hex / A5 +08:00）",
+      "ok": true,
+      "evidence": "headerMode=sealed A4=封板hash: 1e93bc0c70611f7a034e348b0d999b04b55c8b0b3297cdc2ca118fd725822035"
+    },
+    {
+      "id": "LAB-APP 封板后新增行 → 写补记册且正册字节不变",
+      "ok": true,
+      "evidence": "补记册=[\"补记-20261109.md\"] supplements=1 正册字节不变=true"
+    },
+    {
+      "id": "LAB-APP 封板后删文件 → 不重建且日志含 sealed but file missing",
+      "ok": true,
+      "evidence": "重建=false warn=true"
+    },
+    {
+      "id": "LAB-SHORTWEEK 月界切段：不在段内的日表全空、B 列「—」",
+      "ok": true,
+      "evidence": "weekNo=1 周段=2026-10-01 ~ 2026-10-04"
+    },
+    {
+      "id": "LAB-OVF 单日 125 轮全部入账（不静默丢行）",
+      "ok": true,
+      "evidence": "written=125 台账=125"
+    },
+    {
+      "id": "LAB-OVF 单日 >120：前 120 行 + 溢出计数 5 + 告警",
+      "ok": true,
+      "evidence": "C13=5"
+    },
+    {
+      "id": "LAB-MID 1MB 级上下文：默认不截断、block 数=上下文条数=300",
+      "ok": true,
+      "evidence": "count=300 含已截断=false"
+    },
+    {
+      "id": "LAB-TRUNC >8MiB 附表：整块收录 + 决定9#7 固定句 + 上下文条数=实际 block 数",
+      "ok": true,
+      "evidence": "count=2814 block=2814"
+    },
+    {
+      "id": "LAB-SHADOW 被遮蔽事件数必须真算（独立复算=2）",
+      "ok": true,
+      "evidence": "独立复算=2"
+    },
+    {
+      "id": "LAB-PARTIAL 未闭合轮次安静后记 partial",
+      "ok": true,
+      "evidence": "台账=1 partial=true"
+    },
+    {
+      "id": "LAB-BADFRAME 坏帧产生 ledger/.lost.jsonl 留痕",
+      "ok": true,
+      "evidence": "lost 行数=1 末行 keys=[\"v\",\"at\",\"sid\",\"sessDir\",\"file\",\"fromByte\",\"scanSize\",\"fileSize\",\"frames\",\"okFrames\",\"failedFrames\",\"badLines\",\"formatError\",\"reasons\",\"frameOffsets\",\"failedFrameOffsets\",\"missing\",\"recompute\"] lostRecords=1"
+    },
+    {
+      "id": "LAB-BADFRAME 坏帧不拖垮整轮（该轮仍入账）",
+      "ok": true,
+      "evidence": "written=1"
+    },
+    {
+      "id": "LAB-CONFLICT 同 code 二次写字节不变；异内容 ORIGINAL_CONFLICT 不覆盖",
+      "ok": true,
+      "evidence": "bytes 不变=true conflict=true"
+    },
+    {
+      "id": "LAB-ADOPT adopt 认领旧文件 → 字节不变 + state 补封板记录",
+      "ok": true,
+      "evidence": "adopted=1 字节不变=true"
+    },
+    {
+      "id": "LAB-ADOPT 封板后删文件 → 不重建且日志/errors 有 sealed but file missing",
+      "ok": true,
+      "evidence": "errors=[\"handover: sealed but file missing（不重建）adopt0000000A\",\"handover: appendix missing adopt0000000A\"]"
+    },
+    {
+      "id": "LAB-LOST state 丢失：交接表 adopted 告警 + 周记账不重写",
+      "ok": true,
+      "evidence": "reopened=true 差异=0"
+    },
+    {
+      "id": "LAB-CLEANED 四态复算（绑定/补记/已清理/缺凭证）全对，且「未删除」不得命中",
+      "ok": true,
+      "evidence": "7 行四态全部正确"
+    },
+    {
+      "id": "LAB-LOCK 双实例第二个不写（lock 路径 <root>/ledger/.lock）",
+      "ok": true,
+      "evidence": "lockSkipped=true 产物=0"
+    },
+    {
+      "id": "LAB-V3PAIR v3+v4 并存且 v4 起点更晚 → 用 v3 补前缀（不丢历史轮次）",
+      "ok": true,
+      "evidence": "turns=[1,2]"
+    },
+    {
+      "id": "LAB-CR 原文/附表正文逐字保留 CR、Z、{{ }}，且不触发\"生成字段\"扫描判据",
+      "ok": true,
+      "evidence": "附表=true 原文=true"
+    }
+  ]
+}

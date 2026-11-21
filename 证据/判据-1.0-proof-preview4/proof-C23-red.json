@@ -1,0 +1,44 @@
+{
+  "id": "C23",
+  "injected": "往副本 ledger/ 加 .bin 文件（白名单外扩展名）",
+  "result": {
+    "id": "C23",
+    "status": "RED",
+    "summary": "ledger/污染产物.bin：扩展名 .bin 不在白名单",
+    "reasons": [
+      "ledger/污染产物.bin：扩展名 .bin 不在白名单"
+    ],
+    "evidence": {
+      "roots": [
+        {
+          "label": "c01 小库",
+          "root": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-c23-20261115-132512/root",
+          "files": 43
+        }
+      ],
+      "filesTotal": 43,
+      "extCount": {
+        "(none)": 1,
+        ".json": 15,
+        ".md": 15,
+        ".xlsx": 3,
+        ".jsonl": 8,
+        ".bin": 1
+      },
+      "exceptions": {
+        "xlsx": 3,
+        "txt": 0,
+        "rootMarker": 1
+      },
+      "violations": [
+        {
+          "root": "c01 小库",
+          "rel": "ledger/污染产物.bin",
+          "ext": ".bin",
+          "why": "扩展名 .bin 不在白名单"
+        }
+      ],
+      "caliber": "§5.9①/C23：台账/索引/游标/报告只用 .jsonl/.md/.json；仅两个例外——周账视图 .xlsx、外发日结摘要 .txt；.ledger-root 是账库根标记（lib/layout.js，非判据产物），允许存在"
+    }
+  }
+}

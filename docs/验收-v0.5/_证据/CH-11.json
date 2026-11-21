@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-11",
+  "family": "CH",
+  "acId": "AC-V05-CH-11",
+  "product": "补记册",
+  "requirement": "99/100/101 解析=101 条；下一号=102；尾部校验；写/fsync 失败显式报错",
+  "implementation": "`lib/weekly.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-11",
+    "suite": "CH",
+    "status": "PASS"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-11"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

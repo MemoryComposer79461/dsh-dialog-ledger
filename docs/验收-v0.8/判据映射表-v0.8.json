@@ -1,0 +1,3671 @@
+{
+  "schema": "v08-criteria-map/1",
+  "generatedAt": "2026-11-10 21:55:39 +08:00",
+  "generatedBy": "<test-dir>\\work\\_gen-map-v08.mjs（临时脚本，不入插件包）",
+  "checkedBy": "<test-dir>\\work\\_check-map-v08.mjs（临时脚本，不入插件包）",
+  "coveredVersion": "v0.8.0（V0.8 增量；基线 v0.7 的 27 族 255 条）",
+  "baseline": {
+    "file": "docs/验收-v0.7/判据映射表-v0.7.json",
+    "schema": "v07-criteria-map/1",
+    "coveredVersion": "v0.7.0（V0.7 增量；基线 v0.6.4 的 23 族 218 条原样继承）",
+    "families": 27,
+    "totals": {
+      "criteria": 255,
+      "covered": 208,
+      "family": 37,
+      "uncovered": 10
+    },
+    "shadowUpdate": {
+      "family": "V07-SHADOW",
+      "updatedCriteria": [
+        "R-05",
+        "R-09"
+      ],
+      "before": {
+        "criteria": 10,
+        "covered": 7,
+        "family": 0,
+        "uncovered": 3
+      },
+      "after": {
+        "criteria": 10,
+        "covered": 9,
+        "family": 0,
+        "uncovered": 1
+      },
+      "note": "R-03 仍无主（真机长跑影子期报表）；R-07 说明保留（仅证 missingOnEvent 可见）"
+    }
+  },
+  "scope": {
+    "guardFilesScanned": 39,
+    "guardCasesScanned": 480,
+    "inheritedFamilies": 27,
+    "newFamilies": [
+      "V08-ANCHOR"
+    ],
+    "updatedFamilies": [
+      "V07-SHADOW"
+    ],
+    "v08GuardFiles": [
+      {
+        "file": "docs/自测-shadow.mjs",
+        "cases": 15
+      },
+      {
+        "file": "docs/自测-manifestanchor.mjs",
+        "cases": 5
+      }
+    ],
+    "v08EvidenceFiles": [
+      {
+        "file": "lib/manifestanchor.js",
+        "kind": "实现"
+      },
+      {
+        "file": "docs/工具-核验交付锚.mjs",
+        "kind": "只读工具"
+      },
+      {
+        "file": "docs/工具-恢复演练.mjs",
+        "kind": "只读工具"
+      },
+      {
+        "file": "docs/验收-v0.8/恢复演练-U盘目录-20261110.md",
+        "kind": "真机证据"
+      },
+      {
+        "file": "docs/验收-v0.8/恢复演练-U盘zip-20261110.md",
+        "kind": "真机证据"
+      }
+    ]
+  },
+  "method": {
+    "covered": "判据编号能在仓库**实际用例**标题里对上一个用例（本表由脚本现场匹配，匹配不到即报错，不手写）",
+    "family": "该判据所属族有真实可执行套件（文件+用例数），本条无逐条断言；按\"族级覆盖\"计入通过口径",
+    "uncovered": "既无逐条用例、也无族级套件；必须逐条列理由，总数 ≤10",
+    "note": "本表只证明守护用例在仓库且编号对得上，不等于本轮重新执行；v0.8 未重跑全量/五门（铁律）。"
+  },
+  "families": [
+    {
+      "id": "V05-INV",
+      "title": "v0.5 P0 不变量 · INV-01…INV-30（契约细判据）",
+      "note": "v0.5 逐判据验收脚本 `docs/验收-v0.5/验收-INV.mjs`；历史结果 `_results/INV.json`（本轮映射不重跑）。",
+      "source": "docs/验收-v0.5/_证据/INV-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "INV-01",
+          "requirement": "12574B→259B（含新 Turn2）后 run：台账新增 Turn2 且 code 复算一致；`stat.unchanged==0`；cursor.offset==新文件完整帧边界≠旧值",
+          "product": "台账/state/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "12KB→几百B 缩小型替换后：台账新增 Turn2、code 复算一致、stat.unchanged==0、游标==新文件完整帧边界"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-01"
+        },
+        {
+          "id": "INV-02",
+          "requirement": "缩小源：`cursorResets[].reason==\"shrunk\"`，且该源 `(sid,turn)` 集合 == 源集合",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "任意缩小源：report cursorResets[reason=shrunk] 且该源 (sid,turn) 集合==源集合"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-02；历史结果文件记录 SKIPPED（见 _results/INV.json）"
+        },
+        {
+          "id": "INV-03",
+          "requirement": "同 size 重写：`identityChanges` 含该源；新 Turn 入账",
+          "product": "run-report/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "同字节数重写（内容不同）：判 changed、identityChanges 含该源、新 Turn 入账"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-03；历史结果文件记录 SKIPPED（见 _results/INV.json）"
+        },
+        {
+          "id": "INV-04",
+          "requirement": "截断/替换自测含\"新内容必须被读到\"断言；删该断言后用例变红（变异验证）",
+          "product": "自测文件",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "截断/替换自测含\"新内容必须被读到\"断言（删断言/删修复必红）"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-04"
+        },
+        {
+          "id": "INV-05",
+          "requirement": "未闭合轮：台账 0 行；`.pending.jsonl` 1 行（字段齐，`state=\"pending\"`）；原文视图/附件不存在",
+          "product": "pending/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "未闭合轮：台账 0 行、.pending.jsonl 1 行（字段齐、state=\"pending\"）、原文视图/附件不存在"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-05"
+        },
+        {
+          "id": "INV-06",
+          "requirement": "再扫一轮：pending 行数不变；`pending.added=0,dup=1`",
+          "product": "pending/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "同一未闭合轮再扫：.pending.jsonl 行数不变、run-report pending.added=0/dup=1、台账仍 0"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-06"
+        },
+        {
+          "id": "INV-07",
+          "requirement": "补 end 后：恰 1 行 `status=\"ok\"`、`turnState=\"closed\"`；`partial` 行 0；视图+附件 hash 复核通过",
+          "product": "台账/文件",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "补 turn/end 后：恰 1 行 status=ok/turnState=closed、partial=0、视图+附件 hash 复核通过"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-07"
+        },
+        {
+          "id": "INV-08",
+          "requirement": "三次扫描序列：run1 pending.added=1；run2 dup=1 且台账 0；run3 written=1 且 ok 行=1；run4 written=0 行数不变",
+          "product": "4 轮 run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "4 轮序列：run1 added=1；run2 dup=1 且台账 0；run3 written=1 且 ok 行=1；run4 written=0 行数不变"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-08"
+        },
+        {
+          "id": "INV-09",
+          "requirement": "历史 partial 行字节不变、不删、不追写；`legacyPartials[]` 列出该 code",
+          "product": "台账 diff/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "预置 v0.4 历史 partial：字节不变/不删/不追写，run-report legacyPartials 列出该 code"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-09"
+        },
+        {
+          "id": "INV-10",
+          "requirement": "pending 行不含 `code/status/version/supersedes`；同 `(sid,turn)` 不得既 pending 又台账终态",
+          "product": "pending/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": ".pending.jsonl 行不含 code/status/version/supersedes；同一 (sid,turn) 不得既 pending 又台账终态"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-10"
+        },
+        {
+          "id": "INV-11",
+          "requirement": "除 oversize 批外每批 `turns≤eventBatchTurns`、`events≤eventBatchEvents`、`bytes≤eventBatchBytes`；任一触顶即开新批；heapUsed 峰值增量 ≤256 MiB",
+          "product": "run-report batches/内存",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "每批（除 oversize）turns/events/bytes 均不超预算、触顶即开新批、heapUsed 峰值增量≤256MiB"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-11"
+        },
+        {
+          "id": "INV-12",
+          "requirement": "单轮字节超上限：单独成批 `oversize:true` 放行不丢弃；`eventOversize==1`；`Σbatches.events==源事件总数`",
+          "product": "run-report/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "单轮事件字节>eventBatchBytes：单独成批 oversize:true、eventOversize=1、Σbatches.events==源事件数"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-12"
+        },
+        {
+          "id": "INV-13",
+          "requirement": "取消后：`{cancelled:true,committedBatches:k}`；已提交批完整、未提交批零写入、无半批",
+          "product": "run-report/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "运行中取消：返回 {cancelled:true, committedBatches:k}；已提交批完整、未提交批零写入、无半批"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-13"
+        },
+        {
+          "id": "INV-14",
+          "requirement": "批间 kill -9 后续跑：`台账 (sid,turn)集合==源闭合轮集合`；无重复 code；`resumeFrom` 正确；已提交批前缀不变；批次数 ≥ ceil(总事件/每批上限)",
+          "product": "台账集合/两段报告",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "批间 kill -9 后续跑：台账集合==源闭合轮集合、无重复 code、resumeFrom 正确、已提交批前缀不变、批次数≥下界"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-14"
+        },
+        {
+          "id": "INV-15",
+          "requirement": "120/121/122 及\"122 不同溢出码\"共 4 组封板 hash 两两不同；journal `sourceRowCount/overflow` 正确",
+          "product": "xlsx A4/journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "120/121/122 及\"122 但溢出码不同\"共 4 组：封板 hash 两两不同；journal sourceRowCount/overflow 分别为 120/0、121/1、122/2、122/2"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-15"
+        },
+        {
+          "id": "INV-16",
+          "requirement": "125 行直接封板：正册 120；补记 5 条 reason=`overflow-seal`；正册∪补记==源、交集空、120+5==125",
+          "product": "xlsx/补记册/journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "125 行直接封板：正册 120、补记 5 条 reason=overflow-seal、正册∪补记==源、交集空、120+5==125"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-16"
+        },
+        {
+          "id": "INV-17",
+          "requirement": "该 `key+kind` 仅 1 行；字段齐全；sealHash 按 **D15.1 v8** 复算一致；rowsSha256/supplementCodesSha256 复算一致；prev 链正确；verifySealChain() ok",
+          "product": "journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "journal：该 key+kind 仅 1 行、字段齐全、sealHash 按 D15.1 v8 复算一致、rowsSha256/supplementCodesSha256 复算一致、prev 链正确"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-17"
+        },
+        {
+          "id": "INV-18",
+          "requirement": "封板后合法清理：历史校验仍通过（不读 xlsx）；xlsx 字节不变；现状差异只进 `weeklyDrift`",
+          "product": "journal/xlsx/对账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "封板后合法清理：历史校验仍通过、xlsx 字节不变、现状差异只进 weeklyDrift"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-18；历史结果文件记录 SKIPPED（见 _results/INV.json）"
+        },
+        {
+          "id": "INV-19",
+          "requirement": "按 D15.1 字段顺序复算 3 组互异且 == A4；`canonicalVersion==8`；canonical 不含路径（换路径同数据 hash 不变）",
+          "product": "复算脚本",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "120/121/122 三组按 D15.1 字段顺序复算 3 个互异 hash 且 == A4；canonicalVersion==8；换路径同数据 hash 不变"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-19"
+        },
+        {
+          "id": "INV-20",
+          "requirement": "正常：先补记 fsync 成功再封板；注入失败：抛 `E_SEAL_OVERFLOW_SUPPLEMENT_FAILED`、journal 无行、xlsx 不写封板态；闭合校验齐全",
+          "product": "补记册/journal/错误",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "121 行封板：先补记成功再封板；补记写失败→E_SEAL_OVERFLOW_SUPPLEMENT_FAILED、journal 无行、xlsx 无封板态；闭合校验齐全"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-20"
+        },
+        {
+          "id": "INV-21",
+          "requirement": "视图+附件存在；`docFileSha256`（==视图文件）/`docSha256`（==正文）/`attachment.sha256`（==附件）复算全等；附件行数==事件数",
+          "product": "文件/台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "视图+附件存在；docFileSha256==视图、docSha256==正文、attachment.sha256==附件；附件行数==事件范围且 seq 集合相等"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-21"
+        },
+        {
+          "id": "INV-22",
+          "requirement": "2000/2001/4517 参数（含中文/emoji/尾部标记）从附件恢复 `===` 源参数；UTF-8 字节一致",
+          "product": "附件恢复",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "工具参数 2000/2001/4517 字符（中文/emoji/尾部标记）从附件恢复 === 源参数、UTF-8 字节一致"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-22"
+        },
+        {
+          "id": "INV-23",
+          "requirement": "`> [截断] 原始长度=4517字符 附件=<code> 原始事件.json sha256=<64hex>` 逐字；N=码点数；前缀可解码",
+          "product": "视图文本",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "视图披露行 \"> [截断] 原始长度=4517字符 附件=<code> 原始事件.json sha256=<64hex>\" 逐字；N=码点；前缀可解码"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-23"
+        },
+        {
+          "id": "INV-24",
+          "requirement": "改 YAML/正文/文件名后：docFileSha256 复算失败（YAML/正文）、docSha256 仅正文失败；绑定必败；`integrityFailures` 原因正确",
+          "product": "台账/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "改 YAML→FILE_HASH_MISMATCH、改正文→BODY_HASH_MISMATCH、改文件名→绑定必败；docSha256 仅正文改动才失败"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-24；历史结果文件记录 SKIPPED（见 _results/INV.json）"
+        },
+        {
+          "id": "INV-25",
+          "requirement": "默认配置下清理 `deleted==false`；前后原文清单 sha256 全等；只产 dry-run 名；正式号 0 新增",
+          "product": "原文目录",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "默认清理：deleted==false、原文清单+sha 前后全等、只产 RPT-DRYRUN-*、正式 RPT 号零新增"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-25"
+        },
+        {
+          "id": "INV-26",
+          "requirement": "未显式确认时退出码≠0 或输出 `BLOCKED`；前后全库 sha256 不变",
+          "product": "旧工具",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "旧工具 docs/工具-v03-清理.mjs 未显式确认时 BLOCKED/非零退出，且前后全库 sha256 不变"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-26"
+        },
+        {
+          "id": "INV-27",
+          "requirement": "dry-run 后无正式 RPT 新增；随后首次正式编号==01（dry-run 不占号）",
+          "product": "目录/编号",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "dry-run 后无正式 RPT 新增；随后首次正式清理编号==当日 01（dry-run 不占号）"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-27"
+        },
+        {
+          "id": "INV-28",
+          "requirement": "同 code 同正文 `reused:true` 字节不变；异正文 `ORIGINAL_CONFLICT` 不覆盖；附件冲突同（合法正文含 `## 1.`）",
+          "product": "文件/错误",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "同 code 同正文 reused:true 字节不变；异正文 ORIGINAL_CONFLICT 不覆盖；附件冲突 ATTACHMENT_CONFLICT 不覆盖"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-28"
+        },
+        {
+          "id": "INV-29",
+          "requirement": "双进程：第二个 `LOCK_HELD` 跳过；锁字段齐；失败方零写入",
+          "product": "锁/产物",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "双进程同 root：第二个 LOCK_HELD 跳过；锁文件字段 pid/hostname/startedAt/heartbeatAt 齐；失败方零写入"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-29"
+        },
+        {
+          "id": "INV-30",
+          "requirement": "写失败游标回退+无半产物；坏 sid/缺 head：errors 记录（D9 字段/fingerprint）、游标不推进、`blockedSources` 命中；修复后入账；**节流（R-02）**：同 `(kind,source,offset)` 每 `errorLogThrottleMs`（默认 1h）最多 1 行，重复只累加报告 `count/attempts`（24h 模拟行数 ≤ ceil(24h/throttle)+1）",
+          "product": "`.errors.jsonl`/state/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-INV.mjs",
+            "case": "写失败游标回退+无半产物；坏 sid/缺 head 落 .errors.jsonl（D9/fingerprint）、游标不推进、blockedSources 命中；节流+报告 count 累加"
+          },
+          "status": "covered",
+          "note": "逐条用例：INV-30"
+        }
+      ],
+      "counts": {
+        "criteria": 30,
+        "covered": 30,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-CH",
+      "title": "v0.5 P1 可信链 · CH-01…CH-24（契约细判据）",
+      "note": "v0.5 逐判据验收脚本 `docs/验收-v0.5/验收-CH.mjs`；历史结果 `_results/CH.json`（本轮映射不重跑）。",
+      "source": "docs/验收-v0.5/_证据/CH-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "CH-01",
+          "requirement": "新行含 `docSha256`/`docFileSha256`（64hex）与 `attachment{name,sha256,bytes}`；三者复算相等；有 YAML 时两 hash 不相等",
+          "product": "台账行",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "新行含 docSha256/docFileSha256(64hex)+attachment{name,sha256,bytes}；三者复算相等；有 YAML 时两 hash 不等"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-01"
+        },
+        {
+          "id": "CH-02",
+          "requirement": "改 YAML→`FILE_HASH_MISMATCH`；改正文→`BODY_HASH_MISMATCH`；改附件→`ATTACHMENT_HASH_MISMATCH`；路径错→`PATH_MISMATCH`；以上 B 列均≠`绑定`；合法清理→`已清理(RPT-…)` 且不进 integrityFailures",
+          "product": "周记账 B 列/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "改 YAML→FILE_HASH_MISMATCH、改正文→BODY_HASH_MISMATCH、改附件→ATTACHMENT_HASH_MISMATCH、路径错→PATH_MISMATCH、合法清理→已清理(RPT-…)不进 integrityFailures"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-02"
+        },
+        {
+          "id": "CH-03",
+          "requirement": "预置无尾换行→append 后每行可 parse；行数=原+1；fsync 失败注入→报错、written 不增、游标回退",
+          "product": "台账文件",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "预置无尾换行→append 后每行可 parse（行数=原+1）；fsync 失败注入→报错、written 不增、游标回退"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-03"
+        },
+        {
+          "id": "CH-04",
+          "requirement": "坏行：`readErrors` 结构化；`.quarantine/<账文件>.L<行号>.json` 含 raw+sha；**原账文件字节不变**",
+          "product": "读取返回/quarantine",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "坏行：readErrors 结构化；.quarantine/<账文件>.L<行号>.json 含 raw+sha；原账文件字节不变"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-04"
+        },
+        {
+          "id": "CH-05",
+          "requirement": "首跑 `deferred>0` → `initialized==false`；第二轮仍扫到剩余会话",
+          "product": "state/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "首跑被预算截断(deferred>0)→state.initialized=false；第二轮仍扫到剩余会话(scanned>0)"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-05"
+        },
+        {
+          "id": "CH-06",
+          "requirement": "跑至 deferred=0：`(sid,turn)集合==源集合`；此后 `initialized==true`",
+          "product": "台账集合/state",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "跑至 deferred=0：所有会话 (sid,turn) 集合==源闭合轮集合；此后 state.initialized=true"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-06"
+        },
+        {
+          "id": "CH-07",
+          "requirement": "停机 7d：`cutoff==min(now-hotWindow,lastRunAt-2×interval)`（报告给出两候选）；期间会话被扫",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "停机 7d：cutoff==min(now-hotWindow, lastRunAt-2×interval)（报告给出两候选）；期间会话被扫"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-07；历史结果文件记录 SKIPPED（见 _results/CH.json）"
+        },
+        {
+          "id": "CH-08",
+          "requirement": "最终集合==源集合；`catchupScanned>0`；逐源行数==源闭合轮数",
+          "product": "run-report/集合",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "停机兜底两轮：最终 (sid,turn) 集合==源集合、逐源行数==源闭合轮数、catchupScanned>0"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-08；历史结果文件记录 SKIPPED（见 _results/CH.json）"
+        },
+        {
+          "id": "CH-09",
+          "requirement": "坏帧：cursor 不推进到 EOF（停坏帧起点）；`frameErrors[]` 含偏移；下轮仍尝试",
+          "product": "state/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "坏帧：cursor 不推进到 EOF（停坏帧起点）；run-report frameErrors[{source,offset,failed}]；下轮仍尝试"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-09"
+        },
+        {
+          "id": "CH-10",
+          "requirement": "同现场两轮只追加 1 条（fingerprint 幂等）；`attempts` 累加；**节流（R-02）**：同 `(kind,source,offset)` 每 `errorLogThrottleMs` 最多 1 行，24h 模拟行数 ≤ ceil(24h/throttle)+1，报告 `errors[].count` 反映真实次数；短读必须报错/标未覆盖区间",
+          "product": "`.errors.jsonl`",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "同坏帧现场两轮：.errors.jsonl 只 1 条（fingerprint）、attempts 累加、节流、报告 errors[].count 反映真实次数、短读标未覆盖区间"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-10"
+        },
+        {
+          "id": "CH-11",
+          "requirement": "99/100/101 解析=101 条；下一号=102；尾部校验；写/fsync 失败显式报错",
+          "product": "补记册",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "补记册 99/100/101 解析=101 条；下一号=102；尾部校验；写/fsync 失败显式报错"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-11"
+        },
+        {
+          "id": "CH-12",
+          "requirement": "`RPT-…-99/100/101` 存在→下一号=102；未知块/截断尾块→`ok=false,unknownBlocks>0/truncatedTail:true`",
+          "product": "目录/验证器",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "RPT-…-99/100/101 存在→下一号=102；补记册未知块/截断尾块→验证器 ok=false（unknownBlocks>0/tail）；不得报全绿"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-12"
+        },
+        {
+          "id": "CH-13",
+          "requirement": "首次入账后主表+附表存在；`handover.decision∈{adopt,generate}`；成功写 `kind=\"handover-seal\"` 行且**字段完整**：`decision/main/appendix/adopted/reopened` 非空、weekly-only 字段为 `null`、`at/sealedAt` 匹配 `^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$`（无时区后缀）、`prevSealSha256==\"\\\"\\\"\"`；缺失/格式错→`SEAL_JOURNAL_FIELDS_MISSING`/`SEAL_JOURNAL_FORMAT_MISMATCH` 进 stat.errors（R-07/R-08）",
+          "product": "档案/journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "首次入账：主表+附表存在；handover-seal 字段完整（decision/main/appendix/adopted/reopened、weekly-only 字段 null、时间无时区、prev=\"\"）；report handover.decision∈{adopt,generate}"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-13；历史结果文件记录 SKIPPED（见 _results/CH.json）"
+        },
+        {
+          "id": "CH-14",
+          "requirement": "写失败不崩、errors 含 `handover failed`；其他写入照常；下轮重试成功；handover-seal 仅 1 行",
+          "product": "run-report/journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "交接表写失败注入：本轮不崩、stat.errors 含 handover failed、台账/周账照常；下轮重试成功且 handover-seal 仅 1 行"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-14"
+        },
+        {
+          "id": "CH-15",
+          "requirement": "账文件不可读：`readErrors[]` 结构化并计入 stat.errors；不得生成「空/无/0」产物；相关写入被阻止",
+          "product": "读取返回/产物",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "账文件不可读：readErrors[] 结构化并计入 stat.errors；不生成空产物；相关写入被阻止"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-15"
+        },
+        {
+          "id": "CH-16",
+          "requirement": "空目录→成功空；不可读→必须带 readErrors，不得当\"确定为空\"",
+          "product": "两组读取",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "空目录→成功空（records=[]/readErrors=[]/emptyProven）；不可读→ok=false+readErrors 且不得当\"确定为空\""
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-16"
+        },
+        {
+          "id": "CH-17",
+          "requirement": "删 state：verifySealChain ok；能取 weekly+handover 两事件（handover 事件按 R-07/R-08 字段完整/格式正确）；已封板 xlsx/交接表字节不变；`stateLost:true`",
+          "product": "journal/产物",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "删 state：verifySealChain ok；能取 weekly+handover 两事件；已封板 xlsx/交接表字节不变；report stateLost:true"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-17；历史结果文件记录 SKIPPED（见 _results/CH.json）"
+        },
+        {
+          "id": "CH-18",
+          "requirement": "仅 weeklySealed 丢失/状态不明：一律不重写已存在周账；journal 无记录且文件在→`E_SEAL_UNKNOWN` 只报不改",
+          "product": "产物/run-report",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "仅 weeklySealed 丢失/状态不明：一律不重写已存在周账；journal 无记录且文件在→E_SEAL_UNKNOWN 且字节不变"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-18"
+        },
+        {
+          "id": "CH-19",
+          "requirement": "已清理集合 == {结论=已删除} 集合（双向）；备注含\"已删除\"但结论为未删除/跳过→不判已清理",
+          "product": "周记账 B 列",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "B 列只认结论列：结论=已删除→已清理(RPT-…)；未删除/跳过但备注含\"已删除\"→不得判已清理；已清理集合=={结论=已删除}"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-19"
+        },
+        {
+          "id": "CH-20",
+          "requirement": "v1.3 新格式、v0.4 旧格式、>50 条附录 CSV（BOM/引号）三种来源均正确；第 51+ 条状态可见",
+          "product": "周记账 B 列/解析",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "v1.3 新格式、v0.4 旧格式、>50 条附录 CSV（BOM/引号）三种来源均正确；第 51+ 条状态可见"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-20"
+        },
+        {
+          "id": "CH-21",
+          "requirement": "A1:J1 十列逐字；四态仅 B 列；RPT 不写备注；A 列无占位文本；周统计审计引用 I 列",
+          "product": "xlsx",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "xlsx：A1:J1 十列逐字；四态仅在 B 列；RPT 号不写备注；A 列无占位文本；周统计审计公式引用 I 列"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-21"
+        },
+        {
+          "id": "CH-22",
+          "requirement": "C=COUNTA(A2:A121)、D:F=COUNTIF(I2:I121,…)；总计+溢出==源行数；A4==journal sealHash",
+          "product": "xlsx/journal",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "周统计 C=COUNTA(A2:A121)、D:F=COUNTIF(I2:I121,…)；总计+溢出==源行数；说明页 A4==journal sealHash"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-22"
+        },
+        {
+          "id": "CH-23",
+          "requirement": "跨月会话（起 10-31、末轮 11-01）：全部原文在 `2026年10月/…`（编码日期段取月）；11 月夹无该会话原文",
+          "product": "目录",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "跨月会话（起 10-31、末轮 11-01）：全部原文在 2026年10月/…（按编码日期段取月）；11 月夹无该会话原文"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-23"
+        },
+        {
+          "id": "CH-24",
+          "requirement": "每 code 前 8 位 == 所在 `YYYY年MM月`；同会话原文在唯一月夹；周记账仍按 ts 落月（规则在报告中体现）",
+          "product": "目录/编码",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-CH.mjs",
+            "case": "每 code 前 8 位日期==所在 YYYY年MM月 目录；同一会话原文唯一月夹；周记账仍按 ts 落月"
+          },
+          "status": "covered",
+          "note": "逐条用例：CH-24"
+        }
+      ],
+      "counts": {
+        "criteria": 24,
+        "covered": 24,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-REC",
+      "title": "v0.5 收据锚 · REC-01…REC-10（契约细判据）",
+      "note": "v0.5 逐判据验收脚本 `docs/验收-v0.5/验收-REC.mjs`；历史结果 `_results/REC.json`（本轮映射不重跑）。",
+      "source": "docs/验收-v0.5/_证据/REC-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "REC-01",
+          "requirement": "恰 10 键且顺序==§1.2；v=1；date==文件名；offsetMinutes=480；lastCode `^(\\d{8}-[0-9a-z]{12}-[A-Z]-\\d{8})?$`；计数非负整数；sha 64hex；prev ∈{\"\",64hex}；generatedAt `^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$` 无 Z",
+          "product": "收据 JSON",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "收据 JSON：恰 10 键且顺序==§1.2；v=1、date==文件名、offsetMinutes=480、lastCode 正则、计数非负整数、sha 64hex、prev∈{\"\",64hex}、generatedAt 无 Z"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-02",
+          "requirement": "ledgerSha256==sha256(文件字节)、ledgerBytes==size、ledgerRows==行数、lastCode==末行 code；全等",
+          "product": "收据+台账",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "收据 ledgerSha256==sha256(台账文件字节)、ledgerBytes==size、ledgerRows==行数、lastCode==末行 code（四者全等）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-03",
+          "requirement": "当日无台账：仍生成；rows=0、bytes=0、sha256==`e3b0c442…b855`、lastCode=\"\"；originalCount 实盘",
+          "product": "收据",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "当日无台账文件仍生成收据：ledgerRows=0、ledgerBytes=0、ledgerSha256==sha256(\"\")、lastCode=\"\"；originalCount 实盘"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-04",
+          "requirement": "D1 prev=\"\"；D2 prev==sha256(D1 完整字节)；复算相等",
+          "product": "两份收据",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "连续两日收据：D1 prev==\"\"；D2 prevReceiptSha256==sha256(D1 收据完整字节)（文件复算相等）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-05",
+          "requirement": "改台账→`LEDGER_CHANGED`；删台账→`LEDGER_MISSING`；删中间收据→`CHAIN_BREAK`；退出码=2；运行前后文件 sha 集合不变",
+          "product": "校验器输出",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "只读校验器：改台账→LEDGER_CHANGED、删台账→LEDGER_MISSING、删中间收据→CHAIN_BREAK；退出码==2；前后文件 sha256 集合不变"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-06",
+          "requirement": "锚空=关闭：不生成收据；校验器 `{\"enabled\":false}` 且 exit 0；不报错",
+          "product": "目录/校验器",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "receiptAnchorRoot=\"\"（默认关闭）：不生成收据、不写锚；校验器输出 {\"enabled\":false,\"breaks\":[]} 且 exit 0；不报错"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-07",
+          "requirement": "锚==root / root 子路径 / root 祖先 → `ANCHOR_INSIDE_ROOT`，不生成收据、root 内无收据文件；合法外置路径正常",
+          "product": "错误码/目录",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "锚==root / root 子路径 / root 祖先 → ANCHOR_INSIDE_ROOT（不生成收据、root 内无收据文件）；合法外置目录正常生成"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-08",
+          "requirement": "同日证据不变：不新增、旧收据 sha 不变、`idempotent`、exit 0；证据变化：`RECEIPT_CONFLICT`、不覆盖旧收据",
+          "product": "收据目录",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "同日证据不变：不新增文件、旧收据 sha256 不变、输出 decision:\"idempotent\"、exit 0；证据变化：RECEIPT_CONFLICT 且不覆盖旧收据"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-09",
+          "requirement": "默认锚=<桌面>/账本锚 绝对且外置；假 U 盘路径→`ANCHOR_UNWRITABLE` 且账务照常不崩；复制后 `--anchor=<临时目录>` 只读校验通过；插件运行期不访问 U 盘路径",
+          "product": "配置/run-report/校验器",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "默认锚=<桌面>/账本锚绝对外置；假 U 盘路径→ANCHOR_UNWRITABLE 且账务照常不崩；复制后 --anchor=临时目录 只读校验通过；插件不搬运 U 盘"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "REC-10",
+          "requirement": "`--json` 输出含 `{v,enabled,anchor,checks,breaks}`；退出码 0/2/3/4 语义正确；运行前后 root+anchor 文件 sha 集合不变",
+          "product": "校验器",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-REC.mjs",
+            "case": "校验器 --json：输出 {v,enabled,anchor,checks,breaks}；退出码 0=通过/关闭、2=差异、3=用法/配置错误、4=内部错误；前后 root+anchor sha256 集合不变"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：主题级+单元/主题级通过 + 单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        }
+      ],
+      "counts": {
+        "criteria": 10,
+        "covered": 10,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-BC",
+      "title": "v0.5 补记链 · BC-01…BC-15",
+      "note": "原 v0.5 记录为\"单元级（未逐条）\"；本轮按当前仓库映射：BACKFILL 标题里点名的判据记\"有主\"，其余记\"族级\"。",
+      "source": "docs/验收-v0.5/_证据/BC-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "BC-01",
+          "requirement": "补录行含 `late===true` 且 `lateReason∈{\"24h-scan\",\"3d-scan\"}`；普通行若带字段必须合法；旧行不得被改（前后前缀 sha 不变）",
+          "product": "台账行",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-02",
+          "requirement": "补录行 code 32 位且 == encoder 复算；不含 `-B`/`（遗漏）` 后缀；原文文件名 `^<code> 完整原文\\.md$`（无后缀）",
+          "product": "台账/文件",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-03",
+          "requirement": "24h 窗口：源 mtime ∈ [now-24h, now] 被扫；mtime=now-25h 不被 24h 扫；`scanRecentlyChanged` 返回集合与构造一致",
+          "product": "计划 JSON",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-04",
+          "requirement": "24h 补录：缺失轮集合 == 新增行集合（双向）；每行 lateReason=`24h-scan`；视图+附件按 D11 生成",
+          "product": "台账",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-04 24h 补录集合：源 3 轮 / 台账 2 轮 → 只计划第 3 轮；集合精确且可复算"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-05",
+          "requirement": "连续两轮：第二轮 `written=0/skipped`、台账行数不变、无重复 code；`late24h=0`",
+          "product": "台账/run-report",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-06",
+          "requirement": "注入写失败：台账不增、errors 记录、游标不推进；下轮重试成功且 late 标记保持",
+          "product": "`.errors.jsonl`/state",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-07",
+          "requirement": "72h 窗口：封板组封板后新行 ts∈[now-72h,now] → 补记册新增；ts 早于窗口 → 计划 `outOfWindow` 明列（不静默丢）",
+          "product": "计划/补记册",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-07 72h 窗口：窗口内进 rows、窗口外必须进 outOfWindow；边界为闭区间"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-08",
+          "requirement": "同 code+正册重复消费 → 补记册条目数不变（幂等键 code+正册文件）",
+          "product": "补记册",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "D13/BC-08 3d 幂等：补记册已有 code、overflow-seal code 不得再当"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-09",
+          "requirement": "仅当日台账有效 code ∉ seal journal 该 gid 的 `rows[].code ∪ supplement.codes[]` 且未在补记册 → 写补记；未封板组不写（走草稿重生成）",
+          "product": "计划/补记册",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-09 触发条件：封板后新行 = 有效 code − journal rows[].code；已封板组才产计划"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-10",
+          "requirement": "state 有封板但 journal 无该 gid 快照 → 不写补记；`E_SEAL_SNAPSHOT_MISSING` 告警；正册/补记册字节不变",
+          "product": "计划/run-report",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-10 快照缺失保守只报：journal 无 rows / state 有封板但 journal 无该 gid → E_SEAL_SNAPSHOT_MISSING，不写补记"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "BC-11",
+          "requirement": "消费前后已封板 xlsx 字节 sha256 不变；补记册只追加（旧前缀 sha 不变）",
+          "product": "文件 sha",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-12",
+          "requirement": "补记不重写既有原文/附件（字节不变）；缺失按四态标缺凭证、不重建",
+          "product": "原文/附件",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-13",
+          "requirement": "每条含 补记编号 `^补记-\\d{8}-\\d+$`（D16）、原编码、原时间（+08:00）、所属正册、被补记原因∈{`24h-scan`,`3d-scan`,`overflow-seal`}、`补记hash` 可复算（v1.3 7.6 口径）；编号连续",
+          "product": "补记册",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-14",
+          "requirement": "补录行出现在周记账草稿/待封板册：B 列四态正确（有 doc+文件→绑定；无 doc→补记）；十列结构不变",
+          "product": "周记账",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-backfill.mjs（22 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "BC-15",
+          "requirement": "`backfill` 段字段齐：`scanned24h,late24h,scanned3d,supplements,outOfWindow,skipped,errors`；数值与台账/补记册事实一致；全时间 +08:00 无 Z",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/自测-backfill.mjs",
+            "case": "BC-15 只读 + 可 JSON 序列化 + 同输入两次输出完全相等（24h + 3d + pending + report 字段）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        }
+      ],
+      "counts": {
+        "criteria": 15,
+        "covered": 7,
+        "family": 8,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-HL",
+      "title": "v0.5 自愈 · HL-01…HL-12",
+      "note": "原 v0.5 记录为\"单元级（未逐条）\"；本轮按当前仓库映射为族级（reconcile + index-integration 套件）。",
+      "source": "docs/验收-v0.5/_证据/HL-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "HL-01",
+          "requirement": "键集 `{dirMissing,weeklyDraftMissing,sealedBookMissing,voucherMissing,handoverSealedMissing}` 全为数组；命中数与删除数相等；未删对象不得误报",
+          "product": "scan JSON",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-02",
+          "requirement": "目录补建后目录存在；前后全部文件 sha256 集合相等（只多目录不多文件）",
+          "product": "目录/文件清单",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-03",
+          "requirement": "草稿缺：action=`weekly-draft-regenerate`；执行后 xlsx 存在、可 openpyxl 打开、说明页状态=草稿；再 scan 不报该组",
+          "product": "xlsx",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-04",
+          "requirement": "封板缺 xlsx：reported 含 `{gid,reason:\"sealed-missing\"}`；不重建（文件仍不存在）",
+          "product": "报告/文件",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-05",
+          "requirement": "凭证缺：只 reported（`voucher-missing`）；原文目录文件集合不变",
+          "product": "报告/文件",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-06",
+          "requirement": "交接表封板缺：reported；主表仍不存在、无新文件",
+          "product": "报告/文件",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-07",
+          "requirement": "action.type ∈ {`mkdir`,`weekly-draft-regenerate`}；出现其他类型判负；不可补对象字节 sha256 不变",
+          "product": "actions",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-08",
+          "requirement": "自愈后档案区文件集合不变（除白名单补建）；运行区只新增/更新 `.run-report-*.json`（允许 journal/pending 的既有追加）；无新增一级档案文件",
+          "product": "文件清单",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-09",
+          "requirement": "删 state → scan `stateLost:true`；报告含 `state-lost` 告警；交接表 generate reopened、周账保守不重写（与 CH-17/18 一致）",
+          "product": "scan/报告",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-10",
+          "requirement": "文件 `ledger/.run-report-YYYYMMDD.json` 存在且 parse；`date==文件名`；generatedAt 格式+08:00；`selfheal` 段数组与 `counts` 长度自洽（repaired/reported/errors）；无 Z",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-11",
+          "requirement": "同日两次运行：只有 1 个 run-report（原子覆盖），内容为第二次，可解析无半截，mtime 更新",
+          "product": "报告文件",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "HL-12",
+          "requirement": "repair 幂等：同一 scan 连续两次 → 第二次 actions 为空、`counts.repaired==0`；无重复 mkdir/regenerate",
+          "product": "actions",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        }
+      ],
+      "counts": {
+        "criteria": 12,
+        "covered": 0,
+        "family": 12,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-RC",
+      "title": "v0.5 对账 · RC-01…RC-12",
+      "note": "原 v0.5 记录为\"单元级（未逐条）\"；本轮按当前仓库映射为族级（reconcile 套件 + RC-12 逐条）。",
+      "source": "docs/验收-v0.5/_证据/RC-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "RC-01",
+          "requirement": "键集 == `{ledgerRows,codeUnique,sidTurnUnique,originalMissing,originalOrphan,weeklyGroupsExpected,weeklyGroupsMissing,lostGaps,receiptBreaks,ok}` **＋登记扩展** `sealChain,receiptBreakCount`（R-03）；`sealChain` **必含** `{ok:<bool>,lines:<int>,breaks:[{line,reason,expected,actual}]}`（**允许超集**：events/chainBroken/badLines/readError 等附加键；与 `verifySealChain()` 同源，同名字段必须相等；`lines` = 可解析封板事件行数，坏行进 breaks/badLines 不计数；空册=`{ok:true,lines:0,breaks:[]}`）；`receiptBreakCount == receiptBreaks.length`；`ok == (originalMissing.length==0 && originalOrphan.length==0 && weeklyGroupsMissing.length==0 && lostGaps.count==0 && receiptBreakCount==0 && sealChain.ok==true)`（`okStrict` 等附加键允许，不得替代 `ok`）；类型正确、JSON 可序列化",
+          "product": "返回对象",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-02",
+          "requirement": "ledgerRows==台账文件行数总和；codeUnique==唯一 code 数；sidTurnUnique==唯一 `(sid,turn)` 数；复算一致",
+          "product": "返回对象",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-03",
+          "requirement": "台账有效行 doc/附件缺失 → **每 code 1 条** `{code,doc,part}`；`part ∈ {\"view\",\"attachment\",\"both\"}`（R-01：视图+附件都缺→`both`；仅一缺→对应值；v0.4 旧行无 attachment 字段→只可能 `\"view\"`）；数量==构造缺失数；ok=false",
+          "product": "originalMissing",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-04",
+          "requirement": "第三级存在视图/附件但台账无对应 code → 列出 `{file,code}`；不重复",
+          "product": "originalOrphan",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-05",
+          "requirement": "用 `week.js: groupRecords` 复算（仅有效行——v0.5 无 version，按台账全量）→ `{gid,file}` 集合与实现独立复算相等",
+          "product": "weeklyGroupsExpected",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-06",
+          "requirement": "期望组 xlsx 不存在 → 列出；数量关系；合法清理原文不得导致误报",
+          "product": "weeklyGroupsMissing",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-07",
+          "requirement": "`{count,recordsTail[]}`；count==`.lost.jsonl` 行数；tail 为末 ≤5 条；不得忽略坏帧错误清单",
+          "product": "lostGaps",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-08",
+          "requirement": "锚未配置→`[]` 且 `receiptBreakCount==0`；配置存在→与 REC-05 校验器断链集合（date 列表）相等，且 `receiptBreakCount == receiptBreaks.length`",
+          "product": "receiptBreaks",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-09",
+          "requirement": "`reconcile.counts={ledgerRows,originalCount,weeklyRows}`；weeklyRows==各周账机器行数之和（按 120/溢出规则复算）；originalCount==第三级视图文件数（REC-03 同口径）；三数可复算",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-10",
+          "requirement": "reconcile 前后整棵 root 文件名单/大小/sha256 完全不变（无 mkdir/write；运行报告由调用方另写）",
+          "product": "只读证明",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-11",
+          "requirement": "删一份原文/改一行台账/删一份周账 → 对应数组含具体 code/file；输出集合与构造差异集合**双向相等**；ok=false",
+          "product": "差异定位",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变"
+          },
+          "status": "family",
+          "note": "族级：docs/自测-reconcile.mjs + docs/自测-index-integration.mjs（31 例）；本条无逐条断言（原 v0.5 记录：单元级/仅单元覆盖（未逐条））"
+        },
+        {
+          "id": "RC-12",
+          "requirement": "集成的 `reconcile` 段与直接调用返回逐项相等（数组排序后比较）；连续两次输出除时间字段外 JSON 相等",
+          "product": "run-report",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "AC-V05-RC-12：run-report 的 reconcile 段与直接调用 reconcile() 逐项相等；同日二次=1 份且为第二次"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：单元级/仅单元覆盖（未逐条）；本轮按实际用例升级为有主）"
+        }
+      ],
+      "counts": {
+        "criteria": 12,
+        "covered": 1,
+        "family": 11,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-CL",
+      "title": "v0.5 清册 v1.3 · CL-01…CL-32",
+      "note": "原 v0.5 发布记录仍标\"未覆盖（清册全量重写未做）\"；当前仓库已有 `docs/自测-清册v13.mjs` 覆盖 CL-01…32 逐条。",
+      "source": "docs/验收-v0.5/_证据/CL-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "CL-01",
+          "requirement": "文件名 `^RPT-\\d{8}-\\d+\\.md$`（D16）；`报告编号`==文件名去 `.md`",
+          "product": "RPT 文件",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-01 RPT 文件名匹配 ^RPT-\\\\d{8}-\\\\d+\\\\.md$，报告编号==文件名去 .md（D16 不回绕）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-02",
+          "requirement": "UTF-8 无 BOM、LF、恰一个结尾换行（输入 CRLF 归一层）",
+          "product": "文件编码",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-02 报告 UTF-8 无 BOM、LF、恰一个结尾换行（CRLF 输入归一层）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-03",
+          "requirement": "恰 17 键、顺序=报告编号…复核时间；数值带引号",
+          "product": "YAML",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-03 YAML 恰 17 键、顺序固定（报告编号…复核时间）、数值带引号"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-04",
+          "requirement": "清理对象=完整原文；报告日期 `^\\d{4}-\\d{2}-\\d{2}$`；6 计数非负整数",
+          "product": "YAML 值",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-04 YAML 字段值：清理对象=完整原文、日期 YYYY-MM-DD、三类固定串、6 计数非负整数"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-05",
+          "requirement": "恰 7 行与 YAML 一致（S7）",
+          "product": "抬头表",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-05 抬头表恰 7 行且与 YAML 逐字段一致（S7）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-06",
+          "requirement": "段落逐字 == 模板（口径 11）",
+          "product": "声明",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-06 声明段落逐字 == 模板原文（口径 11）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-07",
+          "requirement": "S1 `planned==succeeded+failed+skipped`；S2 `remaining==before_total-succeeded`；三处数字一致",
+          "product": "统计",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-07 统计自洽：S1 计划=成功+失败+跳过；S2 剩余=总数-成功；句/表/YAML 一致"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-08",
+          "requirement": "S3：≤50 行数==planned；>50 正文 50+CSV 行==planned",
+          "product": "明细",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-08 明细行数：≤50 正文==planned；>50 正文 50 + CSV 数据行==planned（S3）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-09",
+          "requirement": "行 `^\\ | \\d+ \\ | code \\ | 时间 \\ | (已删除\\ | 未删除\\ | 跳过) \\ | …$`",
+          "product": "明细行",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-09 明细行结构：^\\\\| \\\\d+ \\\\| 编码 \\\\| YYYY-MM-DD HH:MM:SS \\\\| (已删除|未删除|跳过) \\\\| … \\\\|$"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-10",
+          "requirement": "产生时间非降序；不按编码排（口径 5）",
+          "product": "明细排序",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-10 明细按产生时间升序（同刻按编码），不按编码排序（口径 5）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-11",
+          "requirement": "三值枚举；跳过备注非空（口径 3）",
+          "product": "结论",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-11 结论三值枚举（已删除/未删除/跳过）；跳过备注非空（口径 3）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-12",
+          "requirement": "S4：行数==failed；编码集合==明细未删除集合（双向）",
+          "product": "失败项",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-12 失败项：行数==failed、编码集合==明细未删除集合（双向，S4）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-13",
+          "requirement": "文件名 `{report_id}-明细.csv`；>50 时存在、UTF-8 BOM、5 列、数据行==planned、`appendix_rows` 相符",
+          "product": "附录 CSV",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-13 附录 CSV：{id}-明细.csv、BOM、5 列、数据行==planned、引号转义、第 51+ 条可读回"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-14",
+          "requirement": "`^> 复核：\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}（UTC\\+08:00）按台账 jsonl 重扫，剩余 \\d+ 条，与上表一致。$`；剩余==remaining",
+          "product": "复核行",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-14 复核行逐字格式 + 剩余数==remaining"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-15",
+          "requirement": "S5：无 `<!--` 注记、模板生成部分无 `{{`/`}}`、无口径/自检注释",
+          "product": "无模板残留",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-15 无模板残留（<!-- / {{ }} / 口径注释），用户内容合法 {{ }} 不误报"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-16",
+          "requirement": "S6：时间 `\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}`；日期 `YYYY-MM-DD`；无 Z",
+          "product": "时间",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-16 时间/日期格式：时间 YYYY-MM-DD HH:MM:SS、日期 YYYY-MM-DD、全文无 Z"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-17",
+          "requirement": "S8：编码 `^\\d{8}-[0-9a-z]{12}-[A-Z]-\\d{8}$`；与 journal plan 原文文件名一致",
+          "product": "编码",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-17 编码格式 32 位；与 journal 记录/原文文件名逐个一致（S8）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-18",
+          "requirement": "`^\\*\\*留档：\\*\\* 时间（UTC\\+08:00）· RPT-… · 生成器 \\S+$`",
+          "product": "留档行",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-18 留档行：**留档：** 时间（UTC+08:00）· RPT-… · 生成器 \\\\S+"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-19",
+          "requirement": "构造违规：不写盘、报 `E_CLEANUP_S<n>`、journal 保留",
+          "product": "自检执行",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-19 S1–S8 逐条拒写盘并报 E_CLEANUP_S<n>；journal 保留现场（S6 真实注入）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-20",
+          "requirement": "删 state 后接续扫目录；未完成 journal 允许复用未占用号；已出终稿号不得复用",
+          "product": "编号",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-20 编号扫目录（删 state 接续）；未完成 journal 不破坏；已出终稿号不复用"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-21",
+          "requirement": "同日递增不复用；`\\d+`（D16）",
+          "product": "编号",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-21 同日递增不复用；序号 \\\\d+（99→100→101→102→103）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-22",
+          "requirement": "`^RPT-DRYRUN-\\d{8}-\\d+\\.md$`；正式扫描不匹配；不占正式号",
+          "product": "dry-run 文件名",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-22 dry-run 文件名独立前缀；正式扫描不匹配、不占正式号（D16 \\\\d+）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-23",
+          "requirement": "不删文件；结论全 `跳过`+备注`试运行`；正式号不前进；`上一轮报告==\"（试运行）\"`",
+          "product": "dry-run 行为",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-23 dry-run 行为：零删除、全 跳过+试运行、正式号不前进、上一轮报告=（试运行）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-24",
+          "requirement": "`<root>/ledger/.cleanup-<id>.journal` 存在；不是 `.jsonl`；行数==2+planned",
+          "product": "journal 路径",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-24 journal 路径/后缀/行数：ledger/.cleanup-<id>.journal，行数==2+planned"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-25",
+          "requirement": "首 `plan`、中 N×`result`、末 `finalize`；每行 JSON；at 格式；终稿后保留",
+          "product": "journal 内容",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-25 journal 内容：plan + N×result + finalize，每行 JSON、at 格式、终稿后保留"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-26",
+          "requirement": "plan 后/删除中 kill：正式报告不存在或 S1–S8 全过；无\"待删/待处理\"中间报告",
+          "product": "故障注入",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-26 删除中途 kill：无正式报告/无"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-27",
+          "requirement": "目标编号已存在→`E_CLEANUP_ID_CONFLICT` 不覆盖（字节不变）",
+          "product": "排他写",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-27 排他写：目标编号已存在 → E_CLEANUP_ID_CONFLICT，不覆盖（字节不变）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-28",
+          "requirement": "只删第三级；台账/周账/交接表/清册字节 sha256 集合不变；删除数==成功数",
+          "product": "删除范围",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-28 删除范围：只删第 3 级；台账/周账/交接表/既有清册字节不变；删除数==成功数"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-29",
+          "requirement": "`readCleanedCodesCompat()` 解析 v1.3 明细，`编码→RPT号`；只认结论=已删除",
+          "product": "新旧格式解析（新）",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-29 新格式解析：v1.3 明细→编码/RPT 号，只认结论=已删除（含附录 CSV）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-30",
+          "requirement": "v0.4 旧格式样本同解析成功（必须）",
+          "product": "旧格式兼容",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-30 旧格式（v0.4）兼容：结果列=已删除 同样解析成功（必须）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-31",
+          "requirement": "统计句/统计表/YAML 逐字段相等（口径 10）",
+          "product": "统计三处一致",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-31 统计三处一致：统计句/统计表/YAML 逐字段相等（口径 10）"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        },
+        {
+          "id": "CL-32",
+          "requirement": "全文无 `\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z`",
+          "product": "无 Z",
+          "guard": {
+            "file": "docs/自测-清册v13.mjs",
+            "case": "CL-32 无 Z：全文（含 CSV）不含 Z 结尾时间"
+          },
+          "status": "covered",
+          "note": "当前仓库用例标题点名本条（原 v0.5 记录：未覆盖/未覆盖；本轮按实际用例升级为有主）"
+        }
+      ],
+      "counts": {
+        "criteria": 32,
+        "covered": 32,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-REG",
+      "title": "v0.5 REG v1.3 回归 · REG-GL/HA/HO/OR/WK",
+      "note": "原 v0.5 记录为\"未覆盖（v1.3 冻结判据未按族复跑）\"；当前仓库 `docs/验收-v1.3/` 套件仍逐条断言 142 条 v1.3 判据（最近一次全绿记录属 v1.3 期，本表按族级计入）。",
+      "source": "docs/验收-v0.5/_证据/REG-*.json（契约 v0.5-验收清单）",
+      "criteria": [
+        {
+          "id": "REG-GL",
+          "requirement": "v1.3 `GL-01…GL-18` 全绿（18/18）；GL-18 铁律继续（产物不得含矛盾文字）",
+          "product": "全局",
+          "guard": {
+            "file": "docs/验收-v1.3/run-acceptance.mjs",
+            "case": "GL-01…WK-46（142 条 v1.3 判据断言）"
+          },
+          "status": "family",
+          "note": "族级：docs/验收-v1.3/run-acceptance.mjs + docs/验收-v1.3/checks-artifacts.mjs（142 条 v1.3 族内判据）；本条无逐条断言（原 v0.5 记录：未覆盖/未覆盖）"
+        },
+        {
+          "id": "REG-HA",
+          "requirement": "v1.3 `HA-01…HA-20` 全绿（20/20）",
+          "product": "附表",
+          "guard": {
+            "file": "docs/验收-v1.3/run-acceptance.mjs",
+            "case": "GL-01…WK-46（142 条 v1.3 判据断言）"
+          },
+          "status": "family",
+          "note": "族级：docs/验收-v1.3/run-acceptance.mjs + docs/验收-v1.3/checks-artifacts.mjs（142 条 v1.3 族内判据）；本条无逐条断言（原 v0.5 记录：未覆盖/未覆盖）"
+        },
+        {
+          "id": "REG-HO",
+          "requirement": "v1.3 `HO-01…HO-31` 全绿（31/31）；D17 覆盖：无（字段/声明/封板语义不变）",
+          "product": "交接表主表",
+          "guard": {
+            "file": "docs/验收-v1.3/run-acceptance.mjs",
+            "case": "GL-01…WK-46（142 条 v1.3 判据断言）"
+          },
+          "status": "family",
+          "note": "族级：docs/验收-v1.3/run-acceptance.mjs + docs/验收-v1.3/checks-artifacts.mjs（142 条 v1.3 族内判据）；本条无逐条断言（原 v0.5 记录：未覆盖/未覆盖）"
+        },
+        {
+          "id": "REG-OR",
+          "requirement": "v1.3 `OR-01…OR-27` 全绿（27/27）；D17 覆盖：附件/双哈希为新增（OR 判据不变，`docSha256` 兼容）",
+          "product": "完整原文",
+          "guard": {
+            "file": "docs/验收-v1.3/run-acceptance.mjs",
+            "case": "GL-01…WK-46（142 条 v1.3 判据断言）"
+          },
+          "status": "family",
+          "note": "族级：docs/验收-v1.3/run-acceptance.mjs + docs/验收-v1.3/checks-artifacts.mjs（142 条 v1.3 族内判据）；本条无逐条断言（原 v0.5 记录：未覆盖/未覆盖）"
+        },
+        {
+          "id": "REG-WK",
+          "requirement": "v1.3 `WK-01…WK-46` 全绿（46/46）；D17 覆盖：封板 canonical 按 D15 v8（WK-37 按其复算）",
+          "product": "周记账",
+          "guard": {
+            "file": "docs/验收-v1.3/run-acceptance.mjs",
+            "case": "GL-01…WK-46（142 条 v1.3 判据断言）"
+          },
+          "status": "family",
+          "note": "族级：docs/验收-v1.3/run-acceptance.mjs + docs/验收-v1.3/checks-artifacts.mjs（142 条 v1.3 族内判据）；本条无逐条断言（原 v0.5 记录：未覆盖/未覆盖）"
+        }
+      ],
+      "counts": {
+        "criteria": 5,
+        "covered": 0,
+        "family": 5,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-P0P1",
+      "title": "v0.5 主题级 P0 七条 + P1 十二条（_criteria.mjs）",
+      "note": "v0.5 发布页的\"140 条\"是契约细判据（上节）；这里是 26 条主题级登记里的 P0/P1 两组。`_criteria.mjs` 里的 REC-1…7 与细判据 REC-01…10 重复，本表不重复计数（由 `_results/REC.json` 与 `docs/自测-receipt.mjs` 承载）。",
+      "source": "docs/验收-v0.5/_criteria.mjs（P0/P1 组）",
+      "criteria": [
+        {
+          "id": "P0-1",
+          "requirement": "源文件缩小/同大小重写 → 新事件必须被读到，游标不沿用旧边界",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "源文件缩小后，新 Turn 必须入账（不得走 unchanged 快路径）"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P0-2",
+          "requirement": "未闭合 Turn 补 turn/end 后恰好一个闭合版本；旧 partial 必须标\"被取代\"",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "三轮语义：run2 只留 pending/partial → 补 turn/end → 恰好一个闭合版本"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P0-3",
+          "requirement": "首跑/补账事件收集有界（批数/事件数/字节数）+ 可取消 + 杀进程可续",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "36MB/1000 轮首跑：内存上限 ≤600MB（子进程 heap 限 320MB）"
+          },
+          "status": "covered",
+          "note": "主题级；同族细用例 P0-3-mem / P0-3-cancel / P0-3-resume"
+        },
+        {
+          "id": "P0-4",
+          "requirement": "120/121/122 封板哈希互不相同；溢出编码有去向；封板另存不可变 sealRows 快照",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "120/121/122 三组**独立 root** 封板：都真写、哈希互不相同、行数/溢出/闭合对得上"
+          },
+          "status": "covered",
+          "note": "主题级；同族细用例 P0-4a / P0-4b / P0-4c"
+        },
+        {
+          "id": "P0-5",
+          "requirement": "原文工具参数不得静默截断；展示层可截断但必须有标记+原始长度+附件指针",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "2000/2001/4517 及多字节参数：完整可恢复，或显式截断+原始长度+附件指针+哈希"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P0-6",
+          "requirement": "物理清理默认关闭，只允许只读统计 + dry-run；旧清理工具封锁",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "未显式开启清理时一个文件都不能少；旧 CLI 未加 --yes 不得删除"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P0-7",
+          "requirement": "凭证不可覆盖（已具备）+ 完整文件哈希 + 失败回退游标且留痕",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "同编码不同正文必须拒绝（合法 markdown 夹具，勘误②）"
+          },
+          "status": "covered",
+          "note": "主题级；同族细用例 P0-7① / P0-7② / P0-7③"
+        },
+        {
+          "id": "P1-1",
+          "requirement": "台账记完整文件哈希；\"绑定\"须复核实际文件，异常不得显示 bound",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "台账记完整文件哈希；原文被改动后“绑定”必须复核为异常"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-10",
+          "requirement": "\"已清理\"判定按结论列，不看任意单元格",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "清册解析只认“结论列=已删除”；备注里写已删除不得误判"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-11",
+          "requirement": "周记账列结构对齐契约（十列；四态固定到原文列；RPT 号不写备注）",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "周记账：9 sheet / 十列 / 四态在 B 列 / RPT 号不写备注"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-12",
+          "requirement": "原文目录按编码日期段取月（不是轮发生月）",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "跨月会话的原文目录按“编码日期段（会话开始日）”取月，不按轮发生月"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-2",
+          "requirement": "append 前补尾换行、批次末 fsync、坏行移 quarantine 并上报",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "append 前补尾换行；坏行移 quarantine 并上报（不得静默）"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-3",
+          "requirement": "initialized 必须看 deferred，首跑被截断不得被热窗口永久挡掉",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "首跑被预算截断（deferred>0）时 initialized 必须为 false"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-4",
+          "requirement": "停机超窗口 → cutoff = min(hotWindow, lastRunAt−2×interval)，不得永久漏记",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "停机超热窗口后，期间变动过的会话不得被永久漏记"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-5",
+          "requirement": "failed>0 不推进游标，落永久错误清单",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "坏帧（failed>0）不得推进游标，必须落永久错误清单"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-6",
+          "requirement": "补记/清册序号统一 \\d+，99/100/101 不重复不忽略，验证器不得忽略未知块",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "P0验收/P0回归-v2.mjs",
+            "case": "补记册 01…101 连续后追加 → 应得 102；验证器不得忽略未知块"
+          },
+          "status": "covered",
+          "note": "由 P0 回归套件承载（`P0验收/P0回归-v2.mjs` 的 P1-6 用例）"
+        },
+        {
+          "id": "P1-7",
+          "requirement": "交接表接线进扫描循环（先 adopt 后 generate），失败只记 errors",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "交接表在扫描循环内生成（先 adopt 后 generate），失败只记 errors"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-8",
+          "requirement": "读取失败必须结构化报错；空数据只能由成功读取证明",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "台账不可读时不得静默返回空；必须 ok=false + readErrors"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        },
+        {
+          "id": "P1-9",
+          "requirement": "运行缓存与封板证据分离（追加式 seal journal）；state 丢失只影响性能",
+          "product": "v0.5 契约主题级",
+          "guard": {
+            "file": "docs/验收-v0.5/验收-P1.mjs",
+            "case": "封板证据在追加式 journal（不靠 state）；删 state 后证据仍在、封板仍生效"
+          },
+          "status": "covered",
+          "note": "主题级用例（该用例 criteria 点名本条）"
+        }
+      ],
+      "counts": {
+        "criteria": 19,
+        "covered": 19,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-R",
+      "title": "v0.5 契约 R 系列（R-01 / R-02）",
+      "note": "v0.5 记录里还引用过 R-07/R-08（交接表 journal 字段），但仓库内没有以 R-07/R-08 命名的用例，也没有可检索的判据正文；按\"文档提到但无守护用例\"登记在 7.4 供 Lead 决定。",
+      "source": "docs/验收-v0.5/验收清单（R 系列）在仓库内的真实用例标题",
+      "criteria": [
+        {
+          "id": "R-01",
+          "requirement": "originalMissing[].part 三态：同 code 只 1 条；both/attachment 正确；v0.4 旧行只会 view",
+          "product": "契约 R-01（对账差异定位）",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "R-01：originalMissing[].part 三态 —— 同 code 只 1 条；both/attachment 正确，v0.4 旧行只会 view"
+          },
+          "status": "covered",
+          "note": "契约 R-01：对账差异三态在 `docs/自测-reconcile.mjs` 有独立用例。"
+        },
+        {
+          "id": "R-02",
+          "requirement": ".errors.jsonl 契约级节流：同一 (kind,source,offset) 每个窗口最多 1 行，真实次数不丢",
+          "product": "契约 R-02（错误清单节流）",
+          "guard": {
+            "file": "docs/自测-ledger.mjs",
+            "case": "R-02：.errors.jsonl 契约级节流 —— 同一 (kind,source,offset) 每窗口最多 1 行，次数不丢"
+          },
+          "status": "covered",
+          "note": "契约 R-02：错误清单节流在 `docs/自测-ledger.mjs` 有独立用例（CH-10 另引用）。"
+        }
+      ],
+      "counts": {
+        "criteria": 2,
+        "covered": 2,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V05-P1-13",
+      "title": "v0.5 审计追加 · P1-13 封板交叉核验",
+      "note": "P1-13 是对账审计 M-03 的追加项（封板证据 vs 产物实际内容逐格比对），不在 `_criteria.mjs` 的 P1 十二条内；交付文档（05/06）与验收记录把它当判据列示，本表单列并计入。",
+      "source": "docs/自测-封板交叉核验.mjs / docs/交付-v0.5/06-正式版闸门.md",
+      "criteria": [
+        {
+          "id": "P1-13",
+          "requirement": "封板证据 vs 产物实际内容逐格比对：干净册 PASS；改一格机器列必须报 mismatch 并定位；删行必须报 missing",
+          "product": "封板交叉核验（只读）",
+          "guard": {
+            "file": "docs/自测-封板交叉核验.mjs",
+            "case": "P1-13：干净封板册交叉核验通过；改一格机器列必须报 mismatch 并定位；删行必须报 missing"
+          },
+          "status": "covered",
+          "note": "独立用例（node:test）"
+        }
+      ],
+      "counts": {
+        "criteria": 1,
+        "covered": 1,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V06-A",
+      "title": "V0.6 只读面验收 · A1–A8",
+      "note": "契约 `docs/验收-v0.6/接口契约.md` §4 现定义 A1–A8（v0.6.4 已把 A8 补进 §4 表、A7 改 22 键、A2/A3 改读日志两种位置口径）；本表按脚本实际 check 计入。",
+      "source": "docs/验收-v0.6/接口契约.md §4 + docs/验收-v0.6/验收-只读面.mjs",
+      "criteria": [
+        {
+          "id": "A1",
+          "requirement": "7 条 exact 路由 + 5 个工具在夹具上全部返回 ok:true",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "7 条 exact 路由注册成功，且 fake req/res 下全部 ok:true；5 个工具全部 ok:true"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A2",
+          "requirement": "每类产物（台账/原文 md+json/周记账/交接表/封板 journal/state/run-report）调用前后 sha256 集合逐字节不变；唯一允许变化：读日志（旧 `.reads.jsonl` 与 `.reads/` 分片两种位置合计）",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "调用前后除读日志（旧 .reads.jsonl + 新 .reads/ 分片）外全库 sha256 集合逐字节不变"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A3",
+          "requirement": "每次 GET/工具调用后读日志恰好 +1 行（旧单文件 + `.reads/` 分片合计；新写入必须落 `.reads/`）、字段齐（at/tool/args/hitCodes/returnedRows/bytes/ms/ok）；HEAD 不计",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "每次 GET / 工具调用后读日志恰好 +1 行且字段齐全；HEAD 不计"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A4",
+          "requirement": "读日志不被当成台账：readAll 行数不变、badLines 不变",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "读日志不被当成台账：readAll 行数不变、badLines 不变"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A5",
+          "requirement": "错误路径：坏月份 → bad-param；不存在编码 → not-found；空库 → ok:true、计数 0、health.ok===null",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "错误路径：坏月份 bad-param、不存在编码 not-found；空库 ok:true + 计数 0 + health.ok=null"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A6",
+          "requirement": "5 个工具 presentResult 符合 ToolResultView 联合形状（card 合法、必填字段齐）",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "5 个工具的 presentResult 符合 ToolResultView 联合形状（含 read 卡片行号）"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A7",
+          "requirement": "summary 顶层键与 health **22 键**一个不少（v0.6.1 面板契约扩键；契约 §4 已同步）",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "summary 顶层键与 health 22 键一个不少；counts/capabilities 子键齐全"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        },
+        {
+          "id": "A8",
+          "requirement": "HTTP resource 同源守卫：有明确跨源证据 → 403 forbidden-origin；无来源头（WebView 兼容）→ 200；被拒请求不写读日志、不碰账",
+          "product": "V0.6 只读面验收（契约 §4 A1–A8）",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "HTTP resource 同源守卫：明确跨源证据 → 403 forbidden-origin；无来源头（WebView 兼容）→ 200"
+          },
+          "status": "covered",
+          "note": "验收脚本 check() 用例；历史结果 `docs/验收-v0.6/_results/只读面.json`"
+        }
+      ],
+      "counts": {
+        "criteria": 8,
+        "covered": 8,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V061-GATE",
+      "title": "V0.6.1 gate 三级 · G-01…G-07",
+      "note": "`docs/自测-gate.mjs`（6 个 node:test 用例，其中 G-06/G-07 合并）；历史结果见 12-v0.6.1 验收记录。",
+      "source": "docs/自测-gate.mjs",
+      "criteria": [
+        {
+          "id": "G-01",
+          "requirement": "干净账库 → ok（无保留）",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-01 干净账库 → ok（无保留）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "G-02",
+          "requirement": "已知可枚举缺口 → degraded（有保留），reason/knownGaps 逐项可查",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-02 已知可枚举缺口 → degraded（有保留），reason 逐项"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "G-03",
+          "requirement": "不可信任清单（台账读不全/唯一性/legacy 链断）→ unknown（无法表示意见）",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-03 不可信任清单 → unknown（无法表示意见）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "G-04",
+          "requirement": "防御分支：ok=false 但列不出缺口 → unknown（不许当\"没问题\"）",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-04 防御分支：ok=false 但列不出缺口 → unknown"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "G-05",
+          "requirement": "legacy 已标记 → degraded；未标记/指纹不符进 knownGaps",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-05 legacy 已标记 → degraded；未标记/指纹不符进 knownGaps"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "G-06",
+          "requirement": "入口落盘一致：run-report.gate（conclusion + knownGaps）与 classifyGate(reconcile()) 逐项相等",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-06/G-07 入口 gate 落盘一致 + attachment.path 相对路径"
+          },
+          "status": "covered",
+          "note": "G-06/G-07 合并在同一 node:test 用例（入口落盘 + attachment.path 相对路径）"
+        },
+        {
+          "id": "G-07",
+          "requirement": "台账行 attachment.path 是根相对路径（不是盘符绝对路径、不相对 cwd），且文件在 root 下真实存在",
+          "product": "V0.6.1 gate 三级（D18-C）",
+          "guard": {
+            "file": "docs/自测-gate.mjs",
+            "case": "G-06/G-07 入口 gate 落盘一致 + attachment.path 相对路径"
+          },
+          "status": "covered",
+          "note": "G-06/G-07 合并在同一 node:test 用例（入口落盘 + attachment.path 相对路径）"
+        }
+      ],
+      "counts": {
+        "criteria": 7,
+        "covered": 7,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V060-D18",
+      "title": "V0.6.0 D18 · legacy 基线 LM-01…05 + W5/W5b/W5c",
+      "note": "`docs/自测-legacy基线.mjs`（5 例）+ `docs/自测-reconcile.mjs`（W5 系 3 例）。",
+      "source": "docs/自测-legacy基线.mjs / docs/自测-reconcile.mjs",
+      "criteria": [
+        {
+          "id": "LM-01",
+          "requirement": "无基线文件 = 未标记（不是错误）",
+          "product": "D18 legacy 基线（LM）",
+          "guard": {
+            "file": "docs/自测-legacy基线.mjs",
+            "case": "LM-01：无基线文件 = 未标记（不是错误）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LM-02",
+          "requirement": "追加后链完整；同指纹重复追加 = 幂等跳过",
+          "product": "D18 legacy 基线（LM）",
+          "guard": {
+            "file": "docs/自测-legacy基线.mjs",
+            "case": "LM-02：追加后链完整；同指纹重复追加 = 幂等跳过"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LM-03",
+          "requirement": "基线行被篡改 → chainOk=false",
+          "product": "D18 legacy 基线（LM）",
+          "guard": {
+            "file": "docs/自测-legacy基线.mjs",
+            "case": "LM-03：基线行被篡改 → chainOk=false"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LM-04",
+          "requirement": "标过的行被改动 → 再标记报 conflict，不覆盖旧标记",
+          "product": "D18 legacy 基线（LM）",
+          "guard": {
+            "file": "docs/自测-legacy基线.mjs",
+            "case": "LM-04：标过的行被改动 → 再标记报 conflict，不覆盖旧标记"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LM-05",
+          "requirement": "collectLegacyCandidates 只收缺证据行；reconcile 对未标记行按缺凭证计",
+          "product": "D18 legacy 基线（LM）",
+          "guard": {
+            "file": "docs/自测-legacy基线.mjs",
+            "case": "LM-05：collectLegacyCandidates 只收缺证据行；reconcile 对未标记行按缺凭证计"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "W5",
+          "requirement": "无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok",
+          "product": "D18 legacy 口径（W5 反伪装）",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "W5b",
+          "requirement": "反伪装：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计",
+          "product": "D18 legacy 口径（W5 反伪装）",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计"
+          },
+          "status": "covered",
+          "note": "反伪装：删字段伪装 legacy 必须仍按缺凭证计"
+        },
+        {
+          "id": "W5c",
+          "requirement": "基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched",
+          "product": "D18 legacy 口径（W5 反伪装）",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched"
+          },
+          "status": "covered",
+          "note": ""
+        }
+      ],
+      "counts": {
+        "criteria": 8,
+        "covered": 8,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V062-M",
+      "title": "V0.6.2 布局迁移判据 · M-01…M-07",
+      "note": "《v0.6.2-迁移规格-v1》§四 M-01…M-07；直接守护用例 `docs/自测-v062.mjs`。",
+      "source": "docs/自测-v062.mjs",
+      "criteria": [
+        {
+          "id": "M-01",
+          "requirement": "dry-run 零写盘：整库文件集合与逐文件 sha256 全不变",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-01 dry-run 零写盘：整库文件集合与逐文件 sha256 全不变"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-02",
+          "requirement": "--write 只 rename：迁移前后逐文件 sha256 不变、内容哈希集合不增不减",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-02 --write 只 rename：迁移前后逐文件 sha256 不变、内容哈希集合不增不减"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-03",
+          "requirement": "老布局读兼容：不迁移也能用 layout.resolveExisting 读到三类单据",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-03 老布局读兼容：不迁移也能用 layout.resolveExisting 读到三类单据"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-04",
+          "requirement": "--rollback 后目录树与迁移前逐文件 sha256 一致（journal 改 .done）",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-04 --rollback 后目录树与迁移前逐文件 sha256 一致（journal 改 .done）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-05",
+          "requirement": "冲突/未知：不搬、退出码 2，dry-run 仍零写盘",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-05 冲突/未知：不搬、退出码 2，dry-run 仍零写盘"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-06",
+          "requirement": ".ledger-root 越界保护：E_LEDGER_ROOT_PROTECTED + 零动作",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-06 .ledger-root 越界保护：E_LEDGER_ROOT_PROTECTED + 零动作"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "M-07",
+          "requirement": "迁移后《账簿总目录.md》数字与目录实况一致",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "M-07 迁移后《账簿总目录.md》数字与目录实况一致"
+          },
+          "status": "covered",
+          "note": ""
+        }
+      ],
+      "counts": {
+        "criteria": 7,
+        "covered": 7,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V062-T",
+      "title": "V0.6.2-B 底座自测 · T-01…T-04",
+      "note": "B 项返工时补的底座自测（根标记/总目录/迁移幂等/回退自动推根）；不在规格 M 列表内，单列便于追踪。",
+      "source": "docs/自测-v062.mjs",
+      "criteria": [
+        {
+          "id": "T-01",
+          "requirement": "根标记：默认落点 / 幂等补写 / 内容合规 / 坏标记不覆盖",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "T-01 根标记：默认落点 / 幂等补写 / 内容合规 / 坏标记不覆盖"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "T-02",
+          "requirement": "总目录采集只读；无运行报告时 gate=unknown（不伪装成 ok）",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "T-02 总目录采集只读；无运行报告时 gate=unknown（不伪装成 ok）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "T-03",
+          "requirement": "--write 幂等：再跑一次 0 搬运、退出 0、不重复写 journal",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "T-03 --write 幂等：再跑一次 0 搬运、退出 0、不重复写 journal"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "T-04",
+          "requirement": "--rollback 只给 journal 自动推根；显式 --root 时校验 journal 归属（防串库）",
+          "product": "",
+          "guard": {
+            "file": "docs/自测-v062.mjs",
+            "case": "T-04 --rollback 只给 journal 自动推根；显式 --root 时校验 journal 归属（防串库）"
+          },
+          "status": "covered",
+          "note": ""
+        }
+      ],
+      "counts": {
+        "criteria": 4,
+        "covered": 4,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V062-LAYOUT",
+      "title": "V0.6.2-A 布局写端/读端 · 新增 3 用例",
+      "note": "A 项在既有套件里新增的 3 条布局用例（交接表/清册/体检）。另有 3 条关联用例不单独计判据：`docs/自测-panelapi.mjs`（双路径计数去重）、`docs/自测-reconcile.mjs`（selfheal 双路径）、`docs/自测-index-integration.mjs`（布局探测 + 不自动迁移）。",
+      "source": "15-v0.6.2 验收记录 §一（A 项 5 个测试文件，含 3 条新增布局用例）",
+      "criteria": [
+        {
+          "id": "LAYOUT-1",
+          "requirement": "交接表写端只写 `交接表/`；老库一级文件可读；同名以新目录优先",
+          "product": "V0.6.2 一级目录布局（A 项）",
+          "guard": {
+            "file": "docs/自测-交接表模板.mjs",
+            "case": "V0.6.2 布局：写端只写 交接表/；老库一级文件可读；同名以新目录优先"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LAYOUT-2",
+          "requirement": "清册写 `清册/`；读端双路径（新目录优先、一级老位置兜底）",
+          "product": "V0.6.2 一级目录布局（A 项）",
+          "guard": {
+            "file": "docs/自测-cleanup.mjs",
+            "case": "V0.6.2 布局：清册写 清册/；读端双路径（新目录优先、一级老位置兜底）"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "LAYOUT-3",
+          "requirement": "体检写 `体检/`；重名检测同时看 `体检/` 与一级（老库不覆盖）",
+          "product": "V0.6.2 一级目录布局（A 项）",
+          "guard": {
+            "file": "docs/自测-checkup.mjs",
+            "case": "V0.6.2 布局：CHK 写 体检/；重名检测同时看 体检/ 与一级（老库不覆盖）"
+          },
+          "status": "covered",
+          "note": ""
+        }
+      ],
+      "counts": {
+        "criteria": 3,
+        "covered": 3,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V063-P0",
+      "title": "v0.6.3 P0 真宿主回归",
+      "note": "16-v0.6.3 修复记录：根因\"ctx.signal 读取抛错\"导致真宿主从未落账；新增 1 条自动化回归 + 1 条真机观测证据。",
+      "source": "16-v0.6.3 修复记录 §四/§五",
+      "criteria": [
+        {
+          "id": "V063-P0-1",
+          "requirement": "模拟 Cordis 未 inject：读 ctx.signal 抛错时 runOnce 仍必须正常落账（修复前必红）",
+          "product": "v0.6.3 P0 真宿主回归",
+          "guard": {
+            "file": "docs/自测-index-integration.mjs",
+            "case": "P0：ctx.signal 读取抛错（Cordis 未 inject）时 runOnce 仍必须正常落账"
+          },
+          "status": "covered",
+          "note": "16-v0.6.3 修复记录 §四.2 声称新增的回归用例（已找到）"
+        },
+        {
+          "id": "V063-P0-2",
+          "requirement": "真机（真宿主）重启后 runOnce 恢复执行：state.lastRunAt 按 60s 周期跳、日台账行数增长、运行报告刷新",
+          "product": "v0.6.3 P0 真宿主回归",
+          "guard": null,
+          "status": "uncovered",
+          "note": "无自动化用例：证据是一次性真机观测（16-v0.6.3 修复记录 §五：19:10:10→19:11:09，24→31 行）；复现需真宿主重启，测试/子进程 ctx 无法触发该故障形态"
+        }
+      ],
+      "counts": {
+        "criteria": 2,
+        "covered": 1,
+        "family": 0,
+        "uncovered": 1
+      }
+    },
+    {
+      "id": "V062-BU2",
+      "title": "补 2 · 真实会话灌入（v0.6.2）",
+      "note": "一次性离线验收 + 1 条自动化回归；素材/复核器不入包，故灌入本身无仓库内守护用例。",
+      "source": "docs/验收-v0.6/补2-真实会话灌入-20261110.md / 15-v0.6.2 验收记录 §二",
+      "criteria": [
+        {
+          "id": "BU2-1",
+          "requirement": "补 2：16 个真实会话全量灌入（1558 行台账 / 1558 原文 / 1558 附件）+ 双实现复核 A=B=C=D=E=0 + passes=2 幂等",
+          "product": "补2 真实会话（v0.6.2）",
+          "guard": null,
+          "status": "uncovered",
+          "note": "无自动化用例：一次性离线证据（复核器-v06 与素材均不入包），证据见 `docs/验收-v0.6/补2-真实会话灌入-20261110.md` 与 15-v0.6.2 验收记录 §二"
+        },
+        {
+          "id": "BU2-2",
+          "requirement": "补 2 首轮 errors=1 的回归：首轮全量扫描后，历史会话的 pending 不得被回填计划误报为 pending-entry-not-scanned",
+          "product": "补2 真实会话（v0.6.2）",
+          "guard": {
+            "file": "docs/自测-index-integration.mjs",
+            "case": "V0.6.2：首轮全量扫描后，历史会话的 pending 不得被回填计划误报为 pending-entry-not-scanned"
+          },
+          "status": "covered",
+          "note": "补2 文档 §四 声称新增的回归用例（已找到）"
+        }
+      ],
+      "counts": {
+        "criteria": 2,
+        "covered": 1,
+        "family": 0,
+        "uncovered": 1
+      }
+    },
+    {
+      "id": "V064-A13",
+      "title": "V0.6.4 A13 · 宿主启动挂载（重启后 Host 行自动加载）",
+      "note": "修法（18 号 §一①）：删 `lib/toolface.js` / `lib/panelapi.js` 两处直读未 inject 服务属性的回退；服务未就绪时用 `ctx.inject([...])` 挂子 fiber 延后注册。自动化回归 1 条（假 ctx：读 tools/webServer 即抛）；A13-3 真机最终确认**待机主下次重启**（A13 诊断 §5 B 步骤；工作副本 `<test-dir>\\work\\_A13诊断.md`，出包名 `12-A13诊断.md`）。",
+      "source": "18-v0.6.4验收记录 §一① / docs/自测-a13启动挂载.mjs / _A13诊断.md（出包名 12-A13诊断.md） / 05-已知未覆盖项 A13",
+      "criteria": [
+        {
+          "id": "A13-1",
+          "requirement": "启动窗口服务未就绪（读 ctx.tools/ctx.webServer 必抛 Cordis `cannot get property \"…\" without inject`）时 apply 不崩：不得再直读未 inject 的服务属性",
+          "product": "V0.6.4 A13 宿主启动挂载",
+          "guard": {
+            "file": "docs/自测-a13启动挂载.mjs",
+            "case": "A13：启动窗口服务未就绪 → apply 不崩，且走 inject 等待而非直读回退"
+          },
+          "status": "covered",
+          "note": "假 ctx 回归（读 tools/webServer 即抛）；旧代码必红、新代码必绿（A13诊断 §5 C.1）"
+        },
+        {
+          "id": "A13-2",
+          "requirement": "服务未就绪时走 `ctx.inject(['tools'])` / `ctx.inject(['webServer'])` 挂子 fiber 等待；服务就绪后注册 5 个工具 / 7 条只读路由（headless 下子 fiber pending，记账主职责照跑）",
+          "product": "V0.6.4 A13 宿主启动挂载",
+          "guard": {
+            "file": "docs/自测-a13启动挂载.mjs",
+            "case": "A13：启动窗口服务未就绪 → apply 不崩，且走 inject 等待而非直读回退"
+          },
+          "status": "covered",
+          "note": "同一用例断言 inject 依赖集 = {tools, webServer}，服务就绪后注册 7 条路由"
+        },
+        {
+          "id": "A13-3",
+          "requirement": "重启 DSH 后 Host 行自动挂载：entry `fiberPhase=active`、5 个 `ledger_*` 工具在、`GET /dialog-ledger/api/ping` 200、`state.lastRunAt` 启动后 ≤60s 更新",
+          "product": "V0.6.4 A13 宿主启动挂载",
+          "guard": {
+            "file": "docs/验收-v0.6/_证据/A13-真机重启-启动诊断-20261110.log",
+            "case": "真机重启验证（2026-11-10 20:31:37，port 1458）：initial tools=false webServer=false → inject 回调 0.2–0.6s 内 mounted 5/7 → API 200、lastRunAt 20:31:38"
+          },
+          "status": "covered",
+          "note": "已由机主第 4 次重启完成真机验证：启动诊断日志（initial=false → inject mounted → retry 确认）+ /dialog-ledger/api ping/summary/reads 200 + state.lastRunAt 启动后更新；证据文件已入包 docs/验收-v0.6/_证据/A13-真机重启-启动诊断-20261110.log。"
+        }
+      ],
+      "counts": {
+        "criteria": 3,
+        "covered": 3,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V064-READLOG",
+      "title": "V0.6.4 读日志滚动 · 按月分片（05 A6 关闭）",
+      "note": "实现 `lib/readlog.js`：append 仍 fsync；分片切换只新建、不删/不改旧分片；读侧兼容历史单文件。守护 = `docs/自测-readlog.mjs` 9 条 + `docs/自测-panelapi.mjs` A2/A3/A4 + `docs/验收-v0.6/验收-只读面.mjs` A2/A3。已知边界：多进程并发 append 无锁（05 A6 备注：极端竞态只增不改、不丢行）。",
+      "source": "18-v0.6.4验收记录 §一② / docs/自测-readlog.mjs / 05-已知未覆盖项 A6 / 接口契约 §1.7",
+      "criteria": [
+        {
+          "id": "RL-1",
+          "requirement": "新写入按月落盘 `<root>/ledger/.reads/YYYY-MM.jsonl`（+08:00 月份）；不再写历史单文件 `.reads.jsonl`",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/自测-readlog.mjs",
+            "case": "V0.6.4/readlog ③-1：新写入按月落盘 .reads/YYYY-MM.jsonl；不写历史单文件"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "RL-2",
+          "requirement": "单文件超 8 MiB 切分片（`.02/.03…`；测试用小阈值注入，不生成 8 MiB 真文件）",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/自测-readlog.mjs",
+            "case": "V0.6.4/readlog ③-2：超阈值切分片（小阈值注入）；旧分片不改名/不改写；读写顺序正确"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "RL-3",
+          "requirement": "旧分片只新建、不改名/不改写（审计证据不断链）",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/自测-readlog.mjs",
+            "case": "V0.6.4/readlog ③-2：超阈值切分片（小阈值注入）；旧分片不改名/不改写；读写顺序正确"
+          },
+          "status": "covered",
+          "note": "与 RL-2 同一条用例（③-2 同时断言旧分片 mtime/内容不变）"
+        },
+        {
+          "id": "RL-4",
+          "requirement": "读侧兼容历史单文件 `.reads.jsonl`（只读、不被改写；写入顺序与 total/badLines 口径不变）",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/自测-readlog.mjs",
+            "case": "V0.6.4/readlog ③-3：兼容历史单文件 .reads.jsonl（只读、不被改写），并计数坏行"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "RL-5",
+          "requirement": "坏行计数可定位（badLines 与坏行信息；坏行不阻塞读取）",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/自测-readlog.mjs",
+            "case": "V0.6.4/readlog ③-3：兼容历史单文件 .reads.jsonl（只读、不被改写），并计数坏行"
+          },
+          "status": "covered",
+          "note": ""
+        },
+        {
+          "id": "RL-6",
+          "requirement": "A3 回归：每次 GET/工具调用后读日志恰好 +1 行（旧单文件 + `.reads/` 分片合计；新写入必须落 `.reads/`）、字段齐、HEAD 不计",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "每次 GET / 工具调用后读日志恰好 +1 行且字段齐全；HEAD 不计"
+          },
+          "status": "covered",
+          "note": "同口径由 `docs/自测-panelapi.mjs` A3（及 A2 快照豁免两种位置）同步回归；契约 §4 A3 已同步"
+        },
+        {
+          "id": "RL-7",
+          "requirement": "A4 回归：读日志不被当成台账（readAll 行数不变、badLines 不变）",
+          "product": "V0.6.4 读日志滚动",
+          "guard": {
+            "file": "docs/验收-v0.6/验收-只读面.mjs",
+            "case": "读日志不被当成台账：readAll 行数不变、badLines 不变"
+          },
+          "status": "covered",
+          "note": "`docs/自测-panelapi.mjs` A4 同步回归；契约 §4 A4 不变"
+        }
+      ],
+      "counts": {
+        "criteria": 7,
+        "covered": 7,
+        "family": 0,
+        "uncovered": 0
+      }
+    },
+    {
+      "id": "V064-BOLD",
+      "title": "V0.6.4 原文查看器 · 对话粗体（呈现层）",
+      "note": "呈现层改动，**本版无自动化用例**；按任务口径诚实标 `uncovered`，证据 = 实机截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审（18 号 §一③；视觉与归档核验-20261110.md）。文本逐字不改由\"React 文本节点自动转义\"保证（代码评审项）。",
+      "source": "18-v0.6.4验收记录 §一③ / 视觉与归档核验-20261110.md",
+      "criteria": [
+        {
+          "id": "BOLD-1",
+          "requirement": "呈现层分组不改文本：front matter / `>` 声明 / `[seq]` 只弱化，对话分组仅为视觉分组，正文一个字符不改（不拼接、不转义改写）",
+          "product": "V0.6.4 原文查看器",
+          "guard": null,
+          "status": "uncovered",
+          "note": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审（文本节点不拼接/不改写）"
+        },
+        {
+          "id": "BOLD-2",
+          "requirement": "`## N. user/message` / `## N. assistant/message` 标题与对话正文加粗",
+          "product": "V0.6.4 原文查看器",
+          "guard": null,
+          "status": "uncovered",
+          "note": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审"
+        },
+        {
+          "id": "BOLD-3",
+          "requirement": "代码围栏保持等宽常规（不误加粗）",
+          "product": "V0.6.4 原文查看器",
+          "guard": null,
+          "status": "uncovered",
+          "note": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审"
+        }
+      ],
+      "counts": {
+        "criteria": 3,
+        "covered": 0,
+        "family": 0,
+        "uncovered": 3
+      }
+    },
+    {
+      "id": "V064-I18N",
+      "title": "V0.6.4 语言热切换核验（补 v0.6.1 遗留）",
+      "note": "实机视觉核验，**无自动化用例**；按任务口径诚实标 `uncovered`，证据 = 截图 `docs/验收-v0.6/_证据/v06.4-面板-英文热切换-20261110.png`（核验后已恢复中文；18 号 §一④）。",
+      "source": "18-v0.6.4验收记录 §一④ / 视觉与归档核验-20261110.md",
+      "criteria": [
+        {
+          "id": "I18N-1",
+          "requirement": "设置 → 通用设置 → 语言：中文 ⇄ English 即时切换（无需刷新页面/重载插件）",
+          "product": "V0.6.4 语言热切换",
+          "guard": null,
+          "status": "uncovered",
+          "note": "视觉核验，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-面板-英文热切换-20261110.png`（18 号 §一④）"
+        },
+        {
+          "id": "I18N-2",
+          "requirement": "面板全部文案随 locale 热切换（标题/健康度/计数/检索/最近被查等）",
+          "product": "V0.6.4 语言热切换",
+          "guard": null,
+          "status": "uncovered",
+          "note": "视觉核验，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-面板-英文热切换-20261110.png` + 18 号 §一④ 列举的英文字符串"
+        }
+      ],
+      "counts": {
+        "criteria": 2,
+        "covered": 0,
+        "family": 0,
+        "uncovered": 2
+      }
+    },
+    {
+      "id": "V07-SHADOW",
+      "title": "V0.7 采集换轨 · 影子双轨切换判据 R-01…R-10",
+      "note": "设计定稿见 `docs/交付-v0.7/01-采集换轨设计.md` §六/§9.5/§9.8；守护 `docs/自测-shadow.mjs` **15 例**（R-01/R-02/R-04/R-05/R-06/R-07/R-08/R-09/R-10 有用例；其中 R-02 与 R-08 各 2 例；**R-03 仍无主**：需真机长跑影子期报表）。阶段 C 口径：disk 是唯一写者，影子输出只进 `<root>/ledger/.shadow/` 运行区。",
+      "source": "docs/交付-v0.7/01-采集换轨设计.md §六/§9.5/§9.8 / docs/自测-shadow.mjs / docs/交付-v0.7/02-persistence真机探针.md",
+      "criteria": [
+        {
+          "id": "R-01",
+          "requirement": "影子期账本/原文/周账产物逐字节 sha256 不变；影子只允许新增 `.shadow/` 运行区文件",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "口径与只读面 A2 相同（全库 sha256 快照，除运行区外逐字节不变）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 writeShadowTick：只写 .shadow/（R-01：账本/原文/周账字节不变）"
+          }
+        },
+        {
+          "id": "R-02",
+          "requirement": "逐会话轮次指纹一致率 = exactMatch / checked（100% 通过；pendingDurable 良性领先不计差异）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "两例守护：①一致率口径 = exactMatch/checked，pendingDurable 不算差异；②R-02b 持久层增量读 + 会话级累积 → 第二轮仍与磁盘全量一致（防 57 条假差异回归）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-02：一致率口径 = exactMatch/checked，pendingDurable 不算差异"
+          },
+          "guardMatches": 2,
+          "guardCases": [
+            "V0.7 R-02：一致率口径 = exactMatch/checked，pendingDurable 不算差异",
+            "V0.7 R-02b：持久层增量读 + 会话级累积 → 第二轮仍与磁盘全量一致（防 57 条假差异回归）"
+          ]
+        },
+        {
+          "id": "R-03",
+          "requirement": "差异归零的会话数 / 总会话数 ≥ 99%，其余会话列白名单 + 理由",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "uncovered",
+          "note": "无自动化用例：该通过线需要先以 `ingest.mode=shadow` 真机跑一段影子期，才有\"差异归零会话数/总会话数\"的分母；已有 21:09 单次真机采样 11/11 一致（`docs/验收-v0.7/影子真机观测-20261110.md`），但非自动化、亦未达连续 ≥6h；设计 01 §9.8 明标\"仍待：R-03 … 需真机影子期数据\"。"
+        },
+        {
+          "id": "R-04",
+          "requirement": "影子运行 N 轮（≥ 6h）无未捕获异常：collector 连续抛错只记 warnings，不得拖垮记账（I4）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "用例以\"连续 3 轮 collector 抛错\"代表该形态；≥6h 真机时长无自动化（时长属真机观测）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-04：连续 3 轮 collector 抛错都只产生 warnings，不抛（影子不得拖垮记账）"
+          }
+        },
+        {
+          "id": "R-05",
+          "requirement": "幂等：同一轮重复采集不产生新行；shadow 配置下连续两轮 runOnce 不重复落账（第二轮 written=0）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "V0.8 增量：`docs/自测-shadow.mjs` R-05 用例（连续两轮 runOnce，第二轮 written=0、台账行数不变）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "R-05：shadow 配置下连续两轮 runOnce 不重复落账（第二轮 written=0）"
+          }
+        },
+        {
+          "id": "R-06",
+          "requirement": "回退：`ingest.mode=disk` 后行为与 v0.6.7 等价（默认 disk 完全不跑影子、记账照旧；全量/P0/INV/CH 回归全绿）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "本用例覆盖\"默认 disk 不跑影子、记账照旧\"；全量/P0/INV/CH 回归属五门执行结果，不在用例内（口径缺口见 §四）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-06：默认 ingest.mode=disk 时完全不跑影子（无 .shadow/，记账照旧）"
+          }
+        },
+        {
+          "id": "R-07",
+          "requirement": "补齐：人为丢掉另一源一段后，disk 兜底能补回（影子须显式可见 missingOnEvent 作为前提证据）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "用例证明\"影子能显式看见 missingOnEvent\"（disk 兜底的前提）；实际补齐动作未在本用例内执行（口径缺口见 §四）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-07：另一源缺轮时可在影子里显式看见 missingOnEvent（disk 兜底前提）"
+          }
+        },
+        {
+          "id": "R-08",
+          "requirement": "影子 tick 额外开销有界：`maxSessions` 生效、`elapsedMs` 有值；切换通过线 P95 增量 < 200ms/会话",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "两例守护：①`maxSessions` 生效且 `elapsedMs` 有值（成本有界）；②性能用例\"影子单会话开销远低于 200ms 阈值（P95 口径近似）\"（2026-11-10 晚补）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-08：maxSessions 生效且 elapsedMs 有值（影子成本有界）"
+          },
+          "guardMatches": 2,
+          "guardCases": [
+            "V0.7 R-08：maxSessions 生效且 elapsedMs 有值（影子成本有界）",
+            "V0.7 R-08 性能：影子单会话开销远低于 200ms 阈值（P95 口径近似）"
+          ]
+        },
+        {
+          "id": "R-09",
+          "requirement": "开关/模式切换不改账：disk 跑过后切 shadow，台账行数不变、只多影子运行区（配置切换语义）",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "V0.8 增量：`docs/自测-shadow.mjs` R-09 用例（ingest 模式切换不改账）。注意原设计口径为 release/reload 热切换不重启，热装生命周期仍属真机验收，见 MD §四",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "R-09：ingest 模式切换不改账（disk 跑过后切 shadow，台账行数不变、只多影子运行区）"
+          }
+        },
+        {
+          "id": "R-10",
+          "requirement": "双轨证据可离线复核：`.shadow/report.md` + JSONL 可解析、含 `fpVersion`，复核器可做 A/B 比对",
+          "product": "V0.7 影子双轨（只写 .shadow/，不写账）",
+          "status": "covered",
+          "note": "用例断言 report.md 与 JSONL 可解析且字段（含 fpVersion）齐；复核器侧 A/B 比对的独立实现仍属后续（设计 01 §9.5 计划）",
+          "guard": {
+            "file": "docs/自测-shadow.mjs",
+            "case": "V0.7 R-10：影子证据可离线复核（report.md + JSONL 可解析、含 fpVersion）"
+          }
+        }
+      ],
+      "counts": {
+        "criteria": 10,
+        "covered": 9,
+        "family": 0,
+        "uncovered": 1
+      },
+      "familyGuards": [
+        {
+          "file": "docs/自测-shadow.mjs",
+          "cases": 15,
+          "note": "15 例：比对/降级/落盘/端到端/模式门/R 判据；R-05/R-09 已补逐条守护"
+        }
+      ]
+    },
+    {
+      "id": "V07-COLLECT",
+      "title": "V0.7 采集适配层 · persistence 真机形状（collector）",
+      "note": "真机结论见 `docs/交付-v0.7/02-persistence真机探针.md`：V1 `read(offset)` 的 offset 就是 seq、EOF 返回空数组不抛；V2 `stat()/list()` **不带 eventCount**、revision 是复合令牌（只做\"相等=没变\"）、id 可能在 `header.id`；read 返回 `{eventState, events}`。守护 `docs/自测-collector.mjs` **10 例**（与设计文档 01 §9.7 的 10/10 一致）。event collector 尚未实现（阶段 C 之后），不在本族。",
+      "source": "docs/交付-v0.7/02-persistence真机探针.md §一/§二/§四 / docs/自测-collector.mjs / docs/交付-v0.7/01-采集换轨设计.md §9.2–9.3",
+      "criteria": [
+        {
+          "id": "COL-01",
+          "requirement": "disk collector：列出会话、读闭合轮次；全程只读（目录树哈希调用前后不变）",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "disk collector：列出会话、读闭合轮次，且全程只读（目录树哈希不变）"
+          }
+        },
+        {
+          "id": "COL-02",
+          "requirement": "sid 归一：`normalizeSid` 把路径/session- 前缀/裸 uuid 统一成同一口径（双轨对齐前提）",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 normalizeSid：路径/session- 前缀/裸 uuid 统一口径"
+          }
+        },
+        {
+          "id": "COL-03",
+          "requirement": "轮次指纹：同会话同轮边界稳定；字段（text/at/role）不同或换 sid 则指纹不同",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "指纹：同会话同轮边界稳定；字段不同则指纹不同；换 sid 也不同"
+          }
+        },
+        {
+          "id": "COL-04",
+          "requirement": "compareTurnSets：完全一致 / 缺轮 / 多轮 / 边界不一致 四类差异都能判定",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "compareTurnSets：完全一致 / 缺轮 / 多轮 / 边界不一致 四类都能判"
+          }
+        },
+        {
+          "id": "COL-05",
+          "requirement": "diffSummary + shadowRecord：汇总计数与 JSONL 行形状正确",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "diffSummary + shadowRecord：汇总与 JSONL 行形状正确"
+          }
+        },
+        {
+          "id": "COL-06",
+          "requirement": "closedTurnsFromEvents：闭合 / 放弃(abandoned) / 坏事件 / reason.kind 口径与 KERNEL（disk）规则一致",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 closedTurnsFromEvents：闭合/放弃/坏事件/reason 口径与 disk 规则一致"
+          }
+        },
+        {
+          "id": "COL-07",
+          "requirement": "persistence 真机形状 V1：list（`header.id` 兜底、source/revision/sizeBytes 归一）+ open('read') + read(seq,limit) 增量续读 + EOF + 关闭句柄 + `eventState` 透传",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "V2\"无 eventCount\"体现为采集器不依赖事件数，只用 seq 游标 + revision 相等性",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 createPersistenceCollector：list + open/read(seq) 增量、EOF、关闭句柄、只读"
+          }
+        },
+        {
+          "id": "COL-08",
+          "requirement": "persistence 失败降级不抛：open 抛错记 `read:…` warning、API 缺席 `PERSISTENCE_UNAVAILABLE`、无 read `PERSISTENCE_NO_READ`；bootstrap=needed",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 persistence collector：失败降级不抛（open 抛错 / API 缺席 / 无 read）"
+          }
+        },
+        {
+          "id": "COL-09",
+          "requirement": "compareTurnSets 三态：事件领先且未 flush → pendingDurable（良性）；超窗才 missingOnDisk；默认 pendingWindowMs=0 走严格模式",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 compareTurnSets 三态：事件领先未 flush → pendingDurable（良性），超窗才 missingOnDisk"
+          }
+        },
+        {
+          "id": "COL-10",
+          "requirement": "真机防御：read 返回的事件无 seq → `SEQ_MISSING` 告警并停止推进，不死循环（不依赖 eventCount）",
+          "product": "V0.7 lib/collector.js（disk / persistence 只读适配）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-collector.mjs",
+            "case": "V0.7 persistence collector：read 返回无 seq 事件 → SEQ_MISSING 且不死循环（真机防御）"
+          }
+        }
+      ],
+      "counts": {
+        "criteria": 10,
+        "covered": 10,
+        "family": 0,
+        "uncovered": 0
+      },
+      "familyGuards": [
+        {
+          "file": "docs/自测-collector.mjs",
+          "cases": 10,
+          "note": "10 例：disk 只读/归一/指纹/三态/事件口径/persistence 真机形状/降级/SEQ 防御"
+        }
+      ]
+    },
+    {
+      "id": "V07-WEEKLY",
+      "title": "V0.7 周账两态 · 草稿/封板单文件（WK-S1…S8，含冲突子项 WK-S5b）",
+      "note": "设计定稿见 `docs/交付-v0.7/03-周账两态与补记执行器设计.md` §二/§四/§六/§九：草稿写 `草稿-<正式名>`，封板 = sealed 内容临时文件 → fsync → rename 正式名 → 删草稿；正式名一旦出现即视为封板，读取端只认正式名、草稿单列 `weeklyGroupsDraftOnly`。2026-11-10 晚重编号：WK-S6 = 状态不明（E_SEAL_UNKNOWN）、WK-S8 = 草稿可重建（selfheal 族级）。族级守护：`docs/自测-周记账封板.mjs` 15 例 / `docs/自测-weeklystate.mjs` 5 例 / `docs/自测-selfheal.mjs` 2 例 / `docs/自测-reconcile.mjs` 17 例（含 `weeklyGroupsDraftOnly` 直接用例）。设计 §六 的 WK-S7（补记册只追加/hash 链）沿用基线 V05-BC（BC-01…15），不在本族重复计数。",
+      "source": "docs/交付-v0.7/03-周账两态与补记执行器设计.md §二/§四/§六/§九 / docs/自测-周账两态.mjs / docs/自测-周记账封板.mjs / docs/自测-weeklystate.mjs / docs/自测-selfheal.mjs / docs/自测-reconcile.mjs",
+      "criteria": [
+        {
+          "id": "WK-S1",
+          "requirement": "草稿写入 `草稿-` 前缀路径；未封板前正式名不得出现；草稿内容带 draft 状态行",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S1：草稿写 草稿- 前缀；正式名只在封板时出现"
+          }
+        },
+        {
+          "id": "WK-S2",
+          "requirement": "封板 = sealed 内容写临时文件 → fsync → rename 正式名；成功后删除同名草稿；正式名带封板标记与封板 hash",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S2：封板 = sealed 内容 rename 正式名 + 删除草稿；正式名带封板标记"
+          }
+        },
+        {
+          "id": "WK-S3",
+          "requirement": "封板后正式名文件字节不再变：再次写入 → skipped:sealed，不得出现新草稿",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "族级同口径另由 `docs/自测-周记账封板.mjs` 第 ③ 例（封板后 skipped/字节不变）覆盖",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S3：封板后再写 skips:sealed 且正式名字节不变"
+          }
+        },
+        {
+          "id": "WK-S4",
+          "requirement": "读取端只认正式名：reconcile/catalog/panelapi 的周账存在性/计数只统计正式名，草稿存在 ≠ 周账已出（对账单列 `weeklyGroupsDraftOnly`）",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "2026-11-10 晚补的 reconcile 两态用例：正式名缺失但草稿在 → weeklyGroupsMissing=0 且 weeklyGroupsDraftOnly 命中",
+          "guard": {
+            "file": "docs/自测-reconcile.mjs",
+            "case": "reconcile 两态：正式名缺失但草稿在 → weeklyGroupsMissing=0 且 weeklyGroupsDraftOnly 命中（WK-S4 守护）"
+          }
+        },
+        {
+          "id": "WK-S5",
+          "requirement": "历史遗留草稿迁移：正式名无封板标记且 journal 无该 gid → rename 为草稿（字节一个不改），本轮不重写",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S5：历史无标记正式名 → rename 为草稿（字节不改）且本轮不重写"
+          }
+        },
+        {
+          "id": "WK-S5b",
+          "requirement": "冲突保护：正式名与草稿并存 → `E_WEEKLY_STATE_CONFLICT`，保正式名、拒绝写入、不删除任何一方",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S5b：正式名与草稿并存 → 冲突告警，保正式名、拒绝写入"
+          }
+        },
+        {
+          "id": "WK-S6",
+          "requirement": "状态不明保护：正式名含封板字样但解析不出标记 → `E_SEAL_UNKNOWN`，跳过且字节一个不改",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "covered",
+          "note": "2026-11-10 晚重编号后，设计 §六 与测试统一为 WK-S6=状态不明；草稿可重建独立为 WK-S8",
+          "guard": {
+            "file": "docs/自测-周账两态.mjs",
+            "case": "WK-S6：正式名状态不明（含封板字样但解析不出标记）→ E_SEAL_UNKNOWN，字节不改"
+          }
+        },
+        {
+          "id": "WK-S8",
+          "requirement": "草稿可重建：草稿文件每轮可重生成；selfheal 不因\"草稿存在\"产生 weeklyDraftMissing 假告警，只有草稿与正式名都没有才报缺",
+          "product": "V0.7 周账两态（草稿前缀 + 封板 rename）",
+          "status": "family",
+          "note": "设计 §六 2026-11-10 晚新增/重编号的 WK-S8；族级覆盖：`docs/自测-selfheal.mjs` 2 例（草稿在→不报缺；都没有→报 weeklyDraftMissing）+ `docs/自测-周记账封板.mjs` 第 ③ 例\"草稿可重生成\""
+        }
+      ],
+      "counts": {
+        "criteria": 8,
+        "covered": 7,
+        "family": 1,
+        "uncovered": 0
+      },
+      "familyGuards": [
+        {
+          "file": "docs/自测-周账两态.mjs",
+          "cases": 6,
+          "note": "6 例：WK-S1/S2/S3/S5/S5b/S6"
+        },
+        {
+          "file": "docs/自测-周记账封板.mjs",
+          "cases": 15,
+          "note": "15 例：版式/重生成/封板/补记/journal（含两态断言）"
+        },
+        {
+          "file": "docs/自测-weeklystate.mjs",
+          "cases": 5,
+          "note": "5 例：正式名/草稿名/分类/迁移决策/写入模式（纯函数）"
+        },
+        {
+          "file": "docs/自测-selfheal.mjs",
+          "cases": 2,
+          "note": "2 例：草稿存在不报缺；都没有才报 weeklyDraftMissing（WK-S8 族级）"
+        },
+        {
+          "file": "docs/自测-reconcile.mjs",
+          "cases": 17,
+          "note": "17 例：对账只认正式名（含 weeklyGroupsDraftOnly 直接用例）"
+        }
+      ]
+    },
+    {
+      "id": "V07-EXEC",
+      "title": "V0.7 补记执行器 · journal/幂等/重试/回退（BE-00…BE-06）",
+      "note": "设计定稿见 `docs/交付-v0.7/03-周账两态与补记执行器设计.md` §五/§十：证据先行（先 append journal 记 planned 再执行）、幂等键 `actionKey` 不含时间戳、failed 在 maxAttempts 内重试、达上限 gave-up、回退只撤未执行的 planned、journal 有坏行拒绝执行。`lib/backfill-exec.js` 默认 `backfillExecEnabled=false`，保持 v0.6.7 只读计划行为；run-report `backfillExec` 段落 executed/dupSkipped/failed/deferred/gave-up。2026-11-10 晚补 BE-02/04/06 三例后，`docs/自测-backfill-exec.mjs` **9 例**全落版；missing-turns/promote-pending handler 仍 deferred（05 A14）。",
+      "source": "docs/交付-v0.7/03-周账两态与补记执行器设计.md §五/§十 / docs/自测-backfill-exec.mjs / docs/交付-v0.6/05-已知未覆盖项.md A14",
+      "criteria": [
+        {
+          "id": "BE-00",
+          "requirement": "幂等键稳定：`actionKey` 同输入同 key、随目标变化，键内不含时间戳",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-00：actionKey 稳定且随目标变化"
+          }
+        },
+        {
+          "id": "BE-01",
+          "requirement": "证据先行 + 幂等：dryRun 不写 journal/不执行；write-supplement 执行一次后同 key skip 且补记册字节不变",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "标题沿用早期\"BE-01/04\"写法；2026-11-10 晚已新增独立 BE-04 用例，两条并存",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-01/04：dryRun 不写 journal、不执行；write-supplement 执行一次后幂等跳过且补记册字节不变"
+          }
+        },
+        {
+          "id": "BE-01-deferred",
+          "requirement": "handler 未接线的动作记 `deferred: handler-not-wired`（留痕不假执行），同 key 后续跳过",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-01：handler 未接线的动作 → deferred（留痕不假执行）且同 key 后续跳过"
+          }
+        },
+        {
+          "id": "BE-02",
+          "requirement": "幂等：journal 终态（applied/deferred/gave-up/compensated）后同 key 跳过，重复执行 0 新增（与 BE-00 键稳定性配套）",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-02：幂等键与 journal 终态保证"
+          }
+        },
+        {
+          "id": "BE-03",
+          "requirement": "失败可重试：failed 在 maxAttempts 内重试，达上限 → gave-up 且之后不再重试；不抛、不重复记账",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-03：失败重试到上限 → gave-up，之后不再重试（不抛）"
+          }
+        },
+        {
+          "id": "BE-04",
+          "requirement": "第二写入口边界：执行 write-supplement 不得改周账 xlsx / 台账 / 原文",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-04：执行 write-supplement 不得改周账 xlsx / 台账 / 原文（第二写入口边界）"
+          }
+        },
+        {
+          "id": "BE-05",
+          "requirement": "回退边界：rollback 只撤 `planned`（写 compensated）；`applied` 明确拒绝（账行不可删，只能补偿 + 人工批）",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-05：rollback 只撤 planned；applied 明确拒绝"
+          }
+        },
+        {
+          "id": "BE-03b",
+          "requirement": "证据不完整即停手：journal 有坏行 → 拒绝执行并报 `JOURNAL_BAD_LINES`，不得动账",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-03b：journal 有坏行 → 拒绝执行（证据不完整不得动账）"
+          }
+        },
+        {
+          "id": "BE-06",
+          "requirement": "运行报告字段：`executeBackfill` 摘要字段齐全（executed/dupSkipped/failed/deferred/gave-up），run-report `backfillExec` 段可直接落",
+          "product": "V0.7 lib/backfill-exec.js（第二写入口，默认关闭）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-backfill-exec.mjs",
+            "case": "BE-06：executeBackfill 摘要字段齐全（run-report backfillExec 段可直接落）"
+          }
+        }
+      ],
+      "counts": {
+        "criteria": 9,
+        "covered": 9,
+        "family": 0,
+        "uncovered": 0
+      },
+      "familyGuards": [
+        {
+          "file": "docs/自测-backfill-exec.mjs",
+          "cases": 9,
+          "note": "9 例：BE-00/01/01-deferred/02/03/03b/04/05/06"
+        }
+      ]
+    },
+    {
+      "id": "V08-ANCHOR",
+      "title": "V0.8 库外 manifest 锚 + 恢复演练（MA-01…MA-08）",
+      "note": "设计定稿见 `docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md` §二–§七/§九：交付包锚（version/payloadHash/prevHash/manifestSha256/fileCount/manifestCount）append-only 落 `<anchorRoot>/DELIVERY-ANCHOR.jsonl`；账本快照锚逐日 sha/rows + 周账正式名/草稿名计数；校验器只读、不联网、失败语义见 §六。逐条守护 = `docs/自测-manifestanchor.mjs` **5 例**（一例覆盖多判据：MA-02 / MA-01·03·04 / MA-05 / MA-06·07 / MA-08）。只读工具与 U 盘恢复演练按族级/真机证据登记（见下），不冒充 node:test。",
+      "source": "docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md §七/§九 / docs/自测-manifestanchor.mjs / docs/工具-核验交付锚.mjs / docs/工具-恢复演练.mjs / docs/验收-v0.8/恢复演练-U盘目录-20261110.md / 恢复演练-U盘zip-20261110.md",
+      "criteria": [
+        {
+          "id": "MA-01",
+          "requirement": "锚只追加、不改写：重复锚定同 payloadHash → 幂等 skip，锚文件前缀字节不变",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "同例也断言第二次 append a2.appended=false / idempotent=true",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-01/03/04：锚 append 幂等、包校验 PASS、tamper 后判红并定位"
+          }
+        },
+        {
+          "id": "MA-02",
+          "requirement": "payloadHash 复算与版本台账一致（0.7.0 真包实测：415 文件 / MANIFEST 清单 414 / payloadHash 5d6686fe…）",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "真包路径 <build-host>/Desktop/v0.7.0-正式-20261110；异机/清理后该例会打印 [SKIP]，不等于判据消失（见 MD §四）",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-02：computePackageDigest 算法与出包脚本/台账一致（0.7.0 真包复算 → 台账 payloadHash）"
+          }
+        },
+        {
+          "id": "MA-03",
+          "requirement": "包内任一文件被改 → 校验判红并定位（tamper 单文件后 payloadHash 检查失败）",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-01/03/04：锚 append 幂等、包校验 PASS、tamper 后判红并定位"
+          }
+        },
+        {
+          "id": "MA-04",
+          "requirement": "MANIFEST 根哈希 / 清单条数与锚一致；MANIFEST 坏行判红",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "用例断言 readManifest 的 badLines=0 与根哈希一致；\"坏行判红\"的构造用例见 §六失败语义（本表按族级证据计）",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-01/03/04：锚 append 幂等、包校验 PASS、tamper 后判红并定位"
+          }
+        },
+        {
+          "id": "MA-05",
+          "requirement": "锚链 prevHash 连续；断链可定位（breaks 条数与断点行）",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-05：锚链 prevHash 断 → 链校验判红并定位"
+          }
+        },
+        {
+          "id": "MA-06",
+          "requirement": "账本快照逐日文件 sha/rows 复算一致；篡改一日 → 判红并给出 sha-mismatch",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-06/07：账本快照校验（篡改一日判红）且校验器只读"
+          }
+        },
+        {
+          "id": "MA-07",
+          "requirement": "校验器只读：校验前后整棵账本树哈希不变（不写库）",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "用例以 treeHash(root) 前后相等硬断言",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-06/07：账本快照校验（篡改一日判红）且校验器只读"
+          }
+        },
+        {
+          "id": "MA-08",
+          "requirement": "恢复演练：U 盘拷回 → 清单/内核/锚三项 PASS；插件侧 index 接锚（每日快照一次 + 包锚幂等 + 锚目录越界拒绝）",
+          "product": "V0.8 lib/manifestanchor.js（库外锚 / 只读校验）",
+          "status": "covered",
+          "note": "逐条用例覆盖\"index 接锚集成\"（每日快照 1 条 / 同包幂等 / ANCHOR_INSIDE_ROOT 拒绝）；U 盘真机演练以 docs/验收-v0.8/ 两份 md 为证据（PASS），非 node:test",
+          "guard": {
+            "file": "docs/自测-manifestanchor.mjs",
+            "case": "MA-08：index 接锚（集成）——每日快照一次 + 包锚幂等 + 锚目录越界拒绝"
+          }
+        }
+      ],
+      "counts": {
+        "criteria": 8,
+        "covered": 8,
+        "family": 0,
+        "uncovered": 0
+      },
+      "familyGuards": [
+        {
+          "file": "docs/自测-manifestanchor.mjs",
+          "cases": 5,
+          "note": "5 例：MA-02 / MA-01·03·04 / MA-05 / MA-06·07 / MA-08"
+        }
+      ],
+      "familyEvidence": [
+        {
+          "file": "lib/manifestanchor.js",
+          "kind": "实现",
+          "note": "纯函数：包摘要（payloadHash 同算法）/ MANIFEST 解析 / 锚 append+幂等+prevHash 链 / 账本快照 / 只读校验"
+        },
+        {
+          "file": "docs/工具-核验交付锚.mjs",
+          "kind": "只读工具",
+          "note": "包 + 账本 + 锚链只读校验（--package/--root/--anchor-dir；退出码 0/1/2；文档 01 §九 记 14/14 PASS）"
+        },
+        {
+          "file": "docs/工具-恢复演练.mjs",
+          "kind": "只读工具",
+          "note": "U 盘目录/zip → 解压/复制 → MANIFEST 自检 → 内核边界 → 锚比对 → 结果 md（不覆盖已交付包）"
+        },
+        {
+          "file": "docs/验收-v0.8/恢复演练-U盘目录-20261110.md",
+          "kind": "真机证据",
+          "note": "0.7.0 U 盘目录恢复演练 PASS（extract/manifest/kernel/anchor/payloadHash 全 PASS）"
+        },
+        {
+          "file": "docs/验收-v0.8/恢复演练-U盘zip-20261110.md",
+          "kind": "真机证据",
+          "note": "0.7.0 zip 恢复演练 PASS；payloadHash 5d6686fe… 与台账一致"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "criteria": 263,
+    "covered": 218,
+    "family": 37,
+    "uncovered": 8
+  },
+  "uncovered": [
+    {
+      "id": "V063-P0-2",
+      "family": "V063-P0",
+      "requirement": "真机（真宿主）重启后 runOnce 恢复执行：state.lastRunAt 按 60s 周期跳、日台账行数增长、运行报告刷新",
+      "reason": "无自动化用例：证据是一次性真机观测（16-v0.6.3 修复记录 §五：19:10:10→19:11:09，24→31 行）；复现需真宿主重启，测试/子进程 ctx 无法触发该故障形态"
+    },
+    {
+      "id": "BU2-1",
+      "family": "V062-BU2",
+      "requirement": "补 2：16 个真实会话全量灌入（1558 行台账 / 1558 原文 / 1558 附件）+ 双实现复核 A=B=C=D=E=0 + passes=2 幂等",
+      "reason": "无自动化用例：一次性离线证据（复核器-v06 与素材均不入包），证据见 `docs/验收-v0.6/补2-真实会话灌入-20261110.md` 与 15-v0.6.2 验收记录 §二"
+    },
+    {
+      "id": "BOLD-1",
+      "family": "V064-BOLD",
+      "requirement": "呈现层分组不改文本：front matter / `>` 声明 / `[seq]` 只弱化，对话分组仅为视觉分组，正文一个字符不改（不拼接、不转义改写）",
+      "reason": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审（文本节点不拼接/不改写）"
+    },
+    {
+      "id": "BOLD-2",
+      "family": "V064-BOLD",
+      "requirement": "`## N. user/message` / `## N. assistant/message` 标题与对话正文加粗",
+      "reason": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审"
+    },
+    {
+      "id": "BOLD-3",
+      "family": "V064-BOLD",
+      "requirement": "代码围栏保持等宽常规（不误加粗）",
+      "reason": "视觉呈现，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-原文-对话粗体-20261110.png` + 代码评审"
+    },
+    {
+      "id": "I18N-1",
+      "family": "V064-I18N",
+      "requirement": "设置 → 通用设置 → 语言：中文 ⇄ English 即时切换（无需刷新页面/重载插件）",
+      "reason": "视觉核验，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-面板-英文热切换-20261110.png`（18 号 §一④）"
+    },
+    {
+      "id": "I18N-2",
+      "family": "V064-I18N",
+      "requirement": "面板全部文案随 locale 热切换（标题/健康度/计数/检索/最近被查等）",
+      "reason": "视觉核验，无自动化用例；证据=截图 `docs/验收-v0.6/_证据/v06.4-面板-英文热切换-20261110.png` + 18 号 §一④ 列举的英文字符串"
+    },
+    {
+      "id": "R-03",
+      "family": "V07-SHADOW",
+      "requirement": "差异归零的会话数 / 总会话数 ≥ 99%，其余会话列白名单 + 理由",
+      "reason": "无自动化用例：该通过线需要先以 `ingest.mode=shadow` 真机跑一段影子期，才有\"差异归零会话数/总会话数\"的分母；已有 21:09 单次真机采样 11/11 一致（`docs/验收-v0.7/影子真机观测-20261110.md`），但非自动化、亦未达连续 ≥6h；V0.8 时 R-05/R-09 已补逐条守护，R-03 仍是唯一需要真机长跑影子期报表的 R 判据。"
+    }
+  ],
+  "gaps": {
+    "docClaimMismatches": [],
+    "docStaleNumbers": [
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "全量自测 458/458（§九 历史门）",
+        "file": null,
+        "actual": 480,
+        "note": "历史轮次门数；V0.8 时点全量 docs/自测 = 480 例（v0.8 01 §九）"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "全量自测 464/464（§十 历史门）",
+        "file": null,
+        "actual": 480,
+        "note": "历史轮次门数；V0.8 时点全量 docs/自测 = 480 例（v0.8 01 §九）"
+      }
+    ],
+    "docTokensNotFound": [
+      {
+        "token": "WK-S7",
+        "source": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "category": "inherited",
+        "note": "设计 §六 WK-S7（补记册只追加/hash 链可复算）沿用基线 V05-BC（BC-01…15），不在 V07-WEEKLY 重复计数"
+      }
+    ],
+    "implementationClaimsWithoutGuard": [
+      {
+        "claim": "R-06 \"全量/P0/INV/CH 回归\" 不在用例内",
+        "source": "docs/交付-v0.7/01-采集换轨设计.md §六/§9.5",
+        "evidence": "R-06 用例只覆盖\"默认 disk 不跑影子、记账照旧\"；全量/P0/INV/CH 属五门执行，不在本表守护用例内（本表不重跑五门）",
+        "suggestion": "R-06 放行时附五门结果文件（v0.8 出包门）"
+      },
+      {
+        "claim": "R-07 \"disk 兜底补齐\" 只证可见性、未执行补齐",
+        "source": "docs/交付-v0.7/01-采集换轨设计.md §六/§9.5",
+        "evidence": "R-07 用例仅断言影子显式看见 `missingOnEvent`；真正补齐动作（disk 差集落账）无用例；补记执行器 BE-* 覆盖的是补记侧，不等于 ingest 兜底",
+        "suggestion": "待 ingest 接线后补\"丢 event 一段 → disk 兜底补齐行数=丢失轮数\"集成用例"
+      },
+      {
+        "claim": "R-09 口径收窄：设计原写\"release/reload 热切换不重启\"，V0.8 用例覆盖的是\"ingest 模式切换不改账\"",
+        "source": "docs/交付-v0.7/01-采集换轨设计.md §六/§9.5 / docs/自测-shadow.mjs R-09",
+        "evidence": "R-09 用例断言 disk 跑过后切 shadow：台账行数不变、只多影子运行区（配置切换语义）；热装 release/reload 生命周期无自动化，仍需真机验收",
+        "suggestion": "R-09 放行时附真机热装记录；或把设计 §9.5 的 release/reload 表述改为配置切换（二者不要混用）"
+      },
+      {
+        "claim": "MA-08 的 U 盘恢复演练属真机脚本证据（非 node:test）",
+        "source": "docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md §七/§九",
+        "evidence": "自动化用例只覆盖 \"index 接锚集成\"（每日快照 1 条 / 同包幂等 / ANCHOR_INSIDE_ROOT 拒绝）；U 盘目录与 zip 演练证据为 `docs/验收-v0.8/恢复演练-U盘*.md`（0.7.0 真包 PASS，payloadHash 5d6686fe…），不能在本进程内重跑",
+        "suggestion": "v0.8 出包门把两份演练 md 列为 MA-08 真机证据；如需自动化，把 `docs/工具-恢复演练.mjs` 纳入固定回归"
+      },
+      {
+        "claim": "MA-02 依赖本机真包路径，异机自动 [SKIP]",
+        "source": "docs/自测-manifestanchor.mjs MA-02",
+        "evidence": "用例固定读 <build-host>/Desktop/v0.7.0-正式-20261110；该包不存在时打印 [SKIP] 并 return，判据在异机不会真正执行（本机存在，2026-11-10 实测）",
+        "suggestion": "以真包 payloadHash 5d6686fe… 作为已复核证据并接受条件执行；真包样本化受体积/合规限制暂不做"
+      }
+    ],
+    "referencedFilesMissing": [
+      {
+        "file": "docs/自测-周账封板.mjs",
+        "actual": "docs/自测-周记账封板.mjs",
+        "note": "任务书引用的文件名在仓库不存在（实际文件名是 `自测-周记账封板.mjs`，15 例）；本表按真实文件名取守护"
+      }
+    ]
+  },
+  "checks": {
+    "jsonParse": true,
+    "claimedGuardMissing": [],
+    "baseFamilyIntegrity": true,
+    "v08FamiliesPresent": [
+      "V08-ANCHOR"
+    ],
+    "uncoveredWithinLimit": true,
+    "mdNumbersMatchJson": true,
+    "docClaimSummary": [
+      {
+        "doc": "docs/交付-v0.7/01-采集换轨设计.md",
+        "claim": "自测-collector.mjs 10/10",
+        "claimedInDoc": true,
+        "file": "docs/自测-collector.mjs",
+        "stated": 10,
+        "actual": 10,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/01-采集换轨设计.md",
+        "claim": "采集器测试 10/10",
+        "claimedInDoc": true,
+        "file": "docs/自测-collector.mjs",
+        "stated": 10,
+        "actual": 10,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/01-采集换轨设计.md",
+        "claim": "自测-shadow.mjs 15/15",
+        "claimedInDoc": true,
+        "file": "docs/自测-shadow.mjs",
+        "stated": 15,
+        "actual": 15,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "自测-周账两态.mjs 6/6",
+        "claimedInDoc": true,
+        "file": "docs/自测-周账两态.mjs",
+        "stated": 6,
+        "actual": 6,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "自测-周记账封板 15/15",
+        "claimedInDoc": true,
+        "file": "docs/自测-周记账封板.mjs",
+        "stated": 15,
+        "actual": 15,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "自测-selfheal 2/2",
+        "claimedInDoc": true,
+        "file": "docs/自测-selfheal.mjs",
+        "stated": 2,
+        "actual": 2,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "reconcile 17/17",
+        "claimedInDoc": true,
+        "file": "docs/自测-reconcile.mjs",
+        "stated": 17,
+        "actual": 17,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.7/03-周账两态与补记执行器设计.md",
+        "claim": "自测-backfill-exec.mjs 9/9",
+        "claimedInDoc": true,
+        "file": "docs/自测-backfill-exec.mjs",
+        "stated": 9,
+        "actual": 9,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md",
+        "claim": "自测-manifestanchor.mjs 5/5",
+        "claimedInDoc": true,
+        "file": "docs/自测-manifestanchor.mjs",
+        "stated": 5,
+        "actual": 5,
+        "kind": "case-count"
+      },
+      {
+        "doc": "docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md",
+        "claim": "全量自测 480/480",
+        "claimedInDoc": true,
+        "file": null,
+        "stated": 480,
+        "actual": 480,
+        "kind": "suite-total"
+      },
+      {
+        "doc": "docs/交付-v0.8/01-库外manifest锚与恢复演练设计.md",
+        "claim": "核验交付锚 14/14 PASS（工具证据）",
+        "claimedInDoc": true,
+        "file": null,
+        "stated": null,
+        "actual": null,
+        "kind": "string-claim"
+      }
+    ]
+  }
+}

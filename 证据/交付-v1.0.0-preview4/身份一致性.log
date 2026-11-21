@@ -1,0 +1,10 @@
+[身份一致性] root=<work-dir>\pkg
+  ① 版本四处一致　　　　　　　　 PASS  1.0.0-preview4 × 4（package.json.version / cordis.patch.yml 首行 / README 首行标题 / VERSION.json.version）
+  ② 工具数与能力面一致　　　　　 PASS  实际 3 个（ledger_health, ledger_search, ledger_turn）；buildToolDefs 注册点 3 处
+  ③ 配置键集一致　　　　　　　　 PASS  readConfig 27 输入 / README 27 键 / patch 显式 21 键（另 6 个默认兜底：backfillExecEnabled, deliveryPackageDir, ingest.mode, ingest.shadowMaxSessions, ingest.shadowPendingMs, manifestAnchorRoot）
+  ④ locale 三键齐全　　　 PASS  en.json:README.md；zh.json:README.md
+  ⑤ 描述无失真　　　　　　　　　 PASS  无 9/5 工具表述；工具数 3 与实现一致
+  ⑥ loader 身份一致　　　 PASS  dsh-dialog-ledger-v05 × 3（package.json.name / patch id / patch name）
+  ⑦ 死配置标注　　　　　　　　　 PASS  cleanupToolEnabled / cleanupAllowPhysicalDelete 均标注为 legacy 占位 + 无运行期消费者
+
+[PASS] 7/7 项通过，exit 0

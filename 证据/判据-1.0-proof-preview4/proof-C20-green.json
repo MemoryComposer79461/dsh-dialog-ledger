@@ -1,0 +1,69 @@
+{
+  "id": "C20",
+  "repaired": "把 .tick-metrics.jsonl 副本写回原字节",
+  "result": {
+    "id": "C20",
+    "status": "GREEN",
+    "summary": "34.15 MiB 语料端到端 3 个 tick 入账 1338 行（written 合计 1338，code/(sid,turn) 唯一 1338/1338，坏行 0）；⚠ 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+    "reasons": [],
+    "evidence": {
+      "metrics": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-metrics-C20-20261115-132512/.tick-metrics.jsonl",
+      "ticks": [
+        {
+          "written": 626,
+          "ms": 6032,
+          "consumed": 16750779,
+          "readBytes": 34173302,
+          "stateBytes": 0,
+          "headFp": 4096,
+          "tailFp": 4096
+        },
+        {
+          "written": 626,
+          "ms": 6717,
+          "consumed": 16758963,
+          "readBytes": 34196863,
+          "stateBytes": 7193,
+          "headFp": 4096,
+          "tailFp": 4096
+        },
+        {
+          "written": 86,
+          "ms": 1101,
+          "consumed": 2302594,
+          "readBytes": 4718598,
+          "stateBytes": 7016,
+          "headFp": 4096,
+          "tailFp": 4096
+        },
+        {
+          "written": 0,
+          "ms": 13,
+          "consumed": 0,
+          "readBytes": 12396,
+          "stateBytes": 4204,
+          "headFp": 4096,
+          "tailFp": 4096
+        },
+        {
+          "written": 0,
+          "ms": 12,
+          "consumed": 0,
+          "readBytes": 11992,
+          "stateBytes": 3800,
+          "headFp": 4096,
+          "tailFp": 4096
+        }
+      ],
+      "rowsCount": 1338,
+      "uniqueCode": 1338,
+      "uniqueSidTurn": 1338,
+      "endToEndTicks": 3,
+      "writtenTotal": 1338,
+      "corpusBytesTotal": 35812336,
+      "ingestableBytes": 35812336,
+      "caveat": "语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+      "caliber": "R-3：48 MB 语料端到端 ≤3 tick；E3 度量口径 = ledger/.tick-metrics.jsonl 的 written 逐 tick 累计"
+    }
+  }
+}

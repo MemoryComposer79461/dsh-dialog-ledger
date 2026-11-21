@@ -1,0 +1,56 @@
+{
+  "schema": "v0.5-stress-tier/1",
+  "hostname": "TSG-32",
+  "platform": "win32",
+  "arch": "x64",
+  "node": "v24.21.0",
+  "tierMB": 36,
+  "startedAt": "2026-11-10T10:41:49.553Z",
+  "finishedAt": "2026-11-10T10:42:04.767Z",
+  "durationMs": 15216,
+  "peakRssMB": 283,
+  "session": {
+    "file": "%TEMP%\\v05-stress\\tier-36mb.jsonl.zstd",
+    "fileBytes": 113975,
+    "uncompressedBytes": 39615166,
+    "turns": 1008,
+    "frames": 102,
+    "genDurationMs": 450,
+    "genPeakRssMB": 90,
+    "genOk": true,
+    "verifyOk": true,
+    "sha256": "537ff15c123f59a4f6a19286ed025fc97f3446aa32ad00e5c51d88901facc7c9"
+  },
+  "ingest": {
+    "rounds": 2,
+    "expectedTurns": 1008,
+    "written1": 1008,
+    "written2": 0,
+    "ledgerRows": 1008,
+    "originals": 1008,
+    "weeklyBooks": 2,
+    "handoverBooks": 1,
+    "durationMs": 14341,
+    "errors": []
+  },
+  "assertions": {
+    "sessionOk": true,
+    "firstRunWroteAll": true,
+    "ledgerRows": true,
+    "originals": true,
+    "weeklyBook": true,
+    "handoverBook": true,
+    "secondRunIdempotent": true,
+    "errors": true,
+    "uniqueTurn": true
+  },
+  "pass": true,
+  "failures": [],
+  "error": "",
+  "codeSha256": {
+    "index.js": "6b4d4ae3d50f4cd7a56204526c042b73887f3ad4f5a0fb02fd91def2ee0dd5e0",
+    "lib/ledger.js": "dde36b7d386fbbf012ed1f71f5c07578ed9c79228b035f7b2368c970e6dde98a",
+    "package.json": "6290d97914aaf5b99cc1d55d8dc818538ace5bcc25c76d40bc6a92b29709be56"
+  },
+  "version": "0.6.1"
+}

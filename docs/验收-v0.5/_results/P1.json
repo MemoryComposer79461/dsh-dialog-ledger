@@ -1,0 +1,152 @@
+{
+  "module": "P1 十二条",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-10T13:45:18.185Z",
+  "finishedAt": "2026-11-10T13:45:19.158Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 1164,
+  "freeMemAfterMB": 1147,
+  "summary": {
+    "cases": 11,
+    "pass": 11,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0,
+    "criteriaCovered": [
+      "P1-1",
+      "P1-10",
+      "P1-11",
+      "P1-12",
+      "P1-2",
+      "P1-3",
+      "P1-4",
+      "P1-5",
+      "P1-7",
+      "P1-8",
+      "P1-9"
+    ]
+  },
+  "results": [
+    {
+      "id": "P1-1",
+      "title": "台账记完整文件哈希；原文被改动后“绑定”必须复核为异常",
+      "criteria": [
+        "P1-1"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 90,
+      "peakRssMB": 48
+    },
+    {
+      "id": "P1-2",
+      "title": "append 前补尾换行；坏行移 quarantine 并上报（不得静默）",
+      "criteria": [
+        "P1-2"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 8,
+      "peakRssMB": 48
+    },
+    {
+      "id": "P1-3",
+      "title": "首跑被预算截断（deferred>0）时 initialized 必须为 false",
+      "criteria": [
+        "P1-3"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 17,
+      "peakRssMB": 49
+    },
+    {
+      "id": "P1-4",
+      "title": "停机超热窗口后，期间变动过的会话不得被永久漏记",
+      "criteria": [
+        "P1-4"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 41,
+      "peakRssMB": 49
+    },
+    {
+      "id": "P1-5",
+      "title": "坏帧（failed>0）不得推进游标，必须落永久错误清单",
+      "criteria": [
+        "P1-5"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 30,
+      "peakRssMB": 50
+    },
+    {
+      "id": "P1-7",
+      "title": "交接表在扫描循环内生成（先 adopt 后 generate），失败只记 errors",
+      "criteria": [
+        "P1-7"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 37,
+      "peakRssMB": 51
+    },
+    {
+      "id": "P1-8",
+      "title": "台账不可读时不得静默返回空；必须 ok=false + readErrors",
+      "criteria": [
+        "P1-8"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 2,
+      "peakRssMB": 51
+    },
+    {
+      "id": "P1-9",
+      "title": "封板证据在追加式 journal（不靠 state）；删 state 后证据仍在、封板仍生效",
+      "criteria": [
+        "P1-9"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 24,
+      "peakRssMB": 54
+    },
+    {
+      "id": "P1-10",
+      "title": "清册解析只认“结论列=已删除”；备注里写已删除不得误判",
+      "criteria": [
+        "P1-10"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 3,
+      "peakRssMB": 55
+    },
+    {
+      "id": "P1-11",
+      "title": "周记账：9 sheet / 十列 / 四态在 B 列 / RPT 号不写备注",
+      "criteria": [
+        "P1-11"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 695,
+      "peakRssMB": 56
+    },
+    {
+      "id": "P1-12",
+      "title": "跨月会话的原文目录按“编码日期段（会话开始日）”取月，不按轮发生月",
+      "criteria": [
+        "P1-12"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 22,
+      "peakRssMB": 56
+    }
+  ]
+}

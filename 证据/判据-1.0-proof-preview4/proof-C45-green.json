@@ -1,0 +1,36 @@
+{
+  "id": "C45",
+  "repaired": "丢弃被注入的工作副本；下一次演练重新 backup→删库→restore",
+  "result": {
+    "id": "C45",
+    "status": "GREEN",
+    "summary": "恢复演练通过：backup exit 0 → verify exit 0 → 删库重建 restore exit 0；台账 1338 码随机抽 100 行（种子 dd3aa8e6）逐字节相等 100/100",
+    "reasons": [],
+    "evidence": {
+      "lab": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-labs-1.0.0-preview4/lab-e3-accept/root",
+      "backup": {
+        "exit": 0,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-backup.log"
+      },
+      "verify": {
+        "exit": 0,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-verify.log"
+      },
+      "restore": {
+        "exit": 0,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-restore.log"
+      },
+      "sample": {
+        "totalCodes": 1338,
+        "picked": 100,
+        "equal": 100,
+        "mismatch": [],
+        "seed": "dd3aa8e6",
+        "sampling": "fisher-yates(mulberry32)，seed=sha256(.state.json)[:8]"
+      },
+      "proofInject": "",
+      "problems": [],
+      "caliber": "S-11 C45：备份→删工作库→重建→verify 绿→随机抽 100 行与源逐字节相等（没有演练过的备份等于没有备份）"
+    }
+  }
+}

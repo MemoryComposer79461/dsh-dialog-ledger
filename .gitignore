@@ -1,0 +1,38 @@
+# 依赖
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# 打包产物
+*.tgz
+*.zip
+*.tar.gz
+
+# 日志与临时文件（注意：证据目录里的 *.log 是验收证据，要保留，所以不整体排除 .log）
+*.tmp
+*.bak
+*.bak-*
+.bili.log
+bili.log
+
+# 会话账本数据（运行时产生，不进仓库）
+ledger/
+账本/
+*.jsonl
+*.lock
+.pending.jsonl
+.lost.jsonl
+.seal-journal.jsonl
+.state.json
+.tick-metrics.jsonl
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini

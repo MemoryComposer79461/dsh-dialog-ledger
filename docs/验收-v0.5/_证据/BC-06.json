@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "BC-06",
+  "family": "BC",
+  "acId": "AC-V05-BC-06",
+  "product": "`.errors.jsonl`/state",
+  "requirement": "注入写失败：台账不增、errors 记录、游标不推进；下轮重试成功且 late 标记保持",
+  "implementation": "`lib/backfill.js` + `index.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "只读计划由 docs\\自测-backfill.mjs 覆盖；入口执行器未接线（见 05 未覆盖）",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-backfill.mjs",
+    "result": "docs\\自测-backfill.mjs（22 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

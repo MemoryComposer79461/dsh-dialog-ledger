@@ -1,0 +1,111 @@
+{
+  "schema": "criteria-1.0/1#C42",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C42",
+  "status": "GREEN",
+  "summary": "日结摘要 17 天抽 3 天（2026-10-20/2026-10-28/2026-11-05）：JSON+TXT 与台账 100% 相符；改台账后旧版逐字节不变、已补发 v2（JSON+TXT 成对）、run-report 版本账可见；无变化 2 tick 不产新版",
+  "reasons": [],
+  "evidence": {
+    "lab": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-labs-1.0.0-preview4/lab-weeks/root",
+    "receiptsDir": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-labs-1.0.0-preview4/lab-weeks/receipts",
+    "days": 17,
+    "picked": [
+      "2026-10-20",
+      "2026-10-28",
+      "2026-11-05"
+    ],
+    "detail": [
+      {
+        "day": "2026-10-20",
+        "receipt": "RECEIPT-20261020.json",
+        "version": 1,
+        "txt": "日结摘要-20261020.txt",
+        "txtOk": true,
+        "ledger": {
+          "rows": 1,
+          "firstCode": "20261020-weeks0000011-A-00000001",
+          "lastCode": "20261020-weeks0000011-A-00000001"
+        },
+        "originalCount": {
+          "declared": 17,
+          "dayViews": 17,
+          "allViews": 17
+        },
+        "bad": []
+      },
+      {
+        "day": "2026-10-28",
+        "receipt": "RECEIPT-20261028.json",
+        "version": 1,
+        "txt": "日结摘要-20261028.txt",
+        "txtOk": true,
+        "ledger": {
+          "rows": 1,
+          "firstCode": "20261020-weeks0000011-A-00000009",
+          "lastCode": "20261020-weeks0000011-A-00000009"
+        },
+        "originalCount": {
+          "declared": 0,
+          "dayViews": 0,
+          "allViews": 17
+        },
+        "bad": []
+      },
+      {
+        "day": "2026-11-05",
+        "receipt": "RECEIPT-20261105.json",
+        "version": 1,
+        "txt": "日结摘要-20261105.txt",
+        "txtOk": true,
+        "ledger": {
+          "rows": 1,
+          "firstCode": "20261020-weeks0000011-A-00000017",
+          "lastCode": "20261020-weeks0000011-A-00000017"
+        },
+        "originalCount": {
+          "declared": 0,
+          "dayViews": 0,
+          "allViews": 17
+        },
+        "bad": []
+      }
+    ],
+    "views": 17,
+    "originalCountCaliber": "v3（re3/审计②P2-6，D1 线）：originalCount = **该日**第三级「完整原文.md」视图份数；旧 v1/v2 摘要是\"全库累计\"旧口径（实现缺陷），已由 D1 修；判据断言与实现同一次改为当日口径，S-11 C42 阈值未动",
+    "immutability": {
+      "day": "2026-10-20",
+      "versionsBefore": 1,
+      "changed": [],
+      "wantJson": "RECEIPT-20261020.v2.json",
+      "wantTxt": "日结摘要-20261020.v2.txt",
+      "hasNext": true,
+      "digest": {
+        "dates": 17,
+        "versionsTotal": 18,
+        "latest": {
+          "date": "2026-10-20",
+          "version": 2,
+          "path": "RECEIPT-20261020.v2.json",
+          "txt": "日结摘要-20261020.v2.txt"
+        },
+        "written": 0,
+        "appended": 0,
+        "repairedTxt": 0,
+        "skipped": 17,
+        "errors": 0
+      },
+      "afterV2": 2,
+      "afterSteady": 2,
+      "tickExit": 0
+    },
+    "problems": [],
+    "caliber": "S-11 C42：抽 3 天摘要与台账 100% 相符（含首/末条 code；originalCount 按 v3 当日口径）；★ 发出后不许重写，只能补发新版（本实现真跑 tick 实测：旧版 sha 不变 + 新增 vN JSON/TXT + run-report 版本账可见；无变化不产新版）",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "G 给人看与能恢复",
+  "gate": "P4",
+  "source": "日结摘要（JSON＋TXT）与台账一致 —— 抽 3 天 100% 相符；★ 发出后不许重写，只能补发新版",
+  "how": "摘要首/末条与行数字段独立复算 + 改台账真跑 tick：旧版逐字节不变、必须新增 vN JSON/TXT、run-report 版本账可见、无变化不产新版",
+  "zonggang": "总纲 §7 L0",
+  "caliber": "S-11 C42 后签优先于 lite S-1 旧口径（旧：\"10 键、坏了重出直接覆盖\"）；v1.0.0-re2 产品已改为 11 键（含 firstCode）+ 版本化补发 + 永不覆盖 + run-report 版本账"
+}

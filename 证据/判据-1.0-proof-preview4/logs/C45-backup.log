@@ -1,0 +1,260 @@
+$ node backup.mjs backup --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c45-restore-20261115-132512\root --out=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c45-restore-20261115-132512\backup --json
+exit=0 ms=5353
+
+--- stdout ---
+{
+  "schema": "lite-backup/1",
+  "toolVersion": "1.0",
+  "command": "backup",
+  "ok": true,
+  "exitCode": 0,
+  "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132512\\root",
+  "out": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132512\\backup",
+  "mode": "full",
+  "since": null,
+  "startedAt": "2026-11-15 13:25:49",
+  "finishedAt": "2026-11-15 13:25:54",
+  "elapsedMs": 5302,
+  "source": {
+    "rootId": "ddca614f-fdbf-497b-b932-812d2401d8fe",
+    "markerFound": true
+  },
+  "policy": {
+    "includeIndex": false,
+    "includeMetrics": false,
+    "skipped": [
+      {
+        "rule": "index",
+        "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+        "files": 1,
+        "bytes": 0
+      },
+      {
+        "rule": "metrics",
+        "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+        "files": 1,
+        "bytes": 9279
+      }
+    ]
+  },
+  "scanned": {
+    "files": 2726,
+    "bytes": 57933004
+  },
+  "candidates": {
+    "files": 2726,
+    "bytes": 57933004
+  },
+  "copied": {
+    "files": 2726,
+    "bytes": 57933004,
+    "byKind": {
+      "view": {
+        "files": 1338,
+        "bytes": 9065871
+      },
+      "attachment": {
+        "files": 1338,
+        "bytes": 47622603
+      },
+      "ledger": {
+        "files": 45,
+        "bytes": 1234098
+      },
+      "weekly": {
+        "files": 0,
+        "bytes": 0
+      },
+      "other": {
+        "files": 5,
+        "bytes": 10432
+      }
+    }
+  },
+  "unchangedFiles": 0,
+  "added": {
+    "total": 2726,
+    "sample": [
+      {
+        "rel": ".ledger-root",
+        "code": "",
+        "kind": "other",
+        "bytes": 167
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000001",
+        "kind": "attachment",
+        "bytes": 35560
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000001",
+        "kind": "view",
+        "bytes": 6752
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000002",
+        "kind": "attachment",
+        "bytes": 35562
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000002",
+        "kind": "view",
+        "bytes": 6754
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000003",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000003",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000004",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000004",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000005 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000005",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000005 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000005",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000006 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000006",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000006 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000006",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000007 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000007",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000007 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000007",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000008 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000008",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000008 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000008",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000009 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000009",
+        "kind": "attachment",
+        "bytes": 35566
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000009 完整原文.md",
+        "code": "20260901-e3accept0001-A-00000009",
+        "kind": "view",
+        "bytes": 6758
+      },
+      {
+        "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000010 原始事件.json",
+        "code": "20260901-e3accept0001-A-00000010",
+        "kind": "attachment",
+        "bytes": 35573
+      }
+    ],
+    "truncated": true
+  },
+  "changed": {
+    "total": 0,
+    "sample": [],
+    "truncated": false
+  },
+  "repaired": {
+    "total": 0,
+    "sample": [],
+    "truncated": false
+  },
+  "pruned": {
+    "files": 0,
+    "bytes": 0
+  },
+  "sourceRemoved": {
+    "total": 0,
+    "sample": [],
+    "truncated": false
+  },
+  "sinceUncovered": {
+    "total": 0,
+    "sample": [],
+    "truncated": false
+  },
+  "manifest": {
+    "file": "MANIFEST.sha256",
+    "entries": 2727,
+    "excludesSelf": true
+  },
+  "counts": {
+    "files": 2726,
+    "bytes": 57933004,
+    "byKind": {
+      "view": {
+        "files": 1338,
+        "bytes": 9065871
+      },
+      "attachment": {
+        "files": 1338,
+        "bytes": 47622603
+      },
+      "ledger": {
+        "files": 45,
+        "bytes": 1234098
+      },
+      "weekly": {
+        "files": 0,
+        "bytes": 0
+      },
+      "other": {
+        "files": 5,
+        "bytes": 10432
+      }
+    }
+  },
+  "warnings": [],
+  "errors": []
+}
+
+--- stderr ---

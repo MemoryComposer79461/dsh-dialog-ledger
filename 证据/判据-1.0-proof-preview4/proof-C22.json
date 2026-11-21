@@ -1,0 +1,15 @@
+{
+  "id": "C22",
+  "injected": "往副本 ledger/ 新增 2099-01-01.jsonl（3 MB 合法台账行）→ 套账/压缩语料 0.0328→≈0.104 >0.05（单文件 3 MB<4 MiB，只红 r3 子项）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "删掉注入的 2099-01-01.jsonl",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "套账/压缩语料 = 12.239% > 0.05×（S-9② ①）",
+  "greenSummary": "套账/压缩语料 3.861% ≤5%（台账 1.18 MiB+索引 145.3 KiB / 语料 34.15 MiB）；原文+视图 1.1904× ∈[1.00,1.35]（54.06 MiB/45.42 MiB）；单文件最大 34.8 KiB ≤4 MB；索引分片最大 3.5 KiB ≤4 MiB",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C22-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C22-green.json",
+  "detail": "硬链接副本承载注入；E3 原库只读；红落在 r3 子项",
+  "residual": ""
+}

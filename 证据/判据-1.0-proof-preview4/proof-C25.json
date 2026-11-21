@@ -1,0 +1,15 @@
+{
+  "id": "C25",
+  "injected": "把第 1 个 tick 耗时改为 35000 ms > 30 s",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把 .tick-metrics.jsonl 副本写回原字节",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "tick 耗时 35000 ms > 30 s",
+  "greenSummary": "大会话 34.15 MiB：3 tick 入账 1338 行无重复（written=1338，唯一 code/(sid,turn)=1338/1338）；3 tick 耗时 6032/6717/1101 ms ≤30 s；消费 15.97 MiB/15.98 MiB/2.20 MiB ≤17 MiB、读盘 32.59 MiB/32.61 MiB/4.50 MiB ≤40 MiB；游标 34.15 MiB/34.15 MiB（100.00%）",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C25-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C25-green.json",
+  "detail": "注入只在 .tick-metrics.jsonl 副本上做，E3 原库只读；红必须落在本判据",
+  "residual": ""
+}

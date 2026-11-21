@@ -1,0 +1,341 @@
+{
+  "schema": "v0.5-stress/1",
+  "hostname": "TSG-32",
+  "platform": "win32",
+  "arch": "x64",
+  "node": "v24.21.0",
+  "cpuCores": 8,
+  "totalMemMB": 7834,
+  "freeMemMBAtStart": 1643,
+  "startedAt": "2026-11-10T10:42:04.791Z",
+  "runStamp": "20261110-184141",
+  "version": "0.6.1",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "codeSha256": {
+    "index.js": {
+      "sha256": "6b4d4ae3d50f4cd7a56204526c042b73887f3ad4f5a0fb02fd91def2ee0dd5e0",
+      "bytes": 128532
+    },
+    "package.json": {
+      "sha256": "6290d97914aaf5b99cc1d55d8dc818538ace5bcc25c76d40bc6a92b29709be56",
+      "bytes": 1140
+    },
+    "lib\\backfill.js": {
+      "sha256": "a84713ee7477a2877e422765f739a2e5e7f5d41b2486051bb7a935b218da1985",
+      "bytes": 43271
+    },
+    "lib\\catalog.js": {
+      "sha256": "c4906424a0d6ea83e154940a707577caae6c8598d0207f389b1589112425518b",
+      "bytes": 30641
+    },
+    "lib\\checkup.js": {
+      "sha256": "a16f542d631e6e008307312ab2b19f98e87ff4b9758bd1c00860495bf97409e9",
+      "bytes": 9160
+    },
+    "lib\\cleanup.js": {
+      "sha256": "f3b96bda480105250a46b19d85ff451a471ead3a01d4b2fc2b9af6eeba422701",
+      "bytes": 59312
+    },
+    "lib\\encoder.js": {
+      "sha256": "ffbe0417a37eb825094af1212824a39a66be090ebdda21efcce1f3099e274fae",
+      "bytes": 11927
+    },
+    "lib\\frames.js": {
+      "sha256": "be395c915ff64b9c170c6aeb3ba27508eac45f1d06aa54d596f3e3a519d5d55d",
+      "bytes": 10690
+    },
+    "lib\\gate.js": {
+      "sha256": "0e5d43ec299fe1ea9fbcbc5ab9d16f499b1e537dd5485d332796a22c2634cb8e",
+      "bytes": 5183
+    },
+    "lib\\handover.js": {
+      "sha256": "0287e36500cb2aef498d97e38dcc232c2320dd3944b998b6cf5565b13c222b4e",
+      "bytes": 81968
+    },
+    "lib\\layout.js": {
+      "sha256": "0da10f4b507fae5abb7c6b89b41507847370f1e2331ad5c4c688df8a66b02d37",
+      "bytes": 8785
+    },
+    "lib\\ledger.js": {
+      "sha256": "dde36b7d386fbbf012ed1f71f5c07578ed9c79228b035f7b2368c970e6dde98a",
+      "bytes": 90060
+    },
+    "lib\\ledgerapi.js": {
+      "sha256": "61aa2d6fee7eb55b1ebbae38e7bcec86ffc16cdd72da9c5970108b4833c2b5e2",
+      "bytes": 7481
+    },
+    "lib\\ledgerroot.js": {
+      "sha256": "9843712e9fa6827e95263de180e48233e3fe846d893644265511e603ccd0c6f6",
+      "bytes": 18956
+    },
+    "lib\\legacy-marks.js": {
+      "sha256": "da97bcd424678e5be95f6fb7d34cfd501e5a43d55e75e881fd88d7a33aecb84a",
+      "bytes": 8591
+    },
+    "lib\\legacy.js": {
+      "sha256": "56d1e7f9c3a8cf8992d60f8b995d1b739753b3540f0a5a739dc87c3b7a4c5948",
+      "bytes": 13208
+    },
+    "lib\\lock.js": {
+      "sha256": "5d574b6c4f4a80cb434ddbc9d8010c8e06e9df1074b755936ebf9cf2f73015e5",
+      "bytes": 24293
+    },
+    "lib\\original.js": {
+      "sha256": "608b2e38b2cd758a397118142b5ae9f8230b72e9a72f9f58d474ea4d1a497884",
+      "bytes": 56283
+    },
+    "lib\\panelapi.js": {
+      "sha256": "c42bbaa383bf8822f018ab80714be1ae51ed465b1a61c49ebafb129bf046f589",
+      "bytes": 44346
+    },
+    "lib\\pending.js": {
+      "sha256": "3123f5f1d090d9bba7457445a1abe951232d60d735329b39428200af9ace1c2a",
+      "bytes": 7698
+    },
+    "lib\\readlog.js": {
+      "sha256": "f2861d70f860c646e59eca4db15c0c27b8d3d9827b6e9f1e6646c843cca1b966",
+      "bytes": 5207
+    },
+    "lib\\receipt.js": {
+      "sha256": "8e1f30dd24c6d0169ace54dec8ffb05ede83082a9b4f43f00fc72f100a247afd",
+      "bytes": 25097
+    },
+    "lib\\reconcile.js": {
+      "sha256": "9dc266f449466131bb4286d91c04ecece99ae034bd0b53de1c466a157aeffb1e",
+      "bytes": 25240
+    },
+    "lib\\sealcross.js": {
+      "sha256": "d1d70892dec0ead9d9f86b0df6524379eb1400f22228b4c40d568592eb630187",
+      "bytes": 10304
+    },
+    "lib\\sealjournal.js": {
+      "sha256": "e131f9372b570a1c881332af5a4d748a7abddb8346959ca0059017e62d7be441",
+      "bytes": 14190
+    },
+    "lib\\selfheal.js": {
+      "sha256": "52a7265ef87de216704c30989c6b3b584a2c97da9488c2c711390950d05b2ebb",
+      "bytes": 20925
+    },
+    "lib\\toolcards.js": {
+      "sha256": "3d26a54ecd712cd8ce7bcce8c296fcd748e28bcceca9e746ff86aa0cf9647d03",
+      "bytes": 11374
+    },
+    "lib\\toolface.js": {
+      "sha256": "814e29a69001ef63c8cc35a2fe7e3a8155170eb58682a0722ed75be39c0fa67a",
+      "bytes": 9237
+    },
+    "lib\\week.js": {
+      "sha256": "56c9b761935f965eb52ea8c42205b9e6c2493352e317056bf6d60d884d7b3125",
+      "bytes": 4496
+    },
+    "lib\\weekly.js": {
+      "sha256": "a717e417e1143ff0e17fd19b67d26ba60c7f5707c1b1586ecbb02317560f0c17",
+      "bytes": 93805
+    },
+    "lib\\xlsx.js": {
+      "sha256": "7bb6fbb86cef8f430bfd2abbf1b44026270cbfbf2d63bd9fb44dc7c71acada2e",
+      "bytes": 18860
+    }
+  },
+  "heapLimitMB": 384,
+  "tiers": [
+    {
+      "tierMB": 1,
+      "pass": true,
+      "peakRssMB": 71,
+      "durationMs": 432,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-1mb.jsonl.zstd",
+        "fileBytes": 3533,
+        "uncompressedBytes": 1099879,
+        "turns": 28,
+        "frames": 4,
+        "genDurationMs": 13,
+        "genPeakRssMB": 45,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "d3a97f50e42f3cd28883aeac6b792fb892df04c3a887901c20537d016a8020e3"
+      },
+      "ingest": {
+        "rounds": 2,
+        "expectedTurns": 28,
+        "written1": 28,
+        "written2": 0,
+        "ledgerRows": 28,
+        "originals": 28,
+        "weeklyBooks": 1,
+        "handoverBooks": 1,
+        "durationMs": 355,
+        "errors": []
+      },
+      "assertions": {
+        "sessionOk": true,
+        "firstRunWroteAll": true,
+        "ledgerRows": true,
+        "originals": true,
+        "weeklyBook": true,
+        "handoverBook": true,
+        "secondRunIdempotent": true,
+        "errors": true,
+        "uniqueTurn": true
+      },
+      "failures": [],
+      "error": ""
+    },
+    {
+      "tierMB": 4,
+      "pass": true,
+      "peakRssMB": 109,
+      "durationMs": 1449,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-4mb.jsonl.zstd",
+        "fileBytes": 13230,
+        "uncompressedBytes": 4399962,
+        "turns": 112,
+        "frames": 13,
+        "genDurationMs": 46,
+        "genPeakRssMB": 57,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "64cf788112798bd400ad3239a0c78d136637ba968c07bee735306500138e036b"
+      },
+      "ingest": {
+        "rounds": 2,
+        "expectedTurns": 112,
+        "written1": 112,
+        "written2": 0,
+        "ledgerRows": 112,
+        "originals": 112,
+        "weeklyBooks": 1,
+        "handoverBooks": 1,
+        "durationMs": 1303,
+        "errors": []
+      },
+      "assertions": {
+        "sessionOk": true,
+        "firstRunWroteAll": true,
+        "ledgerRows": true,
+        "originals": true,
+        "weeklyBook": true,
+        "handoverBook": true,
+        "secondRunIdempotent": true,
+        "errors": true,
+        "uniqueTurn": true
+      },
+      "failures": [],
+      "error": ""
+    },
+    {
+      "tierMB": 16,
+      "pass": true,
+      "peakRssMB": 223,
+      "durationMs": 5955,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-16mb.jsonl.zstd",
+        "fileBytes": 50907,
+        "uncompressedBytes": 17605387,
+        "turns": 448,
+        "frames": 46,
+        "genDurationMs": 191,
+        "genPeakRssMB": 80,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "21cf3794476b317880a98d7b1643a43fc83af010c5281675e2fd41191392447c"
+      },
+      "ingest": {
+        "rounds": 2,
+        "expectedTurns": 448,
+        "written1": 448,
+        "written2": 0,
+        "ledgerRows": 448,
+        "originals": 448,
+        "weeklyBooks": 1,
+        "handoverBooks": 1,
+        "durationMs": 5505,
+        "errors": []
+      },
+      "assertions": {
+        "sessionOk": true,
+        "firstRunWroteAll": true,
+        "ledgerRows": true,
+        "originals": true,
+        "weeklyBook": true,
+        "handoverBook": true,
+        "secondRunIdempotent": true,
+        "errors": true,
+        "uniqueTurn": true
+      },
+      "failures": [],
+      "error": ""
+    },
+    {
+      "tierMB": 36,
+      "pass": true,
+      "peakRssMB": 283,
+      "durationMs": 15216,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-36mb.jsonl.zstd",
+        "fileBytes": 113975,
+        "uncompressedBytes": 39615166,
+        "turns": 1008,
+        "frames": 102,
+        "genDurationMs": 450,
+        "genPeakRssMB": 90,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "537ff15c123f59a4f6a19286ed025fc97f3446aa32ad00e5c51d88901facc7c9"
+      },
+      "ingest": {
+        "rounds": 2,
+        "expectedTurns": 1008,
+        "written1": 1008,
+        "written2": 0,
+        "ledgerRows": 1008,
+        "originals": 1008,
+        "weeklyBooks": 2,
+        "handoverBooks": 1,
+        "durationMs": 14341,
+        "errors": []
+      },
+      "assertions": {
+        "sessionOk": true,
+        "firstRunWroteAll": true,
+        "ledgerRows": true,
+        "originals": true,
+        "weeklyBook": true,
+        "handoverBook": true,
+        "secondRunIdempotent": true,
+        "errors": true,
+        "uniqueTurn": true
+      },
+      "failures": [],
+      "error": ""
+    }
+  ],
+  "skippedTiers": [],
+  "assertions": {
+    "tiersExecuted": [
+      1,
+      4,
+      16,
+      36
+    ],
+    "allExecutedTiersPass": true,
+    "tiersFail": [],
+    "memNotLinear": true,
+    "memDetail": "档 1MB→36MB（体积 ×36）：RSS 峰 71→283MB（×3.99，须 < 36）；每档 ≤600MB=true",
+    "fullAccept36": true,
+    "fullAccept36Detail": "36MB 单次完整验收：written=1008/0、台账=1008、原文=1008、周账=2、交接表=1",
+    "skippedTiers": []
+  },
+  "rssPeakByTier": {
+    "1MB": 71,
+    "4MB": 109,
+    "16MB": 223,
+    "36MB": 283
+  },
+  "durationMs": 11,
+  "pass": true,
+  "unfinished": [],
+  "finishedAt": "2026-11-10T10:42:04.802Z"
+}

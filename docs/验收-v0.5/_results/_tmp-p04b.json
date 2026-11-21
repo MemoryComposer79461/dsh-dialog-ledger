@@ -1,0 +1,32 @@
+{
+  "module": "P0回归-v2",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-09T10:02:06.051Z",
+  "finishedAt": "2026-11-09T10:02:06.131Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 963,
+  "freeMemAfterMB": 957,
+  "summary": {
+    "cases": 1,
+    "pass": 0,
+    "fail": 1,
+    "error": 0,
+    "skipped": 0,
+    "criteriaCovered": [
+      "P0-4"
+    ]
+  },
+  "results": [
+    {
+      "id": "P0-4b",
+      "title": "125 条：120 正册 + 5 条溢出必须有去向（补记/sealRows 可检索、总数闭合）",
+      "criteria": [
+        "P0-4"
+      ],
+      "status": "FAIL",
+      "evidence": "★ P0-4 未修复：125 条（溢出=5）没有追加式封板 journal（ledger/.seal-journal.jsonl）→ 无不可变 sealRows 证据；writeWeekly 返回={\"written\":true,\"sealed\":true,\"skipped\":false,\"overflow\":5,\"warnings\":[{\"type\":\"overflow\",\"day\":\"周一\",\"date\":\"2026-11-09\",\"dropped\":5,\"message\":\"weekly overflow day=2026-11-09 dropped=5\"},{\"type\":\"overflow-supplemented\",\"gid\":\"2026-11-3|v05test00000A\",\"dropped\":5,\"path\":\"C:\Users\<user>\\\\AppData\\\\Local\\\\Temp\\\\v05-p0-4b-UyBbjS\\\\ledger-root\\\\补记-20261110.md\",\"codes\":[\"20261109-v05test00000-A-00000104\",\"20261109-v05test00000-A-00000048\",\"20261109-v05test00000-A-00000112\",\"20261109-v05test00000-A-00000056\",\"20261109-v05test00000-A-00000120\"],\"message\":\"weekly: overflow 5 rows written to 补记-20261110.md before seal\"}]}",
+      "durationMs": 76,
+      "peakRssMB": 50
+    }
+  ]
+}

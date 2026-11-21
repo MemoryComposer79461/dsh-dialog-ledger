@@ -1,0 +1,15 @@
+{
+  "id": "C42",
+  "injected": "改摘要副本 RECEIPT-20261020.json（2026-10-20 最新版）的 ledgerRows +1（摘要与台账不符）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把 RECEIPT-20261020.json 字节写回",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "RECEIPT-20261020.json 与台账不符：ledgerRows=2≠1",
+  "greenSummary": "日结摘要 17 天抽 3 天（2026-10-20/2026-10-28/2026-11-05）：JSON+TXT 与台账 100% 相符；改台账后旧版逐字节不变、已补发 v2（JSON+TXT 成对）、run-report 版本账可见；无变化 2 tick 不产新版",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C42-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C42-green.json",
+  "detail": "注入只在摘要副本上做；原 lab 与产品代码只读",
+  "residual": "C42 若因\"产品未落盘 txt/原地重写\"而恒红，则 base 也会是 RED，proof 记为 FAIL 并写明（不粉饰）"
+}

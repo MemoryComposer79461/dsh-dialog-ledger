@@ -1,0 +1,53 @@
+{
+  "schema": "criteria-1.0/1#C16",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C16",
+  "status": "GREEN",
+  "summary": "4 项全过（destroy-delete-row、destroy-extra-row、destroy-delete-attachment、destroy-flip-attachment-byte）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "destroy-delete-row",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "destroy-extra-row",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "destroy-delete-attachment",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "destroy-flip-attachment-byte",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "C 不假绿",
+  "gate": "P1",
+  "source": "删整行 / 追加伪造行 / 删附件 / 改附件一字节 → exit≠0",
+  "how": "四类破坏各一次",
+  "zonggang": "总纲 §7 L570",
+  "caliber": "S-7 修订版"
+}

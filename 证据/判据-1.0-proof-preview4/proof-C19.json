@@ -1,0 +1,15 @@
+{
+  "id": "C19",
+  "injected": "改 2026-10-05.jsonl 第 3 行（共 4 个非空行，首/尾行未动）为等长错误值并还原 mtime（size 3656→3656，mtimeMs 1794719825363→1794719825363，首个改动字节 offset=1992）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把台账日文件字节写回原值 + 还原 mtime（不用 git；副本内）",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "",
+  "greenSummary": "",
+  "redReport": "证据/判据-1.0-proof-preview4/C19-日检-proof-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/C19-日检-proof-green.json",
+  "detail": "红必须落在 C19（重放逐字段不符），不是 doctor/守卫；证据：proof-*-red/green 日检报告",
+  "residual": ""
+}

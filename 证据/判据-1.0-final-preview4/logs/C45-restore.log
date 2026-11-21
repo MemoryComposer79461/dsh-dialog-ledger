@@ -1,0 +1,114 @@
+$ node backup.mjs restore --out=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c45-restore-20261115-132347\backup --to=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c45-restore-20261115-132347\restored --write --json
+exit=0 ms=7334
+
+--- stdout ---
+{
+  "schema": "lite-backup/1",
+  "toolVersion": "1.0",
+  "command": "restore",
+  "ok": true,
+  "exitCode": 0,
+  "out": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132347\\backup",
+  "to": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132347\\restored",
+  "dryRun": false,
+  "write": true,
+  "force": false,
+  "generatedAt": "2026-11-15 13:25:04",
+  "elapsedMs": 7282,
+  "source": {
+    "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132347\\root",
+    "rootId": "ddca614f-fdbf-497b-b932-812d2401d8fe",
+    "backup": {
+      "mode": "full",
+      "createdAt": "2026-11-15 13:25:03",
+      "updatedAt": "2026-11-15 13:25:03"
+    }
+  },
+  "verify": {
+    "ok": true,
+    "exitCode": 0,
+    "manifestEntries": 2727,
+    "counts": {
+      "missing": 0,
+      "extra": 0,
+      "changed": 0
+    },
+    "errors": []
+  },
+  "plan": {
+    "files": 2726,
+    "bytes": 57933004,
+    "skipIdentical": 0,
+    "conflicts": 0,
+    "sample": [
+      {
+        "rel": "files/.ledger-root",
+        "sourceRel": ".ledger-root",
+        "sha": "eb304eac4aac95a2b14f24b90ea4a290376df2c31103854b2eaf2574b8a43488"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 原始事件.json",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 原始事件.json",
+        "sha": "80c70847921ac9288196a0eb66974003382eb0e224c4cf6396ff40bd0e36c5a2"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 完整原文.md",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000001 完整原文.md",
+        "sha": "e848fbda6fca59c170e77272646d5c0ad590e51ff236a5c261f34a75b2e14b95"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 原始事件.json",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 原始事件.json",
+        "sha": "60a2dc57462cf86978dd312bf37005cd2409dbf75a16eba377cf56b16ddc7f80"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 完整原文.md",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000002 完整原文.md",
+        "sha": "4b3985d7e471c0a72bbf01e1dd208771ffa1953444a10ed474c3485ad6152402"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 原始事件.json",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 原始事件.json",
+        "sha": "bd63b2fd16b9bd38e9d81090091771dcb904ca08ddf3d396ca9475309f952f48"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 完整原文.md",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000003 完整原文.md",
+        "sha": "96f1cf9dc5ac580a0d5ad31b1e614f5c1abdb1f027a82f47aed2cf73ceb2dc9b"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 原始事件.json",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 原始事件.json",
+        "sha": "d2af0ab2d00619c93da075d5679bf1af98f9db65ac9bd953667945020412f002"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 完整原文.md",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000004 完整原文.md",
+        "sha": "899cebb8e70e25a234003d3fccff563b532049bcc8c62934e2b0924ba05a0cd3"
+      },
+      {
+        "rel": "files/2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000005 原始事件.json",
+        "sourceRel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00000005 原始事件.json",
+        "sha": "a3c3f32494775e667509265c8e5bb7d257275724dbd1cfcce21354412590887c"
+      }
+    ]
+  },
+  "conflicts": [],
+  "wrote": {
+    "files": 2726,
+    "bytes": 57933004
+  },
+  "readBack": {
+    "ok": true,
+    "rows": 1338,
+    "files": 45,
+    "badLines": 0,
+    "readErrors": 0,
+    "emptyProven": false
+  },
+  "warnings": [],
+  "errors": [],
+  "notes": []
+}
+
+--- stderr ---

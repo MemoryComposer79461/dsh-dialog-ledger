@@ -1,0 +1,176 @@
+{
+  "schema": "v0.5-stress/1",
+  "hostname": "TSG-04",
+  "platform": "win32",
+  "arch": "x64",
+  "node": "v24.21.0",
+  "cpuCores": 8,
+  "totalMemMB": 7834,
+  "freeMemMBAtStart": 656,
+  "startedAt": "2026-11-09T10:07:51.510Z",
+  "runStamp": "20261109-180751",
+  "version": "0.4.0",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "codeSha256": {
+    "index.js": {
+      "sha256": "0ab0b7c35433dec08e76f758045f905d3a4d4f1d5cdcceb9408b9e66300a188e",
+      "bytes": 83015
+    },
+    "package.json": {
+      "sha256": "6d1481b9c235e44261d2d5c5d160b0d4109562490cfb9e212d95113b6157d752",
+      "bytes": 775
+    },
+    "lib\\backfill.js": {
+      "sha256": "a84713ee7477a2877e422765f739a2e5e7f5d41b2486051bb7a935b218da1985",
+      "bytes": 43271
+    },
+    "lib\\checkup.js": {
+      "sha256": "53cf17c9b754cca86d3af8bbba824c9b51a122c6e183c76d705234b83b436f89",
+      "bytes": 8525
+    },
+    "lib\\cleanup.js": {
+      "sha256": "0f4d88097fda52ec9b1f6090818032a82ae25713f74b94af6c67b06ffa06ebff",
+      "bytes": 22330
+    },
+    "lib\\encoder.js": {
+      "sha256": "ffbe0417a37eb825094af1212824a39a66be090ebdda21efcce1f3099e274fae",
+      "bytes": 11927
+    },
+    "lib\\frames.js": {
+      "sha256": "be395c915ff64b9c170c6aeb3ba27508eac45f1d06aa54d596f3e3a519d5d55d",
+      "bytes": 10690
+    },
+    "lib\\handover.js": {
+      "sha256": "6423241f96666567cce507b593928bf0c8d54bbb80bfdb7617a3190d0251275b",
+      "bytes": 80014
+    },
+    "lib\\ledger.js": {
+      "sha256": "ae8d5af9572d1edab0554d7880e028ed66adaeb9dd5a28c61affaaeef4f6ac53",
+      "bytes": 80417
+    },
+    "lib\\legacy.js": {
+      "sha256": "1276db46a27b078f7cea242177a1cb11387a76fc6037a4cb951afdd3fe7db074",
+      "bytes": 13209
+    },
+    "lib\\lock.js": {
+      "sha256": "a7f411d247f8b5ac56f065713d70c60bcd4300012abf5778968156067bc23774",
+      "bytes": 23696
+    },
+    "lib\\original.js": {
+      "sha256": "1c2b3b2610ac31e7921e8f1a90c17c90df74407b3bd8963d8fe60089cf09b359",
+      "bytes": 48009
+    },
+    "lib\\pending.js": {
+      "sha256": "0740ba735e9850295cb484918deebabcd8394e9ad9601ccbe5a9f9a125010f01",
+      "bytes": 6821
+    },
+    "lib\\receipt.js": {
+      "sha256": "8f6c73161ceac238cc07c5bcab4e3f155d22444d87c3db6646c9f319eb15865a",
+      "bytes": 11963
+    },
+    "lib\\reconcile.js": {
+      "sha256": "3361ff44f9737d440289700bc77214ec8872766201fc258be741a2df8f6ef1e1",
+      "bytes": 19459
+    },
+    "lib\\sealjournal.js": {
+      "sha256": "1055fe05d5fc80e907ff9708115e7d98eeb16c83b2e74772bb41c8b8e6704a9d",
+      "bytes": 11743
+    },
+    "lib\\selfheal.js": {
+      "sha256": "f1dd1e1fae6b2645d8edc7b58d413927d2b8dafbee24ddc87163985e8d4cd9a8",
+      "bytes": 16021
+    },
+    "lib\\week.js": {
+      "sha256": "56c9b761935f965eb52ea8c42205b9e6c2493352e317056bf6d60d884d7b3125",
+      "bytes": 4496
+    },
+    "lib\\weekly.js": {
+      "sha256": "b3b190ba2744022ed168617e3a3644bb47c76a17bc6865b0b2e1c13ee7a14fc8",
+      "bytes": 89017
+    },
+    "lib\\xlsx.js": {
+      "sha256": "3c1bbe61df94c599ab8f0dd741aa79c5dbe9884e7c48a728b2378c1c7e484cca",
+      "bytes": 18313
+    }
+  },
+  "heapLimitMB": 384,
+  "tiers": [
+    {
+      "tierMB": 1,
+      "pass": false,
+      "peakRssMB": 0,
+      "durationMs": 42,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-1mb.jsonl.zstd",
+        "fileBytes": 3533,
+        "uncompressedBytes": 1099879,
+        "turns": 28,
+        "frames": 4,
+        "genDurationMs": 23,
+        "genPeakRssMB": 45,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "d3a97f50e42f3cd28883aeac6b792fb892df04c3a887901c20537d016a8020e3"
+      },
+      "ingest": null,
+      "assertions": {
+        "sessionOk": true
+      },
+      "failures": [
+        "script-error"
+      ],
+      "error": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module '<test-dir>\\work\\v0.5-工作副本\\docs\\index.js' imported from <test-dir>\\work\\v0.5-工作副本\\docs\\验收-v0.5\\_压测单档.mjs |     at finalizeResolution (node:internal/modules/esm/resolve:272:11) |     at moduleResolve (node:internal/modules/esm/resolve:879:10)"
+    },
+    {
+      "tierMB": 4,
+      "pass": false,
+      "peakRssMB": 0,
+      "durationMs": 118,
+      "session": {
+        "file": "%TEMP%\\v05-stress\\tier-4mb.jsonl.zstd",
+        "fileBytes": 13230,
+        "uncompressedBytes": 4399962,
+        "turns": 112,
+        "frames": 13,
+        "genDurationMs": 48,
+        "genPeakRssMB": 57,
+        "genOk": true,
+        "verifyOk": true,
+        "sha256": "64cf788112798bd400ad3239a0c78d136637ba968c07bee735306500138e036b"
+      },
+      "ingest": null,
+      "assertions": {
+        "sessionOk": true
+      },
+      "failures": [
+        "script-error"
+      ],
+      "error": "Error [ERR_MODULE_NOT_FOUND]: Cannot find module '<test-dir>\\work\\v0.5-工作副本\\docs\\index.js' imported from <test-dir>\\work\\v0.5-工作副本\\docs\\验收-v0.5\\_压测单档.mjs |     at finalizeResolution (node:internal/modules/esm/resolve:272:11) |     at moduleResolve (node:internal/modules/esm/resolve:879:10)"
+    }
+  ],
+  "skippedTiers": [],
+  "assertions": {
+    "tiersExecuted": [
+      1,
+      4
+    ],
+    "allExecutedTiersPass": false,
+    "tiersFail": [
+      1,
+      4
+    ],
+    "memNotLinear": true,
+    "memDetail": "档 1MB→4MB（体积 ×4）：RSS 峰 0→0MB（×1.00，须 < 4）；每档 ≤600MB=true",
+    "fullAccept36": false,
+    "fullAccept36Detail": "36MB 档未执行（内存护栏跳过）→ 未覆盖",
+    "skippedTiers": []
+  },
+  "rssPeakByTier": {
+    "1MB": 0,
+    "4MB": 0
+  },
+  "durationMs": 8,
+  "pass": false,
+  "unfinished": [],
+  "finishedAt": "2026-11-09T10:07:51.518Z"
+}

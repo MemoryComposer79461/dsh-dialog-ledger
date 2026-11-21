@@ -1,0 +1,13 @@
+2026-11-10T12:28:45.734Z apply enter root=<build-host>\Desktop\会话账本
+2026-11-10T12:28:45.736Z tools mounted registered=5
+2026-11-10T12:28:45.737Z webServer mounted registered=7
+2026-11-10T12:28:45.737Z initial tools=true webServer=true
+2026-11-10T12:28:48.740Z retry#2 tools=true webServer=true
+2026-11-10T12:31:25.086Z dispose
+2026-11-10T12:31:37.857Z apply enter root=<build-host>\Desktop\会话账本
+2026-11-10T12:31:37.857Z initial tools=false webServer=false
+2026-11-10T12:31:37.857Z inject tools scheduled
+2026-11-10T12:31:37.858Z inject webServer scheduled
+2026-11-10T12:31:38.024Z tools mounted registered=5
+2026-11-10T12:31:38.582Z webServer mounted registered=7
+2026-11-10T12:31:40.857Z retry#2 tools=true webServer=true

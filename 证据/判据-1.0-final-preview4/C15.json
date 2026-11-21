@@ -1,0 +1,77 @@
+{
+  "schema": "criteria-1.0/1#C15",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C15",
+  "status": "GREEN",
+  "summary": "8 项全过（mutate-sid、mutate-turn、mutate-ts、mutate-seq、mutate-status、mutate-doc、mutate-attachment、mutate-code）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "mutate-sid",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-turn",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-ts",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-seq",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-status",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-doc",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-attachment",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      },
+      {
+        "name": "mutate-code",
+        "file": "docs/replay-verify.mjs",
+        "exit": 1,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "C 不假绿",
+  "gate": "P1",
+  "source": "改任一字段（turn/ts/seq/sid/doc/attachment/code）→ `verify` exit≠0",
+  "how": "七次单字段变异",
+  "zonggang": "总纲 §7 L569",
+  "caliber": "S-7 修订版：8 种单字段变异（含 status/code）"
+}

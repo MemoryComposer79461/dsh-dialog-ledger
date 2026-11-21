@@ -1,0 +1,120 @@
+{
+  "schema": "criteria-1.0/1#C38",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C38",
+  "status": "GREEN",
+  "summary": "抽查 6 组数字全部可追溯（生成器 8/8 在；tests/criteriaRun/E3 行数/doctor r2r3 与日志/现场复算一致）；交付五件齐、04 演练 A/B/C 已填、05 已知未覆盖项齐",
+  "reasons": [],
+  "evidence": {
+    "versionFile": "VERSION.json",
+    "generators": [
+      {
+        "name": "C01–C18 判据",
+        "path": "docs/判据-0.9.1.mjs",
+        "exists": true
+      },
+      {
+        "name": "C24＋C26–C37 判据",
+        "path": "docs/判据-0.9.4.mjs",
+        "exists": true
+      },
+      {
+        "name": "测试四数",
+        "path": "docs/跑测试.mjs",
+        "exists": true
+      },
+      {
+        "name": "语料四数",
+        "path": "docs/工具-语料四数.mjs",
+        "exists": true
+      },
+      {
+        "name": "doctor 指标",
+        "path": "tools/doctor.mjs",
+        "exists": true
+      },
+      {
+        "name": "MANIFEST 生成/校验",
+        "path": "docs/工具-manifest.mjs",
+        "exists": true
+      },
+      {
+        "name": "E3 逐 tick 度量",
+        "path": "docs/工具-measure-tick.mjs",
+        "exists": true
+      },
+      {
+        "name": "交付包导出",
+        "path": "docs/工具-export.mjs",
+        "exists": true
+      }
+    ],
+    "samples": [
+      {
+        "name": "VERSION.tests 635/593/42 ← 包内 证据/交付-v1.0.0-preview4/跑测试-最终.log",
+        "ok": true,
+        "detail": "日志含 tests 635、pass 593、fail 42"
+      },
+      {
+        "name": "VERSION.criteriaRun.result 与本版 criteria 数组自洽（首跑：证据/判据-1.0-final-preview4/summary.md 由本次运行生成）",
+        "ok": true,
+        "detail": "自洽：GREEN=45 RED=0 NA=0 SKIP=0（与 criteria 四数组长度逐项相等）"
+      },
+      {
+        "name": "VERSION.p3.index「1,338 行库」← 现场台账/度量复算",
+        "ok": true,
+        "detail": "声明 1338 / 实测台账 1338 / written 合计 1338 / 端到端 3 tick"
+      },
+      {
+        "name": "VERSION.doctorCorpus r2/r3 ← 现场只读复算",
+        "ok": true,
+        "detail": "声明 r2=1.1904 r3=0.03861 / 实测 r2=1.1904 r3=0.03861"
+      },
+      {
+        "name": "04 回滚演练填写（A/B/C 实跑通过、无占位符）",
+        "ok": true,
+        "detail": "演练结果=true A/B/C=true 实跑通过×3 占位符=false"
+      },
+      {
+        "name": "05 已知未覆盖项齐（文档在、含编号缺口与\"未验/不覆盖\"登记）",
+        "ok": true,
+        "detail": "编号缺口行≈0 含未验登记=true"
+      }
+    ],
+    "deliveryDocs": [
+      {
+        "name": "00-交付清单.md",
+        "exists": true,
+        "size": 13916
+      },
+      {
+        "name": "02-验收记录.md",
+        "exists": true,
+        "size": 19956
+      },
+      {
+        "name": "03-变更说明.md",
+        "exists": true,
+        "size": 19072
+      },
+      {
+        "name": "04-回滚方式.md",
+        "exists": true,
+        "size": 8064
+      },
+      {
+        "name": "05-已知未覆盖项.md",
+        "exists": true,
+        "size": 72678
+      }
+    ],
+    "caliber": "总纲 §7.7 C38「数字脚本生成，不手写」＋ §7.8② ；\"怎么验：抽查任意数字有没有生成脚本\"——本判据抽查 VERSION.json 的 tests/criteriaRun/p3.index/doctorCorpus 四组数字与交付五件/04 演练/05 缺口登记，全部要有生成脚本与现场日志可追",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "F 交付纪律",
+  "gate": "P4",
+  "source": "数字脚本生成，不手写",
+  "how": "抽查任意数字有没有生成脚本",
+  "zonggang": "总纲 §7 L607",
+  "caliber": ""
+}

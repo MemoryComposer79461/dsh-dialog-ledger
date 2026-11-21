@@ -1,0 +1,61 @@
+{
+  "name": "dsh-dialog-ledger",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DSH 插件：会话账本 —— 会话原文、账簿、周账、收据，仅追加、可对账、可回滚",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./tools/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "VERSION.json",
+    "core-manifest.json",
+    "MANIFEST.sha256",
+    "docs",
+    "locale",
+    "icon.svg",
+    "freeze",
+    "tools"
+  ],
+  "license": "Apache-2.0",
+  "author": "防范于未然 (https://github.com/MemoryComposer79461)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MemoryComposer79461/dsh-dialog-ledger.git"
+  },
+  "homepage": "https://github.com/MemoryComposer79461/dsh-dialog-ledger#readme",
+  "bugs": {
+    "url": "https://github.com/MemoryComposer79461/dsh-dialog-ledger/issues"
+  },
+  "scripts": {
+    "test": "node docs/跑测试.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "keywords": [
+    "dsh",
+    "plugin",
+    "dialog-ledger",
+    "memory",
+    "accounting"
+  ],
+  "engines": {
+    "node": ">=24.9.0",
+    "dsh": ">=0.2.2-rc.2 <0.3.0"
+  }
+}

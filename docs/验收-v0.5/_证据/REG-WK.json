@@ -1,0 +1,17 @@
+{
+  "schema": "v05-ac/1",
+  "id": "REG-WK",
+  "family": "REG",
+  "acId": "AC-V05-REG-WK",
+  "product": "周记账",
+  "requirement": "v1.3 `WK-01…WK-46` 全绿（46/46）；D17 覆盖：封板 canonical 按 D15 v8（WK-37 按其复算）",
+  "implementation": "`lib/weekly.js`（§5）",
+  "coverage": "未覆盖",
+  "status": "未覆盖",
+  "note": "v1.3 冻结判据（142 条）未按族复跑",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": null,
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

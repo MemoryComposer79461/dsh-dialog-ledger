@@ -1,0 +1,140 @@
+{
+  "module": "v0.5 REC 收据锚 REC-01…REC-10",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-11T05:01:46.825Z",
+  "finishedAt": "2026-11-11T05:01:47.531Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 2004,
+  "freeMemAfterMB": 1988,
+  "summary": {
+    "cases": 10,
+    "pass": 10,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0,
+    "criteriaCovered": [
+      "REC-01",
+      "REC-02",
+      "REC-03",
+      "REC-04",
+      "REC-05",
+      "REC-06",
+      "REC-07",
+      "REC-08",
+      "REC-09",
+      "REC-10"
+    ]
+  },
+  "results": [
+    {
+      "id": "REC-01",
+      "title": "收据 JSON：恰 10 键且顺序==§1.2；v=1、date==文件名、offsetMinutes=480、lastCode 正则、计数非负整数、sha 64hex、prev∈{\"\",64hex}、generatedAt 无 Z",
+      "criteria": [
+        "REC-01"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 52,
+      "peakRssMB": 43
+    },
+    {
+      "id": "REC-02",
+      "title": "收据 ledgerSha256==sha256(台账文件字节)、ledgerBytes==size、ledgerRows==行数、lastCode==末行 code（四者全等）",
+      "criteria": [
+        "REC-02"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 4,
+      "peakRssMB": 43
+    },
+    {
+      "id": "REC-03",
+      "title": "当日无台账文件仍生成收据：ledgerRows=0、ledgerBytes=0、ledgerSha256==sha256(\"\")、lastCode=\"\"；originalCount 实盘",
+      "criteria": [
+        "REC-03"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 5,
+      "peakRssMB": 46
+    },
+    {
+      "id": "REC-04",
+      "title": "连续两日收据：D1 prev==\"\"；D2 prevReceiptSha256==sha256(D1 收据完整字节)（文件复算相等）",
+      "criteria": [
+        "REC-04"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 6,
+      "peakRssMB": 47
+    },
+    {
+      "id": "REC-05",
+      "title": "只读校验器：改台账→LEDGER_CHANGED、删台账→LEDGER_MISSING、删中间收据→CHAIN_BREAK；退出码==2；前后文件 sha256 集合不变",
+      "criteria": [
+        "REC-05"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 196,
+      "peakRssMB": 47
+    },
+    {
+      "id": "REC-06",
+      "title": "receiptAnchorRoot=\"\"（默认关闭）：不生成收据、不写锚；校验器输出 {\"enabled\":false,\"breaks\":[]} 且 exit 0；不报错",
+      "criteria": [
+        "REC-06"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 107,
+      "peakRssMB": 50
+    },
+    {
+      "id": "REC-07",
+      "title": "锚==root / root 子路径 / root 祖先 → ANCHOR_INSIDE_ROOT（不生成收据、root 内无收据文件）；合法外置目录正常生成",
+      "criteria": [
+        "REC-07"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 7,
+      "peakRssMB": 50
+    },
+    {
+      "id": "REC-08",
+      "title": "同日证据不变：不新增文件、旧收据 sha256 不变、输出 decision:\"idempotent\"、exit 0；证据变化：RECEIPT_CONFLICT 且不覆盖旧收据",
+      "criteria": [
+        "REC-08"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 66,
+      "peakRssMB": 50
+    },
+    {
+      "id": "REC-09",
+      "title": "默认锚=<桌面>/账本锚绝对外置；假 U 盘路径→ANCHOR_UNWRITABLE 且账务照常不崩；复制后 --anchor=临时目录 只读校验通过；插件不搬运 U 盘",
+      "criteria": [
+        "REC-09"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 83,
+      "peakRssMB": 51
+    },
+    {
+      "id": "REC-10",
+      "title": "校验器 --json：输出 {v,enabled,anchor,checks,breaks}；退出码 0=通过/关闭、2=差异、3=用法/配置错误、4=内部错误；前后 root+anchor sha256 集合不变",
+      "criteria": [
+        "REC-10"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 178,
+      "peakRssMB": 51
+    }
+  ]
+}

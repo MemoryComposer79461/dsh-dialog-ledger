@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "RC-09",
+  "family": "RC",
+  "acId": "AC-V05-RC-09",
+  "product": "run-report",
+  "requirement": "`reconcile.counts={ledgerRows,originalCount,weeklyRows}`；weeklyRows==各周账机器行数之和（按 120/溢出规则复算）；originalCount==第三级视图文件数（REC-03 同口径）；三数可复算",
+  "implementation": "`lib/reconcile.js`、`index.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "对账只报不修由 docs\\自测-reconcile.mjs 覆盖",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "dsh-rollback-drill/1",
+  "verdict": "PASS",
+  "at": "2026-11-15T05:14:50.013Z",
+  "host": {
+    "node": "v26.13.1",
+    "platform": "win32"
+  },
+  "rollbackTarget": {
+    "name": "异机检测包-lite-v1.0.0-preview2-20261115.zip",
+    "sha256": "41f792e67f22ab9d50e50b411d43fe6af3a5fecf17a8b7eab833027bb7b5c2a0",
+    "bytes": 61753218,
+    "entries": 757
+  },
+  "expect": {
+    "sha": "41f792e67f22ab9d50e50b411d43fe6af3a5fecf17a8b7eab833027bb7b5c2a0",
+    "bytes": 61753218,
+    "entries": 757
+  },
+  "steps": {
+    "A": [
+      {
+        "id": "A1",
+        "name": "zip sha256 与发布锚一致",
+        "ok": true,
+        "detail": "41f792e67f22ab9d50e50b411d43fe6af3a5fecf17a8b7eab833027bb7b5c2a0"
+      },
+      {
+        "id": "A2",
+        "name": "zip 字节数与发布锚一致",
+        "ok": true,
+        "detail": "61753218"
+      },
+      {
+        "id": "A3",
+        "name": "zip 条目数与发布锚一致",
+        "ok": true,
+        "detail": "757"
+      },
+      {
+        "id": "A0",
+        "name": "解压终包",
+        "ok": true,
+        "detail": "已解到 <work>/extract（用 expand-archive）"
+      },
+      {
+        "id": "A4",
+        "name": "交付根清单（O）缺0/多0/改0",
+        "ok": true,
+        "detail": "声明 754"
+      },
+      {
+        "id": "A5",
+        "name": "包内清单（I）缺0/多0/改0",
+        "ok": true,
+        "detail": "声明 723"
+      }
+    ],
+    "B": [
+      {
+        "id": "B1",
+        "name": "覆盖安装（robocopy /MIR）",
+        "ok": true,
+        "detail": "exit 3（0–7 为成功）"
+      },
+      {
+        "id": "B2",
+        "name": "文件数一致（镜像语义）",
+        "ok": true,
+        "detail": "包 723 / 安装 723"
+      },
+      {
+        "id": "B3",
+        "name": "/MIR 清掉旧版独有文件",
+        "ok": true,
+        "detail": "旧版遗留文件已不在"
+      },
+      {
+        "id": "B4",
+        "name": "抽样逐字节一致",
+        "ok": true,
+        "detail": "20 个文件 sha256 全对"
+      }
+    ],
+    "C": [
+      {
+        "id": "C1",
+        "name": "覆盖后包内清单 缺0/多0/改0",
+        "ok": true,
+        "detail": "声明 723"
+      },
+      {
+        "id": "C2",
+        "name": "身份一致性",
+        "ok": true,
+        "detail": "7/7（exit 0）"
+      },
+      {
+        "id": "C3",
+        "name": "覆盖后 --verify",
+        "ok": true,
+        "detail": "  [PASS] 0 差异"
+      }
+    ]
+  },
+  "redCount": 0,
+  "workDir": "C:\Users\<user>\\AppData\\Local\\Temp\\rb-drill-25488",
+  "note": "本演练只证明「文档里的回滚命令在当前交付物上可执行且锚值可核验」；不触碰真实账库、不装真实 profile。A=锚核验 / B=覆盖安装 / C=回滚后确认。"
+}

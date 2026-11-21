@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "RC-02",
+  "family": "RC",
+  "acId": "AC-V05-RC-02",
+  "product": "返回对象",
+  "requirement": "ledgerRows==台账文件行数总和；codeUnique==唯一 code 数；sidTurnUnique==唯一 `(sid,turn)` 数；复算一致",
+  "implementation": "`lib/reconcile.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "对账只报不修由 docs\\自测-reconcile.mjs 覆盖",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

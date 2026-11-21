@@ -1,0 +1,17 @@
+$ node docs/replay-verify.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root --sessions=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions --destroy=delete-attachment
+exit=1
+
+重放核验（离线只读，不进 tick）· C14–C16 · 自检模式
+  root     = C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\root
+  sessions = C:\Users\<user>\AppData\Local\Temp\dsh-ledger-labs-1.0.0-preview4\c01-lab\dsh-home\sessions
+
+自检：--destroy=delete-attachment
+【基线】 克隆副本：全绿（12/12 配对，0 不符）
+【注入】 删除附件 20261005-c01lab000111-A-00000001 原始事件.json（code=20261005-c01lab000111-A-00000001）
+【结果】 ✅ 如期变红：ATTACHMENT_MISSING attachment.name（code=20261005-c01lab000111-A-00000001）
+         期望=20261005-c01lab000111-A-00000001 原始事件.json
+         实际=(原文目录下找不到该附件文件)
+【隔离】 原账库未被改动：✓（27 个见证文件 sha256 前后一致）
+结论：校验器有效 —— 注入必红（C16）。exit=1（预期红）
+【时】 45 ms
+

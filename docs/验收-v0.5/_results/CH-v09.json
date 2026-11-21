@@ -1,0 +1,302 @@
+{
+  "module": "v0.5 P1 可信链 CH-01…CH-24",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-11T05:01:45.566Z",
+  "finishedAt": "2026-11-11T05:01:46.770Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 1994,
+  "freeMemAfterMB": 1966,
+  "summary": {
+    "cases": 24,
+    "pass": 18,
+    "fail": 0,
+    "error": 0,
+    "skipped": 6,
+    "criteriaCovered": [
+      "CH-01",
+      "CH-02",
+      "CH-03",
+      "CH-04",
+      "CH-05",
+      "CH-06",
+      "CH-09",
+      "CH-10",
+      "CH-11",
+      "CH-12",
+      "CH-14",
+      "CH-15",
+      "CH-16",
+      "CH-18",
+      "CH-19",
+      "CH-20",
+      "CH-23",
+      "CH-24"
+    ]
+  },
+  "results": [
+    {
+      "id": "CH-01",
+      "title": "新行含 docSha256/docFileSha256(64hex)+attachment{name,sha256,bytes}；三者复算相等；有 YAML 时两 hash 不等",
+      "criteria": [
+        "CH-01"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 104,
+      "peakRssMB": 48
+    },
+    {
+      "id": "CH-02",
+      "title": "改 YAML→FILE_HASH_MISMATCH、改正文→BODY_HASH_MISMATCH、改附件→ATTACHMENT_HASH_MISMATCH、路径错→PATH_MISMATCH、合法清理→已清理(RPT-…)不进 integrityFailures",
+      "criteria": [
+        "CH-02"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 148,
+      "peakRssMB": 54
+    },
+    {
+      "id": "CH-03",
+      "title": "预置无尾换行→append 后每行可 parse（行数=原+1）；fsync 失败注入→报错、written 不增、游标回退",
+      "criteria": [
+        "CH-03"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 26,
+      "peakRssMB": 55
+    },
+    {
+      "id": "CH-04",
+      "title": "坏行：readErrors 结构化；.quarantine/<账文件>.L<行号>.json 含 raw+sha；原账文件字节不变",
+      "criteria": [
+        "CH-04"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 10,
+      "peakRssMB": 55
+    },
+    {
+      "id": "CH-05",
+      "title": "首跑被预算截断(deferred>0)→state.initialized=false；第二轮仍扫到剩余会话(scanned>0)",
+      "criteria": [
+        "CH-05"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 39,
+      "peakRssMB": 57
+    },
+    {
+      "id": "CH-06",
+      "title": "跑至 deferred=0：所有会话 (sid,turn) 集合==源闭合轮集合；此后 state.initialized=true",
+      "criteria": [
+        "CH-06"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 85,
+      "peakRssMB": 57
+    },
+    {
+      "id": "CH-07",
+      "title": "停机 7d：cutoff==min(now-hotWindow, lastRunAt-2×interval)（报告给出两候选）；期间会话被扫",
+      "criteria": [
+        "CH-07"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 cutoff/两候选 段（附录 A 要求；行为面已通过：hotWindowExtended=true、停机期间会话（mtime=3d 前）被扫到、8d 前会话被排除）",
+      "durationMs": 44,
+      "peakRssMB": 56
+    },
+    {
+      "id": "CH-08",
+      "title": "停机兜底两轮：最终 (sid,turn) 集合==源集合、逐源行数==源闭合轮数、catchupScanned>0",
+      "criteria": [
+        "CH-08"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 catchupScanned 段（附录 A 要求；行为面已通过：两轮后逐源行数==源闭合轮数、最终 (sid,turn) 集合==源集合、hotWindowExtended 生效）",
+      "durationMs": 94,
+      "peakRssMB": 57
+    },
+    {
+      "id": "CH-09",
+      "title": "坏帧：cursor 不推进到 EOF（停坏帧起点）；run-report frameErrors[{source,offset,failed}]；下轮仍尝试",
+      "criteria": [
+        "CH-09"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 48,
+      "peakRssMB": 57
+    },
+    {
+      "id": "CH-10",
+      "title": "同坏帧现场两轮：.errors.jsonl 只 1 条（fingerprint）、attempts 累加、节流、报告 errors[].count 反映真实次数、短读标未覆盖区间",
+      "criteria": [
+        "CH-10"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 162,
+      "peakRssMB": 58
+    },
+    {
+      "id": "CH-11",
+      "title": "补记册 99/100/101 解析=101 条；下一号=102；尾部校验；写/fsync 失败显式报错",
+      "criteria": [
+        "CH-11"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 48,
+      "peakRssMB": 59
+    },
+    {
+      "id": "CH-12",
+      "title": "RPT-…-99/100/101 存在→下一号=102；补记册未知块/截断尾块→验证器 ok=false（unknownBlocks>0/tail）；不得报全绿",
+      "criteria": [
+        "CH-12"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 7,
+      "peakRssMB": 59
+    },
+    {
+      "id": "CH-13",
+      "title": "首次入账：主表+附表存在；handover-seal 字段完整（decision/main/appendix/adopted/reopened、weekly-only 字段 null、时间无时区、prev=\"\"）；report handover.decision∈{adopt,generate}",
+      "criteria": [
+        "CH-13"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 handover.decision 段（附录 A 要求；行为面已通过：主表+附表存在、handover-seal 字段完整/weekly-only 全 null/时间无时区/prev=\"\"、verifySealChain.ok）",
+      "durationMs": 42,
+      "peakRssMB": 57
+    },
+    {
+      "id": "CH-14",
+      "title": "交接表写失败注入：本轮不崩、stat.errors 含 handover failed、台账/周账照常；下轮重试成功且 handover-seal 仅 1 行",
+      "criteria": [
+        "CH-14"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 57,
+      "peakRssMB": 58
+    },
+    {
+      "id": "CH-15",
+      "title": "账文件不可读：readErrors[] 结构化并计入 stat.errors；不生成空产物；相关写入被阻止",
+      "criteria": [
+        "CH-15"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 13,
+      "peakRssMB": 58
+    },
+    {
+      "id": "CH-16",
+      "title": "空目录→成功空（records=[]/readErrors=[]/emptyProven）；不可读→ok=false+readErrors 且不得当\"确定为空\"",
+      "criteria": [
+        "CH-16"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 3,
+      "peakRssMB": 58
+    },
+    {
+      "id": "CH-17",
+      "title": "删 state：verifySealChain ok；能取 weekly+handover 两事件；已封板 xlsx/交接表字节不变；report stateLost:true",
+      "criteria": [
+        "CH-17"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 stateLost/sealedFromJournal 段（附录 A 要求；行为面已通过：verifySealChain.ok、weekly+handover 两事件可取、已封板 xlsx/交接表字节不变（1 份 xlsx + 主表））",
+      "durationMs": 82,
+      "peakRssMB": 59
+    },
+    {
+      "id": "CH-18",
+      "title": "仅 weeklySealed 丢失/状态不明：一律不重写已存在周账；journal 无记录且文件在→E_SEAL_UNKNOWN 且字节不变",
+      "criteria": [
+        "CH-18"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 31,
+      "peakRssMB": 64
+    },
+    {
+      "id": "CH-19",
+      "title": "B 列只认结论列：结论=已删除→已清理(RPT-…)；未删除/跳过但备注含\"已删除\"→不得判已清理；已清理集合=={结论=已删除}",
+      "criteria": [
+        "CH-19"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 4,
+      "peakRssMB": 64
+    },
+    {
+      "id": "CH-20",
+      "title": "v1.3 新格式、v0.4 旧格式、>50 条附录 CSV（BOM/引号）三种来源均正确；第 51+ 条状态可见",
+      "criteria": [
+        "CH-20"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 7,
+      "peakRssMB": 64
+    },
+    {
+      "id": "CH-21",
+      "title": "xlsx：A1:J1 十列逐字；四态仅在 B 列；RPT 号不写备注；A 列无占位文本；周统计审计公式引用 I 列",
+      "criteria": [
+        "CH-21"
+      ],
+      "status": "SKIPPED",
+      "evidence": "openpyxl 探针不可用或打不开周账 xlsx（环境缺 openpyxl）——该判据未验证",
+      "durationMs": 34,
+      "peakRssMB": 64
+    },
+    {
+      "id": "CH-22",
+      "title": "周统计 C=COUNTA(A2:A121)、D:F=COUNTIF(I2:I121,…)；总计+溢出==源行数；说明页 A4==journal sealHash",
+      "criteria": [
+        "CH-22"
+      ],
+      "status": "SKIPPED",
+      "evidence": "openpyxl 探针不可用或打不开周账 xlsx（环境缺 openpyxl）——该判据未验证",
+      "durationMs": 25,
+      "peakRssMB": 67
+    },
+    {
+      "id": "CH-23",
+      "title": "跨月会话（起 10-31、末轮 11-01）：全部原文在 2026年10月/…（按编码日期段取月）；11 月夹无该会话原文",
+      "criteria": [
+        "CH-23"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 32,
+      "peakRssMB": 67
+    },
+    {
+      "id": "CH-24",
+      "title": "每 code 前 8 位日期==所在 YYYY年MM月 目录；同一会话原文唯一月夹；周记账仍按 ts 落月",
+      "criteria": [
+        "CH-24"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 55,
+      "peakRssMB": 67
+    }
+  ]
+}

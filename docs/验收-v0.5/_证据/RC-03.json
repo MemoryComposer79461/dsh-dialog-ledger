@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "RC-03",
+  "family": "RC",
+  "acId": "AC-V05-RC-03",
+  "product": "originalMissing",
+  "requirement": "台账有效行 doc/附件缺失 → **每 code 1 条** `{code,doc,part}`；`part ∈ {\"view\",\"attachment\",\"both\"}`（R-01：视图+附件都缺→`both`；仅一缺→对应值；v0.4 旧行无 attachment 字段→只可能 `\"view\"`）；数量==构造缺失数；ok=false",
+  "implementation": "`lib/reconcile.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "对账只报不修由 docs\\自测-reconcile.mjs 覆盖",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

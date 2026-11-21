@@ -1,0 +1,375 @@
+{
+  "module": "v0.5 P0 不变量 INV-01…INV-30",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-11T05:01:35.849Z",
+  "finishedAt": "2026-11-11T05:01:45.502Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 1969,
+  "freeMemAfterMB": 1906,
+  "summary": {
+    "cases": 30,
+    "pass": 25,
+    "fail": 0,
+    "error": 0,
+    "skipped": 5,
+    "criteriaCovered": [
+      "INV-01",
+      "INV-04",
+      "INV-05",
+      "INV-06",
+      "INV-07",
+      "INV-08",
+      "INV-09",
+      "INV-10",
+      "INV-11",
+      "INV-12",
+      "INV-13",
+      "INV-14",
+      "INV-15",
+      "INV-16",
+      "INV-17",
+      "INV-20",
+      "INV-21",
+      "INV-22",
+      "INV-23",
+      "INV-25",
+      "INV-26",
+      "INV-27",
+      "INV-28",
+      "INV-29",
+      "INV-30"
+    ]
+  },
+  "results": [
+    {
+      "id": "INV-01",
+      "title": "12KB→几百B 缩小型替换后：台账新增 Turn2、code 复算一致、stat.unchanged==0、游标==新文件完整帧边界",
+      "criteria": [
+        "INV-01"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 112,
+      "peakRssMB": 50
+    },
+    {
+      "id": "INV-02",
+      "title": "任意缩小源：report cursorResets[reason=shrunk] 且该源 (sid,turn) 集合==源集合",
+      "criteria": [
+        "INV-02"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 cursorResets 段（附录 A 要求；行为面已通过：shrinkRollbacks=1、台账(sid,turn)集合==源集合；判据点名的 cursorResets 证据不存在）",
+      "durationMs": 46,
+      "peakRssMB": 51
+    },
+    {
+      "id": "INV-03",
+      "title": "同字节数重写（内容不同）：判 changed、identityChanges 含该源、新 Turn 入账",
+      "criteria": [
+        "INV-03"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 identityChanges 段（附录 A 要求；行为面已通过：identityRewrites=1、unchanged=0、同 size 542B 重写里 Turn2 已入账）",
+      "durationMs": 130,
+      "peakRssMB": 74
+    },
+    {
+      "id": "INV-04",
+      "title": "截断/替换自测含\"新内容必须被读到\"断言（删断言/删修复必红）",
+      "criteria": [
+        "INV-04"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 43,
+      "peakRssMB": 75
+    },
+    {
+      "id": "INV-05",
+      "title": "未闭合轮：台账 0 行、.pending.jsonl 1 行（字段齐、state=\"pending\"）、原文视图/附件不存在",
+      "criteria": [
+        "INV-05"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 19,
+      "peakRssMB": 75
+    },
+    {
+      "id": "INV-06",
+      "title": "同一未闭合轮再扫：.pending.jsonl 行数不变、run-report pending.added=0/dup=1、台账仍 0",
+      "criteria": [
+        "INV-06"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 25,
+      "peakRssMB": 75
+    },
+    {
+      "id": "INV-07",
+      "title": "补 turn/end 后：恰 1 行 status=ok/turnState=closed、partial=0、视图+附件 hash 复核通过",
+      "criteria": [
+        "INV-07"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 36,
+      "peakRssMB": 75
+    },
+    {
+      "id": "INV-08",
+      "title": "4 轮序列：run1 added=1；run2 dup=1 且台账 0；run3 written=1 且 ok 行=1；run4 written=0 行数不变",
+      "criteria": [
+        "INV-08"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 60,
+      "peakRssMB": 57
+    },
+    {
+      "id": "INV-09",
+      "title": "预置 v0.4 历史 partial：字节不变/不删/不追写，run-report legacyPartials 列出该 code",
+      "criteria": [
+        "INV-09"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 18,
+      "peakRssMB": 58
+    },
+    {
+      "id": "INV-10",
+      "title": ".pending.jsonl 行不含 code/status/version/supersedes；同一 (sid,turn) 不得既 pending 又台账终态",
+      "criteria": [
+        "INV-10"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 18,
+      "peakRssMB": 58
+    },
+    {
+      "id": "INV-11",
+      "title": "每批（除 oversize）turns/events/bytes 均不超预算、触顶即开新批、heapUsed 峰值增量≤256MiB",
+      "criteria": [
+        "INV-11"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 85,
+      "peakRssMB": 59
+    },
+    {
+      "id": "INV-12",
+      "title": "单轮事件字节>eventBatchBytes：单独成批 oversize:true、eventOversize=1、Σbatches.events==源事件数",
+      "criteria": [
+        "INV-12"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 43,
+      "peakRssMB": 75
+    },
+    {
+      "id": "INV-13",
+      "title": "运行中取消：返回 {cancelled:true, committedBatches:k}；已提交批完整、未提交批零写入、无半批",
+      "criteria": [
+        "INV-13"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 2916,
+      "peakRssMB": 89
+    },
+    {
+      "id": "INV-14",
+      "title": "批间 kill -9 后续跑：台账集合==源闭合轮集合、无重复 code、resumeFrom 正确、已提交批前缀不变、批次数≥下界",
+      "criteria": [
+        "INV-14"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 5140,
+      "peakRssMB": 120
+    },
+    {
+      "id": "INV-15",
+      "title": "120/121/122 及\"122 但溢出码不同\"共 4 组：封板 hash 两两不同；journal sourceRowCount/overflow 分别为 120/0、121/1、122/2、122/2",
+      "criteria": [
+        "INV-15"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 99,
+      "peakRssMB": 123
+    },
+    {
+      "id": "INV-16",
+      "title": "125 行直接封板：正册 120、补记 5 条 reason=overflow-seal、正册∪补记==源、交集空、120+5==125",
+      "criteria": [
+        "INV-16"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 25,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-17",
+      "title": "journal：该 key+kind 仅 1 行、字段齐全、sealHash 按 D15.1 v8 复算一致、rowsSha256/supplementCodesSha256 复算一致、prev 链正确",
+      "criteria": [
+        "INV-17"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 23,
+      "peakRssMB": 125
+    },
+    {
+      "id": "INV-18",
+      "title": "封板后合法清理：历史校验仍通过、xlsx 字节不变、现状差异只进 weeklyDrift",
+      "criteria": [
+        "INV-18"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 weeklyDrift 段（附录 A 要求；行为面已通过：清理后 verifySealChain.ok、xlsx 字节不变（sha=4b45c4af48e6…）、journal 字节不变）",
+      "durationMs": 41,
+      "peakRssMB": 126
+    },
+    {
+      "id": "INV-19",
+      "title": "120/121/122 三组按 D15.1 字段顺序复算 3 个互异 hash 且 == A4；canonicalVersion==8；换路径同数据 hash 不变",
+      "criteria": [
+        "INV-19"
+      ],
+      "status": "SKIPPED",
+      "evidence": "openpyxl 探针不可用或打开 xlsx 失败（环境缺 openpyxl / 产物不可读）——无法验证\"复算 == 说明页 A4\"",
+      "durationMs": 82,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-20",
+      "title": "121 行封板：先补记成功再封板；补记写失败→E_SEAL_OVERFLOW_SUPPLEMENT_FAILED、journal 无行、xlsx 无封板态；闭合校验齐全",
+      "criteria": [
+        "INV-20"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 55,
+      "peakRssMB": 126
+    },
+    {
+      "id": "INV-21",
+      "title": "视图+附件存在；docFileSha256==视图、docSha256==正文、attachment.sha256==附件；附件行数==事件范围且 seq 集合相等",
+      "criteria": [
+        "INV-21"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 26,
+      "peakRssMB": 121
+    },
+    {
+      "id": "INV-22",
+      "title": "工具参数 2000/2001/4517 字符（中文/emoji/尾部标记）从附件恢复 === 源参数、UTF-8 字节一致",
+      "criteria": [
+        "INV-22"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 60,
+      "peakRssMB": 122
+    },
+    {
+      "id": "INV-23",
+      "title": "视图披露行 \"> [截断] 原始长度=4517字符 附件=<code> 原始事件.json sha256=<64hex>\" 逐字；N=码点；前缀可解码",
+      "criteria": [
+        "INV-23"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 47,
+      "peakRssMB": 122
+    },
+    {
+      "id": "INV-24",
+      "title": "改 YAML→FILE_HASH_MISMATCH、改正文→BODY_HASH_MISMATCH、改文件名→绑定必败；docSha256 仅正文改动才失败",
+      "criteria": [
+        "INV-24"
+      ],
+      "status": "SKIPPED",
+      "evidence": "运行报告未产出 integrityFailures 段（附录 A 要求；行为面已通过：改 YAML→FILE_HASH_MISMATCH、改正文→BODY_HASH_MISMATCH、改文件名→绑定必败且 integrity 原因非空、docSha256 仅正文改动才失败）",
+      "durationMs": 113,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-25",
+      "title": "默认清理：deleted==false、原文清单+sha 前后全等、只产 RPT-DRYRUN-*、正式 RPT 号零新增",
+      "criteria": [
+        "INV-25"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 17,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-26",
+      "title": "旧工具 docs/工具-v03-清理.mjs 未显式确认时 BLOCKED/非零退出，且前后全库 sha256 不变",
+      "criteria": [
+        "INV-26"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 46,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-27",
+      "title": "dry-run 后无正式 RPT 新增；随后首次正式清理编号==当日 01（dry-run 不占号）",
+      "criteria": [
+        "INV-27"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 12,
+      "peakRssMB": 124
+    },
+    {
+      "id": "INV-28",
+      "title": "同 code 同正文 reused:true 字节不变；异正文 ORIGINAL_CONFLICT 不覆盖；附件冲突 ATTACHMENT_CONFLICT 不覆盖",
+      "criteria": [
+        "INV-28"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 14,
+      "peakRssMB": 123
+    },
+    {
+      "id": "INV-29",
+      "title": "双进程同 root：第二个 LOCK_HELD 跳过；锁文件字段 pid/hostname/startedAt/heartbeatAt 齐；失败方零写入",
+      "criteria": [
+        "INV-29"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 102,
+      "peakRssMB": 123
+    },
+    {
+      "id": "INV-30",
+      "title": "写失败游标回退+无半产物；坏 sid/缺 head 落 .errors.jsonl（D9/fingerprint）、游标不推进、blockedSources 命中；节流+报告 count 累加",
+      "criteria": [
+        "INV-30"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 195,
+      "peakRssMB": 124
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "module": "P0回归-v2",
+  "target": "<test-dir>\\work\\v0.5-工作副本",
+  "startedAt": "2026-11-11T05:00:52.255Z",
+  "finishedAt": "2026-11-11T05:01:10.687Z",
+  "node": "v24.21.0",
+  "freeMemBeforeMB": 1998,
+  "freeMemAfterMB": 1959,
+  "summary": {
+    "cases": 19,
+    "pass": 19,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0,
+    "criteriaCovered": [
+      "P0-1",
+      "P0-2",
+      "P0-3",
+      "P0-4",
+      "P0-5",
+      "P0-6",
+      "P0-7",
+      "P1-6",
+      "REC-2",
+      "REC-4",
+      "REC-5"
+    ]
+  },
+  "results": [
+    {
+      "id": "P0-1",
+      "title": "源文件缩小后，新 Turn 必须入账（不得走 unchanged 快路径）",
+      "criteria": [
+        "P0-1"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 113,
+      "peakRssMB": 50
+    },
+    {
+      "id": "P0-1b",
+      "title": "同大小重写（内容变、字节数不变）→ 新 Turn 必须入账",
+      "criteria": [
+        "P0-1"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 953,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P0-1c",
+      "title": "缩小后又长回原字节（尾部换成新 Turn）→ 不许走 unchanged 快路径",
+      "criteria": [
+        "P0-1"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 50,
+      "peakRssMB": 83
+    },
+    {
+      "id": "P0-2",
+      "title": "三轮语义：run2 只留 pending/partial → 补 turn/end → 恰好一个闭合版本",
+      "criteria": [
+        "P0-2"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 38,
+      "peakRssMB": 83
+    },
+    {
+      "id": "P0-3-mem",
+      "title": "36MB/1000 轮首跑：内存上限 ≤600MB（子进程 heap 限 320MB）",
+      "criteria": [
+        "P0-3"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 13500,
+      "peakRssMB": 159
+    },
+    {
+      "id": "P0-3-cancel",
+      "title": "可取消：AbortSignal 在 400ms 中止后 must 及时退出",
+      "criteria": [
+        "P0-3"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 864,
+      "peakRssMB": 106
+    },
+    {
+      "id": "P0-3-resume",
+      "title": "kill -9 后重启：从已提交批次续，无重复、无整会话遗漏",
+      "criteria": [
+        "P0-3"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 2562,
+      "peakRssMB": 86
+    },
+    {
+      "id": "P0-4a",
+      "title": "120/121/122 三组**独立 root** 封板：都真写、哈希互不相同、行数/溢出/闭合对得上",
+      "criteria": [
+        "P0-4"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 106,
+      "peakRssMB": 90
+    },
+    {
+      "id": "P0-4b",
+      "title": "125 条：120 正册 + 5 补记可按编码检索、总数闭合无重复；封板 journal 有 rows 快照",
+      "criteria": [
+        "P0-4"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 28,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P0-4c",
+      "title": "封板证据不可变：seal journal/rows 快照在后续调用中不改写",
+      "criteria": [
+        "P0-4"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 15,
+      "peakRssMB": 89
+    },
+    {
+      "id": "P0-5",
+      "title": "2000/2001/4517 及多字节参数：完整可恢复，或显式截断+原始长度+附件指针+哈希",
+      "criteria": [
+        "P0-5"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 54,
+      "peakRssMB": 90
+    },
+    {
+      "id": "P0-6",
+      "title": "未显式开启清理时一个文件都不能少；旧 CLI 未加 --yes 不得删除",
+      "criteria": [
+        "P0-6"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 56,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P0-7①",
+      "title": "同编码不同正文必须拒绝（合法 markdown 夹具，勘误②）",
+      "criteria": [
+        "P0-7"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 8,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P0-7②",
+      "title": "台账记完整文件哈希（不只正文 hash）",
+      "criteria": [
+        "P0-7"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 20,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P0-7③",
+      "title": "坏 sid 必须进 errors 且留痕（依赖 D9 定稿）",
+      "criteria": [
+        "P0-7"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 15,
+      "peakRssMB": 91
+    },
+    {
+      "id": "P1-6",
+      "title": "补记册 01…101 连续后追加 → 应得 102；验证器不得忽略未知块",
+      "criteria": [
+        "P1-6"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 17,
+      "peakRssMB": 91
+    },
+    {
+      "id": "REC-core-链连续",
+      "title": "两日收据链首尾相接；改前链字段 → CHAIN_BREAK",
+      "criteria": [
+        "REC-2"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 9,
+      "peakRssMB": 91
+    },
+    {
+      "id": "REC-core-幂等与冲突",
+      "title": "同日重跑幂等；证据变化 → RECEIPT_CONFLICT 且不改写旧收据",
+      "criteria": [
+        "REC-4"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 5,
+      "peakRssMB": 91
+    },
+    {
+      "id": "REC-core-篡改与删除",
+      "title": "改台账→LEDGER_CHANGED；删台账→LEDGER_MISSING；删首张收据→CHAIN_BREAK",
+      "criteria": [
+        "REC-5"
+      ],
+      "status": "PASS",
+      "evidence": "断言通过",
+      "durationMs": 14,
+      "peakRssMB": 91
+    }
+  ]
+}

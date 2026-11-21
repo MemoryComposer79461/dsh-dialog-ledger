@@ -1,0 +1,957 @@
+{
+  "schema": "criteria-0.9.4/1",
+  "at": "2026-11-15T05:24:52.158Z",
+  "lite": "p5-work\\pkg",
+  "labs": {
+    "small": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+    "smallOk": true,
+    "big": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+    "bigOk": true
+  },
+  "counts": {
+    "green": 13,
+    "red": 0,
+    "na": 0,
+    "skip": 0
+  },
+  "ok": true,
+  "criteria": [
+    {
+      "id": "C24",
+      "title": "三年体积预估写在文档：GiB 口径 ≈364 GiB 且标\"推算\"（S-10③）",
+      "status": "GREEN",
+      "evidence": {
+        "model": {
+          "roundsPerDay": 3168,
+          "years": 3,
+          "rounds": 3468960,
+          "compressionPerRoundKiB": 31.5,
+          "decompressRatio": 3.4928,
+          "totalKiB": 381661513,
+          "GiB": 363.98,
+          "clause": "≈364 GiB（S-10③ 复算 363.9）",
+          "mark": "推算（31.5 KiB/轮压缩 × 3.4928 解压 × 3,468,960 轮）"
+        },
+        "docs": {
+          "planPath": "计划\\0.9.4-P3扩容方案.md",
+          "planExists": false,
+          "planGiB": [],
+          "planTuiSuan": [],
+          "signPath": "新的开始-V0.9.0新版本\\签字单-已签-20261113.md",
+          "signExists": false,
+          "signGiB": [],
+          "fallbackDocs": [
+            {
+              "doc": "交付-v0.9.4/02-验收记录.md",
+              "gibHits": [
+                {
+                  "line": 84,
+                  "text": "| C24 | 三年体积预估写在文档：GiB 口径 **≈364 GiB** 且标\"推算\"（S-10③） | **GREEN** | 复算 **363.98 GiB ≈364 GiB**（3,468,960 轮 × 31.5 KiB × 3.4928 解压）；计划 §4.7 GiB 命中 **6 处**、推算标记 **8 处**、签字单 GiB 命中 **1 处** | L7；`C24.json` |"
+                },
+                {
+                  "line": 273,
+                  "text": "| C24 的 363.98 GiB、6/8/1 处命中 | 判据执行器按 `31.5 KiB × 3.4928 × 3,468,960` 复算 + 读 `_工作\\计划\\0.9.4-P3扩容方案.md` 与签字单 | `C24.json` |"
+                }
+              ],
+              "tuiSuan": 5
+            },
+            {
+              "doc": "交付-v0.9.4/00-交付清单.md",
+              "gibHits": [
+                {
+                  "line": 26,
+                  "text": "3. **C24 的 ≈364 GiB、C32 的 402 MB、C34 的真实 90 天/冷月、C35 的 1,095 分片、C36 的三年 12.6% 全是推算或小库实测**（05 #3）；"
+                }
+              ],
+              "tuiSuan": 4
+            },
+            {
+              "doc": "交付-v0.9.4/05-已知未覆盖项.md",
+              "gibHits": [
+                {
+                  "line": 14,
+                  "text": "| **3** | **三年规模判据全为推算或小库实测**——C24 的 ≈364 GiB 是模型复算（363.98 GiB）；C32 的\"3 年 402 MB 全扫\"、C34 的\"真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB\"、C35 的\"1,095 个日分片\"、C36 的\"三年 12.6%\"都**没有建三年合成库**（纪律：500 MB 预算/磁盘纪律不落 3.19 GB 台账） | 13 条判据的**格式/正确性**结论可信；**到量后的性能与体积**没有实测。真实 3 年的 C34 会不会超 1 s/2 s、C35 会不会加载别的月份、C36 会不会破 15%，本版**没有数字** | ⏳ 后续版本按 E4-1/E4-3 的合成阶梯补测；本版不把推算当实测（02 §七 #5） |"
+                },
+                {
+                  "line": 19,
+                  "text": "| **8** | **K-3（`readAll` 热窗）留 0.9.5**——本版 tick 仍每轮全读台账；三年期 tick `readAll` ≈3.19 GB/轮、heap 推算 ≈4.0 GB（§3.3），**没有 K-3 就会在到量后爆内存/超时** | 本版只把这件事变成**可提前发现**：容量告警（`CATALOG_BUDGET` 台账行数 15 万 warn/33 万 red、账库体积 291/363 GiB）＋`.tick-metrics` 的 `phases`/`budget`；**真正的修法（K-3 内核改动）不在本版** | ⏳ K-3 需机主签（`lib/ledger.js` 增 `sinceYmd`，默认行为不变），列 0.9.5 第一优先；本版不宣称大库 tick 可持续 |"
+                }
+              ],
+              "tuiSuan": 7
+            },
+            {
+              "doc": "交付-v0.9.5/02-验收记录.md",
+              "gibHits": [
+                {
+                  "line": 70,
+                  "text": "| C24 | 三年体积预估写在文档：GiB 口径 **≈364 GiB** 且标\"推算\" | 0.9.4 子执行器 | **GREEN** | 复算 **364.0 GiB ≈364 GiB**；Plan §4.7 GiB 命中 **6 处**、推算标记 **8 处**、签字单 GiB 命中 **1 处** | `202818\\C24.json`；`094-criteria-20261113-202915\\C24.json` |"
+                },
+                {
+                  "line": 242,
+                  "text": "| 6 | **三年规模全为推算** | C24 的 ≈364 GiB 是模型复算；C32 的 3 年 402 MB 全扫、C34 真实 90 天/冷月、C35 1,095 分片、C36 三年 12.6% 都是推算或 45 天实测（05 #9） |"
+                }
+              ],
+              "tuiSuan": 3
+            },
+            {
+              "doc": "交付-v0.9.5/05-已知未覆盖项.md",
+              "gibHits": [
+                {
+                  "line": 27,
+                  "text": "| **9** | **三年规模全为推算**——C24 的 **≈364 GiB** 是模型复算（364.0）；C32 的\"3 年 **402 MB** 全扫\"、C34 的\"真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB\"、C35 的\"**1,095** 个日分片\"、C36 的\"三年 **12.6%**\"都是**推算或 45 天实测**，没有建三年合成库（纪律：500 MB 预算，不落 3.19 GB 台账） | 40 条的**格式/正确性**结论可信；**到量后的性能与体积没有实测**。真实 3 年的 C34 会不会超 1 s/2 s、C35 会不会加载别的月份、C36 会不会破 15%，本版**没有数字** | ⏳ 后续版本按 E4-1/E4-3 合成阶梯补测；本版不把推算当实测 |"
+                },
+                {
+                  "line": 32,
+                  "text": "| **14** | **K-3（`readAll` 热窗）留 1.0**——本版 tick 仍每轮全读台账；三年期 tick `readAll` ≈3.19 GB/轮、heap 推算 ≈4.0 GB，**没有 K-3 就会在到量后爆内存/超时** | 本版只是把这件事变成**可提前发现**（容量告警：台账行数 15 万 warn/33 万 red、账库体积 291/363 GiB）＋`.tick-metrics` 的 `phases`/`budget`；**真正的修法（K-3 内核改动）不在本版** | ⏳ K-3 需机主签（`lib/ledger.js` 增 `sinceYmd`，默认行为不变），列 `v1.0.0-re` 第一优先；本版不宣称大库 tick 可持续 |"
+                }
+              ],
+              "tuiSuan": 5
+            },
+            {
+              "doc": "交付-v1.0.0-re/02-验收记录.md",
+              "gibHits": [
+                {
+                  "line": 50,
+                  "text": "| C24 | GREEN | 判据-0.9.4：复算 **364.0 GiB** ≈ 364 GiB；Plan §4.7 GiB 命中 6 处、推算标记 8 处、签字单 1 处 |"
+                }
+              ],
+              "tuiSuan": 1
+            },
+            {
+              "doc": "交付-v1.0.0-re/05-已知未覆盖项.md",
+              "gibHits": [
+                {
+                  "line": 41,
+                  "text": "| ❌3 | **不保证真实账库/跨机/三年性能** | 只在 c01/E3 只读/三层夹具上验，只在 TSG-33 + Win10 + Node v26.13.1 跑过；三年数字（364 GiB、402 MB、≈42 s 等）**全是推算** | 真实库 + 三台设备 + 三年合成库实测 |"
+                }
+              ],
+              "tuiSuan": 2
+            }
+          ],
+          "source": "package-fallback",
+          "pending": "0.9.4 交付文档 04 尚未生成（出包时须按 S-10③ 复述 ≈364 GiB + 标\"推算\"）；计划 §1.1 仍留 S-9 历史口径 \"≈363 GB\"，已在 §4.7 更正为 GiB"
+        }
+      },
+      "summary": "复算 364.0 GiB ≈364 GiB；Plan §4.7 GiB 命中 0 处、推算标记 0 处、签字单 GiB 命中 0 处、包内交付文档回退命中 7 份（交付-v0.9.4/02-验收记录.md、交付-v0.9.4/00-交付清单.md、交付-v0.9.4/05-已知未覆盖项.md、交付-v0.9.5/02-验收记录.md、交付-v0.9.5/05-已知未覆盖项.md、交付-v1.0.0-re/02-验收记录.md、交付-v1.0.0-re/05-已知未覆盖项.md）（交付文档 04 待出包复述）"
+    },
+    {
+      "id": "C26",
+      "title": "索引条数＝台账行数（同天），每条 code 在台账里存在",
+      "status": "GREEN",
+      "evidence": {
+        "per": [
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "label": "小库",
+            "ledgerDays": 3,
+            "indexDays": 3,
+            "ledgerRows": 12,
+            "indexRows": 12,
+            "countMismatch": 0,
+            "missingInIndex": 0,
+            "indexNotInLedger": 0,
+            "duplicateIndexCodes": 0,
+            "ledgerBadLines": 0,
+            "samples": [],
+            "ok": true
+          },
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+            "label": "大库",
+            "ledgerDays": 45,
+            "indexDays": 45,
+            "ledgerRows": 1338,
+            "indexRows": 1338,
+            "countMismatch": 0,
+            "missingInIndex": 0,
+            "indexNotInLedger": 0,
+            "duplicateIndexCodes": 0,
+            "ledgerBadLines": 0,
+            "samples": [],
+            "ok": true
+          }
+        ],
+        "problems": []
+      },
+      "summary": "小库 3 日/台账 12 行=索引 12 行，缺/多/重复 0；大库 45 日/台账 1338 行=索引 1338 行，缺/多/重复 0"
+    },
+    {
+      "id": "C27",
+      "title": "★ 索引瘦行四字段（code+docFileSha256+offset+bytes）由原文/台账独立复算（S-10①，不查 entryHash）",
+      "status": "GREEN",
+      "evidence": {
+        "per": [
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "label": "小库",
+            "indexRows": 12,
+            "ledgerRows": 12,
+            "thinBad": 0,
+            "entryHashFields": 0,
+            "pointerBad": 0,
+            "docShaVsLedgerBad": 0,
+            "docShaMissing": 0,
+            "viewChecked": 12,
+            "viewBad": 0,
+            "viewMissing": 0,
+            "ok": true,
+            "samples": []
+          },
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+            "label": "大库",
+            "indexRows": 1338,
+            "ledgerRows": 1338,
+            "thinBad": 0,
+            "entryHashFields": 0,
+            "pointerBad": 0,
+            "docShaVsLedgerBad": 0,
+            "docShaMissing": 0,
+            "viewChecked": 1338,
+            "viewBad": 0,
+            "viewMissing": 0,
+            "ok": true,
+            "samples": []
+          }
+        ],
+        "problems": [],
+        "caliber": "S-10①：四字段由原文/台账复算；不引入 entryHash（S-6 否决）"
+      },
+      "summary": "小库 12 行+大库 1338 行：指针区间/台账 docFileSha256/原文 md 整文件 sha 全部独立复算一致；h/entryHash 字段 0"
+    },
+    {
+      "id": "C28",
+      "title": "新增一行→索引同步加一行（不重建、不重扫）",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c28\\run-1\\root",
+        "beforeRows": 12,
+        "afterRows": 13,
+        "changedDay": "20261007",
+        "appendedRowBytes": 928,
+        "build": {
+          "written": 1,
+          "unchanged": 0,
+          "removed": 0,
+          "ok": true,
+          "ms": 9
+        },
+        "otherShardsChanged": [],
+        "createdShards": [],
+        "reads": {
+          "ledgerReadBytes": 0,
+          "readAmplification": 0,
+          "shardReads": 3,
+          "viewReads": 0
+        },
+        "subchecks": {
+          "syncPlusOne": true,
+          "noWholeIndexRebuild": true,
+          "noViewRescan": true,
+          "rescanUnder3x": true
+        },
+        "caliber": "总纲\"怎么验=加一行看索引增量\"三子项成立；但判据括号里的\"不重扫\"按 P3 方案 E4-2（fs hook ≤新行×3）实测未达 → 整条判红，缺陷登记待 re1 补 idx-sync",
+        "defect": null
+      },
+      "defects": [],
+      "summary": "追加 1 行→索引 +1（written=1/removed=0；视图重扫 0；读放大 0.0×）"
+    },
+    {
+      "id": "C29",
+      "title": "★ 删掉索引 → 能从台账重建（索引是派生物，重建后逐行/逐字节等）",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c29\\run-2\\root",
+        "rowsBefore": 12,
+        "rowsAfter": 12,
+        "shards": 3,
+        "deletionDetected": true,
+        "deletionProblems": [
+          "index-missing",
+          "count-mismatch",
+          "missing-index-row",
+          "missing-index-row",
+          "missing-index-row"
+        ],
+        "rebuilt": {
+          "ok": true,
+          "written": 3,
+          "removed": 0,
+          "ms": 9
+        },
+        "mismatchedShards": [],
+        "missingShards": [],
+        "statOk": true,
+        "stateMatch": true,
+        "shardForm": {
+          "rule": "S-10④：按日分片 idx-YYYYMMDD.jsonl，单分片 ≤4 MiB",
+          "badFormShards": [],
+          "dayShardOk": true,
+          "shardLimitBytes": 4194304
+        }
+      },
+      "summary": "删 .index（3 分片/12 行）→ stat 检出 index-missing → 重建 3 分片逐字节相等、rows=12、stat.ok=true；形态=按日分片≤4 MiB（S-10④）"
+    },
+    {
+      "id": "C30",
+      "title": "按时间范围查 → 与暴力扫台账结果集完全一致",
+      "status": "GREEN",
+      "evidence": {
+        "per": [
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "label": "小库",
+            "cases": [
+              {
+                "range": "20261005..20261007",
+                "indexRows": 12,
+                "bruteRows": 12,
+                "equal": true,
+                "mismatched": 0
+              },
+              {
+                "range": "20261005..20261006",
+                "indexRows": 8,
+                "bruteRows": 8,
+                "equal": true,
+                "mismatched": 0
+              },
+              {
+                "range": "20261006..20261007",
+                "indexRows": 8,
+                "bruteRows": 8,
+                "equal": true,
+                "mismatched": 0
+              }
+            ]
+          },
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+            "label": "大库",
+            "cases": [
+              {
+                "range": "20260901..20261015",
+                "indexRows": 1338,
+                "bruteRows": 1338,
+                "equal": true,
+                "mismatched": 0
+              },
+              {
+                "range": "20260901..20260923",
+                "indexRows": 690,
+                "bruteRows": 690,
+                "equal": true,
+                "mismatched": 0
+              },
+              {
+                "range": "20260923..20261015",
+                "indexRows": 678,
+                "bruteRows": 678,
+                "equal": true,
+                "mismatched": 0
+              }
+            ]
+          }
+        ],
+        "problems": []
+      },
+      "summary": "小库 3 个区间逐 code 一致（12/8/8 行）；大库 3 个区间逐 code 一致（1338/690/678 行）"
+    },
+    {
+      "id": "C31",
+      "title": "★ 按 sid 查 → 跨热/温/冷三层都正确",
+      "status": "GREEN",
+      "reasons": [],
+      "evidence": {
+        "threeLayer": {
+          "lab": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer",
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer\\root",
+          "manifestPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer\\manifest.json",
+          "anchor": "2026-11-15",
+          "today": "2026-11-15",
+          "anchorAgeDays": 0,
+          "hotIsToday": true,
+          "caliber": {
+            "hot": {
+              "name": "热",
+              "fromDays": 0,
+              "toDays": 0,
+              "desc": "锚点日（生成当日=今天）"
+            },
+            "warm": {
+              "name": "温",
+              "fromDays": 90,
+              "toDays": 180,
+              "desc": "90–180 天前"
+            },
+            "cold": {
+              "name": "冷",
+              "fromDays": 366,
+              "toDays": null,
+              "desc": "超过 1 年（>365 天）"
+            }
+          },
+          "pipeline": null,
+          "fixtureDigest": null
+        },
+        "perLayer": [
+          {
+            "layer": "hot",
+            "sid": "session-three00001-1111-2222-3333-444444444401",
+            "expectedRows": 2,
+            "ledgerRows": 2,
+            "indexQueryRows": 2,
+            "apiRows": 2,
+            "offsets": [
+              0,
+              0
+            ],
+            "days": [
+              "20261115"
+            ],
+            "months": [
+              "202611"
+            ],
+            "shardsRead": 5,
+            "bytesRead": 632,
+            "missingInLedger": [],
+            "extraInLedger": [],
+            "checks": {
+              "ledgerMatchesManifest": true,
+              "indexHasAllExpected": true,
+              "queryMatchesManifest": true,
+              "queryNoPointerProblems": true,
+              "apiMatchesManifest": true,
+              "allThreePathsEqual": true
+            }
+          },
+          {
+            "layer": "warm",
+            "sid": "session-three00002-1111-2222-3333-444444444402",
+            "expectedRows": 2,
+            "ledgerRows": 2,
+            "indexQueryRows": 2,
+            "apiRows": 2,
+            "offsets": [
+              100,
+              160
+            ],
+            "days": [
+              "20260608",
+              "20260807"
+            ],
+            "months": [
+              "202606",
+              "202608"
+            ],
+            "shardsRead": 5,
+            "bytesRead": 632,
+            "missingInLedger": [],
+            "extraInLedger": [],
+            "checks": {
+              "ledgerMatchesManifest": true,
+              "indexHasAllExpected": true,
+              "queryMatchesManifest": true,
+              "queryNoPointerProblems": true,
+              "apiMatchesManifest": true,
+              "allThreePathsEqual": true
+            }
+          },
+          {
+            "layer": "cold",
+            "sid": "session-three00003-1111-2222-3333-444444444403",
+            "expectedRows": 2,
+            "ledgerRows": 2,
+            "indexQueryRows": 2,
+            "apiRows": 2,
+            "offsets": [
+              400,
+              460
+            ],
+            "days": [
+              "20250812",
+              "20251011"
+            ],
+            "months": [
+              "202508",
+              "202510"
+            ],
+            "shardsRead": 5,
+            "bytesRead": 632,
+            "missingInLedger": [],
+            "extraInLedger": [],
+            "checks": {
+              "ledgerMatchesManifest": true,
+              "indexHasAllExpected": true,
+              "queryMatchesManifest": true,
+              "queryNoPointerProblems": true,
+              "apiMatchesManifest": true,
+              "allThreePathsEqual": true
+            }
+          }
+        ],
+        "coverage": {
+          "ledgerRows": 6,
+          "indexRows": 6,
+          "shards": 5,
+          "ledgerDays": 5,
+          "indexDays": 5,
+          "months": [
+            "202508",
+            "202510",
+            "202606",
+            "202608",
+            "202611"
+          ],
+          "warmMonths": [
+            "202606",
+            "202608"
+          ],
+          "coldMonths": [
+            "202508",
+            "202510"
+          ],
+          "ledgerByteIdentical": false,
+          "indexByteIdentical": false,
+          "indexStatOk": true
+        },
+        "problems": [],
+        "caliber": "判据原文\"三个 sid 各一层\"：热=锚点日、温=90–180 天前、冷=>365 天前；每层用索引查询/独立台账暴力扫/公共 searchLedger 三路对撞；窗口越界、缺行、缺分片、指针坏都算 RED"
+      },
+      "summary": "三层夹具 anchor=2026-11-15（今天）：hot(session-three00… 2 行/202611) · warm(session-three00… 2 行/202606+202608) · cold(session-three00… 2 行/202508+202510)；按 sid 查三路（索引 2/2/2 行 · 暴力台账 · 公共 searchLedger）逐 code 一致；指针问题 0；窗口 0 / [90,180] / [366,∞] 天；跨 5 个月份"
+    },
+    {
+      "id": "C32",
+      "title": "按 code 查 → O(1) 定位月份目录（实测口径：起始分片 O(1)，总扫描=有界后向扫描）",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+        "cases": [
+          {
+            "code": "20260901-e3accept0001-A-00000001",
+            "codeDay": "20260901",
+            "expectedStartShard": "20260901",
+            "firstShardRead": "20260901",
+            "startLocated": true,
+            "found": true,
+            "ms": 3.44,
+            "shardsRead": 1,
+            "bytesRead": 3255,
+            "indexReads": 1
+          },
+          {
+            "code": "20260901-e3accept0001-A-00000670",
+            "codeDay": "20260901",
+            "expectedStartShard": "20260901",
+            "firstShardRead": "20260901",
+            "startLocated": true,
+            "found": true,
+            "ms": 5,
+            "shardsRead": 23,
+            "bytesRead": 74865,
+            "indexReads": 23
+          },
+          {
+            "code": "20260901-e3accept0001-A-00001338",
+            "codeDay": "20260901",
+            "expectedStartShard": "20260901",
+            "firstShardRead": "20260901",
+            "startLocated": true,
+            "found": true,
+            "ms": 6.39,
+            "shardsRead": 45,
+            "bytesRead": 145167,
+            "indexReads": 45
+          }
+        ],
+        "worstMs": 6.39,
+        "thresholdMs": 50,
+        "caliber": "★ 口径（不许假装 O(1)）：code 前 8 位=code 日 → 直接确定起始日分片（不遍历/不读任何别的分片），然后从该分片起向后扫到命中（limit=1 命中即停）；台账日≠code 日时最多扫到末分片。E3 实测 3–9 ms（37 分片全扫上限 145,287 B）；阈值 50 ms（≈5× 余量）。3 年最坏 ≈402 MB 全扫（推算）未测 —— 不在 O(1) 承诺内，登记为已知风险。",
+        "problems": []
+      },
+      "summary": "起始分片定位正确（3 个 code）；E3 最坏 6.39 ms ≤ 阈值 50 ms（口径：非 O(1)，code 日起向后有界扫描；3 年 402 MB 未测）"
+    },
+    {
+      "id": "C33",
+      "title": "★★ 查不到必须返回 searchedRange + olderAvailable + hint（CLI 公开接口）",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+        "gap": {
+          "from": "20261016",
+          "to": "20261022"
+        },
+        "missCode": "20260901-e3accept0001-A-99999999",
+        "checks": [
+          {
+            "name": "不存在 code",
+            "arg": "--code=20260901-e3accept0001-A-99999999",
+            "json": {
+              "command": "index query",
+              "ok": false,
+              "exitCode": 1,
+              "found": false,
+              "count": 0,
+              "rows": [],
+              "searchedRange": {
+                "fromYmd": "20260901",
+                "toYmd": "20261015"
+              },
+              "olderAvailable": false,
+              "newerAvailable": false,
+              "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。",
+              "allShardDays": 45,
+              "shardsRead": 45,
+              "bytesRead": 145167,
+              "rowsRead": 0,
+              "limitHit": false,
+              "extraScan": false,
+              "pointerProblems": [],
+              "ms": 8
+            },
+            "status": 1,
+            "found": false,
+            "fields": true,
+            "searchedRange": {
+              "fromYmd": "20260901",
+              "toYmd": "20261015"
+            },
+            "olderAvailable": false,
+            "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。"
+          },
+          {
+            "name": "空档 range",
+            "arg": "--range=20261016..20261022",
+            "json": {
+              "command": "index query",
+              "ok": false,
+              "exitCode": 1,
+              "found": false,
+              "count": 0,
+              "rows": [],
+              "searchedRange": {
+                "fromYmd": "20261016",
+                "toYmd": "20261022"
+              },
+              "olderAvailable": true,
+              "newerAvailable": false,
+              "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。",
+              "allShardDays": 45,
+              "shardsRead": 0,
+              "bytesRead": 0,
+              "rowsRead": 0,
+              "limitHit": false,
+              "extraScan": false,
+              "pointerProblems": [],
+              "ms": 5
+            },
+            "status": 1,
+            "found": false,
+            "fields": true,
+            "searchedRange": {
+              "fromYmd": "20261016",
+              "toYmd": "20261022"
+            },
+            "olderAvailable": true,
+            "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。"
+          }
+        ],
+        "problems": [],
+        "note": "CLI 无 keyword 条件 → 用\"不存在 code\"+\"空档 range\"两例代替\"查不存在的词\""
+      },
+      "summary": "2 例未命中均返回 searchedRange+olderAvailable+hint（code 例 exit 1、空档 olderAvailable=true 且 searchedRange=20261016..20261022）"
+    },
+    {
+      "id": "C34",
+      "title": "查询性能：今天<100 ms；90 天<1 s；指定冷月<2 s",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+        "measured": [
+          {
+            "name": "今天（=数据最新日）",
+            "range": "20261015..20261015",
+            "thresholdMs": 100,
+            "note": "系统日 2026-11-13 当天无台账，取数据最新日 20261015",
+            "ms": 3.7,
+            "rows": 18,
+            "shardsRead": 1,
+            "bytesRead": 1947,
+            "ok": true
+          },
+          {
+            "name": "90 天",
+            "range": "20260718..20261015",
+            "thresholdMs": 1000,
+            "note": "E3 只有 45 天/37 分片：90 天档请求退化为全部分片（可测的最坏档）",
+            "ms": 25.03,
+            "rows": 1338,
+            "shardsRead": 45,
+            "bytesRead": 145167,
+            "ok": true
+          },
+          {
+            "name": "指定冷月",
+            "range": "20260901..20260930",
+            "thresholdMs": 2000,
+            "note": "冷月取最早月 202609",
+            "ms": 18.45,
+            "rows": 900,
+            "shardsRead": 30,
+            "bytesRead": 97650,
+            "ok": true
+          }
+        ],
+        "problems": [],
+        "caliber": "E3 规模（1,338 行/37 分片/45 天）：90 天档=全部分片；3 年规模（真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB）未建合成库 → 不外推为绿"
+      },
+      "summary": "今天（=数据最新日） 3.7 ms/100 ms（1 分片）；90 天 25.03 ms/1000 ms（45 分片）；指定冷月 18.45 ms/2000 ms（30 分片）；规模=45 天，3 年档未测"
+    },
+    {
+      "id": "C35",
+      "title": "★ 冷层（按月）查询不加载其他月份索引（按实际读取的 .index 分片验）",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+        "coldMonth": "202609",
+        "range": "20260901..20260930",
+        "inRangeShards": 30,
+        "shardsRead": 30,
+        "monthsRead": [
+          "202609"
+        ],
+        "outOfRange": [],
+        "rowsReturned": 900,
+        "bruteRows": 900,
+        "filesRead": [
+          "idx-20260901.jsonl",
+          "idx-20260902.jsonl",
+          "idx-20260903.jsonl",
+          "idx-20260904.jsonl",
+          "idx-20260905.jsonl",
+          "idx-20260906.jsonl",
+          "idx-20260907.jsonl",
+          "idx-20260908.jsonl",
+          "idx-20260909.jsonl",
+          "idx-20260910.jsonl"
+        ],
+        "caliber": "以 fs.readFileSync 钩子记录实际打开的 .index 分片；命中行的台账 hydrate 另计（不属\"索引加载\"）",
+        "problems": []
+      },
+      "summary": "冷月 202609 range=20260901..20260930：只读该月 30 个分片、月份集={202609}、范围外 0；命中 900=暴力 900"
+    },
+    {
+      "id": "C36",
+      "title": "索引总大小 ≤ 台账总大小 15%（S-10②：索引/台账 + 索引/整库包 两种分母都报）",
+      "status": "GREEN",
+      "evidence": {
+        "per": [
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+            "label": "大库",
+            "shardFiles": 45,
+            "shardBytes": 145167,
+            "stateBytes": 3603,
+            "indexTotalBytes": 148770,
+            "ledgerFiles": 45,
+            "ledgerBytes": 1234098,
+            "packageFiles": 2773,
+            "packageBytes": 58091053,
+            "ratioLedger": 0.117630042346718,
+            "ratioLedgerWithState": 0.12054958358250317,
+            "ratioPackage": 0.0024989562506295073,
+            "threshold": 0.15,
+            "ok": true
+          },
+          {
+            "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+            "label": "小库",
+            "shardFiles": 3,
+            "shardBytes": 1284,
+            "stateBytes": 521,
+            "indexTotalBytes": 1805,
+            "ledgerFiles": 3,
+            "ledgerBytes": 10968,
+            "packageFiles": 42,
+            "packageBytes": 621662,
+            "ratioLedger": 0.11706783369803063,
+            "ratioLedgerWithState": 0.16456965718453684,
+            "ratioPackage": 0.002065431054174133,
+            "threshold": 0.15,
+            "ok": true
+          }
+        ],
+        "problems": [],
+        "threshold": 0.15,
+        "caliber": "S-10② 分母＝整包体积（排除 .git 与 MANIFEST）；VERSION/签字单\"11.8×%\"可复现的读法是\"索引分片/台账日文件\"，本执行器两种都算：①索引分片/台账日文件（主判，E3 实测 11.81%）；②索引分片/整库包（排除 .git/MANIFEST，E3 0.10%）；③参考：含 .idx-state.json / 台账（E3 12.00%）。三者都 ≤15% 才判绿 → 任一读法下都过。"
+      },
+      "summary": "E3 索引 141.8 KB/台账 1.18 MB=11.76%（主判）；/整库包 0.250%；含 state 12.05% → 均 ≤15%"
+    },
+    {
+      "id": "C37",
+      "title": "★ 增量备份只拷\"上次之后新写的\"；整库搬走=拷目录+一条命令验证可读",
+      "status": "GREEN",
+      "evidence": {
+        "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\run-3\\root",
+        "backupDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\backup1",
+        "steps": [
+          {
+            "step": "backup#1 全量",
+            "ok": true,
+            "exitCode": 0,
+            "mode": "full",
+            "scanned": {
+              "files": 37,
+              "bytes": 617778
+            },
+            "copied": {
+              "files": 37,
+              "bytes": 617778,
+              "byKind": {
+                "view": {
+                  "files": 12,
+                  "bytes": 21254
+                },
+                "attachment": {
+                  "files": 12,
+                  "bytes": 6806
+                },
+                "ledger": {
+                  "files": 3,
+                  "bytes": 10968
+                },
+                "weekly": {
+                  "files": 3,
+                  "bytes": 556056
+                },
+                "other": {
+                  "files": 7,
+                  "bytes": 22694
+                }
+              }
+            },
+            "skipped": [
+              {
+                "rule": "index",
+                "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+                "files": 1,
+                "bytes": 0
+              },
+              {
+                "rule": "metrics",
+                "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+                "files": 1,
+                "bytes": 2079
+              }
+            ]
+          },
+          {
+            "step": "verify#1",
+            "ok": true,
+            "exitCode": 0,
+            "counts": {
+              "missing": 0,
+              "extra": 0,
+              "changed": 0
+            },
+            "manifestEntries": 38
+          },
+          {
+            "step": "backup#2 增量（追加 1 行）",
+            "ok": true,
+            "exitCode": 0,
+            "mode": "incremental",
+            "copied": {
+              "files": 1,
+              "bytes": 4584,
+              "byKind": {
+                "view": {
+                  "files": 0,
+                  "bytes": 0
+                },
+                "attachment": {
+                  "files": 0,
+                  "bytes": 0
+                },
+                "ledger": {
+                  "files": 1,
+                  "bytes": 4584
+                },
+                "weekly": {
+                  "files": 0,
+                  "bytes": 0
+                },
+                "other": {
+                  "files": 0,
+                  "bytes": 0
+                }
+              }
+            },
+            "added": 0,
+            "changed": 1,
+            "copiedRels": [
+              "ledger/2026-10-07.jsonl"
+            ],
+            "unchangedFiles": 36,
+            "policy": {
+              "includeIndex": false,
+              "includeMetrics": false,
+              "skipped": [
+                {
+                  "rule": "index",
+                  "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+                  "files": 1,
+                  "bytes": 0
+                },
+                {
+                  "rule": "metrics",
+                  "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+                  "files": 1,
+                  "bytes": 2079
+                }
+              ]
+            }
+          },
+          {
+            "step": "verify#2",
+            "ok": true,
+            "exitCode": 0,
+            "counts": {
+              "missing": 0,
+              "extra": 0,
+              "changed": 0
+            }
+          },
+          {
+            "step": "verify#3（整库搬走=拷目录后一条命令）",
+            "ok": true,
+            "exitCode": 0,
+            "counts": {
+              "missing": 0,
+              "extra": 0,
+              "changed": 0
+            }
+          }
+        ],
+        "problems": [],
+        "firstFiles": 37,
+        "fullCopiedFiles": 37,
+        "appendedFile": "2026-10-07.jsonl",
+        "appendedBytes": 928,
+        "verifyCopy": {
+          "ok": true,
+          "counts": {
+            "missing": 0,
+            "extra": 0,
+            "changed": 0
+          },
+          "manifestEntries": 38
+        },
+        "caliber": "增量身份 = 相对路径 + 内容 sha256（backup.mjs 口径）；\"整库搬走\"= 目录级拷贝备份目录 → 一条 verify 命令全量校验 sha256 可读"
+      },
+      "summary": "全量拷 37 文件→追加 1 行→增量只拷 1 文件（4584 B；unchanged 36）→verify ok；备份目录整拷后 verify ok（38 文件/607.9 KB）"
+    }
+  ],
+  "defects": [],
+  "unverified": []
+}

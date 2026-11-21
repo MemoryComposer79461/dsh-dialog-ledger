@@ -1,0 +1,31 @@
+$ node docs/跑测试.mjs docs/自测-gate.mjs
+exit=0
+
+[看护] 物理内存: 0.96 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-gate.mjs
+
+✔ G-01 4 项判据输入全绿 + 无已知缺口 → ok（无保留） (1.3591ms)
+✔ G-02 输入①ledgerOk 不成立（台账没读全）→ unknown (0.2053ms)
+✔ G-03 输入②codeUnique 不成立（code 重复）→ unknown (0.1415ms)
+✔ G-04 输入③sidTurnUnique 不成立（(sid,turn) 重复）→ unknown (0.1341ms)
+✔ G-05 输入④legacyMarks.chainOk 不成立（基线链断裂）→ unknown (0.1422ms)
+✔ G-06 缺键按 unknown 处理：4 项各缺一次；无对账记录 → unknown (0.2553ms)
+✔ G-07 向后兼容旧 12 项整份输入：多余键忽略，已知可枚举缺口 → degraded (0.2131ms)
+✔ G-08 legacy 已标记 → degraded；ok=false 却列不出缺口 → unknown（防御分支） (0.1736ms)
+✔ G-09 入口 gate 落盘一致 + attachment.path 相对路径（原 G-06/G-07） (121.0243ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.7942
+
+[看护] 结束: exit=0 用时 0.3s
+[看护] 物理内存: 0.97 GB 可用（跑完）
+[看护] 用例统计: tests=9 pass=9 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-report-28412-mwhe4fzu.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

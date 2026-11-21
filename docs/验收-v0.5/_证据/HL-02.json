@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "HL-02",
+  "family": "HL",
+  "acId": "AC-V05-HL-02",
+  "product": "目录/文件清单",
+  "requirement": "目录补建后目录存在；前后全部文件 sha256 集合相等（只多目录不多文件）",
+  "implementation": "`lib/selfheal.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "运行报告由 docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs 覆盖；自愈周期接线未做",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

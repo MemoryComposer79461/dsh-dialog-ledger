@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Dialog ledger",
+    "description": "Records every AI–human dialog turn into a local ledger (JSONL entries, verbatim originals, weekly Excel workbooks). Ships 3 read-only agent tools and 7 read-only panel APIs; zero dependencies, offline, no model calls, no context injection; the default ledger root is the desktop folder \"会话账本\". This is a lite-line snapshot, not the production-admission release.",
+    "detail": "README.md"
+  }
+}

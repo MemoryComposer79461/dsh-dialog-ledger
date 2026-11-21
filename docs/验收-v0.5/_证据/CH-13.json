@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-13",
+  "family": "CH",
+  "acId": "AC-V05-CH-13",
+  "product": "档案/journal",
+  "requirement": "首次入账后主表+附表存在；`handover.decision∈{adopt,generate}`；成功写 `kind=\"handover-seal\"` 行且**字段完整**：`decision/main/appendix/adopted/reopened` 非空、weekly-only 字段为 `null`、`at/sealedAt` 匹配 `^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$`（无时区后缀）、`prevSealSha256==\"\\\"\\\"\"`；缺失/格式错→`SEAL_JOURNAL_FIELDS_MISSING`/`SEAL_JOURNAL_FORMAT_MISMATCH` 进 stat.errors（R-07/R-08）",
+  "implementation": "`lib/handover.js`、`index.js`、`lib/sealjournal.js`",
+  "coverage": "逐条",
+  "status": "逐条跳过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-13",
+    "suite": "CH",
+    "status": "SKIPPED"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-13"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

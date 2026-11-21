@@ -1,0 +1,15 @@
+{
+  "id": "C20",
+  "injected": "把第 3 个 tick 的 written 减半（1338 行在 3 tick 内追不平）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把 .tick-metrics.jsonl 副本写回原字节",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "累计 written 在 5 个 tick 内没有任何时刻等于台账行数 1338（total=1295）",
+  "greenSummary": "34.15 MiB 语料端到端 3 个 tick 入账 1338 行（written 合计 1338，code/(sid,turn) 唯一 1338/1338，坏行 0）；⚠ 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C20-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C20-green.json",
+  "detail": "注入只在 .tick-metrics.jsonl 副本上做，E3 原库只读；红必须落在本判据",
+  "residual": ""
+}

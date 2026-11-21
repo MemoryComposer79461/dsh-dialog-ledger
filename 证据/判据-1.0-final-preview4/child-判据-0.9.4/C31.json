@@ -1,0 +1,163 @@
+{
+  "id": "C31",
+  "title": "★ 按 sid 查 → 跨热/温/冷三层都正确",
+  "status": "GREEN",
+  "reasons": [],
+  "evidence": {
+    "threeLayer": {
+      "lab": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer",
+      "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer\\root",
+      "manifestPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-094-3layer\\manifest.json",
+      "anchor": "2026-11-15",
+      "today": "2026-11-15",
+      "anchorAgeDays": 0,
+      "hotIsToday": true,
+      "caliber": {
+        "hot": {
+          "name": "热",
+          "fromDays": 0,
+          "toDays": 0,
+          "desc": "锚点日（生成当日=今天）"
+        },
+        "warm": {
+          "name": "温",
+          "fromDays": 90,
+          "toDays": 180,
+          "desc": "90–180 天前"
+        },
+        "cold": {
+          "name": "冷",
+          "fromDays": 366,
+          "toDays": null,
+          "desc": "超过 1 年（>365 天）"
+        }
+      },
+      "pipeline": null,
+      "fixtureDigest": null
+    },
+    "perLayer": [
+      {
+        "layer": "hot",
+        "sid": "session-three00001-1111-2222-3333-444444444401",
+        "expectedRows": 2,
+        "ledgerRows": 2,
+        "indexQueryRows": 2,
+        "apiRows": 2,
+        "offsets": [
+          0,
+          0
+        ],
+        "days": [
+          "20261115"
+        ],
+        "months": [
+          "202611"
+        ],
+        "shardsRead": 5,
+        "bytesRead": 632,
+        "missingInLedger": [],
+        "extraInLedger": [],
+        "checks": {
+          "ledgerMatchesManifest": true,
+          "indexHasAllExpected": true,
+          "queryMatchesManifest": true,
+          "queryNoPointerProblems": true,
+          "apiMatchesManifest": true,
+          "allThreePathsEqual": true
+        }
+      },
+      {
+        "layer": "warm",
+        "sid": "session-three00002-1111-2222-3333-444444444402",
+        "expectedRows": 2,
+        "ledgerRows": 2,
+        "indexQueryRows": 2,
+        "apiRows": 2,
+        "offsets": [
+          100,
+          160
+        ],
+        "days": [
+          "20260608",
+          "20260807"
+        ],
+        "months": [
+          "202606",
+          "202608"
+        ],
+        "shardsRead": 5,
+        "bytesRead": 632,
+        "missingInLedger": [],
+        "extraInLedger": [],
+        "checks": {
+          "ledgerMatchesManifest": true,
+          "indexHasAllExpected": true,
+          "queryMatchesManifest": true,
+          "queryNoPointerProblems": true,
+          "apiMatchesManifest": true,
+          "allThreePathsEqual": true
+        }
+      },
+      {
+        "layer": "cold",
+        "sid": "session-three00003-1111-2222-3333-444444444403",
+        "expectedRows": 2,
+        "ledgerRows": 2,
+        "indexQueryRows": 2,
+        "apiRows": 2,
+        "offsets": [
+          400,
+          460
+        ],
+        "days": [
+          "20250812",
+          "20251011"
+        ],
+        "months": [
+          "202508",
+          "202510"
+        ],
+        "shardsRead": 5,
+        "bytesRead": 632,
+        "missingInLedger": [],
+        "extraInLedger": [],
+        "checks": {
+          "ledgerMatchesManifest": true,
+          "indexHasAllExpected": true,
+          "queryMatchesManifest": true,
+          "queryNoPointerProblems": true,
+          "apiMatchesManifest": true,
+          "allThreePathsEqual": true
+        }
+      }
+    ],
+    "coverage": {
+      "ledgerRows": 6,
+      "indexRows": 6,
+      "shards": 5,
+      "ledgerDays": 5,
+      "indexDays": 5,
+      "months": [
+        "202508",
+        "202510",
+        "202606",
+        "202608",
+        "202611"
+      ],
+      "warmMonths": [
+        "202606",
+        "202608"
+      ],
+      "coldMonths": [
+        "202508",
+        "202510"
+      ],
+      "ledgerByteIdentical": false,
+      "indexByteIdentical": false,
+      "indexStatOk": true
+    },
+    "problems": [],
+    "caliber": "判据原文\"三个 sid 各一层\"：热=锚点日、温=90–180 天前、冷=>365 天前；每层用索引查询/独立台账暴力扫/公共 searchLedger 三路对撞；窗口越界、缺行、缺分片、指针坏都算 RED"
+  },
+  "summary": "三层夹具 anchor=2026-11-15（今天）：hot(session-three00… 2 行/202611) · warm(session-three00… 2 行/202606+202608) · cold(session-three00… 2 行/202508+202510)；按 sid 查三路（索引 2/2/2 行 · 暴力台账 · 公共 searchLedger）逐 code 一致；指针问题 0；窗口 0 / [90,180] / [366,∞] 天；跨 5 个月份"
+}

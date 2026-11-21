@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "RC-12",
+  "family": "RC",
+  "acId": "AC-V05-RC-12",
+  "product": "run-report",
+  "requirement": "集成的 `reconcile` 段与直接调用返回逐项相等（数组排序后比较）；连续两次输出除时间字段外 JSON 相等",
+  "implementation": "`lib/reconcile.js`、`index.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "对账只报不修由 docs\\自测-reconcile.mjs 覆盖",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

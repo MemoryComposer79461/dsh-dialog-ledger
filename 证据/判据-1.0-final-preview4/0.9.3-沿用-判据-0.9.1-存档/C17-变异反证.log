@@ -1,0 +1,869 @@
+$ node docs/工具-变异反证.mjs --json --work-dir=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work\变异反证
+exit=0
+
+{
+  "schema": "dsh-c17-mutation-verify/1",
+  "generatedAt": "2026-11-15T05:24:51.752Z",
+  "startedAt": "2026-11-15T05:24:40.054Z",
+  "finishedAt": "2026-11-15T05:24:51.752Z",
+  "durationMs": 11698,
+  "nodeVersion": "v26.13.1",
+  "generator": "docs/工具-变异反证.mjs",
+  "pluginRoot": "<work-dir>\\pkg",
+  "treeDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\tree-20261115-132440",
+  "logDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440",
+  "originalTree": {
+    "untouched": true,
+    "keyFileCount": 10,
+    "keyFiles": [
+      {
+        "file": "VERSION.json",
+        "sha256Before": "0fbe3477616846edc8b503b9b2cb014968302d6148a84517aa919a1a705f82ad",
+        "sha256After": "0fbe3477616846edc8b503b9b2cb014968302d6148a84517aa919a1a705f82ad",
+        "same": true
+      },
+      {
+        "file": "docs\\自测-index.mjs",
+        "sha256Before": "7f1b88fd1fd0bec105f146fef9d077d147cfce686958bd6d23645ea7ca26fd2b",
+        "sha256After": "7f1b88fd1fd0bec105f146fef9d077d147cfce686958bd6d23645ea7ca26fd2b",
+        "same": true
+      },
+      {
+        "file": "docs\\自测-ledger.mjs",
+        "sha256Before": "c32e231d769b7a657f53db8523c1a9b89727429a60ec1ba239bc4aa9d15bea50",
+        "sha256After": "c32e231d769b7a657f53db8523c1a9b89727429a60ec1ba239bc4aa9d15bea50",
+        "same": true
+      },
+      {
+        "file": "docs\\自测-ledgerapi.mjs",
+        "sha256Before": "d49812b35c33ef51da9a2069f13e4b31dfc3b3393be4a42c5369f683e62bb16a",
+        "sha256After": "d49812b35c33ef51da9a2069f13e4b31dfc3b3393be4a42c5369f683e62bb16a",
+        "same": true
+      },
+      {
+        "file": "docs\\自测-reconcile.mjs",
+        "sha256Before": "3c8a3129c936a94b7fdb5fc553e068d47deff4b51d3fda477aa35ca84d4ff78b",
+        "sha256After": "3c8a3129c936a94b7fdb5fc553e068d47deff4b51d3fda477aa35ca84d4ff78b",
+        "same": true
+      },
+      {
+        "file": "docs\\自测-守卫.mjs",
+        "sha256Before": "c8aad81ea82acbba3d3b6c9a0f3307279b95a92d559f918b08c3f8a3eb4c6096",
+        "sha256After": "c8aad81ea82acbba3d3b6c9a0f3307279b95a92d559f918b08c3f8a3eb4c6096",
+        "same": true
+      },
+      {
+        "file": "docs\\跑测试.mjs",
+        "sha256Before": "d09fc63a2bba979b5b23ba4f5f643ed3ccb87a256b9447e9ef3186bb2db9df87",
+        "sha256After": "d09fc63a2bba979b5b23ba4f5f643ed3ccb87a256b9447e9ef3186bb2db9df87",
+        "same": true
+      },
+      {
+        "file": "index.js",
+        "sha256Before": "c5dd8c4bef4100c9eca94104fb5f159d6287fd0db57806cb9c5ddeaf72bf9be5",
+        "sha256After": "c5dd8c4bef4100c9eca94104fb5f159d6287fd0db57806cb9c5ddeaf72bf9be5",
+        "same": true
+      },
+      {
+        "file": "lib\\ledger.js",
+        "sha256Before": "8c8b21234bb0c5ea4865d49c7af1a153d38866ca776ebbf25b30d6a38ea96683",
+        "sha256After": "8c8b21234bb0c5ea4865d49c7af1a153d38866ca776ebbf25b30d6a38ea96683",
+        "same": true
+      },
+      {
+        "file": "package.json",
+        "sha256Before": "66f4d8fcaee5550be0759792b2ca50e30fcefdd2b87d4baedd96bdb529d62e6c",
+        "sha256After": "66f4d8fcaee5550be0759792b2ca50e30fcefdd2b87d4baedd96bdb529d62e6c",
+        "same": true
+      }
+    ],
+    "treeManifest": {
+      "filesBefore": 594,
+      "filesAfter": 594,
+      "sha256Before": "1aeb4e4562e8406efc4bdae20187cdd051f3a45371a48cf36ffe055dec1f71bb",
+      "sha256After": "1aeb4e4562e8406efc4bdae20187cdd051f3a45371a48cf36ffe055dec1f71bb",
+      "same": true,
+      "changedFiles": []
+    }
+  },
+  "baselines": [
+    {
+      "testFile": "docs\\自测-ledger.mjs",
+      "exit": 0,
+      "summary": {
+        "tests": 56,
+        "pass": 56,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "red": [],
+      "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+    },
+    {
+      "testFile": "docs\\自测-index.mjs",
+      "exit": 0,
+      "summary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "red": [],
+      "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-index.mjs.log"
+    },
+    {
+      "testFile": "docs\\自测-reconcile.mjs",
+      "exit": 1,
+      "summary": {
+        "tests": 18,
+        "pass": 13,
+        "fail": 5,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "red": [
+        "W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计",
+        "W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched",
+        "W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok",
+        "reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修）",
+        "reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK"
+      ],
+      "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-reconcile.mjs.log"
+    },
+    {
+      "testFile": "docs\\自测-ledgerapi.mjs",
+      "exit": 0,
+      "summary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "red": [],
+      "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledgerapi.mjs.log"
+    },
+    {
+      "testFile": "docs\\自测-守卫.mjs",
+      "exit": 0,
+      "summary": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "red": [],
+      "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-守卫.mjs.log"
+    }
+  ],
+  "spotChecks": {
+    "selfTestFileCount": 61,
+    "selfTestDurabilityHits": [
+      "docs/自测-ledger.mjs"
+    ],
+    "selfTestRequireLedgerRowsHits": [
+      "docs/自测-ledger.mjs"
+    ],
+    "docsRequireLedgerRowsHits": [
+      "docs/replay-verify.mjs",
+      "docs/工具-日检.mjs",
+      "docs/工具-设备自检.mjs",
+      "docs/工具-语料四数.mjs",
+      "docs/自测-ledger.mjs"
+    ]
+  },
+  "mutations": [
+    {
+      "id": "M1",
+      "criterion": "C17 / 幂等闸门：appendTurn「已存在 code 跳过」（P1-8 写侧）",
+      "file": "lib\\ledger.js",
+      "line": 1890,
+      "findLineCount": 1,
+      "find": "  if (already) {\n",
+      "replace": "  if (false && already) {\n",
+      "note": "把\"已存在 code → skipped=true\"的分支短路成永不命中：重复 code 会真的写第二行。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 52,
+            "fail": 4,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 478,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M1-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读",
+            "appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等",
+            "appendTurn：同一 code 第二次 skipped=true，文件一字节都不长",
+            "appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）"
+          ],
+          "delta": [
+            "appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读",
+            "appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等",
+            "appendTurn：同一 code 第二次 skipped=true，文件一字节都不长",
+            "appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）"
+          ],
+          "expected": [
+            "appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读",
+            "appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等",
+            "appendTurn：同一 code 第二次 skipped=true，文件一字节都不长",
+            "appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）"
+          ],
+          "extra": [],
+          "missing": []
+        },
+        {
+          "testFile": "docs\\自测-index.mjs",
+          "exit": 0,
+          "summary": {
+            "tests": 9,
+            "pass": 9,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 528,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M1-变异-docs_自测-index.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 9,
+              "pass": 9,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-index.mjs.log"
+          },
+          "mutatedRed": [],
+          "delta": [],
+          "expected": [],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读",
+        "appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等",
+        "appendTurn：同一 code 第二次 skipped=true，文件一字节都不长",
+        "appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）"
+      ],
+      "expectedRed": [
+        "appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读",
+        "appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等",
+        "appendTurn：同一 code 第二次 skipped=true，文件一字节都不长",
+        "appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M1-还原-docs_自测-ledger.mjs.log"
+          },
+          {
+            "testFile": "docs\\自测-index.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M1-还原-docs_自测-index.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    },
+    {
+      "id": "M2",
+      "criterion": "C17 / A-10 非账行：readAll 的 requireLedgerRows 严格读（合法 JSON ≠ 账行）",
+      "file": "lib\\ledger.js",
+      "line": 1182,
+      "findLineCount": 1,
+      "find": "      if (strictRows && !parseErr && !isLedgerRow(parsed)) {\n",
+      "replace": "      if (false && strictRows && !parseErr && !isLedgerRow(parsed)) {\n",
+      "note": "删掉\"requireLedgerRows=true 时把非账行 JSON 计坏行\"的判断（A-10 回退成宽容读）。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 55,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 452,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M2-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算"
+          ],
+          "delta": [
+            "A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算"
+          ],
+          "expected": [
+            "A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算"
+          ],
+          "extra": [],
+          "missing": []
+        },
+        {
+          "testFile": "docs\\自测-reconcile.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 18,
+            "pass": 13,
+            "fail": 5,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 595,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M2-变异-docs_自测-reconcile.mjs.log",
+          "baseline": {
+            "exit": 1,
+            "summary": {
+              "tests": 18,
+              "pass": 13,
+              "fail": 5,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [
+              "W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计",
+              "W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched",
+              "W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok",
+              "reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修）",
+              "reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK"
+            ],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-reconcile.mjs.log"
+          },
+          "mutatedRed": [
+            "W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计",
+            "W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched",
+            "W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok",
+            "reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修）",
+            "reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK"
+          ],
+          "delta": [],
+          "expected": [],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算"
+      ],
+      "expectedRed": [
+        "A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M2-还原-docs_自测-ledger.mjs.log"
+          },
+          {
+            "testFile": "docs\\自测-reconcile.mjs",
+            "exit": 1,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M2-还原-docs_自测-reconcile.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    },
+    {
+      "id": "M3",
+      "criterion": "C17 / A-07 fsync 出声：detectAndRepairTornTail 的 durability/fsyncError 上报",
+      "file": "lib\\ledger.js",
+      "line": 1477,
+      "findLineCount": 6,
+      "find": "      try {\n        fs.fsyncSync(cfd);\n      } catch (e) {\n        durability = 'unknown';\n        fsyncError = ((e && e.code) ? e.code + ' ' : '') + ((e && e.message) || String(e));\n      }\n",
+      "replace": "      try { fs.fsyncSync(cfd); } catch { /* M3: 吞掉 fsync 错误（A-07 回退） */ }\n",
+      "note": "把\"截断后 fsync 失败必须标的 durability='unknown' + fsyncError\"改回**吞错**（A-07 回退）。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 55,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 439,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M3-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞"
+          ],
+          "delta": [
+            "A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞"
+          ],
+          "expected": [
+            "A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞"
+          ],
+          "extra": [],
+          "missing": []
+        },
+        {
+          "testFile": "docs\\自测-ledgerapi.mjs",
+          "exit": 0,
+          "summary": {
+            "tests": 6,
+            "pass": 6,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 213,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M3-变异-docs_自测-ledgerapi.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 6,
+              "pass": 6,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledgerapi.mjs.log"
+          },
+          "mutatedRed": [],
+          "delta": [],
+          "expected": [],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞"
+      ],
+      "expectedRed": [
+        "A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M3-还原-docs_自测-ledger.mjs.log"
+          },
+          {
+            "testFile": "docs\\自测-ledgerapi.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M3-还原-docs_自测-ledgerapi.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    },
+    {
+      "id": "M4",
+      "criterion": "C17 / P1-5 截断续跑：readTurnsFrom 坏帧不推进游标（nextOffset=haltOffset（不推 EOF）/blocked）",
+      "file": "lib\\ledger.js",
+      "line": 510,
+      "findLineCount": 1,
+      "find": "  if (out.loss.hasGap && !opts.advanceOnFailed) {\n",
+      "replace": "  if (false && out.loss.hasGap && !opts.advanceOnFailed) {\n",
+      "note": "（任务书允许调整落点）删掉\"有坏帧缺口就不推进游标\"的闸门 —— 坏帧会被跳过并永久静默丢轮。落点选 `readTurnsFrom`（台账的读取/续跑路径）；`forcedCursorOffset` 只是 index.js 的下游消费者，不是游标闸门本身，改它属于\"改调用方\"而不是\"删修复逻辑\"，故不选。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 52,
+            "fail": 4,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 449,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M4-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重）",
+            "P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回",
+            "P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复）",
+            "P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进"
+          ],
+          "delta": [
+            "P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重）",
+            "P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回",
+            "P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复）",
+            "P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进"
+          ],
+          "expected": [
+            "P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重）",
+            "P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回",
+            "P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复）",
+            "P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进"
+          ],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重）",
+        "P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回",
+        "P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复）",
+        "P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进"
+      ],
+      "expectedRed": [
+        "P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重）",
+        "P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回",
+        "P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复）",
+        "P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M4-还原-docs_自测-ledger.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    },
+    {
+      "id": "M5",
+      "criterion": "C17 补充 / P0-3-resume 红线：撕裂尾自愈\"只有这一处坏行\"（范围不许放宽）",
+      "file": "lib\\ledger.js",
+      "line": 1415,
+      "findLineCount": 5,
+      "find": "  for (let i = 0; i < lines.length - 1; i++) {\n    const line = lines[i];\n    if (!line.trim()) continue;\n    try { JSON.parse(line); } catch { return null; }\n  }\n",
+      "replace": "  /* M5: 删除条件③（只有这一处坏行）—— 自愈范围放宽 */\n",
+      "note": "删掉\"该文件只有末行这一处坏行\"的第三条件：中间行坏时也会被当成撕裂尾截掉（篡改账本）。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 55,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 445,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M5-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（\"只有这一处坏行\"）"
+          ],
+          "delta": [
+            "P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（\"只有这一处坏行\"）"
+          ],
+          "expected": [
+            "P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（\"只有这一处坏行\"）"
+          ],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（\"只有这一处坏行\"）"
+      ],
+      "expectedRed": [
+        "P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（\"只有这一处坏行\"）"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M5-还原-docs_自测-ledger.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    },
+    {
+      "id": "M6",
+      "criterion": "C17 补充 / P1-2 追加不粘结：appendLineSync 先补尾行换行",
+      "file": "lib\\ledger.js",
+      "line": 1763,
+      "findLineCount": 4,
+      "find": "      if (n === 1 && tail[0] !== 0x0a) {\n        data = '\\n' + data; // 上一行缺结尾换行：先补上，否则两行粘成一条坏 JSON\n        padded = true;\n      }\n",
+      "replace": "      /* M6: 删除补尾行换行（P1-2 回退） */\n",
+      "note": "删掉\"上一行缺结尾换行先补 \\n\"的逻辑：半行 + 新行会粘成一条坏 JSON，且一次坏变两条坏。",
+      "tests": [
+        {
+          "testFile": "docs\\自测-ledger.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 56,
+            "pass": 55,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 449,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M6-变异-docs_自测-ledger.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 56,
+              "pass": 56,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-ledger.mjs.log"
+          },
+          "mutatedRed": [
+            "P1-2：尾行缺换行时追加不粘结（先补 \\n 再写）"
+          ],
+          "delta": [
+            "P1-2：尾行缺换行时追加不粘结（先补 \\n 再写）"
+          ],
+          "expected": [
+            "P1-2：尾行缺换行时追加不粘结（先补 \\n 再写）"
+          ],
+          "extra": [],
+          "missing": []
+        },
+        {
+          "testFile": "docs\\自测-守卫.mjs",
+          "exit": 1,
+          "summary": {
+            "tests": 11,
+            "pass": 10,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "durationMs": 447,
+          "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M6-变异-docs_自测-守卫.mjs.log",
+          "baseline": {
+            "exit": 0,
+            "summary": {
+              "tests": 11,
+              "pass": 11,
+              "fail": 0,
+              "cancelled": 0,
+              "skipped": 0
+            },
+            "red": [],
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\baseline-docs_自测-守卫.mjs.log"
+          },
+          "mutatedRed": [
+            "⑤ 尾行无换行：追加先补 \\n，两条各自可 JSON.parse，且新文件末尾有换行"
+          ],
+          "delta": [
+            "⑤ 尾行无换行：追加先补 \\n，两条各自可 JSON.parse，且新文件末尾有换行"
+          ],
+          "expected": [
+            "⑤ 尾行无换行：追加先补 \\n，两条各自可 JSON.parse，且新文件末尾有换行"
+          ],
+          "extra": [],
+          "missing": []
+        }
+      ],
+      "mutatedDelta": [
+        "P1-2：尾行缺换行时追加不粘结（先补 \\n 再写）",
+        "⑤ 尾行无换行：追加先补 \\n，两条各自可 JSON.parse，且新文件末尾有换行"
+      ],
+      "expectedRed": [
+        "P1-2：尾行缺换行时追加不粘结（先补 \\n 再写）",
+        "⑤ 尾行无换行：追加先补 \\n，两条各自可 JSON.parse，且新文件末尾有换行"
+      ],
+      "extras": [],
+      "missing": [],
+      "restore": {
+        "sha256Same": true,
+        "runs": [
+          {
+            "testFile": "docs\\自测-ledger.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M6-还原-docs_自测-ledger.mjs.log"
+          },
+          {
+            "testFile": "docs\\自测-守卫.mjs",
+            "exit": 0,
+            "sameAsBaseline": true,
+            "logPath": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\091-work\\变异反证\\logs-20261115-132440\\M6-还原-docs_自测-守卫.mjs.log"
+          }
+        ],
+        "ok": true
+      },
+      "verdict": "PASS_PRECISE"
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "precise": 6,
+    "notCovered": 0,
+    "notPrecise": 0,
+    "restoreClean": true,
+    "originalTreeUntouched": true,
+    "treeManifestSame": true,
+    "exitCode": 0,
+    "verdictText": "6/6 个变异全部精确变红，还原后复跑回到基线"
+  }
+}
+
+========================================================================
+[C17 变异反证] 只在临时副本上删修复逻辑；原树只读。
+  仓库：<work-dir>\pkg
+  副本：C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work\变异反证\tree-20261115-132440
+  变异：M1, M2, M3, M4, M5, M6（共 6 个）
+========================================================================
+[1/5] 原树指纹（跑前）…
+      关键文件 10 个；全树 594 文件 / manifest 1aeb4e4562e8406e…
+[2/5] 复制仓库到副本（排除 .git；freeze/ 保留）…
+      副本 594 文件；与跑前原树逐文件比对…
+      副本与原树逐字节一致 ✅
+[3/5] 基线（干净副本，未变异）…
+      docs\自测-ledger.mjs → exit=0 tests=56 pass=56 fail=0（全绿）
+      docs\自测-index.mjs → exit=0 tests=9 pass=9 fail=0（全绿）
+      docs\自测-reconcile.mjs → exit=1 tests=18 pass=13 fail=5（基线已知红 5 条）
+      docs\自测-ledgerapi.mjs → exit=0 tests=6 pass=6 fail=0（全绿）
+      docs\自测-守卫.mjs → exit=0 tests=11 pass=11 fail=0（全绿）
+[4/5] 逐个变异 → 只跑对应用例 → 还原并复跑 …
+
+----------------------------------------------------------------
+[M1] 改 lib\ledger.js:1890（1 行）→ 跑 2 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=52 fail=4；新增红 4 条：appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读 | appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等 | appendTurn：同一 code 第二次 skipped=true，文件一字节都不长 | appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变）
+      docs\自测-index.mjs → exit=0 tests=9 pass=9 fail=0；新增红 0 条（=基线）
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+      还原后复跑 docs\自测-index.mjs → exit=0；红集合回到基线 ✅
+
+----------------------------------------------------------------
+[M2] 改 lib\ledger.js:1182（1 行）→ 跑 2 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=55 fail=1；新增红 1 条：A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算
+      docs\自测-reconcile.mjs → exit=1 tests=18 pass=13 fail=5；新增红 0 条（=基线）
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+      还原后复跑 docs\自测-reconcile.mjs → exit=1；红集合回到基线 ✅
+
+----------------------------------------------------------------
+[M3] 改 lib\ledger.js:1477（6 行）→ 跑 2 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=55 fail=1；新增红 1 条：A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞
+      docs\自测-ledgerapi.mjs → exit=0 tests=6 pass=6 fail=0；新增红 0 条（=基线）
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+      还原后复跑 docs\自测-ledgerapi.mjs → exit=0；红集合回到基线 ✅
+
+----------------------------------------------------------------
+[M4] 改 lib\ledger.js:510（1 行）→ 跑 1 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=52 fail=4；新增红 4 条：P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重） | P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回 | P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复） | P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+
+----------------------------------------------------------------
+[M5] 改 lib\ledger.js:1415（5 行）→ 跑 1 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=55 fail=1；新增红 1 条：P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（"只有这一处坏行"）
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+
+----------------------------------------------------------------
+[M6] 改 lib\ledger.js:1763（4 行）→ 跑 2 个用例文件
+      docs\自测-ledger.mjs → exit=1 tests=56 pass=55 fail=1；新增红 1 条：P1-2：尾行缺换行时追加不粘结（先补 \n 再写）
+      docs\自测-守卫.mjs → exit=1 tests=11 pass=10 fail=1；新增红 1 条：⑤ 尾行无换行：追加先补 \n，两条各自可 JSON.parse，且新文件末尾有换行
+      还原后复跑 docs\自测-ledger.mjs → exit=0；红集合回到基线 ✅
+      还原后复跑 docs\自测-守卫.mjs → exit=0；红集合回到基线 ✅
+
+[5/5] 原树指纹（跑后）+ 写报告 …
+      全树 manifest 一致：原树一个字节都没动 ✅
+      关键文件 10 个 sha256 前后一致 ✅
+
+========================================================================
+[C17 变异反证] 结论：6/6 个变异全部精确变红，还原后复跑回到基线
+  精确成立 6/6；未覆盖 0；不精确 0；还原干净 ✅；原树未动 ✅
+  人读报告：C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work\变异反证\报告-20261115-132440.md
+  机读报告：C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work\变异反证\报告-20261115-132440.json
+  副本保留：C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\091-work\变异反证\tree-20261115-132440
+  退出码：0
+========================================================================

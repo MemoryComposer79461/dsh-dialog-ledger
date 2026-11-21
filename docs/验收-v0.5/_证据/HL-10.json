@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "HL-10",
+  "family": "HL",
+  "acId": "AC-V05-HL-10",
+  "product": "run-report",
+  "requirement": "文件 `ledger/.run-report-YYYYMMDD.json` 存在且 parse；`date==文件名`；generatedAt 格式+08:00；`selfheal` 段数组与 `counts` 长度自洽（repaired/reported/errors）；无 Z",
+  "implementation": "`lib/selfheal.js`、`index.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "运行报告由 docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs 覆盖；自愈周期接线未做",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

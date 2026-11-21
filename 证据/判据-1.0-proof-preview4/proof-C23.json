@@ -1,0 +1,15 @@
+{
+  "id": "C23",
+  "injected": "往副本 ledger/ 加 .bin 文件（白名单外扩展名）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "删掉 .bin 注入文件",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "ledger/污染产物.bin：扩展名 .bin 不在白名单",
+  "greenSummary": "扫描 42 文件：扩展名分布 (none)=1/.json=15/.md=15/.xlsx=3/.jsonl=8；白名单外 0（例外：周账 xlsx 3、外发摘要 txt 0；根标记 .ledger-root 1）",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C23-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C23-green.json",
+  "detail": "硬链接副本承载注入；小库原库只读",
+  "residual": ""
+}

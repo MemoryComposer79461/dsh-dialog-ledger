@@ -1,0 +1,27 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CH-02",
+  "family": "CH",
+  "acId": "AC-V05-CH-02",
+  "product": "周记账 B 列/run-report",
+  "requirement": "改 YAML→`FILE_HASH_MISMATCH`；改正文→`BODY_HASH_MISMATCH`；改附件→`ATTACHMENT_HASH_MISMATCH`；路径错→`PATH_MISMATCH`；以上 B 列均≠`绑定`；合法清理→`已清理(RPT-…)` 且不进 integrityFailures",
+  "implementation": "`lib/original.js`、`lib/weekly.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P1 十二条主题级全绿（P1-1…P1-12），但 24 条 CH 细判据未逐条断言",
+  "directCase": {
+    "caseId": "CH-02",
+    "suite": "CH",
+    "status": "PASS"
+  },
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-CH.mjs",
+    "result": "docs/验收-v0.5/_results/CH.json",
+    "cases": [
+      "CH-02"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

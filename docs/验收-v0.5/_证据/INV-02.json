@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-02",
+  "family": "INV",
+  "acId": "AC-V05-INV-02",
+  "product": "run-report",
+  "requirement": "缩小源：`cursorResets[].reason==\"shrunk\"`，且该源 `(sid,turn)` 集合 == 源集合",
+  "implementation": "`index.js`",
+  "coverage": "逐条",
+  "status": "逐条跳过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-02",
+    "suite": "INV",
+    "status": "SKIPPED"
+  },
+  "scenario": {
+    "caseId": "P0-1c",
+    "note": "P0-1c 验证缩小后必须重读；`cursorResets[].reason==\"shrunk\"` 字段未断言（运行报告未产出该段）"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-02"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

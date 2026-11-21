@@ -1,0 +1,10 @@
+$ node 工具-manifest.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\proof-c39-20261115-132512\lite --verify
+exit=0 ms=290
+
+--- stdout ---
+[MANIFEST 校验] root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\proof-c39-20261115-132512\lite
+  MANIFEST: C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\proof-c39-20261115-132512\lite\MANIFEST.sha256
+  声明 673 / 实际 673 / 缺 0 / 多 0 / 改 0
+  [PASS] 0 差异
+
+--- stderr ---

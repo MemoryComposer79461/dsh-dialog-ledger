@@ -1,0 +1,17 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CL-24",
+  "family": "CL",
+  "acId": "AC-V05-CL-24",
+  "product": "journal 路径",
+  "requirement": "`<root>/ledger/.cleanup-<id>.journal` 存在；不是 `.jsonl`；行数==2+planned",
+  "implementation": "`lib/cleanup.js`",
+  "coverage": "未覆盖",
+  "status": "未覆盖",
+  "note": "清册 v1.3 全量重写未做（W4），物理删除仍默认关闭",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": null,
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

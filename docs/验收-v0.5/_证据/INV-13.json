@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-13",
+  "family": "INV",
+  "acId": "AC-V05-INV-13",
+  "product": "run-report/台账",
+  "requirement": "取消后：`{cancelled:true,committedBatches:k}`；已提交批完整、未提交批零写入、无半批",
+  "implementation": "`index.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-13",
+    "suite": "INV",
+    "status": "PASS"
+  },
+  "scenario": {
+    "caseId": "P0-3-cancel",
+    "note": "P0-3-cancel 断言 abort 后及时退出且无半批；`committedBatches` 字段由 P0-3-cancel 的 stat 断言间接覆盖"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-13"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

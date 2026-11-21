@@ -1,0 +1,74 @@
+$ node backup.mjs verify --out=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c45-restore-20261115-132512\backup --json
+exit=0 ms=1173
+
+--- stdout ---
+{
+  "schema": "lite-backup/1",
+  "toolVersion": "1.0",
+  "command": "verify",
+  "ok": true,
+  "exitCode": 0,
+  "out": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132512\\backup",
+  "generatedAt": "2026-11-15 13:25:54",
+  "elapsedMs": 1121,
+  "manifest": {
+    "file": "MANIFEST.sha256",
+    "entries": 2727
+  },
+  "actual": {
+    "files": 2727,
+    "bytes": 57941243
+  },
+  "counts": {
+    "missing": 0,
+    "extra": 0,
+    "changed": 0
+  },
+  "missing": [],
+  "extra": [],
+  "changed": [],
+  "metadata": {
+    "schema": "lite-backup/1",
+    "mode": "full",
+    "createdAt": "2026-11-15 13:25:54",
+    "updatedAt": "2026-11-15 13:25:54",
+    "sourceRoot": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c45-restore-20261115-132512\\root",
+    "rootId": "ddca614f-fdbf-497b-b932-812d2401d8fe",
+    "counts": {
+      "files": 2726,
+      "bytes": 57933004,
+      "byKind": {
+        "view": {
+          "files": 1338,
+          "bytes": 9065871
+        },
+        "attachment": {
+          "files": 1338,
+          "bytes": 47622603
+        },
+        "ledger": {
+          "files": 45,
+          "bytes": 1234098
+        },
+        "weekly": {
+          "files": 0,
+          "bytes": 0
+        },
+        "other": {
+          "files": 5,
+          "bytes": 10432
+        }
+      }
+    },
+    "manifest": {
+      "file": "MANIFEST.sha256",
+      "entries": 2727,
+      "excludesSelf": true,
+      "note": "条目数含 backup.json（+1）；MANIFEST 不包含自身"
+    }
+  },
+  "notes": [],
+  "errors": []
+}
+
+--- stderr ---

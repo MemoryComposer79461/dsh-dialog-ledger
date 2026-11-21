@@ -1,0 +1,52 @@
+{
+  "id": "C45",
+  "injected": "从备份副本删掉 files/.ledger-root（verify 必报缺）",
+  "result": {
+    "id": "C45",
+    "status": "RED",
+    "summary": "restore exit=1（要求 0）",
+    "reasons": [
+      "restore exit=1（要求 0）",
+      "重建后台账 0 行 ≠ 源 1338 行",
+      "重建后逐字节相等 0/100（要求 100/100；不一致：20260901-e3accept0001-A-00000593,20260901-e3accept0001-A-00000713,20260901-e3accept0001-A-00000567）"
+    ],
+    "evidence": {
+      "lab": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-labs-1.0.0-preview4/lab-e3-accept/root",
+      "backup": {
+        "exit": 0,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-backup.log"
+      },
+      "verify": {
+        "exit": 0,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-verify.log"
+      },
+      "restore": {
+        "exit": 1,
+        "logRel": "证据/判据-1.0-proof-preview4/logs/C45-restore.log"
+      },
+      "sample": {
+        "totalCodes": 1338,
+        "picked": 100,
+        "equal": 0,
+        "mismatch": [
+          "20260901-e3accept0001-A-00000593",
+          "20260901-e3accept0001-A-00000713",
+          "20260901-e3accept0001-A-00000567",
+          "20260901-e3accept0001-A-00000912",
+          "20260901-e3accept0001-A-00000410"
+        ],
+        "seed": "dd3aa8e6",
+        "sampling": "fisher-yates(mulberry32)，seed=sha256(.state.json)[:8]"
+      },
+      "proofInject": {
+        "victim": "files/.ledger-root"
+      },
+      "problems": [
+        "restore exit=1（要求 0）",
+        "重建后台账 0 行 ≠ 源 1338 行",
+        "重建后逐字节相等 0/100（要求 100/100；不一致：20260901-e3accept0001-A-00000593,20260901-e3accept0001-A-00000713,20260901-e3accept0001-A-00000567）"
+      ],
+      "caliber": "S-11 C45：备份→删工作库→重建→verify 绿→随机抽 100 行与源逐字节相等（没有演练过的备份等于没有备份）"
+    }
+  }
+}

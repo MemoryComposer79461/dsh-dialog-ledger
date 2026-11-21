@@ -1,0 +1,317 @@
+{
+  "v": 1,
+  "suite": "验收-只读面",
+  "contract": "docs/验收-v0.6/接口契约.md §4",
+  "at": "2026-11-14 09:22:53 +08:00",
+  "startedAtMs": 1794619373970,
+  "module": {
+    "panelapi": {
+      "path": "<build-host>\\_工作\\lite\\tools\\panelapi.js",
+      "exists": true,
+      "reason": null
+    },
+    "toolface": {
+      "path": "<build-host>\\_工作\\lite\\tools\\toolface.js",
+      "exists": true
+    },
+    "toolcards": {
+      "path": "<build-host>\\_工作\\lite\\tools\\toolcards.js",
+      "exists": true
+    },
+    "ledger": {
+      "path": "<build-host>\\_工作\\lite\\lib\\ledger.js",
+      "exists": true
+    },
+    "exports": {
+      "register": "registerLedgerPanelApi",
+      "runPanelRoute": "runPanelRoute",
+      "callPanelApi": "callPanelApi",
+      "API_PREFIX": "/dialog-ledger/api/",
+      "API_ROUTES": [
+        "ping",
+        "summary",
+        "search",
+        "turn",
+        "original",
+        "reads",
+        "reconcile"
+      ]
+    }
+  },
+  "fixture": {
+    "root": "%TEMP%\\v06-readonly-1DRSLN\\root",
+    "artifactCount": 9,
+    "artifacts": {
+      "台账 jsonl": {
+        "rel": "ledger/2026-11-08.jsonl",
+        "sha256": "5687a7c20efeb6b6d9443ec89c641ffa3f268d6d41168c1c5a06681210a9f8ec",
+        "bytes": 1805
+      },
+      "原文 md": {
+        "rel": "2026年11月/11月总“完整原文”/20261108-75238718e41a-A-00000001 完整原文.md",
+        "sha256": "9732dc376ba10a46ec73d188b8a2b656807d84bc176ec9829fe0c51432b3a6b6",
+        "bytes": 296
+      },
+      "原始事件 json": {
+        "rel": "2026年11月/11月总“完整原文”/20261108-75238718e41a-A-00000001 原始事件.json",
+        "sha256": "3b4606c2d97ea959cd6beefaeaf2b64bfcf2327aa0e4cc1fb483743920587ece",
+        "bytes": 99
+      },
+      "周记账 xlsx": {
+        "rel": "2026年11月/11月第2周-75238718e41aA的周记账.xlsx",
+        "sha256": "af81327d404073c87e371121c8936ec89b85ff0606279e7e2e3289d7f970ed8e",
+        "bytes": 34
+      },
+      "交接表主表": {
+        "rel": "75238718e41aA的记忆数据库的启用及交接表.md",
+        "sha256": "d1c5533a94772769675b232dd52c1d270f5a4bf526c0065cd1196f6c285c1135",
+        "bytes": 33
+      },
+      "交接表附表": {
+        "rel": "75238718e41aA的记忆数据库的启用及交接表——附表.md",
+        "sha256": "6534126c0ab155f43c2e9433234dec89598baeac7fcbdf942043d91cbfee8562",
+        "bytes": 21
+      },
+      "封板 journal": {
+        "rel": "ledger/.seal-journal.jsonl",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "state": {
+        "rel": "ledger/.state.json",
+        "sha256": "57e703fc24404dd9d36a91bcfda63cbe5f35f65467fc88c79d694609a6da10e9",
+        "bytes": 139
+      },
+      "run-report": {
+        "rel": "ledger/.run-report-20261108.json",
+        "sha256": "03c0196dc41ff809b5eadd36ae8b3d56d364fbeae03904197f10b370aa168e69",
+        "bytes": 560
+      }
+    },
+    "ledgerRowsPlanted": 3,
+    "sessionsPlanted": 2
+  },
+  "checks": [
+    {
+      "id": "A1",
+      "name": "7 条 exact 路由注册成功，且 fake req/res 下全部 ok:true；9 个工具（8 只读 + 1 受控）定义齐全",
+      "ok": false,
+      "detail": null,
+      "error": "工具名与顺序不许变（原 5 + V0.9 新增 4）\n+ actual - expected\n\n  [\n    'ledger_search',\n    'ledger_turn',\n-   'ledger_context',\n-   'ledger_whoami',\n    'ledger_health',\n-   'ledger_reconcile',\n-   'ledger_anchor',\n-   'ledger_cleanup_preview',\n-   'ledger_cleanup_apply'\n  ]\n",
+      "ms": 87
+    },
+    {
+      "id": "A3",
+      "name": "每次 GET / 工具调用后读日志恰好 +1 行且字段齐全；HEAD 不计",
+      "ok": false,
+      "detail": null,
+      "error": "Cannot read properties of undefined (reading 'execute')",
+      "ms": 36
+    },
+    {
+      "id": "A4",
+      "name": "读日志不被当成台账：readAll 行数不变、badLines 不变",
+      "ok": true,
+      "detail": {
+        "rowsBefore": 3,
+        "rowsAfter": 3,
+        "badLinesBefore": 0,
+        "badLinesAfter": 0,
+        "readsLogLines": 16
+      },
+      "error": null,
+      "ms": 1
+    },
+    {
+      "id": "A5",
+      "name": "错误路径：坏月份 bad-param、不存在编码 not-found；空库 ok:true + 计数 0 + health.ok=null",
+      "ok": true,
+      "detail": {
+        "badMonth": [
+          "xxxx",
+          "2026-13",
+          "2026-1"
+        ],
+        "notFound": {
+          "code": "20261108-75238718e41a-A-00099999",
+          "routes": [
+            "turn",
+            "original"
+          ]
+        },
+        "empty": {
+          "counts": {
+            "handover": {
+              "main": 0,
+              "appendix": 0,
+              "total": 0
+            },
+            "original": {
+              "views": 0,
+              "attachments": 0
+            },
+            "weekly": {
+              "files": 0,
+              "months": 0,
+              "sealed": 0
+            },
+            "ledgerRows": 0
+          },
+          "healthOk": null,
+          "evidence": "no-run-report",
+          "gate": "unknown",
+          "rootExists": false
+        }
+      },
+      "error": null,
+      "ms": 10
+    },
+    {
+      "id": "A6",
+      "name": "9 个工具的 presentResult 符合 ToolResultView 联合形状（含 read 卡片行号）",
+      "ok": false,
+      "detail": null,
+      "error": "Cannot read properties of undefined (reading 'execute')",
+      "ms": 4
+    },
+    {
+      "id": "A2",
+      "name": "调用前后除读日志（旧 .reads.jsonl + 新 .reads/ 分片）外全库 sha256 集合逐字节不变",
+      "ok": true,
+      "detail": {
+        "files": 13,
+        "artifacts": {
+          "台账 jsonl": {
+            "unchanged": true,
+            "sha256": "5687a7c20efeb6b6d9443ec89c641ffa3f268d6d41168c1c5a06681210a9f8ec"
+          },
+          "原文 md": {
+            "unchanged": true,
+            "sha256": "9732dc376ba10a46ec73d188b8a2b656807d84bc176ec9829fe0c51432b3a6b6"
+          },
+          "原始事件 json": {
+            "unchanged": true,
+            "sha256": "3b4606c2d97ea959cd6beefaeaf2b64bfcf2327aa0e4cc1fb483743920587ece"
+          },
+          "周记账 xlsx": {
+            "unchanged": true,
+            "sha256": "af81327d404073c87e371121c8936ec89b85ff0606279e7e2e3289d7f970ed8e"
+          },
+          "交接表主表": {
+            "unchanged": true,
+            "sha256": "d1c5533a94772769675b232dd52c1d270f5a4bf526c0065cd1196f6c285c1135"
+          },
+          "交接表附表": {
+            "unchanged": true,
+            "sha256": "6534126c0ab155f43c2e9433234dec89598baeac7fcbdf942043d91cbfee8562"
+          },
+          "封板 journal": {
+            "unchanged": true,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "state": {
+            "unchanged": true,
+            "sha256": "57e703fc24404dd9d36a91bcfda63cbe5f35f65467fc88c79d694609a6da10e9"
+          },
+          "run-report": {
+            "unchanged": true,
+            "sha256": "03c0196dc41ff809b5eadd36ae8b3d56d364fbeae03904197f10b370aa168e69"
+          }
+        },
+        "readsLogLinesBefore": 0,
+        "readsLogLinesAfter": 23
+      },
+      "error": null,
+      "ms": 3
+    },
+    {
+      "id": "A7",
+      "name": "summary 顶层键与 health 22 键一个不少；counts/capabilities 子键齐全",
+      "ok": true,
+      "detail": {
+        "topKeys": [
+          "ok",
+          "v",
+          "generatedAt",
+          "root",
+          "rootExists",
+          "layoutVersion",
+          "counts",
+          "health",
+          "reads",
+          "capabilities"
+        ],
+        "healthKeys": 22,
+        "ledgerRows": 3,
+        "counts": {
+          "handover": {
+            "main": 1,
+            "appendix": 1,
+            "total": 2
+          },
+          "original": {
+            "views": 3,
+            "attachments": 3
+          },
+          "weekly": {
+            "files": 1,
+            "months": 1,
+            "sealed": 0
+          },
+          "ledgerRows": 3
+        },
+        "capabilities": {
+          "readOnly": true,
+          "physicalDelete": false,
+          "receiptAnchor": false
+        },
+        "reads": {
+          "total": 1,
+          "lastAt": "2026-11-14 09:22:54 +08:00",
+          "badLines": 0
+        }
+      },
+      "error": null,
+      "ms": 1
+    },
+    {
+      "id": "A8",
+      "name": "HTTP resource 同源守卫：明确跨源证据 → 403 forbidden-origin；无来源头（WebView 兼容）→ 200",
+      "ok": true,
+      "detail": {
+        "noHeaderCompat": 200,
+        "crossSiteBlocked": 403,
+        "crossOrigin": 403,
+        "sameOrigin": {
+          "sec-fetch-site": 200,
+          "origin": 200
+        },
+        "runPanelRoute": 200
+      },
+      "error": null,
+      "ms": 6
+    }
+  ],
+  "numbers": {
+    "readsLogLinesBefore": 0,
+    "fixtureFiles": 13,
+    "a8": {
+      "noHeaderCompat": 200,
+      "crossSiteBlocked": 403,
+      "crossOrigin": 403,
+      "sameOrigin": {
+        "sec-fetch-site": 200,
+        "origin": 200
+      },
+      "runPanelRoute": 200
+    },
+    "routesDisposed": 7,
+    "toolCalls": 9,
+    "panelCalls": 7,
+    "checksTotal": 8,
+    "checksPassed": 5
+  },
+  "ok": false,
+  "durationMs": 204,
+  "finishedAt": "2026-11-14 09:22:54 +08:00"
+}

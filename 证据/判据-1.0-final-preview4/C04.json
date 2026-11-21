@@ -1,0 +1,35 @@
+{
+  "schema": "criteria-1.0/1#C04",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C04",
+  "status": "GREEN",
+  "summary": "1 项全过（自测-index+边界）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "自测-index+边界",
+        "file": "docs/跑测试.mjs",
+        "exit": 0,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "A 保存正确",
+  "gate": "P1",
+  "source": "未闭合轮只进 pending，不进台账",
+  "how": "造一个半截轮，查两处",
+  "zonggang": "总纲 §7 L548",
+  "caliber": ""
+}

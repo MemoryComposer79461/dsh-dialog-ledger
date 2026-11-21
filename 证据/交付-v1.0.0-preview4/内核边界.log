@@ -1,0 +1,3 @@
+内核边界检查 · 目标=<work-dir>\pkg
+基线：<work-dir>\pkg\docs\内核基线\内核基线-v1.0-lite.sha256（自动选：版本号最大；内核基线-v1.0-lite.sha256）
+[PASS] 内核 6 个文件与 v1.0-lite 基线逐字节相同

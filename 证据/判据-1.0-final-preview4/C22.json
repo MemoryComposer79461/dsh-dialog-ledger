@@ -1,0 +1,38 @@
+{
+  "schema": "criteria-1.0/1#C22",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C22",
+  "status": "GREEN",
+  "summary": "套账/压缩语料 3.861% ≤5%（台账 1.18 MiB+索引 145.3 KiB / 语料 34.15 MiB）；原文+视图 1.1904× ∈[1.00,1.35]（54.06 MiB/45.42 MiB）；单文件最大 34.8 KiB ≤4 MB；索引分片最大 3.5 KiB ≤4 MiB",
+  "reasons": [],
+  "evidence": {
+    "corpusBytes": 35812336,
+    "ingestableBytes": 35812336,
+    "ledgerDayBytes": 1234098,
+    "indexBytes": 148770,
+    "originalsBytes": 47622603,
+    "originalsCount": 1338,
+    "viewsBytes": 9065871,
+    "viewsCount": 1338,
+    "attachmentBytes": 47622603,
+    "r3_settle": 0.038614292013791005,
+    "r2_original_view": 1.1903690774735687,
+    "r1_decompress_report_only": 1.32978208961292,
+    "maxFile": {
+      "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00001000 原始事件.json",
+      "size": 35599
+    },
+    "maxIndexShard": {
+      "rel": "ledger/.index/.idx-state.json",
+      "size": 3603
+    },
+    "caliber": "S-9②：套账(台账日文件+索引) ≤0.05× 压缩语料；原文+视图(原始事件.json+完整原文.md) = 1.00–1.35× 解压语料（Σ台账 attachment.bytes，S-10⑤ doctor 同一分母代理）；§5.9② 单文件 ≤4 MB（xlsx 除外）；S-10④ 索引分片 ≤4 MiB。r1 只报告（S-9 实测解压 3.49× 是全语料；E3 现存语料子集 r1=1.3298，差异已登记）",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "D 续航稳产",
+  "gate": "P2",
+  "source": "账库体积 ≤ 1.25× 语料；单文件 ≤ 4 MB",
+  "how": "量目录",
+  "zonggang": "总纲 §7 L581",
+  "caliber": "S-9② 拆两条：套账(台账+索引) ≤0.05× 压缩语料；原文+视图 = 1.00–1.35× 解压语料（§5.9② 单文件 ≤4 MB，xlsx 除外）"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "C40",
+  "injected": "删版本台账副本第 12 行 → 编号不连续/链断",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "从产品台账重新拷一份副本（产品文件未动）",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "第 13 行编号应为 12，实际 13",
+  "greenSummary": "版本台账 24 行（v0.9.0-lite-base … v1.0.0-preview4）；编号连续/版本唯一/正式版由同号 -re 升；builtFrom/baselineTag/builtFromCommit 三链对上；副本追加第 24 行链仍成立；删中间行可抓；04 演练 A/B/C 已填",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C40-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C40-green.json",
+  "detail": "基线 = 副本台账末行自洽的版本视图（tag=lite-v1.0.0-preview4，type=**preview4**；不依赖 VERSION.json 是否已追加当前版行）；主判据仍以 VERSION.json 为准；注入/还原都在版本台账副本上做（产品台账只读）；红落在\"链断\"",
+  "residual": ""
+}

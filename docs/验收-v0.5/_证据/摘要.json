@@ -1,0 +1,57 @@
+{
+  "schema": "v05-ac-summary/1",
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "total": 140,
+  "distribution": {
+    "逐条通过": 46,
+    "逐条跳过": 8,
+    "主题级通过 + 单元覆盖（未逐条）": 10,
+    "仅单元覆盖（未逐条）": 39,
+    "未覆盖": 37
+  },
+  "directCovered": 54,
+  "scenarioCovered": 0,
+  "suites": {
+    "selftest": "docs\\跑测试.mjs（296 例，本次全量 296/296）",
+    "p0": {
+      "cases": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "file": "docs\\验收-v0.5\\_results\\P0.json"
+    },
+    "p1": {
+      "cases": 11,
+      "pass": 11,
+      "fail": 0,
+      "file": "docs\\验收-v0.5\\_results\\P1.json"
+    },
+    "stress": {
+      "pass": true,
+      "tiers": [
+        {
+          "mb": 1,
+          "rss": 76
+        },
+        {
+          "mb": 4,
+          "rss": 106
+        },
+        {
+          "mb": 16,
+          "rss": 225
+        },
+        {
+          "mb": 36,
+          "rss": 284
+        }
+      ],
+      "file": "结果-TSG-02-20261109-194942.json"
+    },
+    "mutation": {
+      "total": 1,
+      "proven": 1,
+      "file": "结果-20261109-210124.json"
+    }
+  }
+}

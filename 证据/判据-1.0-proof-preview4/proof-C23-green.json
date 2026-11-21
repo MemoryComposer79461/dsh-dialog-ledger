@@ -1,0 +1,34 @@
+{
+  "id": "C23",
+  "repaired": "删掉 .bin 注入文件",
+  "result": {
+    "id": "C23",
+    "status": "GREEN",
+    "summary": "扫描 42 文件：扩展名分布 (none)=1/.json=15/.md=15/.xlsx=3/.jsonl=8；白名单外 0（例外：周账 xlsx 3、外发摘要 txt 0；根标记 .ledger-root 1）",
+    "reasons": [],
+    "evidence": {
+      "roots": [
+        {
+          "label": "c01 小库",
+          "root": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-c23-20261115-132512/root",
+          "files": 42
+        }
+      ],
+      "filesTotal": 42,
+      "extCount": {
+        "(none)": 1,
+        ".json": 15,
+        ".md": 15,
+        ".xlsx": 3,
+        ".jsonl": 8
+      },
+      "exceptions": {
+        "xlsx": 3,
+        "txt": 0,
+        "rootMarker": 1
+      },
+      "violations": [],
+      "caliber": "§5.9①/C23：台账/索引/游标/报告只用 .jsonl/.md/.json；仅两个例外——周账视图 .xlsx、外发日结摘要 .txt；.ledger-root 是账库根标记（lib/layout.js，非判据产物），允许存在"
+    }
+  }
+}

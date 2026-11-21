@@ -1,0 +1,32 @@
+$ node docs/跑测试.mjs docs/自测-边界.mjs
+exit=0
+
+[看护] 物理内存: 0.98 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-边界.mjs
+
+✔ 跨零点：23:50 开始、两轮跨到次日 00:10 → 编码日期段均为 20261107，台账分落 11-07 与 11-08 两个日文件 (79.5868ms)
+✔ 跨月：2026-01-31T23:59 开始、两轮跨到 2/1 00:01 → 编码日期段均为 20260131，台账分落 01-31 与 02-01 两个日文件 (41.5045ms)
+✔ 坏事件守卫：缺 time 与缺 data.turn 的 turn/start → collectTurnsDetailed.malformed=2、closed 为空 (2.9504ms)
+✔ 坏事件守卫：同一会话驱动 runOnce → 不写任何行，stat.malformedTurns=2 且 errors 有条目 (14.7015ms)
+✔ 孤儿轮次·进行中：只有 turn/start、mtime=现在（quietSeconds=120）→ written=0、openTurns=1，不写 partial (19.1736ms)
+✔ 孤儿轮次·不写 partial（审计 A-01）：两扫均只留 pending，补 turn/end 后恰好一条 ok (53.2226ms)
+✔ 规模：单会话 1200 轮 → written=1200、code 唯一 1200、(sid,turn) 唯一 1200；二次 runOnce written=0、skipped=1200 (10841.1917ms)
+ℹ 1200 轮首跑耗时 10588.6 ms（仅记录，不比阈值）
+ℹ 1200 轮二次跑耗时 8.0 ms（仅记录，不比阈值）
+✔ INV-04：截短重写后追加新 Turn → 新内容必须被读到（written>0、unchanged=0） (62.22ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11218.7956
+
+[看护] 结束: exit=0 用时 11.3s
+[看护] 物理内存: 0.95 GB 可用（跑完）
+[看护] 用例统计: tests=8 pass=8 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-report-26648-mwhe3c8n.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

@@ -1,0 +1,15 @@
+{
+  "id": "C44",
+  "injected": "五类故障各注入一次（doctor 自带\"先红后绿\"循环）",
+  "baseStatus": "GREEN",
+  "redStatus": "red/red/red/red/red",
+  "repaired": "每类注入后立刻还原",
+  "greenStatus": "ok/ok/ok/ok/ok",
+  "pass": true,
+  "redSummary": "doctor 5 类故障各报一次红并转绿（5/5）：data-integrity=red→ok、code-consistency=red→ok、ingest-health=red→ok、storage-health=red→ok、storage-health=red→ok",
+  "greenSummary": "5 类中 5/5 完成 red→非red",
+  "redReport": "<work-dir>\\pkg\\证据\\判据-1.0-proof-preview4\\proof-C44.json",
+  "greenReport": "",
+  "detail": "doctor 是外置只读检测器；注入全在 c01 副本上做",
+  "residual": ""
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "criteria-1.0/1#C26",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C26",
+  "status": "GREEN",
+  "summary": "小库 3 日/台账 12 行=索引 12 行，缺/多/重复 0；大库 45 日/台账 1338 行=索引 1338 行，缺/多/重复 0",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/child-判据-0.9.4",
+    "childEvidence": {
+      "per": [
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+          "label": "小库",
+          "ledgerDays": 3,
+          "indexDays": 3,
+          "ledgerRows": 12,
+          "indexRows": 12,
+          "countMismatch": 0,
+          "missingInIndex": 0,
+          "indexNotInLedger": 0,
+          "duplicateIndexCodes": 0,
+          "ledgerBadLines": 0,
+          "samples": [],
+          "ok": true
+        },
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+          "label": "大库",
+          "ledgerDays": 45,
+          "indexDays": 45,
+          "ledgerRows": 1338,
+          "indexRows": 1338,
+          "countMismatch": 0,
+          "missingInIndex": 0,
+          "indexNotInLedger": 0,
+          "duplicateIndexCodes": 0,
+          "ledgerBadLines": 0,
+          "samples": [],
+          "ok": true
+        }
+      ],
+      "problems": []
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "索引条数 ＝ 台账行数（同天），每条 code 在台账里存在",
+  "how": "对账（口径见 R-5）",
+  "zonggang": "总纲 §7 L590",
+  "caliber": "R-5：索引行＝台账行＝轮"
+}

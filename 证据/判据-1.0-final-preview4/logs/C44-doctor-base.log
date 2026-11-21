@@ -1,0 +1,240 @@
+$ node doctor.mjs --root=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c44-doctor-20261115-132347\root --sessions=C:\Users\<user>\AppData\Local\Temp\dsh-ledger-criteria-work\c44-doctor-20261115-132347\dsh-home\sessions --no-write --json
+exit=0 ms=126
+
+--- stdout ---
+{
+  "schema": "doctor/1",
+  "toolVersion": "1.0",
+  "ok": true,
+  "exitCode": 0,
+  "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c44-doctor-20261115-132347\\root",
+  "generatedAt": "2026-11-15 13:24:55",
+  "offsetMinutes": 480,
+  "strict": false,
+  "days": 7,
+  "sample": 20,
+  "reportId": null,
+  "reportPath": null,
+  "checks": [
+    {
+      "id": "data-integrity",
+      "name": "①数据完整性",
+      "ok": true,
+      "severity": "ok",
+      "details": {
+        "message": "台账 12 行（有效 12）/ 原文视图 12 / 附件 12；坏行 0、读错 0；缺凭证 0、孤儿 0；缺口留痕 0",
+        "ledgerRows": 12,
+        "effectiveRows": 12,
+        "distinctSidTurn": 12,
+        "ledgerFiles": 3,
+        "ledgerDirExists": true,
+        "emptyProven": false,
+        "badLines": 0,
+        "readErrorCount": 0,
+        "views": 12,
+        "attachments": 12,
+        "originalMissing": 0,
+        "originalOrphan": 0,
+        "originalOrphanCodes": 0,
+        "lostGaps": 0,
+        "lostBadLines": 0,
+        "ledgerDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c44-doctor-20261115-132347\\root\\ledger",
+        "warnings": []
+      },
+      "ms": 38
+    },
+    {
+      "id": "code-consistency",
+      "name": "②编码一致性",
+      "ok": true,
+      "severity": "ok",
+      "details": {
+        "message": "code 唯一 / (sid,turn) 唯一；抽样 12 份全文 sha256 全符；entryHash 已被 S-6 否决，不检",
+        "rows": 12,
+        "uniqueCodes": 12,
+        "uniqueSidTurn": 12,
+        "invalidCode": 0,
+        "duplicateCodeGroups": 0,
+        "duplicateSidTurnGroups": 0,
+        "dateSegmentInvalid": 0,
+        "dateSegmentClashes": 0,
+        "hashSampled": 12,
+        "hashVerified": 12,
+        "hashMismatch": 0,
+        "hashProblems": [],
+        "checkHash": "sha256(full file) of 完整原文.md（expectedFullHash = 台账 docFileSha256）",
+        "entryHash": "not present (S-6 rejected)",
+        "warnings": []
+      },
+      "ms": 20
+    },
+    {
+      "id": "ingest-health",
+      "name": "③采集健康",
+      "ok": true,
+      "severity": "ok",
+      "details": {
+        "message": "源会话 3 / 可见 3 / 不支持版本 0 / v3 只读源 0；state 正常（lastRunAt 2026-11-15T13:17:05+08:00，0.1h 前）；pending 0 条",
+        "sessionsBase": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c44-doctor-20261115-132347\\dsh-home\\sessions",
+        "sourceSessions": 3,
+        "visibleSources": 3,
+        "unsupportedVersions": 0,
+        "unsupportedList": [],
+        "unreadableSources": [],
+        "v3ReadOnlySources": 0,
+        "sourcePairs": 0,
+        "state": {
+          "exists": true,
+          "ok": true,
+          "lastRunAt": "2026-11-15T13:17:05+08:00",
+          "firstRunAt": "2026-11-15T13:17:05+08:00",
+          "cursorCount": 3,
+          "error": null
+        },
+        "lastRunAgeSeconds": 470,
+        "cursors": {
+          "total": 3,
+          "stuck": [],
+          "active": [],
+          "activeCount": 0,
+          "shrunk": [],
+          "gone": [],
+          "mtimeChanged": [],
+          "notIngested": [],
+          "graceBasis": "mtime-recent=源 mtime 在宽限窗内（正在被写）；pending-unclosed=该源有未闭合轮 pending（等 turn/end）"
+        },
+        "pending": {
+          "records": 0,
+          "badLines": 0,
+          "readError": "",
+          "bytes": 0
+        },
+        "thresholds": {
+          "stateStaleWarnMs": 86400000,
+          "pendingMaxBytes": 1048576,
+          "cursorStuckGraceMs": 120000,
+          "cursorStuckRule": "游标卡住=red iff 源 size>游标 size 且源 mtime 静止 > 2×intervalSeconds 且该源无未闭合轮 pending；源 mtime 在宽限窗内（正在被写）或该源有未闭合轮 pending → 活动源宽限（ok/warn，不判红）"
+        },
+        "warnings": []
+      },
+      "ms": 4
+    },
+    {
+      "id": "storage-health",
+      "name": "④存储健康",
+      "ok": true,
+      "severity": "ok",
+      "details": {
+        "message": "体积 607.1 KB / 文件 42；最大单文件 181.0 KB（上限 4.00 MB）；pending 0 B / 1.00 MB；语料倍率 skipped",
+        "rootBytes": 621701,
+        "fileCount": 42,
+        "maxFile": {
+          "path": "2026年10月\\10月第2周-c01lab000111A的周记账.xlsx",
+          "bytes": 185352
+        },
+        "bigFiles": [],
+        "bigXlsxAllowed": [],
+        "pendingBytes": 0,
+        "pendingMaxBytes": 1048576,
+        "corpus": "not given（语料倍率检查 skipped）",
+        "corpusBytes": null,
+        "ratio": null,
+        "corpusRatios": null,
+        "growth": {
+          "prevReport": null,
+          "skipped": "没有上一份 doctor 报告"
+        },
+        "thresholds": {
+          "maxSingleFileBytes": 4194304,
+          "pendingMaxBytes": 1048576,
+          "growthWarnRatio": 0.5,
+          "corpusR1Expect": [
+            3,
+            3.6
+          ],
+          "corpusR2Range": [
+            1,
+            1.35
+          ],
+          "corpusR3Max": 0.05,
+          "corpusRatioMaxDeprecated": "1.25×（0.9.2 旧口径；S-10⑤ 作废，不再判红 —— 旧口径拿压缩语料当分母，必然 3.49×）"
+        },
+        "walkErrors": [],
+        "warnings": []
+      },
+      "ms": 5
+    },
+    {
+      "id": "run-report",
+      "name": "⑤运行报告",
+      "ok": true,
+      "severity": "ok",
+      "details": {
+        "message": "最近 7 天：1 天有报告 / 缺 0 天；最近 gate=ok；采集字节 0 B（耗时口径无数据源）",
+        "reportDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c44-doctor-20261115-132347\\root\\ledger",
+        "days": 7,
+        "expectedDays": 1,
+        "reportFiles": 1,
+        "missingDays": [],
+        "latest": {
+          "name": ".run-report-20261115.json",
+          "date": "20261115",
+          "parseOk": true,
+          "generatedAt": "2026-11-15 13:17:05",
+          "gate": "ok",
+          "ingestBytes": 0
+        },
+        "latestBatches": 3,
+        "ingestBytes": 0,
+        "eventOversize": 0,
+        "unavailable": [
+          "stuckSources",
+          "integrityFailures"
+        ],
+        "knownStructuralUnavailable": [
+          "stuckSources",
+          "integrityFailures"
+        ],
+        "perTick": false,
+        "perTickReason": "lib/report.js:36 当日覆盖写；报告无 elapsedMs/durationMs 字段 → \"最近 N 次 tick 耗时\"无数据源",
+        "daily": [
+          {
+            "date": "20261115",
+            "present": true,
+            "name": ".run-report-20261115.json",
+            "generatedAt": "2026-11-15 13:17:05",
+            "gate": "ok",
+            "counts": {
+              "ledgerRows": 12,
+              "originalMissing": 0,
+              "originalOrphan": 0,
+              "lostGaps": 0,
+              "errors": 0,
+              "warnings": 0,
+              "batches": 3
+            },
+            "errors": 0,
+            "warnings": 0,
+            "tornTailRepaired": 0,
+            "ingestBytes": 0
+          }
+        ],
+        "warnings": []
+      },
+      "ms": 1
+    }
+  ],
+  "summary": {
+    "ok": 5,
+    "warn": 0,
+    "red": 0,
+    "unknown": 0
+  },
+  "storage": {
+    "totalBytes": 621701,
+    "fileCount": 42,
+    "maxFileBytes": 185352
+  }
+}
+
+--- stderr ---

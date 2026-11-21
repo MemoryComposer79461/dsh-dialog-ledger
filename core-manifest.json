@@ -1,0 +1,68 @@
+{
+  "line": "lite",
+  "createdAt": "2026-11-13",
+  "updatedAt": "2026-11-14",
+  "definition": "lib/*.js 即核心（tick 运行时唯一合法产区）。freeze/ 与 tools/ 不进 tick。",
+  "coreFiles": [
+    "lib/catalog.js",
+    "lib/checkup.js",
+    "lib/collector.js",
+    "lib/encoder.js",
+    "lib/frames.js",
+    "lib/gate.js",
+    "lib/layout.js",
+    "lib/ledger.js",
+    "lib/ledgerroot.js",
+    "lib/legacy.js",
+    "lib/lock.js",
+    "lib/original.js",
+    "lib/pending.js",
+    "lib/receipt.js",
+    "lib/reconcile.js",
+    "lib/report.js",
+    "lib/sealjournal.js",
+    "lib/tickmetrics.js",
+    "lib/week.js",
+    "lib/weekly.js",
+    "lib/weeklystate.js",
+    "lib/xlsx.js"
+  ],
+  "coreCount": 22,
+  "note": "★ P1-10（准入审计 · 机主裁定 V1.0 前解决）：本清单改为**唯一声明源**，由 tools/core-boundary.mjs 读取并逐项与磁盘对账（声明≠实物 → violation，exit 1）。coreCount=22 = 磁盘 lib/*.js 实测数（旧注里『按实测 21 计』的说法已作废：v0.9.1 起 receipt/checkup/sealjournal 归入 lib/，v0.9.1-re2 新增 report.js，v0.9.3 新增 tickmetrics.js → 22）。index→tools 实际 4 条（shadow/toolface/panelapi/pointerindex）；tools 实际 14 个文件（含只供人工运行的外置工具，不进 tick）。",
+  "outsiders": {
+    "freeze": [
+      "freeze/handover.js",
+      "freeze/cleanup.js",
+      "freeze/cleanup-tools.js",
+      "freeze/selfheal.js",
+      "freeze/manifestanchor.js",
+      "freeze/sealcross.js",
+      "freeze/legacy-marks.js"
+    ],
+    "tools": [
+      "tools/backfill-exec.js",
+      "tools/backfill.js",
+      "tools/backup.mjs",
+      "tools/cli.mjs",
+      "tools/client.js",
+      "tools/core-boundary.mjs",
+      "tools/doctor.mjs",
+      "tools/ledgerapi.js",
+      "tools/panelapi.js",
+      "tools/pointerindex.mjs",
+      "tools/readlog.js",
+      "tools/shadow.js",
+      "tools/toolcards.js",
+      "tools/toolface.js"
+    ]
+  },
+  "indexAllowlist": {
+    "tools": [
+      "tools/toolface.js",
+      "tools/panelapi.js",
+      "tools/shadow.js",
+      "tools/pointerindex.mjs"
+    ],
+    "freeze": []
+  }
+}

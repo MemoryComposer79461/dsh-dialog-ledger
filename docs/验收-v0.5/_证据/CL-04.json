@@ -1,0 +1,17 @@
+{
+  "schema": "v05-ac/1",
+  "id": "CL-04",
+  "family": "CL",
+  "acId": "AC-V05-CL-04",
+  "product": "YAML 值",
+  "requirement": "清理对象=完整原文；报告日期 `^\\d{4}-\\d{2}-\\d{2}$`；6 计数非负整数",
+  "implementation": "同上",
+  "coverage": "未覆盖",
+  "status": "未覆盖",
+  "note": "清册 v1.3 全量重写未做（W4），物理删除仍默认关闭",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": null,
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

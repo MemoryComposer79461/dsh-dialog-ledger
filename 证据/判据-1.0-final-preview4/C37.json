@@ -1,0 +1,185 @@
+{
+  "schema": "criteria-1.0/1#C37",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C37",
+  "status": "GREEN",
+  "summary": "全量拷 37 文件→追加 1 行→增量只拷 1 文件（4584 B；unchanged 36）→verify ok；备份目录整拷后 verify ok（38 文件/607.9 KB）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\run-3\\root",
+      "backupDir": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\backup1",
+      "steps": [
+        {
+          "step": "backup#1 全量",
+          "ok": true,
+          "exitCode": 0,
+          "mode": "full",
+          "scanned": {
+            "files": 37,
+            "bytes": 617778
+          },
+          "copied": {
+            "files": 37,
+            "bytes": 617778,
+            "byKind": {
+              "view": {
+                "files": 12,
+                "bytes": 21254
+              },
+              "attachment": {
+                "files": 12,
+                "bytes": 6806
+              },
+              "ledger": {
+                "files": 3,
+                "bytes": 10968
+              },
+              "weekly": {
+                "files": 3,
+                "bytes": 556056
+              },
+              "other": {
+                "files": 7,
+                "bytes": 22694
+              }
+            }
+          },
+          "skipped": [
+            {
+              "rule": "index",
+              "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+              "files": 1,
+              "bytes": 0
+            },
+            {
+              "rule": "metrics",
+              "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+              "files": 1,
+              "bytes": 2079
+            }
+          ]
+        },
+        {
+          "step": "verify#1",
+          "ok": true,
+          "exitCode": 0,
+          "counts": {
+            "missing": 0,
+            "extra": 0,
+            "changed": 0
+          },
+          "manifestEntries": 38
+        },
+        {
+          "step": "backup#2 增量（追加 1 行）",
+          "ok": true,
+          "exitCode": 0,
+          "mode": "incremental",
+          "copied": {
+            "files": 1,
+            "bytes": 4584,
+            "byKind": {
+              "view": {
+                "files": 0,
+                "bytes": 0
+              },
+              "attachment": {
+                "files": 0,
+                "bytes": 0
+              },
+              "ledger": {
+                "files": 1,
+                "bytes": 4584
+              },
+              "weekly": {
+                "files": 0,
+                "bytes": 0
+              },
+              "other": {
+                "files": 0,
+                "bytes": 0
+              }
+            }
+          },
+          "added": 0,
+          "changed": 1,
+          "copiedRels": [
+            "ledger/2026-10-07.jsonl"
+          ],
+          "unchangedFiles": 36,
+          "policy": {
+            "includeIndex": false,
+            "includeMetrics": false,
+            "skipped": [
+              {
+                "rule": "index",
+                "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+                "files": 1,
+                "bytes": 0
+              },
+              {
+                "rule": "metrics",
+                "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+                "files": 1,
+                "bytes": 2079
+              }
+            ]
+          }
+        },
+        {
+          "step": "verify#2",
+          "ok": true,
+          "exitCode": 0,
+          "counts": {
+            "missing": 0,
+            "extra": 0,
+            "changed": 0
+          }
+        },
+        {
+          "step": "verify#3（整库搬走=拷目录后一条命令）",
+          "ok": true,
+          "exitCode": 0,
+          "counts": {
+            "missing": 0,
+            "extra": 0,
+            "changed": 0
+          }
+        }
+      ],
+      "problems": [],
+      "firstFiles": 37,
+      "fullCopiedFiles": 37,
+      "appendedFile": "2026-10-07.jsonl",
+      "appendedBytes": 928,
+      "verifyCopy": {
+        "ok": true,
+        "counts": {
+          "missing": 0,
+          "extra": 0,
+          "changed": 0
+        },
+        "manifestEntries": 38
+      },
+      "caliber": "增量身份 = 相对路径 + 内容 sha256（backup.mjs 口径）；\"整库搬走\"= 目录级拷贝备份目录 → 一条 verify 命令全量校验 sha256 可读"
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "★ 增量备份只拷\"上次之后新写的\"；整库搬走 ＝ 拷目录 + 一条命令验证可读",
+  "how": "备份演练",
+  "zonggang": "总纲 §7 L601",
+  "caliber": ""
+}

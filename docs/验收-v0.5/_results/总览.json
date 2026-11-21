@@ -1,0 +1,82 @@
+{
+  "v": 1,
+  "generatedAt": "2026-11-10 21:45:33",
+  "offsetMinutes": 480,
+  "resultsDir": "<test-dir>\\work\\v0.5-工作副本\\docs\\验收-v0.5\\_results",
+  "declaredSuites": [
+    "P0",
+    "P1",
+    "INV",
+    "CH",
+    "REC"
+  ],
+  "suites": [
+    {
+      "suite": "P0",
+      "file": "P0.json",
+      "state": "ok",
+      "module": "P0回归-v2",
+      "cases": 19,
+      "pass": 19,
+      "fail": 0,
+      "error": 0,
+      "skip": 0
+    },
+    {
+      "suite": "P1",
+      "file": "P1.json",
+      "state": "ok",
+      "module": "P1 十二条",
+      "cases": 11,
+      "pass": 11,
+      "fail": 0,
+      "error": 0,
+      "skip": 0
+    },
+    {
+      "suite": "INV",
+      "file": "INV.json",
+      "state": "ok",
+      "module": "v0.5 P0 不变量 INV-01…INV-30",
+      "cases": 30,
+      "pass": 26,
+      "fail": 0,
+      "error": 0,
+      "skip": 4
+    },
+    {
+      "suite": "CH",
+      "file": "CH.json",
+      "state": "ok",
+      "module": "v0.5 P1 可信链 CH-01…CH-24",
+      "cases": 24,
+      "pass": 20,
+      "fail": 0,
+      "error": 0,
+      "skip": 4
+    },
+    {
+      "suite": "REC",
+      "file": "REC.json",
+      "state": "ok",
+      "module": "v0.5 REC 收据锚 REC-01…REC-10",
+      "cases": 10,
+      "pass": 10,
+      "fail": 0,
+      "error": 0,
+      "skip": 0
+    }
+  ],
+  "totals": {
+    "declaredSuites": 5,
+    "present": 5,
+    "missing": [],
+    "invalid": [],
+    "cases": 94,
+    "pass": 86,
+    "fail": 0,
+    "error": 0,
+    "skip": 8
+  },
+  "note": "如实汇总：只复制各套件 summary 的计数并求和；缺失记 missing、损坏记 invalid；本文件不产出任何结论性措辞。"
+}

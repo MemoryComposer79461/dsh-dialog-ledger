@@ -1,0 +1,15 @@
+{
+  "id": "C41",
+  "injected": "删台账副本 2026-10-20.jsonl 的末行（code=20261020-weeks0000011-A-00000001）→ 周账多行",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把删掉的那行写回 2026-10-20.jsonl",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "2026年10月/10月第4周-weeks0000011A的周记账.xlsx「周二」多行 1 条（例：20261020-weeks0000011-A-00000001）",
+  "greenSummary": "周账 4 组里抽 10月第5周 / 10月第4周 / 11月第1周（含跨月周=true）：逐日表对账 13 行，100% 相符（缺行 0/多行 0/时间不符 0）",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C41-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C41-green.json",
+  "detail": "注入只在 lab-weeks 的台账副本上做（不动 xlsx、不动原 lab）",
+  "residual": ""
+}

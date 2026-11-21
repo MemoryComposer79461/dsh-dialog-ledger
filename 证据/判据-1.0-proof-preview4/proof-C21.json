@@ -1,0 +1,15 @@
+{
+  "id": "C21",
+  "injected": "把第 4 个 tick（稳态）readBytes 改为 3 MiB > 1 MiB",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把 .tick-metrics.jsonl 副本写回原字节",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "稳态 tick 2026-11-15T13:17:21+08:00 读盘 3.00 MiB > 1 MiB",
+  "greenSummary": "稳态 2 tick 读盘最大 12.1 KiB ≤1 MiB；读放大最大 1.00× ≤2× 变更量（变化承载=state+头尾指纹；语料 34.15 MiB 未被全量重读）",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C21-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C21-green.json",
+  "detail": "注入只在 .tick-metrics.jsonl 副本上做，E3 原库只读；红必须落在本判据",
+  "residual": ""
+}

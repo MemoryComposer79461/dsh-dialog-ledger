@@ -1,0 +1,412 @@
+{
+  "schema": "dsh-retired-tests/1",
+  "baseline": "v1.0.0-re4",
+  "counts": {
+    "A": 14,
+    "B": 2,
+    "C": 6,
+    "D": 3,
+    "E": 2,
+    "F": 6,
+    "G": 9,
+    "total": 42
+  },
+  "cases": [
+    {
+      "id": "A-01",
+      "group": "A",
+      "listItem": "§A #1",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 138,
+      "name": "REC-01 §1.1/§1.2：flat 路径、恰 10 键且键序固定、字段口径全对",
+      "reason": "实得 11 键 ≠ 断言 10 键（v3 摘要增 firstCode/partialCount/badLines，已无 ledgerSha256 字段）"
+    },
+    {
+      "id": "A-02",
+      "group": "A",
+      "listItem": "§A #2",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 181,
+      "name": "REC-02：ledgerSha256/ledgerBytes/ledgerRows/lastCode 与实算全等",
+      "reason": "r.ledgerSha256=undefined ≠ 实算 hash（v3 摘要不再做 sha 绑定）"
+    },
+    {
+      "id": "A-03",
+      "group": "A",
+      "listItem": "§A #3",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 201,
+      "name": "REC-03：当日无台账仍生成收据（rows=0/bytes=0/sha256(\"\")/lastCode=\"\"），originalCount 实盘",
+      "reason": "r.ledgerSha256=undefined ≠ sha256(\"\")（空账日断言仍锁旧字段）"
+    },
+    {
+      "id": "A-04",
+      "group": "A",
+      "listItem": "§A #4",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 233,
+      "name": "REC-04：连续两日链——D1 prev=\"\"、D2 prev==sha256(D1 收据文件字节)",
+      "reason": "D1 的 prev=undefined ≠ \"\"（已无 prevReceiptSha256 字段）"
+    },
+    {
+      "id": "A-05",
+      "group": "A",
+      "listItem": "§A #5",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 253,
+      "name": "REC-05：改台账/删台账/删中间收据 → 校验器报出且 exit 2；运行前后文件 sha256 集合不变",
+      "reason": "改台账只报 SUMMARY_MISMATCH，未报 LEDGER_CHANGED / exit 2"
+    },
+    {
+      "id": "A-06",
+      "group": "A",
+      "listItem": "§A #7",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 370,
+      "name": "REC-08：同证据重跑幂等（decision:\"idempotent\"，旧收据 sha 不变）；证据变化 RECEIPT_CONFLICT 不覆盖",
+      "reason": "written 实得 true ≠ false（幂等/冲突按旧契约；v3 改版本化补发，不再 RECEIPT_CONFLICT）"
+    },
+    {
+      "id": "A-07",
+      "group": "A",
+      "listItem": "§A #8",
+      "file": "docs/自测-receipt.mjs",
+      "line": 53,
+      "name": "收据：字段齐全、ledgerSha256 可独立复算、originalCount 只数有 doc 的行",
+      "reason": "rc.v 实得 3 ≠ 1（RECEIPT_VERSION=3），未走到 sha 断言"
+    },
+    {
+      "id": "A-08",
+      "group": "A",
+      "listItem": "§A #9",
+      "file": "docs/自测-receipt.mjs",
+      "line": 83,
+      "name": "收据：两日串链（次日 prev == 前日收据文件 sha256）",
+      "reason": "收据键集 11 ≠ 断言 10（多 firstCode），prev 断言未轮到"
+    },
+    {
+      "id": "A-09",
+      "group": "A",
+      "listItem": "§A #11",
+      "file": "docs/自测-receipt.mjs",
+      "line": 120,
+      "name": "收据：删掉当日台账 → LEDGER_MISSING；删一张收据 → 后续链断",
+      "reason": "仅报 LEDGER_MISSING，无 CHAIN_BREAK（收据已无链）"
+    },
+    {
+      "id": "A-10",
+      "group": "A",
+      "listItem": "§A #12",
+      "file": "docs/自测-receipt.mjs",
+      "line": 105,
+      "name": "收据：台账被改一个字节 → LEDGER_CHANGED（且不改台账）",
+      "reason": "改一字节只报 SUMMARY_MISMATCH，未报 LEDGER_CHANGED"
+    },
+    {
+      "id": "A-11",
+      "group": "A",
+      "listItem": "§A #13",
+      "file": "docs/自测-receipt.mjs",
+      "line": 155,
+      "name": "收据：同内容幂等（written=false）；台账变化后重写 → RECEIPT_CONFLICT 且原收据不变",
+      "reason": "written 实得 true ≠ false（不再 RECEIPT_CONFLICT，改版本化补发）"
+    },
+    {
+      "id": "A-12",
+      "group": "A",
+      "listItem": "§A #14",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 515,
+      "name": "兼容：旧 receipts/ 前链 → 新 flat 收据续链可校验（迁移不破链）",
+      "reason": "同日旧收据已存在仍重复写 flat 收据（written true ≠ false）"
+    },
+    {
+      "id": "A-13",
+      "group": "A",
+      "listItem": "§A #15",
+      "file": "docs/自测-receipt-v21.mjs",
+      "line": 483,
+      "name": "兼容：旧 v2.0 格式（receipts/ 子目录、12 键）两日链仍可校验，CLI exit 0",
+      "reason": "listReceipts() 长度 0 ≠ 2（旧 receipts/ 子目录已不被识别）"
+    },
+    {
+      "id": "A-14",
+      "group": "A",
+      "listItem": "§A #16",
+      "file": "docs/自测-reconcile.mjs",
+      "line": 381,
+      "name": "reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK",
+      "reason": "problems=[]（§5.5 去掉收据链判据，改前日收据不再报 CHAIN_BREAK）"
+    },
+    {
+      "id": "B-01",
+      "group": "B",
+      "listItem": "§B #17",
+      "file": "docs/自测-周记账封板.mjs",
+      "line": 976,
+      "name": "P0-4：源 120/121/122 封板哈希互不相同；溢出先写补记再封板；journal 行即不可变快照",
+      "reason": "prevSealSha256 恒 \"\"（封板哈希不成链）"
+    },
+    {
+      "id": "B-02",
+      "group": "B",
+      "listItem": "§B #18",
+      "file": "docs/自测-reconcile.mjs",
+      "line": 410,
+      "name": "reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修）",
+      "reason": "sealChain.ok 实得 true ≠ false（verifySealChain 只查可读/可解析/坏行=0）"
+    },
+    {
+      "id": "C-01",
+      "group": "C",
+      "listItem": "§C #19",
+      "file": "docs/自测-legacy基线.mjs",
+      "line": 97,
+      "name": "LM-03：基线行被篡改 → chainOk=false",
+      "reason": "chainOk 实得 true ≠ false（legacy-marks 模块已冻结，不再读基线）"
+    },
+    {
+      "id": "C-02",
+      "group": "C",
+      "listItem": "§C #20",
+      "file": "docs/自测-legacy基线.mjs",
+      "line": 123,
+      "name": "LM-05：collectLegacyCandidates 只收缺证据行；reconcile 对未标记行按缺凭证计",
+      "reason": "实得 false ≠ true（collectLegacyCandidates 旧口径已失效）"
+    },
+    {
+      "id": "C-03",
+      "group": "C",
+      "listItem": "§C #21",
+      "file": "docs/自测-reconcile.mjs",
+      "line": 589,
+      "name": "W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok",
+      "reason": "实得 undefined ≠ NO_BINDING_EVIDENCE（W5 缺凭证口径未落）"
+    },
+    {
+      "id": "C-04",
+      "group": "C",
+      "listItem": "§C #22",
+      "file": "docs/自测-reconcile.mjs",
+      "line": 643,
+      "name": "W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计",
+      "reason": "实得 undefined ≠ NO_BINDING_EVIDENCE（反伪装 W5b 同上）"
+    },
+    {
+      "id": "C-05",
+      "group": "C",
+      "listItem": "§C #23",
+      "file": "docs/自测-reconcile.mjs",
+      "line": 681,
+      "name": "W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched",
+      "reason": "mismatched 实得 0 ≠ 1（基线标记后改动不再计数）"
+    },
+    {
+      "id": "C-06",
+      "group": "C",
+      "listItem": "§C #24",
+      "file": "docs/自测-panelapi.mjs",
+      "line": 231,
+      "name": "V0.6/panelapi A1：7 条 exact GET 路由全部 ok:true，字段齐全",
+      "reason": "unmarkedNoEvidenceCount 实得 0 ≠ 3（legacy 标记流程冻结）"
+    },
+    {
+      "id": "D-01",
+      "group": "D",
+      "listItem": "§D #25",
+      "file": "docs/自测-清册v13.mjs",
+      "line": 1373,
+      "name": "CL-29 新格式解析：v1.3 明细→编码/RPT 号，只认结论=已删除（含附录 CSV）",
+      "reason": "附录第 51 条未命中（清册解析主体在冻结的 cleanup.js）"
+    },
+    {
+      "id": "D-02",
+      "group": "D",
+      "listItem": "§D #26",
+      "file": "docs/自测-清册v13.mjs",
+      "line": 1499,
+      "name": "坏 CSV 行 → 计数+报错，不静默通过（readErrors 必须非空且逐行可定位）",
+      "reason": "readErrors 非空断言 false ≠ true（CSV 解析在冻结模块）"
+    },
+    {
+      "id": "D-03",
+      "group": "D",
+      "listItem": "§D #27",
+      "file": "docs/自测-agenttools.mjs",
+      "line": 715,
+      "name": "V0.9/CT-06：清理后 reconcile 不误报缺凭证",
+      "reason": "originalMissing 实得 2 ≠ 0（lite 无销毁即无已清理标记）"
+    },
+    {
+      "id": "E-01",
+      "group": "E",
+      "listItem": "§E #28",
+      "file": "docs/自测-回归-v03.mjs",
+      "line": 150,
+      "name": "P3-1 / P3-2：时区变更触发重写；生成时间是 +08:00",
+      "reason": "改 offsetMinutes 未触发重写（运行日已过宽限期，自动封板拒绝重写）"
+    },
+    {
+      "id": "E-02",
+      "group": "E",
+      "listItem": "§E #29",
+      "file": "docs/自测-回归-v03.mjs",
+      "line": 166,
+      "name": "F1：改 offsetMinutes 触发周记账全量重写（端到端）",
+      "reason": "改偏移后必须重写断言 false ≠ true（同上，日期依赖）"
+    },
+    {
+      "id": "F-01",
+      "group": "F",
+      "listItem": "§F #30",
+      "file": "docs/自测-index-integration.mjs",
+      "line": 148,
+      "name": "P1-7/CH-13：首轮入账 → 主表+附表落盘、journal 恰 1 条 handover-seal（字段齐/链 ok）、state 有封板缓存",
+      "reason": "首轮交接表 0 份 ≠ 1（handover 冻结，tick 不再生成）"
+    },
+    {
+      "id": "F-02",
+      "group": "F",
+      "listItem": "§F #31",
+      "file": "docs/自测-index-integration.mjs",
+      "line": 223,
+      "name": "HO-22/23/CH-17：封板后 skip 且字节不动；删主表只报 sealed but file missing 不重建；删 state 仍不重建",
+      "reason": "封板 skip/删了不重建断言 0 ≠ 1（交接表不再产生）"
+    },
+    {
+      "id": "F-03",
+      "group": "F",
+      "listItem": "§F #32",
+      "file": "docs/自测-index-integration.mjs",
+      "line": 274,
+      "name": "HO-24：旧主表存在（无封板两键）→ adopt 只补 state+journal，文件字节/mtime 不变、不补写附表",
+      "reason": "必须 adopt 认领 0 ≠ 1（交接表能力冻结）"
+    },
+    {
+      "id": "F-04",
+      "group": "F",
+      "listItem": "§F #33",
+      "file": "docs/自测-index-integration.mjs",
+      "line": 315,
+      "name": "CH-14：交接表写盘失败 → runOnce 不抛穿、errors 含 handover failed、台账照常入账、下轮可重试",
+      "reason": "errors=[]，须含 handover failed（写失败分支已不存在）"
+    },
+    {
+      "id": "F-05",
+      "group": "F",
+      "listItem": "§F #34",
+      "file": "docs/自测-index-integration.mjs",
+      "line": 703,
+      "name": "V0.6.2-总目录：每日一次刷新（state.catalogDate，+08:00 口径）；失败只 warn 不拖垮记账",
+      "reason": "总目录数不到本轮写进交接表/的主表+附表（写端不再产交接表）"
+    },
+    {
+      "id": "F-06",
+      "group": "F",
+      "listItem": "§F #35",
+      "file": "docs/自测-manifestanchor.mjs",
+      "line": 137,
+      "name": "MA-08：index 接锚（集成）——每日快照一次 + 包锚幂等 + 锚目录越界拒绝",
+      "reason": "必须生成库外锚文件 false ≠ true（库外锚冻结，index 不再调用）"
+    },
+    {
+      "id": "G-01",
+      "group": "G",
+      "listItem": "§G #36",
+      "file": "docs/自测-agenttools.mjs",
+      "line": 428,
+      "name": "V0.9/AG-04：工具面 9 个、schema/卡片齐全、每次调用写读日志",
+      "reason": "工具面实测 3 个 ≠ 9（actual = ledger_search/ledger_turn/ledger_health）"
+    },
+    {
+      "id": "G-02",
+      "group": "G",
+      "listItem": "§G #37",
+      "file": "docs/自测-agenttools.mjs",
+      "line": 509,
+      "name": "V0.9/AG-05：越界拒绝——非法 root/未知参数 → 拒绝且不写盘",
+      "reason": "TypeError: reading execute（遍历 by 里已删的 V0.9 工具）"
+    },
+    {
+      "id": "G-03",
+      "group": "G",
+      "listItem": "§G #38",
+      "file": "docs/自测-agenttools.mjs",
+      "line": 760,
+      "name": "V0.9/CT-08：默认关闭（缺省配置时物理执行被拒绝）",
+      "reason": "工具面必须始终注册 apply（实际未注册）"
+    },
+    {
+      "id": "G-04",
+      "group": "G",
+      "listItem": "§G #39",
+      "file": "docs/自测-toolface.mjs",
+      "line": 72,
+      "name": "V0.6/toolface：9 个工具的定义齐全，描述里带\"先查 Session ID\"提示",
+      "reason": "buildToolDefs 实测 3 个 ≠ 9（deepEqual 失败）",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolface.mjs:L72",
+      "nameInList": "(清单未命名；以此行定位)"
+    },
+    {
+      "id": "G-05",
+      "group": "G",
+      "listItem": "§G #40",
+      "file": "docs/自测-toolface.mjs",
+      "line": 92,
+      "name": "V0.6/toolface：工具执行返回正确结果，并写入读日志",
+      "reason": "TypeError: reading execute（执行已删的 ledger_whoami/ledger_context）",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolface.mjs:L92",
+      "nameInList": "(清单未命名；以此行定位)"
+    },
+    {
+      "id": "G-06",
+      "group": "G",
+      "listItem": "§G #41",
+      "file": "docs/自测-toolface.mjs",
+      "line": 152,
+      "name": "V0.6/toolface：能注册/撤销；没有 tools 服务时静默跳过不抛错",
+      "reason": "registered 实得 3 ≠ 9",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolface.mjs:L152",
+      "nameInList": "(清单未命名；以此行定位)"
+    },
+    {
+      "id": "G-07",
+      "group": "G",
+      "listItem": "§G #42",
+      "file": "docs/自测-toolface.mjs",
+      "line": 177,
+      "name": "V0.6/toolface：apply() 带 tools 服务时注册 9 个工具，卸载时全部撤销",
+      "reason": "注册 3 个 ≠ 9（实际只剩 ledger_search/turn/health）",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolface.mjs:L177",
+      "nameInList": "(清单未命名；以此行定位)"
+    },
+    {
+      "id": "G-08",
+      "group": "G",
+      "listItem": "§G #43",
+      "file": "docs/自测-toolcards.mjs",
+      "line": 161,
+      "name": "V0.6/toolcards：原 5 个工具 name/description/parameters 未被改动（回归）",
+      "reason": "工具面实测 3 个 ≠ 9（原 5 个原样断言亦连带）",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolcards.mjs:L161",
+      "nameInList": "(清单未命名；以此行定位)"
+    },
+    {
+      "id": "G-09",
+      "group": "G",
+      "listItem": "§G #44",
+      "file": "docs/自测-toolcards.mjs",
+      "line": 193,
+      "name": "V0.6/toolcards：5 个工具真实执行后，presentResult 全部返回合法卡片",
+      "reason": "TypeError: reading execute（执行已删的 context/whoami）",
+      "listNamed": false,
+      "listAnchor": "docs/自测-toolcards.mjs:L193",
+      "nameInList": "(清单未命名；以此行定位)"
+    }
+  ]
+}

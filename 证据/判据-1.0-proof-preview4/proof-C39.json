@@ -1,0 +1,15 @@
+{
+  "id": "C39",
+  "injected": "改副本 README.md（追加 1 行 → 清单哈希不符=changed 1）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "把副本 README.md 字节写回",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "清单与磁盘哈希不符（改 1，已扣除运行产物 0）：README.md",
+  "greenSummary": "清单 673 / 磁盘 673 / 缺 0 / 多 0（其中 P4 验具 0、本执行器运行产物 0，不计红）/ 改 0（其中运行产物 0 不计红、实判 0）；交叉核 docs/工具-manifest.mjs exit=0（与本文件同结论）",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C39-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C39-green.json",
+  "detail": "基线 = 硬链接副本 + 包内 docs/工具-manifest.mjs 当场重生成 MANIFEST（证明\"清单由脚本算出、与磁盘 0 差异\"；不靠开发树 MANIFEST 现成干净）；注入只改副本 README 1 行；产品仓库只读",
+  "residual": ""
+}

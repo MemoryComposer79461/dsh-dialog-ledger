@@ -1,0 +1,17 @@
+{
+  "schema": "v05-ac/1",
+  "id": "REG-HO",
+  "family": "REG",
+  "acId": "AC-V05-REG-HO",
+  "product": "交接表主表",
+  "requirement": "v1.3 `HO-01…HO-31` 全绿（31/31）；D17 覆盖：无（字段/声明/封板语义不变）",
+  "implementation": "`lib/handover.js`（见 v1.3 checklist §1）",
+  "coverage": "未覆盖",
+  "status": "未覆盖",
+  "note": "v1.3 冻结判据（142 条）未按族复跑",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": null,
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

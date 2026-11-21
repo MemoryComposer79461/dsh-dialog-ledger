@@ -1,0 +1,15 @@
+{
+  "id": "C45",
+  "injected": "从备份副本删掉 files/.ledger-root（verify 必报缺）",
+  "baseStatus": "GREEN",
+  "redStatus": "RED",
+  "repaired": "丢弃被注入的工作副本；下一次演练重新 backup→删库→restore",
+  "greenStatus": "GREEN",
+  "pass": true,
+  "redSummary": "restore exit=1（要求 0）",
+  "greenSummary": "恢复演练通过：backup exit 0 → verify exit 0 → 删库重建 restore exit 0；台账 1338 码随机抽 100 行（种子 dd3aa8e6）逐字节相等 100/100",
+  "redReport": "证据/判据-1.0-proof-preview4/proof-C45-red.json",
+  "greenReport": "证据/判据-1.0-proof-preview4/proof-C45-green.json",
+  "detail": "注入在备份副本上做，源 lab 只读；红必须落在\"备份/恢复\"链上",
+  "residual": ""
+}

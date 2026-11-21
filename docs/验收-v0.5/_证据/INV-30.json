@@ -1,0 +1,30 @@
+{
+  "schema": "v05-ac/1",
+  "id": "INV-30",
+  "family": "INV",
+  "acId": "AC-V05-INV-30",
+  "product": "`.errors.jsonl`/state/run-report",
+  "requirement": "写失败游标回退+无半产物；坏 sid/缺 head：errors 记录（D9 字段/fingerprint）、游标不推进、`blockedSources` 命中；修复后入账；**节流（R-02）**：同 `(kind,source,offset)` 每 `errorLogThrottleMs`（默认 1h）最多 1 行，重复只累加报告 `count/attempts`（24h 模拟行数 ≤ ceil(24h/throttle)+1）",
+  "implementation": "`index.js`、`lib/ledger.js`、`lib/original.js`",
+  "coverage": "逐条",
+  "status": "逐条通过",
+  "note": "P0 七条不变量主题级全绿（P0-1/1b/1c/2/3-mem/3-cancel/3-resume/4a/4b/4c/5/6/7①②③），但 30 条 INV 细判据未逐条断言",
+  "directCase": {
+    "caseId": "INV-30",
+    "suite": "INV",
+    "status": "PASS"
+  },
+  "scenario": {
+    "caseId": "P0-7③",
+    "note": "P0-7③ 断言坏 sid 进 .errors.jsonl 且游标不推进；`blockedSources[]` 由自测-守卫覆盖"
+  },
+  "familyEvidence": {
+    "suite": "docs/验收-v0.5/验收-INV.mjs",
+    "result": "docs/验收-v0.5/_results/INV.json",
+    "cases": [
+      "INV-30"
+    ]
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

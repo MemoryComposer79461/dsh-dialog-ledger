@@ -1,0 +1,10 @@
+$ node P0验收/P0回归-v2.mjs --only=P0-3-resume
+exit=0
+
+可用内存 960 MB（阈值 500 MB；本机 7.7GB，全量会打崩，故串行+小素材）
+
+[RUN ] P0-3-resume kill -9 后重启：从已提交批次续，无重复、无整会话遗漏
+[PASS] P0-3-resume（3471ms, RSS峰 68MB）
+
+=== P0回归-v2：PASS 1 / FAIL 0 / ERROR 0 / SKIPPED 0（共 1 用例）
+

@@ -1,0 +1,15 @@
+# 内核基线 v1.0-lite · 由 工具-内核边界检查.mjs --init 生成
+# 格式: <sha256>  <相对路径>  <KERNEL|CONTROLLED>
+8c8b21234bb0c5ea4865d49c7af1a153d38866ca776ebbf25b30d6a38ea96683  lib/ledger.js  KERNEL
+5a8f3d2866b01ceecd5e30cb14d6ecfc5e74cfba93b9e95df3deb72c692bab06  lib/frames.js  KERNEL
+13ace72ef5b44bce5bcdca72b9f0339e1ffddcbb6f87fb2da88d4522a5c2d974  lib/sealjournal.js  KERNEL
+43939eb9fb1b8daa68c1db8055d9c252d407ac012dc1a527319cef2d03f7c54c  lib/pending.js  KERNEL
+bf886125026d58f320a3a430ecd49de899222b6714f475dd0b24feaf6b7927c7  lib/lock.js  KERNEL
+56c9b761935f965eb52ea8c42205b9e6c2493352e317056bf6d60d884d7b3125  lib/week.js  KERNEL
+ffbe0417a37eb825094af1212824a39a66be090ebdda21efcce1f3099e274fae  lib/encoder.js  CONTROLLED
+5645614577d6062584a088e3af168b634c8306940d30ff53f5944ecef93d0a05  lib/weekly.js  CONTROLLED
+81e81de1181c391e1d030402de36d54dc00bec227740cad8d6ba37097e2abfb3  lib/xlsx.js  CONTROLLED
+c63cbd7773cf979f3682f839ed3986825ea069fbec06f6ea515ebd0cce3bcd07  lib/original.js  CONTROLLED
+3364c874ccf2c8bbb304558ddb90f2ac3463921d4bfe227af179b57398cfdf4f  lib/receipt.js  CONTROLLED
+f64a01a4a53628a5359117d69883480067295afe8733ab362801508b0c4d989e  lib/reconcile.js  CONTROLLED
+e481497a4dd62a4982cc91fd42fb23ea37592a6164c79e9a6f30cee712c6b084  lib/legacy.js  CONTROLLED

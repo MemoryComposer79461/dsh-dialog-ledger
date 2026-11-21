@@ -1,0 +1,34 @@
+{
+  "id": "C39",
+  "repaired": "把副本 README.md 字节写回",
+  "result": {
+    "id": "C39",
+    "status": "GREEN",
+    "summary": "清单 673 / 磁盘 673 / 缺 0 / 多 0（其中 P4 验具 0、本执行器运行产物 0，不计红）/ 改 0（其中运行产物 0 不计红、实判 0）；交叉核 docs/工具-manifest.mjs exit=0（与本文件同结论）",
+    "reasons": [],
+    "evidence": {
+      "packageRoot": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-c39-20261115-132512/lite",
+      "manifest": "C:\Users\<user>/AppData/Local/Temp/dsh-ledger-criteria-work/proof-c39-20261115-132512/lite/MANIFEST.sha256",
+      "declared": 673,
+      "actual": 673,
+      "diskBytes": 10318392,
+      "missing": [],
+      "extra": [],
+      "changed": [],
+      "changedKnownRunArtifacts": [],
+      "changedUnknown": [],
+      "extraKnownP4": [],
+      "extraKnownRunArtifacts": [],
+      "crossCheck": {
+        "exit": 0,
+        "declared": 673,
+        "actual": 673,
+        "missing": 0,
+        "extra": 0,
+        "changed": 0,
+        "log": "证据/判据-1.0-proof-preview4/logs/C39-manifest-verify.log"
+      },
+      "caliber": "总纲 §7.7 C39「清单与磁盘 0 差异」；口径沿用出包脚本 docs/工具-manifest.mjs（包内版；与 _工作/tools/manifest.mjs 同源）：排除 .git/ 与 MANIFEST.sha256 自身、路径 / 分隔、sha256 逐文件。`docs/判据-1.0.mjs` 是本版（P4）允许新增的验具，出包最后一步重生成 MANIFEST 时并入 → 本判据把它单独登记为\"已知 P4 新增\"；★ 本执行器**运行产物**（包内 `证据/判据-1.0-<时间戳>/`）单独登记（extraKnownRunArtifacts），只豁免\"清单外新增\"，清单内证据文件仍逐文件核 sha256；其余缺/多/改必须 0"
+    }
+  }
+}

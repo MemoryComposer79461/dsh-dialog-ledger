@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "RC-11",
+  "family": "RC",
+  "acId": "AC-V05-RC-11",
+  "product": "差异定位",
+  "requirement": "删一份原文/改一行台账/删一份周账 → 对应数组含具体 code/file；输出集合与构造差异集合**双向相等**；ok=false",
+  "implementation": "`lib/reconcile.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "对账只报不修由 docs\\自测-reconcile.mjs 覆盖",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}

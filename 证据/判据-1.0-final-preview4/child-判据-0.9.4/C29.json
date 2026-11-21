@@ -1,0 +1,36 @@
+{
+  "id": "C29",
+  "title": "★ 删掉索引 → 能从台账重建（索引是派生物，重建后逐行/逐字节等）",
+  "status": "GREEN",
+  "evidence": {
+    "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c29\\run-2\\root",
+    "rowsBefore": 12,
+    "rowsAfter": 12,
+    "shards": 3,
+    "deletionDetected": true,
+    "deletionProblems": [
+      "index-missing",
+      "count-mismatch",
+      "missing-index-row",
+      "missing-index-row",
+      "missing-index-row"
+    ],
+    "rebuilt": {
+      "ok": true,
+      "written": 3,
+      "removed": 0,
+      "ms": 9
+    },
+    "mismatchedShards": [],
+    "missingShards": [],
+    "statOk": true,
+    "stateMatch": true,
+    "shardForm": {
+      "rule": "S-10④：按日分片 idx-YYYYMMDD.jsonl，单分片 ≤4 MiB",
+      "badFormShards": [],
+      "dayShardOk": true,
+      "shardLimitBytes": 4194304
+    }
+  },
+  "summary": "删 .index（3 分片/12 行）→ stat 检出 index-missing → 重建 3 分片逐字节相等、rows=12、stat.ok=true；形态=按日分片≤4 MiB（S-10④）"
+}

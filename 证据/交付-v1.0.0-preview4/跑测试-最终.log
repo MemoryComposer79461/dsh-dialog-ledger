@@ -1,0 +1,1630 @@
+[看护] 物理内存: 0.95 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 61 个测试文件（全量模式：做退役登记逐条对账）
+       docs\自测-094-sync.mjs docs\自测-094接线.mjs docs\自测-C25聚合预算.mjs docs\自测-D线-运行时.mjs …
+
+[C28-读数] 新行 431 B；实测台账读 432 B → 读放大 1.00×（阈值 3×）
+[C28-buildIndex] written=1 removed=0 读放大 1.00×（readFileSync 台账读数 0 B）
+✔ ① sync：追加 1 行 → 索引 +1、只重写当日分片、只读新增尾（读放大 ≤3×，实测台账读字节） (33.4086ms)
+✔ ② 旧状态兼容：0.9.4-snap 的 .idx-state.json 没有逐日水位 → 反推一次后仍只读新增尾并补齐水位 (21.7783ms)
+✔ ③ C28 判据口径：buildIndex({root}) 在"只追加"形态自动走 sync（written=1/removed=0/readFileSync 不读台账） (24.4805ms)
+✔ ④ 回退·历史补写：往"非最后一日"的台账文件追加 → mode rebuild（不许猜着 sync） (25.8548ms)
+✔ ⑤ 回退·分片/索引被破坏：当日分片缺失 / 整个索引缺失 / 分片被改 → mode rebuild 且重建后 stat 绿 (58.6397ms)
+✔ ⑥ 回退·调用方行不在新增尾（乱序/伪造）：不许把不在尾部的行硬塞进索引 → mode rebuild (20.4215ms)
+✔ ⑦ 接线：首 tick mode=rebuild/built=true；有新行的一轮 mode=sync/built=false 且索引与台账一致 (115.2687ms)
+✔ 接线1·周账：tick 用 runWeeklyBudget 写草稿；tick2 幂等不重写；stat.weeklyDeferred=0 (104.4131ms)
+✔ 接线2·度量：weeklyDeferred/monthly/index 落 .tick-metrics.jsonl；run-report 有 warnings 段 (58.447ms)
+✔ 接线3·月账：tick 生成当月视图；月合计=台账当月行数（手算）；tick2 指纹不变不写 (77.0695ms)
+✔ 接线4·索引：tick 末尾增量建当日分片；tick2 当日分片已在 → built=false；台账字节不动 (63.0208ms)
+✔ 接线5·等价性：tick 产物 == 0.9.4-snap 直接调用库函数（周账/月账/台账/索引） (112.3288ms)
+✔ 失败1·索引构建异常 → 只 warn、不进 errors、不回滚、台账照常入账 (39.7271ms)
+✔ 失败2·月账写失败（目标路径被目录占用）→ 只 warn、不进 errors、周账与台账照常 (39.6661ms)
+✔ 回归1·journal 坏行：tick 不崩、既有 errors 口径不变、台账照常入账、stat 既有字段齐全 (48.9254ms)
+✔ C25-① 单 tick 上限：17 源聚合消费 ≤17,825,792 B；放不下的会话整会话延后（旧实现必越界） (890.1413ms)
+✔ C25-② 跨 tick 不漏 + 0 重复：截断续跑后行数齐、code/(sid,turn) 唯一、跑完再 tick written=0 (771.8041ms)
+✔ C25-③ 计量真实：consumedSourceBytes 跨会话累加、与 .tick-metrics 同值、只增不减 (170.8385ms)
+✔ m-01：Config 声明 27 个输入，默认值与 DEFAULTS 一致，且全部 required(false) (1.3867ms)
+✔ m-01：解析不到 schemastery 时 Config=undefined（不破坏激活），且 readConfig 行为不变 (3.0906ms)
+✔ P1-01：健康 journal → ok；重复/时间回退/快照被改/被清空 → 必须红；无 journal → 不许冒充"验过" (15.1869ms)
+✔ P1-05：解压炸弹 → skipped/oversizedDecompressed，不 halted，后续正常帧照解 (15.1291ms)
+✔ P1-04：台账行数超过常驻上限 → cache.ephemeral=true（本轮照用，随后淘汰，不丢账） (3.2683ms)
+✔ P1-03：fillUnvisitedCursors 给未轮到且无游标的会话补 partialCommit 游标（时间/字节两条路径共用） (2.3555ms)
+✔ P1-02：一次真实 tick 必须把 index/catalog/receipt/monthly 段计入 .tick-metrics，且 overHardCap 按实测判定 (37.9189ms)
+✔ P1-10：core-manifest 的 coreFiles/coreCount/outsiders.tools/indexAllowlist 与磁盘/import 逐一相容 (1.479ms)
+✔ m7：索引退避状态可读可复位；dispose 会 abort（源码级断言）+ apply/dispose 冒烟不抛 (19.5018ms)
+[f1-台账/A] {"openTurns":1,"staleOpenTurns":1,"gate":{"conclusion":"degraded","knownGaps":["缺周账=1","未闭合轮=1（源已静止 >2×interval，逐项见 run-report.openTurns）"]},"report":{"name":".run-report-20261115.json","hasOpenTurns":true,"openTurns":1},"warnCount":1}
+✔ F1/A（零静默）：源已静止 >2×interval 仍有未闭合轮 → gate 必须 degraded 且 knownGaps 点名"未闭合轮"，run-report 必须列 openTurns (91.8334ms)
+[f1-台账/B] {"openTurns":1,"staleOpenTurns":0,"gate":{"knownGaps":[]}}
+[f1-台账/C] {"openTurns":1,"staleOpenTurns":0,"openTurnList":[{"source":"C:\Users\<user>\\AppData\\Local\\Temp\\dl-f1-3sYtrv\\dsh-home\\sessions\\--f1-lab--\\session-7f1c0de1-2222-4e77-8a11-0f2b3c4d5e6f\\session.v3.jsonl.zstd","sid":"session-7f1c0de1-2222-4e77-8a11-0f2b3c4d5e6f","turn":1,"startByte":0,"startMs":1794693601000,"sourceMtimeMs":1794719169384,"sourceSize":123795,"scanStopped":true,"scanBlocked":false,"staticMs":600007,"staleAfterMs":120000,"stale":false,"cursorOffset":0,"atEof":false,"readToEnd":false}],"knownGaps":[]}
+✔ F1/B（不许误报）：源 mtime 新鲜（进行中轮次）→ 不计 stale、不进 knownGaps (48.4365ms)
+✔ F1/C（中间态不误判）：本 tick 读预算截断扫描 + 源 mtime 静止 → 不许判 stale、不许进 knownGaps (21.2076ms)
+[f2-台账/A] {"supplements":1,"bookExists":true,"pendingLeft":0,"pendingInStat":0,"warnSample":[]}
+✔ F2/A（可重试）：待办在 state 里 → 下一个 tick 必须补进补记册并出队 (108.2343ms)
+[f2-台账/B] {"ticks":[{"tick":1,"pending":1,"gaveUp":0,"knownGaps":[],"errors":1},{"tick":2,"pending":1,"gaveUp":0,"knownGaps":[],"errors":1},{"tick":3,"pending":0,"gaveUp":1,"knownGaps":["补记待补=1（连续 3 次写失败已放弃自动重试，逐项见 run-report.supplementPending）"],"errors":1}],"pendLast":[{"gid":"2026-10-3|f2c0de123333A","codes":["20261115-f2c0de123333-A-00000001"],"reason":"封板后发现","attempts":3,"gaveUp":true,"firstSeenAt":"","bookStamp":"","lastError":"E_SUPPLEMENT_READ_FAILED: EISDIR: illegal operation on a directory, read"}],"warnCount":10}
+✔ F2/B（连败必须报到）：补记册路径被占死 → 连败 3 tick → gaveUp + gate 缺口「补记待补」 (85.3188ms)
+[f3-台账/A] {"written":1,"contractViolations":1,"errorSample":["source blocked: session-f3c0de01-6666-4e77-9a11-0f2b3c4d5e6f reason=failed-frames offset=253 stopReason=contract-violation failedRanges=1 retryable=true"],"lostReasons":["failed-frames","contract-violation"]}
+✔ F-3/A：帧边界落在行中间（后面还有帧）→ 必须硬断言停手并报警，不许静默丢残片 (71.3777ms)
+[f3-台账/B] {"contractViolations":0,"written":1,"hasContractErr":false}
+✔ F-3/B（边界）：最后一帧不以换行结尾 = 截断尾，不判契约破坏（不许误报） (34.6989ms)
+[k16-fixture/C] {"frame1":801,"frame2":262,"frame3":5233450,"frame2Start":801,"frame3Start":1063,"fileSize":5234513,"attemptBudgets":[65536,1048576,4194304],"ladderMax":4194304,"expectedAttachmentBytes":6976387}
+[k16-台账/C] {"ticks":[{"tick":1,"written":22,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":3,"warnCount":1},{"tick":2,"written":0,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":0,"warnCount":1},{"tick":3,"written":0,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":0,"warnCount":1}],"rowsOfSession":22,"targetRows":1,"cursor":{"key":"C:\Users\<user>\\AppData\\Local\\Temp\\dl-k16-34Od60\\dsh-home\\sessions\\--k16-lab--\\session-5a17c0de-b16f-4e77-9a11-0f2b3c4d5e6f\\session.v3.jsonl.zstd","size":5234513,"offset":5234513,"head":{"id":"session-5a17c0de-b16f-4e77-9a11-0f2b3c4d5e6f","createdAt":1794704400000},"headSha":"7dd7d8758de7752fa9486e03a3c22f1a478f49a8850116b66d6873e72db122fd","headFpLen":4096,"tailSha":"0e27ce50da9aaf1d48428eb75315175a3e75a59dd84f48abc4b764f74b7c1b2c","tailFpLen":4096,"mtimeMs":1794719770044.5454,"updatedAt":"2026-11-15T13:16:11+08:00"},"lostRows":0,"pendingRows":0,"warnSample":["[dsh-dialog-ledger] 对账有保留意见（degraded）：缺周账=1（已知缺口，逐项可查；这不是\"无缺口\"）"]}
+[k16-fixture/D] {"frame3":8394098,"frame3Start":1063,"fileSize":8395161,"attemptBudgets":[65536,1048576,4194304],"maxBudget":8388608}
+✔ K-16/C（>4 MiB 单帧）：三 tick 内第 22 轮必须完整入账（不许永久 0 行、不许游标钉死） (1663.2973ms)
+[k16-台账/D] {"ticks":[{"tick":1,"written":21,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":3,"warnCount":1},{"tick":2,"written":0,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":0,"warnCount":1},{"tick":3,"written":0,"scanned":1,"deferredTurns":0,"eventTruncatedBatch":0,"eventShortBatch":0,"eventReadRetries":0,"warnCount":1}],"rowsOfSession":21,"targetRows":0,"cursor":{"key":"C:\Users\<user>\\AppData\\Local\\Temp\\dl-k16-nHKjhm\\dsh-home\\sessions\\--k16-lab--\\session-5a17c0de-b16f-4e77-9a11-0f2b3c4d5e6f\\session.v3.jsonl.zstd","size":8395161,"offset":8395161,"head":{"id":"session-5a17c0de-b16f-4e77-9a11-0f2b3c4d5e6f","createdAt":1794704400000},"headSha":"a83860370762c4e03853acc94da9577e3fb748e93366a35a817aa3f07bff3931","headFpLen":4096,"tailSha":"e9d820eb252bb9c775634c672382455cd022d7be7ed2be02b242ade7c7188248","tailFpLen":4096,"mtimeMs":1794719771745.3467,"updatedAt":"2026-11-15T13:16:15+08:00"},"lostRows":1,"pendingRows":0,"warnCount":1,"warnSample":["[dsh-dialog-ledger] WARN 事件批读预算耗尽且单帧超上界 8388608 B：结构化跳过 1 轮（22）；游标推进到 8395161；缺口已写 <root>\\ledger\\.lost.jsonl（k15 形状）；该轮不入账、不进已闭合计数"]}
+[k16-fixture/E] {"f1":255,"f2":8602407,"f3":167,"file":8602829}
+✔ K-16/D（>8 MiB 单帧）：允许丢该轮，但缺口必须可见 + 有 WARN + 游标必须前进 (3752.6179ms)
+[k16-台账/E] {"ticks":[{"tick":1,"written":2,"dropped":1,"rows":2},{"tick":2,"written":0,"dropped":0,"rows":2},{"tick":3,"written":0,"dropped":0,"rows":2}],"rows":2,"turnNums":[1,3],"dropped":1,"lostRows":1,"warnCount":1,"lostSample":[{"v":1,"at":"2026-11-15T13:16:18+08:00","sid":"session-e1b16d01-5555-4e77-9a11-0f2b3c4d5e6f","sessDir":"C:\Users\<user>\\AppData\\Local\\Temp\\dl-k16e-e9HAUJ\\dsh-home\\sessions\\--k16e--\\session-e1b16d01-5555-4e77-9a11-0f2b3c4d5e6f","file":"C:\Users\<user>\\AppData\\Local\\Temp\\dl-k16e-e9HAUJ\\dsh-home\\sessions\\--k16e--\\session-e1b16d01-5555-4e77-9a11-0f2b3c4d5e6f\\session.v3.jsonl.zstd","fromByte":0,"scanSize":8602829,"fileSize":8602829,"frames":3,"okFrames":2,"failedFrames":1,"badLines":0,"formatError":"","reasons":["failed-frames","oversized-frame"],"stopReason":"oversized-frame-skip","haltOffset":0,"skippable":true,"retryable":false,"skippableBytes":86
+✔ K-16/E（>8 MiB 帧内含 turn/start）：该轮结构化跳过，同批其它轮必须入账（不许整会话 0 行） (4095.8352ms)
+✔ K-16/F（.lost 自洽）：超大帧跳过的记录必须 frames 自洽 / 偏移可复算 / retryable 与 skippable 互斥 (3693.5765ms)
+✔ K-25/mount：第一个实例持锁期间，第二个 apply 必须「拒绝启动」且一次 tick 都不跑 (881.3858ms)
+[p103/tick1] {"written":1,"gate":"degraded","gaps":["缺口留痕=1"],"count":1,"total":1,"covered":0,"lostReasons":["failed-frames","truncated-tail"]}
+[p103/tick2] {"written":1,"gate":"ok","gaps":[],"count":0,"total":1,"covered":1}
+✔ P1-03：半截帧造成的 retryable 缺口，恢复后被覆盖 → gate 不再 degraded（count=0 / covered≥1） (130.5145ms)
+✔ A13：启动窗口服务未就绪 → apply 不崩，且走 inject 等待而非直读回退 (70.7365ms)
+✔ V0.9/AG-01：只读三件套（reconcile/anchor/preview）调用前后整树 sha256 不变 (56.392ms)
+✔ V0.9/AG-02：降级——账库缺失/账本损坏/参数非法/锚未配置 → ok:false + reason，不抛 (27.5353ms)
+✔ V0.9/AG-03：判红——锚链断/条目被篡改 → ok:false 并定位到哪一条 (70.14ms)
+✖ V0.9/AG-04：工具面 9 个、schema/卡片齐全、每次调用写读日志 (32.5704ms)
+✖ V0.9/AG-05：越界拒绝——非法 root/未知参数 → 拒绝且不写盘 (27.4363ms)
+✔ V0.9/CT-01：清理预览零字节写入（不产 RPT-DRYRUN） (28.698ms)
+✔ V0.9/CT-02：dry-run 只写 RPT-DRYRUN，不占正式编号 (40.9931ms)
+✔ V0.9/CT-03a：三重条件之一——工具总开关关闭 → E_CLEANUP_TOOL_DISABLED 且零删除 (32.4261ms)
+✔ V0.9/CT-03b：三重条件之二——物理删除开关关闭 → E_CLEANUP_DELETE_LOCKED 且零删除 (33.8709ms)
+✔ V0.9/CT-03c：三重条件之三——confirm 短语不符 → E_CLEANUP_CONFIRM_MISMATCH 且零删除 (31.0702ms)
+✔ V0.9/CT-04：confirm 短语必须与当前计划一致（计划变了就不认） (33.3612ms)
+✔ V0.9/CT-05：执行后台账/周账/交接表字节不变 (49.2066ms)
+✖ V0.9/CT-06：清理后 reconcile 不误报缺凭证 (57.5731ms)
+✔ V0.9/CT-07：清理后库外锚仍 PASS (46.3709ms)
+✖ V0.9/CT-08：默认关闭（缺省配置时物理执行被拒绝） (28.0691ms)
+✔ BE-00：actionKey 稳定且随目标变化 (1.6613ms)
+✔ BE-01/04：dryRun 不写 journal、不执行；write-supplement 执行一次后幂等跳过且补记册字节不变 (13.6927ms)
+✔ BE-01：handler 未接线的动作 → deferred（留痕不假执行）且同 key 后续跳过 (3.6381ms)
+✔ BE-03：失败重试到上限 → gave-up，之后不再重试（不抛） (9.8715ms)
+✔ BE-05：rollback 只撤 planned；applied 明确拒绝 (3.7509ms)
+✔ BE-03b：journal 有坏行 → 拒绝执行（证据不完整不得动账） (1.3801ms)
+✔ BE-02：幂等键与 journal 终态保证"同 action 不重复执行"（重复跑 = dupSkipped） (6.8713ms)
+✔ BE-04：执行 write-supplement 不得改周账 xlsx / 台账 / 原文（第二写入口边界） (8.4815ms)
+✔ BE-06：executeBackfill 摘要字段齐全（run-report backfillExec 段可直接落） (8.3565ms)
+✔ BC-03 24h 窗口：只返回 mtime ∈ [now-24h, now] 的源；窗口外/未来 mtime 不进；同输入同输出 (9.5379ms)
+✔ BC-03 补充：缺失 sessionsBase / 过大源 / filter / 旧格式不崩且留痕 (6.6746ms)
+✔ BC-04 24h 补录集合：源 3 轮 / 台账 2 轮 → 只计划第 3 轮；集合精确且可复算 (7.8994ms)
+✔ D10 pending-only：`.pending.jsonl` 中 pending 的 (sid,turn) 不得当缺失轮；源闭合但台账未记 → promotePending (7.3636ms)
+✔ D10 历史 partial：只读不追写（不进 missing），由 plan.legacyPartials 列出 (6.9747ms)
+✔ D9 坏 sid / 缺 createdAt / 坏帧：进 errors（fingerprint 按契约公式）且不抛穿 (6.6534ms)
+✔ findMissingTurns：knownTurns 支持 Set/Array/Map/谓词；缺省从台账推导（任何行都算已记过） (7.8651ms)
+✔ BC-09 触发条件：封板后新行 = 有效 code − journal rows[].code；已封板组才产计划 (8.9806ms)
+✔ BC-07 72h 窗口：窗口内进 rows、窗口外必须进 outOfWindow；边界为闭区间 (5.9949ms)
+✔ BC-10 快照缺失保守只报：journal 无 rows / state 有封板但 journal 无该 gid → E_SEAL_SNAPSHOT_MISSING，不写补记 (6.8361ms)
+✔ D13/BC-08 3d 幂等：补记册已有 code、overflow-seal code 不得再当"封板后遗漏" (10.4533ms)
+✔ journal 默认只读读取：readSealsForBackfill 用唯一 journal；坏行/断链不崩且留痕 (4.2313ms)
+✔ BC-15 只读 + 可 JSON 序列化 + 同输入两次输出完全相等（24h + 3d + pending + report 字段） (14.2349ms)
+✔ BC-04/BC-15 空目录/缺失目录：计划为空 + 原因，不崩、可复算、不创建 root (1.4907ms)
+✔ D9 errors 出现在计划里且指纹稳定；计划不写 .errors.jsonl (3.3304ms)
+✔ P1-7 generate：ensureHandover 写主表+附表 + handover-seal journal（D12 扁平字段，file=主表相对路径） (14.6294ms)
+✔ P1-9 交接表：state 丢失后仅凭 journal（ensure 自动读）→ skip，不写任何字节 (10.3947ms)
+✔ HO-24/P1-7 adopt：旧主表存在 → adopt 只补证据不改字节；journal decision=adopted (5.6438ms)
+✔ P1-7 失败只返回 errors：readContext 缺失/抛错/incomplete、knownTurns 缺失、坏参数都不写盘不抛穿 (2.7914ms)
+✔ P1-7 disabled：零 IO 直接返回（ok:true / decision:disabled） (0.1546ms)
+✔ HO-23 交接表侧：已封板但主表被删 → skip + warn，不重建（ensure 入口不抛） (12.5789ms)
+✔ sealWriter 注入：完全接管（journal 不写、state 不写），skip 靠注入证据幂等 (10.4912ms)
+✔ B-01 首次 --full：自包含清单、排除自身、含 backup.json、源只读 (6.3691ms)
+✔ B-02 增量（无变化）：拷贝 0 个、未变 >0 (66.2289ms)
+✔ B-03 改 1 个原文视图 1 字节 → 增量只拷 1 项（带 code，按 view 分类） (68.3264ms)
+✔ B-04 verify：干净备份 PASS（exit 0，缺/多/改全 0） (53.2089ms)
+✔ B-05 反证：删备份内 1 个附件 → verify 报「缺」；坏备份拒绝 restore（零写入） (113.5791ms)
+✔ B-06 反证：改备份内 1 个原文视图字节 → verify 报「改」 (70.6088ms)
+✔ B-07 反证：备份内多出未入清单文件 → verify 报「多」 (61.2313ms)
+✔ B-08 restore 默认 dry-run：出计划、零写入（目标目录不被创建） (64.4228ms)
+✔ B-09 反证：restore 目标非空且无 --force → exit 2、零写入 (60.5925ms)
+✔ B-10 反证：restore 目标像已有账库 + --force → 仍 exit 2、零写入 (59.1122ms)
+✔ B-11 restore --write 到空目标：可读 + 逐文件一致；再恢复同一目标被拒（绝不覆盖） (152.4171ms)
+✔ B-12 清单解析拒绝越界路径；文件分类正确 (0.7362ms)
+✔ B-13 反证：--out 落在 --root 内 → exit 2（账库只读、备份不能扫进自己） (50.447ms)
+✔ B-14 源删 1 个视图：增量保留旧副本 + sourceRemoved；--full 镜像才删（pruned） (267.0634ms)
+✔ B-15 --include-metrics 可纳入默认跳过项；--since 增量只过滤候选、不丢旧备份 (257.686ms)
+✔ checkup：源会话已闭合、账上仍 partial → 判「应闭合而未更新」并出报告 (8.3193ms)
+✔ checkup：源会话确实未闭合 → 判「确实未闭合」，不算账实不符 (3.1152ms)
+✔ checkup：编号按日递增（同一天第二次 → -02） (4.7852ms)
+✔ checkup：源会话缺失 → 单独归类，不算账实不符 (2.0237ms)
+✔ checkup 集成：账上有 partial 且源已闭合 → runOnce 出 CHK 报告并记进 state (76.9377ms)
+✔ V0.6.2 布局：CHK 写 体检/；重名检测同时看 体检/ 与一级（老库不覆盖） (3.9003ms)
+✔ listOriginals：只认第 3 级「完整原文」目录下的合法编码文件；附件单独记录 (7.2654ms)
+✔ planCleanup：按月份/会话键/数量筛选 (5.6748ms)
+✔ P0-6 默认调用：删除数=0、原文文件逐字节不变、只产 RPT-DRYRUN-*（不占正式编号） (54.6105ms)
+✔ P0-6 显式 dryRun:true：零删除 + 产出 RPT-DRYRUN-*（不是正式清册） (19.9379ms)
+✔ P0-6 显式 dryRun:false 未开总开关：抛 E_CLEANUP_DELETE_LOCKED 且零删除、零报告 (8.0001ms)
+✔ P0-6 显式物理清理：只删第 3 级单元；journal 有 start/plan/result/end；正式清册一次写出 (17.248ms)
+✔ D15 编号：99→100→101 不回绕；dry-run 用 RPT-DRYRUN-* 且不占正式号 (3.7686ms)
+✔ P1-10 清册只认结论列：备注写「已删除」不得误判；v1.3 / v0.4 两种表头都认 (1.6679ms)
+✔ INV-27 dry-run 不占正式号：空库 dry-run 后首次正式清理编号 == 当日 01 (10.2316ms)
+✔ P0-6 旧工具封锁：docs/工具-v03-清理.mjs 必须 BLOCKED（exit≠0）且零删除 (43.922ms)
+✔ V0.6.2 布局：清册写 清册/；读端双路径（新目录优先、一级老位置兜底） (13.2718ms)
+✔ disk collector：列出会话、读闭合轮次，且全程只读（目录树哈希不变） (10.3539ms)
+✔ V0.7 normalizeSid：路径/session- 前缀/裸 uuid 统一口径 (0.1562ms)
+✔ 指纹：同会话同轮边界稳定；字段不同则指纹不同；换 sid 也不同 (0.4119ms)
+✔ compareTurnSets：完全一致 / 缺轮 / 多轮 / 边界不一致 四类都能判 (0.3895ms)
+✔ diffSummary + shadowRecord：汇总与 JSONL 行形状正确 (0.4331ms)
+✔ V0.7 closedTurnsFromEvents：闭合/放弃/坏事件/reason 口径与 disk 规则一致 (0.2797ms)
+✔ V0.7 createPersistenceCollector：list + open/read(seq) 增量、EOF、关闭句柄、只读 (1.6036ms)
+✔ V0.7 persistence collector：失败降级不抛（open 抛错 / API 缺席 / 无 read） (0.3232ms)
+✔ V0.7 compareTurnSets 三态：事件领先未 flush → pendingDurable（良性），超窗才 missingOnDisk (0.3075ms)
+✔ V0.7 persistence collector：read 返回无 seq 事件 → SEQ_MISSING 且不死循环（真机防御） (0.3399ms)
+✔ normalizeSessionId：标准 session-UUID → 前 12 位（去掉前缀与全部连字符） (2.3661ms)
+✔ normalizeSessionId：大写输入统一转成小写 (0.1703ms)
+✔ normalizeSessionId：下划线与空格分隔符同样被剥掉 (0.1011ms)
+✔ normalizeSessionId：不足 12 位的短 id 返回空串（不许凑数） (0.1265ms)
+✔ normalizeSessionId：空值与非字符串返回空串 (0.1546ms)
+✔ normalizeSessionId：超过 12 位只取前 12 位 (0.1069ms)
+✔ sessionShortId：是 normalizeSessionId 的语义化别名 (0.123ms)
+✔ dateSegment：UTC+08:00 的 2026-11-08 00:00:00 归 20261108 (1.0406ms)
+✔ dateSegment：UTC+08:00 的 23:59:59.999 仍是同一天 (0.204ms)
+✔ dateSegment：跨日边界前后 1ms 各归各天 (0.2139ms)
+✔ dateSegment：offset=0 的对照 —— 同一时刻在 UTC 下是前一天 (0.1072ms)
+✔ dateSegment：负偏移（西半球）也按传入值换算 (0.0834ms)
+✔ dateSegment：非法输入返回空串 (0.0725ms)
+✔ dateSegment：省略偏移时等价于 480（UTC+08:00） (0.0651ms)
+✔ isoTime：输出必须匹配 ^YYYY-MM-DDTHH:mm:ss±HH:MM$ (0.3247ms)
+✔ isoTime：UTC+08:00 的 14:25:39 原样输出 +08:00 (0.0982ms)
+✔ isoTime：offset=0 → +00:00，时刻按 UTC 显示 (0.0674ms)
+✔ isoTime：负偏移与 30 分钟时区的符号/分钟都正确 (0.072ms)
+✔ isoTime：跨日 00:00 正确显示为当天 00:00:00 (0.0556ms)
+✔ isoTime：同秒内的毫秒被截断，不出现毫秒位 (0.0619ms)
+✔ isoTime：非法输入返回空串 (0.0594ms)
+✔ makeCode：标准参数生成 32 位四段，分隔符位固定在第 9/22/24 个字符 (0.6197ms)
+✔ makeCode：gen 省略时默认 A (0.1022ms)
+✔ makeCode：seq 边界 1 与 99999999 合法，左补零到 8 位 (0.085ms)
+✔ makeCode：seq 0 / -1 / 非整数 / 超上限一律拒绝 (0.1064ms)
+✔ makeCode：gen 必须是单个大写字母 (0.1444ms)
+✔ makeCode：s12 必须是 12 位小写字母数字，含连字符必须被拒 (0.0991ms)
+✔ makeCode：date 必须是 8 位数字 (0.0841ms)
+✔ makeCode：无参数 / 空对象返回空串（不抛错） (0.0654ms)
+✔ isValidCode：合法编码通过 (0.146ms)
+✔ isValidCode：长度不是 32 一律拒绝 (0.0626ms)
+✔ isValidCode：代差小写、短 id 含连字符/大写、分隔符错位均拒绝 (0.0775ms)
+✔ isValidCode：非字符串参数返回 false（不抛错） (0.0725ms)
+✔ parseCode：合法编码往返得到四段（seq 为数字） (0.1558ms)
+✔ parseCode：非法编码返回 null (0.0694ms)
+✔ sessionKeyOfCode：返回不含序号的三段（日期-短id-代差） (0.0788ms)
+✔ sessionKeyOfCode：同一会话不同 seq → 同一个键 (0.1068ms)
+✔ sessionKeyOfCode：不同会话/不同代差 → 不同键 (0.1576ms)
+✔ sessionKeyOfCode：非法编码返回空串 (0.0632ms)
+✔ nextGen：空台账 → A (0.1482ms)
+✔ nextGen：同一会话重放 → 沿用原代差（幂等关键） (0.1024ms)
+✔ nextGen：不同会话撞上同一 s12 → 依次拿 B、C (0.0917ms)
+✔ nextGen：只把相同 s12 的记录算进占用（不同短 id 互不影响） (0.1097ms)
+✔ nextGen：26 个字母用尽 → 空串（让调用方报错，不许静默瞎给） (0.1586ms)
+✔ nextGen：脏记录（null/非法 gen）不崩，且不被当成占用 (0.1204ms)
+✔ nextSeq：空台账 → 1 (0.1427ms)
+✔ nextSeq：接着最大序号 +1 (0.072ms)
+✔ nextSeq：跨天不重置 —— 不同日期的记录继续往后接 (0.0658ms)
+✔ nextSeq：不同代差互相隔离 (0.0901ms)
+✔ nextSeq：不同短 id 互不影响 (0.0626ms)
+✔ nextSeq：忽略非整数/0/负数/字符串/脏记录 (0.0767ms)
+✔ CONST：长度与分隔符常量必须与生成结果一致 (0.1171ms)
+✔ 全链路：毫秒 → 日期段/ISO → 短 id → 代差/序号 → 32 位编码 → 反解一致 (0.1382ms)
+✔ G-01 4 项判据输入全绿 + 无已知缺口 → ok（无保留） (1.4097ms)
+✔ G-02 输入①ledgerOk 不成立（台账没读全）→ unknown (0.203ms)
+✔ G-03 输入②codeUnique 不成立（code 重复）→ unknown (0.139ms)
+✔ G-04 输入③sidTurnUnique 不成立（(sid,turn) 重复）→ unknown (0.1386ms)
+✔ G-05 输入④legacyMarks.chainOk 不成立（基线链断裂）→ unknown (0.1413ms)
+✔ G-06 缺键按 unknown 处理：4 项各缺一次；无对账记录 → unknown (0.2905ms)
+✔ G-07 向后兼容旧 12 项整份输入：多余键忽略，已知可枚举缺口 → degraded (0.21ms)
+✔ G-08 legacy 已标记 → degraded；ok=false 却列不出缺口 → unknown（防御分支） (0.1685ms)
+✔ G-09 入口 gate 落盘一致 + attachment.path 相对路径（原 G-06/G-07） (128.2002ms)
+✖ P1-7/CH-13：首轮入账 → 主表+附表落盘、journal 恰 1 条 handover-seal（字段齐/链 ok）、state 有封板缓存 (61.401ms)
+✖ HO-22/23/CH-17：封板后 skip 且字节不动；删主表只报 sealed but file missing 不重建；删 state 仍不重建 (31.8456ms)
+✖ HO-24：旧主表存在（无封板两键）→ adopt 只补 state+journal，文件字节/mtime 不变、不补写附表 (30.3681ms)
+✖ CH-14：交接表写盘失败 → runOnce 不抛穿、errors 含 handover failed、台账照常入账、下轮可重试 (32.1692ms)
+✔ 闸门（V0.6.1 三级）：周账缺组（已知可枚举缺口）→ conclusion=degraded，reason/knownGaps 可定位 (34.1937ms)
+✔ 审计#1/#2：运行报告带真数据（gate/batches/errors/pending/unavailable），不许硬编码空壳 (35.6985ms)
+✔ INV-12：单轮事件字节超 eventBatchBytes → 单独成批且 oversize=true，该轮仍入账 (36.4863ms)
+✔ INV-11：40 轮会话必须分多批，且每批轮数 ≤ eventBatchTurns，批内之和 == 总轮数 (431.1054ms)
+✔ V0.6.2-根：默认根 = <home>/Desktop/会话账本；首次运行同盘收养旧默认根（旧账随根搬走、不复制不删除） (27.3238ms)
+✔ V0.6.2-收养三约束：configured 根不收养；新根已存在不收养（绝不覆盖/合并） (32.0234ms)
+✔ V0.6.2-布局探测：一级有旧单据 → stat.layout.version=3 + 告警建议跑迁移工具；宿主绝不自动搬 (17.1552ms)
+✔ V0.6.2-根标记：runOnce 幂等补写 .ledger-root（v1/kind/rootId/layoutVersion=2）；二次零写；坏了只 warn (47.313ms)
+✖ V0.6.2-总目录：每日一次刷新（state.catalogDate，+08:00 口径）；失败只 warn 不拖垮记账 (33.0885ms)
+✔ V0.6.2：首轮全量扫描后，历史会话的 pending 不得被回填计划误报为 pending-entry-not-scanned (19.2921ms)
+✔ P0：ctx.signal 读取抛错（Cordis 未 inject）时 runOnce 仍必须正常落账 (31.2793ms)
+✔ P0-1c：文件字节没变但 mtime 变了 → 不得走 unchanged 快路径（重读一次） (44.7018ms)
+✔ runOnce A：只有 turn/start 且文件很新 → written=0、openTurns=1（进行中轮次不入账） (41.3067ms)
+✔ runOnce B：未闭合轮次不写 partial（审计 A-01）；闭合后恰好一条 ok，重跑幂等 (65.6215ms)
+✔ runOnce C：全新 root + 2 小时前的老会话（hotWindow=3600）→ 首跑仍全量扫并写入 (30.4102ms)
+✔ runOnce D：同一 root 次跑 → 老会话被热窗口跳过（scanned 减一） (36.0523ms)
+✔ runOnce E：同一 root 连跑两次 → 第二次 written=0、账本总数不变 (36.2332ms)
+✔ runOnce F：跑完存在 ledger/.state.json，initialized=true 且留痕；次跑 firstRun=false (35.4738ms)
+✔ apply：有 ctx.effect 时返回 undefined，且通过 effect 注册了清理函数；调用后 clearInterval 生效 (21.7725ms)
+✔ apply：无 ctx.effect 时退化为返回清理函数；调用它同样 clearInterval (16.2715ms)
+✔ apply：enabled=false → 不起定时器、不注册 effect，返回空清理函数 (1.3416ms)
+✔ decompressMultiFrame：单帧 → frames=1/ok=1/failed=0，原文还原 (1.714ms)
+✔ decompressMultiFrame：3 帧拼接 → frames=3/ok=3/failed=0，顺序拼接 (0.407ms)
+✔ decompressMultiFrame：空 Buffer → 全零、空文本 (0.5153ms)
+✔ decompressMultiFrame：非 Buffer 入参 → 按空处理（不抛错） (0.1631ms)
+✔ decompressMultiFrame：非 zstd 裸文本 → frames=0/ok=0/failed=0，原文返回 (0.1185ms)
+✔ decompressMultiFrame：好帧 + 坏帧 → frames=2/ok=1/failed=1，好帧内容还在 (4.4086ms)
+✔ decompressMultiFrame：好-坏-好 三帧 → 只丢坏帧，两侧内容都保留 (0.5156ms)
+✔ decompressMultiFrame：合法空载荷帧 → 算 1 帧、ok=1、文本为空 (0.2171ms)
+✔ readSessionEvents：多帧文件把会话头摘出来、坏行计数、事件顺序不变 (4.1297ms)
+✔ readSessionEvents：文件不存在 → head=null/events=[]/meta 全零（不抛错） (0.654ms)
+✔ appendTurn：首写落盘到 ledger/YYYY-MM-DD.jsonl，文件末尾必须有换行 (5.0617ms)
+✔ appendTurn：同一 code 第二次 skipped=true，文件一字节都不长 (4.6311ms)
+✔ appendTurn：只追加不改写 —— 后一条写入后，前一条的原文前缀不变 (7.5955ms)
+✔ appendTurn：坏 ts 一律拒绝，且不创建 ledger 目录、不写盘 (1.356ms)
+✔ appendTurn：缺 code / code 非字符串 / 空串 → missing code (0.5115ms)
+✔ appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读 (0.53ms)
+✔ appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等 (3.382ms)
+✔ appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变） (3.443ms)
+✔ appendTurn + readAll：跨日按 ts 落到两个文件，逐个文件各一行 (6.2791ms)
+✔ readAll：没有 ledger 目录 → 空结果（不抛错） (0.6228ms)
+✔ readAll：坏行计数、空行忽略、非 .jsonl 文件（含 .state.json）不当账读 (2.7325ms)
+✔ hasCode：账本不存在 → false；写入后 → true；其它 code 仍 false (4.2211ms)
+✔ ledgerDir / ledgerPath：路径拼装契约 (0.5357ms)
+✔ collectTurns：正常 start/end 配对 → 恰好一轮，endMs/reason 正确 (0.2642ms)
+✔ collectTurns：多个已闭合轮次按发生顺序全部返回 (0.1324ms)
+✔ collectTurns：有 start 无 end → 空数组（进行中的轮次不许入库） (0.0899ms)
+✔ collectTurns/openTurn：turn 号不匹配不算闭合，未闭合的是 start 那条 (0.0761ms)
+✔ collectTurns/openTurn：前一轮已闭合、后一轮进行中 → 只交闭合的那轮 (0.1278ms)
+✔ collectTurns：turn/end 缺 reason.kind → reason 为空串 (0.1503ms)
+✔ collectTurns/openTurn：无 start 的 turn/end、脏事件都被忽略 (0.103ms)
+✔ collectTurns：重复的 turn/end 不会产生第二轮 (0.1222ms)
+✔ scanSessions：深一层目录里的 session.v4.jsonl.zstd 能扫到，sid/s12/size 正确 (2.5437ms)
+✔ scanSessions：多个会话目录（含更深嵌套）全部收集 (3.8087ms)
+✔ scanSessions：非会话文件/非会话文件名不误收 (3.6241ms)
+✔ scanSessions：根目录不存在 → 空数组（不抛错） (0.4846ms)
+✔ 全链路：多帧会话文件 → readSessionEvents → collectTurns 只交闭合轮 + openTurn 交进行中轮 (1.9879ms)
+✔ P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回 (3.4507ms)
+✔ P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复） (11.7126ms)
+✔ P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进 (1.8312ms)
+✔ P0-3：readTurnsFrom 每轮带 startByte/endByte；abandoned 的 endByte=下一轮 start 帧起点 (2.1639ms)
+✔ P0-3：readTurnEventsBatch 流式过滤 + offsets 出参 + fromByte 续扫（内存与文件大小无关） (2.3733ms)
+✔ P1-8：readAll 读取失败结构化（ok=false/readErrors）；坏行有行号+sha256+原文 (2.7556ms)
+✔ P1-2：坏行取证 quarantine（目录/排他创建/幂等/台账字节一个不改） (6.7333ms)
+✔ P1-8：账读不全时 appendTurn 拒绝写（无法证明 code 不存在 → 不许重复入账） (4.2859ms)
+✔ P1-2：尾行缺换行时追加不粘结（先补 \n 再写） (4.4631ms)
+✔ P1-8：readStateEx 区分"没有 state"与"state 读坏" (1.8373ms)
+✔ P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重） (12.6222ms)
+✔ P1-9：state 丢失只影响性能，不影响封板证据语义（journal 权威、state 是缓存） (9.2377ms)
+✔ R-02：.errors.jsonl 契约级节流 —— 同一 (kind,source,offset) 每窗口最多 1 行，次数不丢 (125.139ms)
+✔ P0-3-resume：撕裂尾巴（末行半行 + 无结尾换行 + 唯一坏行）→ 取证 + 截断 + 可读全 (9.8975ms)
+✔ P0-3-resume/红线：中间行坏 → 不修、ok=false、文件字节一个不变 (1.5467ms)
+✔ P0-3-resume/红线：末行有结尾换行但 JSON 坏 → 不修、ok=false、文件字节一个不变 (1.3559ms)
+✔ P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（"只有这一处坏行"） (1.4285ms)
+✔ P0-3-resume：repairTornTail=false 可关闭（只读取证工具零副作用） (3.7145ms)
+✔ A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞 (7.6297ms)
+✔ A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算 (3.693ms)
+✔ V0.6/ledgerapi：searchLedger 按 sid/月份/关键词过滤，且不返回外会话行 (6.5085ms)
+✔ V0.6/ledgerapi：getTurn 返回台账行 + 原文位置 + 开头片段；getContext 取最近 N 轮 (4.9166ms)
+✔ V1.0/P1-08：getTurn 的 excerptBytes 有硬上限 65536（超限截断 + excerptCapped 标记） (9.634ms)
+✔ AG-05b 越界拒绝：台账行 doc 逃出 root 时不得读取（穿越防护） (4.8139ms)
+✔ V0.6/ledgerapi：调用前后全库 sha256 集合完全不变（只读硬断言） (8.2261ms)
+✔ V0.6/ledgerapi：summarize 报坏行/读取错误，不把读不全当空 (2.6663ms)
+✔ CORE-02：probeHead 4 KB→128 MiB 炸弹在分配前被拒（RSS 增量 <8 MiB），真实会话头照常解析 (7.5107ms)
+✔ CORE-02：resolvePairPrefixes 对炸弹对子整链不 OOM；负结果缓存后每 tick 零读盘/零解压 (3.1904ms)
+✔ CORE-02：离线核验路径（summarizeFile / readPrefixEvents）同样有界：炸弹计 failed 且不炸进程 (59.2358ms)
+✔ CORE-02：单 tick 累计解压预算 —— 8 个炸弹对子在 2 MiB 预算下只解到预算就停 (9.6217ms)
+✔ CORE-02：被"剩余预算"压小的拒绝**不写缓存**（否则会把正常头误存成永久负结论） (2.3398ms)
+✔ RT-03：有界头缓存 —— 第 2 次零读盘（stats.bytesRead=0）、stats 非枚举、Map 旧契约不变 (10.3747ms)
+✔ RT-03：LRU 上限生效（64 项默认；测试压到 2 项 → 淘汰最久未用） (3.6528ms)
+✔ CORE-01：解压超限帧 → failedRanges 带 skippable/frameEnd/resumeAt；gapAdvanceable=true、nextSafeOffset=size (62.6755ms)
+✔ CORE-01：超大压缩帧（maxFrameBytes 超限）同样带 skippable/frameEnd；坏帧则**不带**且 gapAdvanceable=false (2.6958ms)
+✔ 语料解析：三候选 + 合成兜底 —— 干净包（无 _工作）也不 skip，且结构等价（17 文件 / 16 源 / 1 对 v3+v4） (4.6614ms)
+✔ 回归：语料 frames 全解 —— failed=0 / halted=0 / bytesRead=Σ文件字节，总帧数与语料期望一致（生成记录或指纹） (4.2609ms)
+✔ 回归：语料头探测 —— 16 个历史源头全部可解析；并存对首次读 32 KiB（旧实现 512 KiB）且不误判 (8.1876ms)
+✔ 回归：E3 大会话 —— 多 tick 分片入账、0 重复、随后稳态 written=0（真实语料 = 3 tick / 1,338 行） (1115.4784ms)
+✔ legacy：v4 单独存在 → 选 v4 (2.8144ms)
+✔ legacy：v3 单独存在 → 纳入只读历史源，且轮次可读 (3.8249ms)
+✔ legacy：v3 与 v4 并存 → 只纳入 v4，并登记为并存资料 (1.8963ms)
+✔ legacy：并存核验 —— v4 是超集时 ok (3.5179ms)
+✔ legacy：并存核验 —— v3 起点更早时必须报不通过（不许静默丢历史） (2.4349ms)
+✔ legacy：未知版本（v2）→ 进 unsupported，不静默吞掉 (1.1008ms)
+✔ legacy：空目录 / 不存在的根 → 三项都空 (0.6087ms)
+✔ legacy：返回值与旧 scanSessions 形状兼容（path/sid/s12/mtimeMs/size） (1.1092ms)
+✔ LM-01：无基线文件 = 未标记（不是错误） (1.9978ms)
+✔ LM-02：追加后链完整；同指纹重复追加 = 幂等跳过 (16.1766ms)
+✖ LM-03：基线行被篡改 → chainOk=false (15.0231ms)
+✔ LM-04：标过的行被改动 → 再标记报 conflict，不覆盖旧标记 (9.6634ms)
+✖ LM-05：collectLegacyCandidates 只收缺证据行；reconcile 对未标记行按缺凭证计 (10.4045ms)
+✔ P0 ARCH-01：dispose 返回 Promise、等在跑 tick 收敛；resolve 后 1.5 s 零写盘 (2119.271ms)
+✔ P1 FAIL-01：已提交前缀=0 的坏帧源也落 blocked 游标；热窗口后仍重试且错误可见 (40.6547ms)
+✔ P1 FAIL-03：LOCK_HELD 的 tick 写 .tick-metrics + WARN 可见（保留 INFO 口径） (3.2792ms)
+✔ P1 FAIL-03：取锁失败（真实 IO 故障）同样写 .tick-metrics + WARN (2.4403ms)
+✔ P1 布尔开关：checkupEnabled/enabled/weeklyEnabled 只认布尔 true（null/0/""/"false" 不得当开启） (2.1934ms)
+✔ P1 Config：优先 @deepseek-ai/schemastery → 回退 schemastery → 全失败降级 undefined 且不抛 (1.7619ms)
+✔ P1 ARCH-04：挂载失败进可查位置（tick-metrics/state/run-report warnings），2 min 后退化为慢重试 (72.6504ms)
+✔ P1 ARCH-04：mountOnce 可重入 —— 注册全失败不算挂载成功，修好后能重挂且不重复注册 (14.6341ms)
+✔ P0 K-12：同进程两个 runOnce（不同 instanceId）→ 第二个 LOCK_HELD、不互删锁、无双写 (362.4553ms)
+✔ P0 K-12/K-25：apply() 每挂载实例生成唯一 instanceId；第二个挂载实例「启动即拒绝」（mount 期持锁） (443.9181ms)
+✔ P1 RT-01：全量对账轮的真读字节与各段耗时进 tick-metrics（不再只有产品侧估算） (162.4409ms)
+✔ K-12：同进程两实例（不同 instanceId）→ 第二个 LOCK_HELD，不双写、不改/删 A 的锁 (15.8127ms)
+✔ K-12：默认 instanceId 兼容 —— 同 root 重复 acquire 幂等，release 一次即释放 (2.9816ms)
+✔ K-12：A 的锁被外部删除后 B 接管 → A 立即 lost=true，A.release 不得删 B 的锁 (5.8378ms)
+✔ K-12：fencing token —— 磁盘持有人换了 token，release 返回 not-owner 且不动第三方锁 (3.3385ms)
+✔ K-13：stat 错误注入（EACCES/EMFILE/EBUSY/EIO）→ readAll ok=false+E_STAT，appendTurn 拒写、无重复 code (3.0715ms)
+✔ K-13：ledger 目录不存在（ENOENT）仍是首次开账 —— ok=true/emptyProven=true (3.4124ms)
+✔ K-14：未闭合轮跨坏帧 → nextOffset=open.startByte（不是 haltOffset），修复后能续记 (4.9656ms)
+✔ K-14：跨坏帧的已闭合轮也约束游标（open=null 时 nextOffset=该轮 startByte） (1.598ms)
+✔ K-14：轮都在坏帧前闭合 → nextOffset=haltOffset（不收窄） (1.2902ms)
+✔ K-15：超大帧跳过 → blocked=false/nextOffset 前进/loss 结构化，后续轮次照读 (1.6321ms)
+✔ K-15：超大帧 + 预算截断 → nextOffset=预算停点（帧边界），下一 tick 读到缺口后轮次 (1.99ms)
+✔ K-15：真坏帧不因"缺口契约"被放行 —— 仍 blocked/halted 且游标不越过坏帧 (1.2844ms)
+[SKIP] 0.7.0 真包不存在（异机/清理后可跳过）
+✔ MA-02：computePackageDigest 算法与出包脚本/台账一致（0.7.0 真包复算 → 台账 payloadHash） (1.0758ms)
+✔ MA-01/03/04：锚 append 幂等、包校验 PASS、tamper 后判红并定位 (14.8272ms)
+✔ MA-05：锚链 prevHash 断 → 链校验判红并定位 (16.1621ms)
+✔ MA-06/07：账本快照校验（篡改一日判红）且校验器只读 (6.3151ms)
+✖ MA-08：index 接锚（集成）——每日快照一次 + 包锚幂等 + 锚目录越界拒绝 (114.2406ms)
+✔ renderOriginal：五节齐全，注入内容被过滤并记入备注 (3.0672ms)
+✔ renderOriginal：前置块含编码/会话/时间/hash，且 hash 覆盖正文 (0.3884ms)
+✔ renderOriginal：YAML 19 键（顺序）/ 会话短ID 12 位 + 代次 / 正文hash算法 / 未启用标记 / 被遮蔽真算 / 非文本占位（OR-03/05/07/12/17/26） (0.9677ms)
+✔ C11：md 头三行写「视图非全集」+ 省略 N 条，且 N == YAML 被遮蔽事件数 (0.7953ms)
+✔ writeOriginal：落在第 3 级目录，文件名 = 编码 + 完整原文 (8.0827ms)
+✔ readTurnEventsBatch：一次扫描只取需要的轮次（O(n)，不逐轮重读） (3.0526ms)
+✔ 强绑定：原始凭证四态落在 B 列（绑定 / 补记 / 已清理(RPT-…) / 缺凭证） (25.1119ms)
+✔ INV-24：跨月会话（1/31 开始、2/1 那轮）必须绑定到 01 月的凭证，不得按 ts 取月 (9.4106ms)
+✔ P0-5/D11：≤2000 码点不截断；2001/4517 截断必须有披露行，且附件可逐字恢复 (18.2296ms)
+✔ P0-5/D11：多字节（中文+emoji）超 2000 码点 → 不拆代理对、附件逐字恢复 (9.5764ms)
+✔ P0-5/D11：工具结果正文是独立展示块，同样 2000 上限 + 披露 + 附件可恢复 (8.8435ms)
+✔ P1-1：writeOriginal 返回 bodyHash/fullHash，且与磁盘字节独立复算一致 (9.0112ms)
+✔ P1-1：verifyOriginal 正常通过；改 YAML / 改正文 / 改名 / 附件不符 各自检出 (16.9086ms)
+✔ P1-1：正文相同但 YAML 被改 → writeOriginal 拒绝静默复用（ORIGINAL_CONFLICT/full-hash-mismatch） (22.7204ms)
+✔ P0-5/D11：JSON 外壳参数按内容计长披露（对齐 P0回归-v2 夹具），附件逐字恢复 (9.2351ms)
+✔ P0-5/D11：附件已存在且内容不同 → ATTACHMENT_CONFLICT（停摆不覆盖） (12.169ms)
+✔ 原子写：成功后不留 .tmp-*；扫描/盘点/对账三处读取端都看不见 .tmp-* (16.3432ms)
+✔ 原子写：清理只清"写者已死"的残留，绝不清活进程正在写的临时文件 (19.6906ms)
+✔ 原子写：写失败不留临时文件且红线不变（目标被占用 → 仍 ORIGINAL_CONFLICT） (4.948ms)
+✖ V0.6/panelapi A1：7 条 exact GET 路由全部 ok:true，字段齐全 (35.5847ms)
+✔ V0.6/panelapi A2：7 条路由连调后，除 .reads.jsonl 外全库 sha256 不变 (29.6481ms)
+✔ V0.6/panelapi A3：每次 GET 恰好 +1 行读日志，字段齐；HEAD 不计 (27.3509ms)
+✔ V0.6/panelapi A4：读日志不进台账（readAll 行数与坏行数不变） (24.0208ms)
+✔ V0.6/panelapi A5：坏参数 400 / 编码不存在 200+not-found / 空库 0 且 health.ok=null (23.0053ms)
+✔ V0.6/panelapi A7：summary 顶层键与 health 契约键齐全 (8.1273ms)
+✔ V0.6.2 双路径：交接表/ 与一级老位置都计数；同名重复只算一份（summary 键名/语义不变） (12.4448ms)
+✔ V0.6/panelapi：registerLedgerPanelApi 注册 7 条 exact resource 路由，可撤销；无服务静默跳过 (58.8679ms)
+✔ V1.0.0-re3/A8：同源守卫 8 形态矩阵——SFS 只否决、回环 Host 恒成立、Origin/Referer 回环同端口 (20.1514ms)
+✔ V1.0.0-re3/P2：/original open 后 fstat 校验，containedPath→open 之间被替换不得读库外 (16.8642ms)
+✔ V1.0/SEC-01：面板 token 三态（未设=不启用 / 设了缺=401 / 设了对=200）+ 头与 query 两种传法 + 不落盘 (11.1288ms)
+✔ V0.6/panelapi：summary 30s 缓存与 ?refresh=1 强制重算（数字必须现场重取） (14.1873ms)
+✔ V0.6/panelapi：reconcile 30s 缓存与 ?refresh=1（对账只读、不被缓存改写结论） (14.4887ms)
+✔ V0.6/panelapi：apply() 带 webServer 时注册 7 条只读路由，卸载时全部撤销 (84.3397ms)
+✔ ① build：12 行→3 个日分片（行数/字节/无 null 偏移），重建幂等，且只在 .index/ 落盘 (44.3921ms)
+✔ ② query(code)：全 12 条逐字节对撞 —— 指针切片、readAll 记录、原文视图 sha256 三者一致 (34.2571ms)
+✔ ③ query(sid/turn/range)：结果集与 readAll 过滤一致，覆盖 code 日≠台账日 (23.2016ms)
+✔ ④ 反证：删 1 个分片 / 删整个 .index → stat 必须红（problems 非空）；build 重建后绿 (54.3159ms)
+✔ ⑤ 反证：改索引行 offset（与台账不一致）→ stat 报 pointer-mismatch，query 标 pointerOk=false (36.2316ms)
+✔ ⑥ 反证：改一个原文视图文件 → stat（默认自动复核视图）报 view-sha-mismatch；重建索引仍红 (32.6775ms)
+✔ V0.6/readlog：写入→读回（新→旧）、字段齐全、参数与编码有上限 (7.2806ms)
+✔ V0.6/readlog：读日志不能被当成台账（readAll 必须跳过隐藏 .jsonl 与 .reads/ 目录） (3.9452ms)
+✔ V0.6/readlog：写失败不抛出，只返回 recorded=false（审计失败≠功能失败） (1.707ms)
+✔ V0.6/readlog：summarize 给出按工具/会话计数与命中编码总数 (3.9099ms)
+✔ V0.6.4/readlog ③-1：新写入按月落盘 .reads/YYYY-MM.jsonl；不写历史单文件 (5.1565ms)
+✔ V0.6.4/readlog ③-2：超阈值切分片（小阈值注入）；旧分片不改名/不改写；读写顺序正确 (39.6352ms)
+✔ V0.6.4/readlog ③-3：兼容历史单文件 .reads.jsonl（只读、不被改写），并计数坏行 (4.1728ms)
+✔ V1.0/readlog ③-4：append 不再逐条 fsync（P1-07），但行必须落盘；总量配额从最旧分片裁起（re3 起含历史单文件） (9.8227ms)
+✔ V1.0/readlog：readReads({summary:true}) 一次遍历同时出列表与摘要（P1-07：不再整读两遍） (326.4474ms)
+✔ V0.6.4/readlog ③-5：不认识的 .reads/ 条目不被当成日志；空目录/不存在目录安全返回空 (4.7696ms)
+✖ REC-01 §1.1/§1.2：flat 路径、恰 10 键且键序固定、字段口径全对 (6.5254ms)
+✖ REC-02：ledgerSha256/ledgerBytes/ledgerRows/lastCode 与实算全等 (4.2017ms)
+✖ REC-03：当日无台账仍生成收据（rows=0/bytes=0/sha256("")/lastCode=""），originalCount 实盘 (4.3332ms)
+✖ REC-04：连续两日链——D1 prev=""、D2 prev==sha256(D1 收据文件字节) (5.0582ms)
+✖ REC-05：改台账/删台账/删中间收据 → 校验器报出且 exit 2；运行前后文件 sha256 集合不变 (59.8178ms)
+✔ REC-06：锚为空=功能关闭——不生成收据、不写锚、校验器退出码 0 且 enabled:false (48.9891ms)
+✔ REC-07：锚==root/子路径/祖先 全部拒绝（ANCHOR_INSIDE_ROOT，零写入）；合法外置正常 (4.2372ms)
+✖ REC-08：同证据重跑幂等（decision:"idempotent"，旧收据 sha 不变）；证据变化 RECEIPT_CONFLICT 不覆盖 (58.7568ms)
+✔ REC-09：不可写锚 → ANCHOR_UNWRITABLE（不崩溃、不写账外）；锚复制件 --anchor 只读校验 exit 0 (58.8366ms)
+✔ REC-10：--json 输出 {v,enabled,anchor,checks[{name,ok}],breaks}；exit 0/2/3 语义正确；前后 sha 集合不变 (157.2304ms)
+✖ 兼容：旧 v2.0 格式（receipts/ 子目录、12 键）两日链仍可校验，CLI exit 0 (4.2056ms)
+✖ 兼容：旧 receipts/ 前链 → 新 flat 收据续链可校验（迁移不破链） (4.0379ms)
+✔ 只读：verifyReceipts 与 buildDailyReceipt 前后 root+anchor sha256 集合完全不变 (7.9734ms)
+✖ 收据：字段齐全、ledgerSha256 可独立复算、originalCount 只数有 doc 的行 (4.9886ms)
+✖ 收据：两日串链（次日 prev == 前日收据文件 sha256） (4.5527ms)
+✖ 收据：台账被改一个字节 → LEDGER_CHANGED（且不改台账） (4.1812ms)
+✖ 收据：删掉当日台账 → LEDGER_MISSING；删一张收据 → 后续链断 (19.3116ms)
+✔ 收据：锚目录在库内 → 拒绝（ANCHOR_INSIDE_ROOT），不写任何文件 (2.5125ms)
+✖ 收据：同内容幂等（written=false）；台账变化后重写 → RECEIPT_CONFLICT 且原收据不变 (4.1547ms)
+✔ 收据：ensureReceipts 只封"已完结日期"、跳过今天、幂等 (4.6936ms)
+✔ 收据：disabled（锚留空）→ 不写任何库外文件 (1.6305ms)
+✔ 收据：verifyReceipts 只读（前后 root 与 anchor 所有文件 sha256 不变） (6.9474ms)
+✔ reconcile：缺一份原文 → originalMissing 命中且 ok=false；只读性：整棵 root 前后完全不变 (32.0459ms)
+✔ reconcile：无台账的原文 → originalOrphan 命中；清册已删除的凭证不算缺 (20.587ms)
+✔ reconcile 两态：正式名缺失但草稿在 → weeklyGroupsMissing=0 且 weeklyGroupsDraftOnly 命中（WK-S4 守护） (41.3836ms)
+✔ reconcile：删草稿周账 → weeklyGroupsMissing；.lost 2 条 → lostGaps.count=2 (23.5661ms)
+✔ selfheal：删月份目录 → scan 检出、repair 只 mkdir（不产生任何文件） (19.6924ms)
+✔ selfheal：草稿周账缺 → 只返回 writeWeekly 动作（自己不写 xlsx）；封板缺 → 只报不改 (21.8809ms)
+✔ selfheal：凭证缺只进 reported（不重建、不改文件） (17.0955ms)
+✔ selfheal（V0.6.2）：交接表封板缺失走双路径 —— 主表在 交接表/ 或一级都不误报；两处都没才报 (6.7008ms)
+✖ reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK (22.3163ms)
+✖ reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修） (22.2794ms)
+✔ selfheal.writeRunReport：日报原子写、counts 与数组长度自洽、时间 +08:00 无 Z (19.9959ms)
+✔ reconcile：干净账库 → ok=true（正向证据；否则上面的 FAIL 没有意义） (26.8443ms)
+✔ R-01：originalMissing[].part 三态 —— 同 code 只 1 条；both/attachment 正确，v0.4 旧行只会 view (19.6341ms)
+✔ AC-V05-RC-12：run-report 的 reconcile 段与直接调用 reconcile() 逐项相等；同日二次=1 份且为第二次 (23.0212ms)
+✖ W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok (12.2189ms)
+✖ W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计 (15.0744ms)
+✖ W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched (18.303ms)
+✔ reconcile（re3）：收据"未验"必须明说；journal 被删/行丢而 state 称已封板 → sealChain 红 (37.7472ms)
+✔ selfheal 两态：草稿存在 → 不报 weeklyDraftMissing (19.6692ms)
+✔ selfheal 两态：草稿与正式名都没有 → 仍按"草稿可重建"报 weeklyDraftMissing (2.8572ms)
+✔ V0.7 runShadowOnce：一致/缺轮/良性领先/另一源缺席 四类汇总正确 (3.6324ms)
+✔ V0.7 runShadowOnce：另一源缺失/抛错 → warnings 且不抛 (0.4726ms)
+✔ V0.7 writeShadowTick：只写 .shadow/（R-01：账本/原文/周账字节不变） (11.6275ms)
+✔ V0.7 writeShadowTick：无 root/不可写 → 降级返回 ok:false，不抛 (0.1779ms)
+✔ V0.7 index.js：ingest.mode=shadow 时 tick 产生 .shadow/，且记账照常（端到端） (128.1852ms)
+✔ V0.7 R-06：默认 ingest.mode=disk 时完全不跑影子（无 .shadow/，记账照旧） (490.5232ms)
+✔ V0.7 R-02：一致率口径 = exactMatch/checked，pendingDurable 不算差异 (1.1769ms)
+✔ V0.7 R-04：连续 3 轮 collector 抛错都只产生 warnings，不抛（影子不得拖垮记账） (0.364ms)
+✔ V0.7 R-07：另一源缺轮时可在影子里显式看见 missingOnEvent（disk 兜底前提） (0.5626ms)
+✔ V0.7 R-08：maxSessions 生效且 elapsedMs 有值（影子成本有界） (0.3728ms)
+✔ V0.7 R-10：影子证据可离线复核（report.md + JSONL 可解析、含 fpVersion） (5.21ms)
+✔ V0.7 R-08 性能：影子单会话开销远低于 200ms 阈值（P95 口径近似） (16.7147ms)
+✔ V0.7 R-02b：持久层增量读 + 会话级累积 → 第二轮仍与磁盘全量一致（防 57 条假差异回归） (0.4032ms)
+✔ R-05：shadow 配置下连续两轮 runOnce 不重复落账（第二轮 written=0） (65.615ms)
+✔ R-09：ingest 模式切换不改账（disk 跑过后切 shadow，台账行数不变、只多影子运行区） (48.4826ms)
+✖ V0.6/toolcards：原 5 个工具 name/description/parameters 未被改动（回归） (1.5378ms)
+✔ V0.6/toolcards：每个工具都接了 presentCall/presentResult，调用卡片合法 (0.6987ms)
+✖ V0.6/toolcards：5 个工具真实执行后，presentResult 全部返回合法卡片 (8.7495ms)
+✔ V0.6/toolcards：ledger_search 正文最多 20 行，超出补"…还有 N 行" (0.6008ms)
+✔ V0.6/toolcards：ledger_turn 的 excerpt 逐行切成 read 卡片（offset=0、行号从 1 起） (0.4774ms)
+✔ V0.6/toolcards：未知工具/异常输入一律回退 undefined（绝不抛） (0.2927ms)
+✔ V0.6/toolcards：兼容 Host 的 ToolResult 包装（从 content JSON 解析回工具值） (3.793ms)
+✖ V0.6/toolface：9 个工具的定义齐全，描述里带"先查 Session ID"提示 (2.0118ms)
+✖ V0.6/toolface：工具执行返回正确结果，并写入读日志 (2.7589ms)
+✔ V0.6/toolface：除读日志外，全库 sha256 不变（只读工具硬断言） (13.2068ms)
+✖ V0.6/toolface：能注册/撤销；没有 tools 服务时静默跳过不抛错 (0.4724ms)
+✖ V0.6/toolface：apply() 带 tools 服务时注册 9 个工具，卸载时全部撤销 (83.965ms)
+✔ v0.2 格式守卫：session.v5 文件名 → 零写入 + unsupported 报错 (34.2951ms)
+✔ v0.2 格式守卫：会话头 type 不对 → format rejected，零写入 (20.2116ms)
+✔ v0.2 增量：首跑写 1；追加一轮后 inc=1/written=1；再跑 same=1/written=0 (70.1161ms)
+✔ v0.2 截断：文件被截短 → 回退全量重读（不崩），已记轮次不重写 (38.2776ms)
+✔ v0.3 记录形状：v=3，带 doc / docHash / docFrom，且原文文件真实存在 (30.4006ms)
+✔ M-01 dry-run 零写盘：整库文件集合与逐文件 sha256 全不变 (78.1497ms)
+✔ M-02 --write 只 rename：迁移前后逐文件 sha256 不变、内容哈希集合不增不减 (98.3493ms)
+✔ M-03 老布局读兼容：不迁移也能用 layout.resolveExisting 读到三类单据 (13.0637ms)
+✔ M-04 --rollback 后目录树与迁移前逐文件 sha256 一致（journal 改 .done） (172.1646ms)
+✔ M-05 冲突/未知：不搬、退出码 2，dry-run 仍零写盘 (151.715ms)
+✔ M-06 .ledger-root 越界保护：E_LEDGER_ROOT_PROTECTED + 零动作 (19.7644ms)
+✔ M-07 迁移后《账簿总目录.md》数字与目录实况一致 (114.4615ms)
+✔ T-01 根标记：默认落点 / 幂等补写 / 内容合规 / 坏标记不覆盖 (11.9278ms)
+✔ T-02 总目录采集只读；无运行报告时 gate=unknown（不伪装成 ok） (30.3749ms)
+✔ T-03 --write 幂等：再跑一次 0 搬运、退出 0、不重复写 journal (224.0074ms)
+✔ T-04 --rollback 只给 journal 自动推根；显式 --root 时校验 journal 归属（防串库） (237.1876ms)
+[re4-fixture-尺寸/A] {"frame1":795,"frame2":263,"frame3":98841,"frame2Start":795,"frame3Start":1058,"fileSize":99899,"productBudget":65536,"budgetSmall":33031,"expectedAttachmentBytes":131715,"expectedEvents":5,"bigPayloadBytes":98304}
+[re4-台账/A] {"code":"20261114-75238718e41a-A-00000022","attachmentBytes":131715,"eventsCount":5,"statWritten":22,"statEventBatches":1,"statEventShortBatch":0,"statEventReadRetries":1,"warnCount":1,"warnSample":["[dsh-dialog-ledger] 对账有保留意见（degraded）：缺周账=1（已知缺口，逐项可查；这不是\"无缺口\"）"]}
+[re4-fixture-尺寸/B] {"frame1":795,"frame2":263,"frame3":98841,"frame2Start":795,"frame3Start":1058,"fileSize":99899,"productBudget":65536,"budgetSmall":33031,"expectedAttachmentBytes":131715,"expectedEvents":5,"bigPayloadBytes":98304}
+[re4-契约/B] {"smallBudget":33031,"partialEvents":3,"cutPartial":[22],"stoppedEndByte":1058,"fullEvents":5,"cutFullSize":0,"lastEventType":"turn/end"}
+✔ K-16/A（端到端）：v3 三帧会话里第 22 轮跨帧且批读预算停在帧边界 → 台账 attachment.bytes 必须等于完整附件字节数 (284.6984ms)
+✔ K-16/B（契约级）：小预算读到帧边界 → truncated 标出第 22 轮、endByte 停在帧边界；放大预算重读 → cut.size===0 且末事件是本轮 turn/end (4.1824ms)
+✔ monthWeeks：2026-11（1 号周日）→ 6 段，首尾各 1 天 (1.7988ms)
+✔ monthWeeks：2026-12（1 号周二）→ 5 段，首 6 天、末 4 天 (0.1379ms)
+✔ monthWeeks：2026-03（1 号周日）→ 6 段 (0.1179ms)
+✔ monthWeeks：1 号正好是周一 → 第 1 段满 7 天 (0.1076ms)
+✔ weekOf：跨零点按真实发生时刻切（23:59 → 本周，00:00 → 下周） (0.2392ms)
+✔ weekOf：月末最后一天仍在本月最后一段 (0.1138ms)
+✔ weekOf：跨月零点立刻换月（1/31 23:59 vs 2/1 00:00） (0.122ms)
+✔ 文件名与目录：用 13 位会话键，不用 23 位会话标识 (0.1382ms)
+✔ 每段首尾毫秒是本地 00:00:00 与 23:59:59.999 (0.1368ms)
+EVIDENCE-WEEKLY-ROLL {"labSource":"C:\Users\<user>\\AppData\\Local\\Temp\\wk-roll-seed-hYT5St\\root","phase1":{"groups":4,"newGid":"2026-10-3|ccccccccccccA","written":true,"sealedSkipped":3},"phase2":{"skipped":4,"markerReads":0},"phase3":{"incrementalBytes":185915,"incrementalSha":"fe12195c0db3af8b685eef46d01bda7bfc07a2325e70dd743d2f8f6b3eda9b2b","fullSha":"fe12195c0db3af8b685eef46d01bda7bfc07a2325e70dd743d2f8f6b3eda9b2b","equalsFull":true,"reused":3,"resolved":2},"phase4":{"changedHash":"ab4a108d015e8b9352dfbabd3e1f5b435d8e56000964bddcb3163cd9afe30482","incrementalSha":"a061a71b9622ad0f16fa05a5cb3b3ab9b43a611e6c227ac51007d49f5ac04820","fullSha":"a061a71b9622ad0f16fa05a5cb3b3ab9b43a611e6c227ac51007d49f5ac04820","equalsFull":true,"reused":4,"resolved":1},"monthly":{"path":"2026年10月\\10月账.md","rows":9,"groups":4,"sealed":3,"unsealed":1,"fingerprint":"965ecb6a7e23a32f240cc19417ec34ba1b7065e48b03e74c4cb07b92a550b1dc"},"ledgerRowsAtEnd":9}
+✔ A1 W1：journal 冷读整读一次，稳态只读新增尾；缩水/替换→整读重建 (14.7954ms)
+✔ A2 W2/W4：行身份未变→0 次 resolveDoc；原文被改→只重算 1 行；清行缓存后仍 0 次整文件复核 (65.3683ms)
+✔ A3 W1：已封板组被触碰→0 次 xlsx 文件头读取、字节不变；草稿重写也不读文件头 (31.7039ms)
+✔ A4 W3：bootstrap 预算 40/40/10 三 tick；续跑状态正确；预算产物 == 全量产物 (981.587ms)
+✔ A5 W5/月账：流式统计 + 月合计=台账行数（独立手算）+ 只读不改 + 指纹幂等 + 可重建 (59.887ms)
+✔ A6 W5：~10 MB journal 流式冷读，内存增量有界、块大小有界、摘要不保留 rows (213.3465ms)
+✔ B 滚动正确性反证（自建 c01 等价库）：增量 == 从零全量，逐字节 (87.8504ms)
+✔ sessKeyOf：从编码取 13 位会话键 (0.8072ms)
+✔ groupRecords：跨月两条分到两个组（11月第6周 / 12月第1周） (1.4966ms)
+✔ buildSheets（v1.3）：说明 + 周一…周日 + 周统计 = 9 张表 (2.5407ms)
+✔ buildSheets：周三有凭证、其余日在段内但无凭证 → 十列机器行 + 空日 A 列全空（不写占位行） (0.6416ms)
+✔ buildSheets：1 天周（2026-11-30 周一）→ 其余 6 天不在本段：周统计 B 列 = —、记录数 0 (0.6833ms)
+✔ buildSheets：周统计含每日行数与合计，审计公式引用 I 列（不是 H 列） (0.5308ms)
+✔ writeWeekly：落到二级目录、文件名含周号与会话键，返回 v1.3 形状 (12.161ms)
+✔ writeWeekly：内容没变 → 不重写（written=false，mtime 不变） (7.4362ms)
+✔ writeWeekly：新增一条 → 重写且新行可见 (12.4917ms)
+✔ writeWeekly：原子写（不留 .tmp） (5.9334ms)
+✔ V0.7 weeklystate：正式名/草稿名/路径（月目录 + 草稿前缀） (0.7539ms)
+✔ V0.7 weeklystate：文件名分类 official / draft / other (0.2192ms)
+✔ V0.7 weeklystate：历史迁移决策矩阵（五种情形） (0.144ms)
+✔ V0.7 weeklystate：写入模式（sealed / conflict / draft） (0.1209ms)
+✔ V0.7 weeklystate：分类与迁移判定对同一文件族自洽（抽样） (0.5724ms)
+✔ HO-01/02/03/04/05/06/07/08/09/10/11：文件名与 YAML 11 键（顺序/取值/布尔/单引号 hash） (3.9452ms)
+✔ HO-12/13：抬头表恰 8 行、项目顺序固定、单元格与 YAML 逐字段一致 (0.5889ms)
+✔ HO-14/H5：声明恰 4 条，第 4 条逐字等于契约改写句，第 1–3 条不变 (0.2657ms)
+✔ HO-15/16/17：相关文件 2 行、数据库架构三级 + 存放规则 3 条、结束行 (0.3985ms)
+✔ HO-18/H8：封板 hash 独立复算 == YAML 封板hash（只覆盖正文，不含 YAML） (0.256ms)
+✔ HO-20/H11/H12：主表无未替换占位符、无 CR、无 BOM、恰好一个结尾换行 (0.2054ms)
+✔ HA-01/02/03/04/05/19：附表文件名、7 键 YAML、父表、H1 与 YAML 名称一致（决定 9 #6） (1.5317ms)
+✔ HA-06/08/09/10/11：5 类 block、seq 严格升序、编号 1..N 连续、元信息行、逐字照录 (0.7769ms)
+✔ HA-07：user/message 只收 data.source.kind == "user"，注入类一个都不出现 (0.3758ms)
+✔ HA-12：thinking 折叠 / tool_use 指针 / 工具参数二次解析 JSON / 工具结果状态 (0.4841ms)
+✔ HA-13/A9：空表 —— 上下文条数 0、正文一行「无」、无任何 ## 标题 (0.2089ms)
+✔ HA-14：默认不截断（1 MB 级 fixture 原样写盘、无「已截断」字样） (1.5744ms)
+✔ HA-15/A11：>8 MiB 整块截断 —— 固定句逐字、上下文条数=实际收录、块为整块收录 (27.7085ms)
+✔ HA-15 特例：单块自身 >8 MiB —— 块内截断到完整 UTF-8 字符边界 + 块尾固定句 (38.4846ms)
+✔ HA-16：不得残留 v0.4 痕迹（8000 字截断串 / 旧 ### ISO 标题 / 旧短文件名） (0.3921ms)
+✔ 审计裁定：附表逐字照录内容保留原始 CR（不静默改写）；结构行仍为 LF (0.5512ms)
+✔ 审计裁定负例：原文含 {{n}}/模板语法/行首 ## → 原文保留；模板生成部分无残留占位符；写盘不改字节 (5.9735ms)
+✔ HA-12 补充：真实 DSH session 的 reasoning / tool-call 块名同样能被识别（别名兼容） (0.189ms)
+✔ HO-21/25：空目录 + 无 state → generate/reopened；state 丢失同样 reopened (1.7688ms)
+✔ HO-22/H14：已封板再跑 → skip，主表/附表字节 sha256 与 mtime 均不变 (8.6569ms)
+✔ HO-23：封板后手工删主表 → 仍 skip、不重建、warn 含 sealed but file missing (6.0652ms)
+✔ HO-24/决定9#2：adopt 只补 state —— 旧文件（无封板两键）字节与 mtime 不动 (2.6084ms)
+✔ adopt 复核不一致 / 无正文 → 拒绝承认封板（E_HANDOVER_HASH_MISMATCH / E_HANDOVER_BODY_NOT_FOUND） (1.7996ms)
+✔ HO-26/H15：重建时旧同名文件 rename 为 *.旧-YYYYMMDD-HHMMSS，内容 sha256 不变且不删除 (6.3613ms)
+✔ HO-27/28：同批不变量（主表存在 ⇒ 附表存在）+ 无 .tmp 残留 (6.5619ms)
+✔ HO-19：写前/写后 hash 复核 —— 故障注入改一字节 → E_HANDOVER_HASH_MISMATCH、不承认封板 (1.0356ms)
+✔ HO-29/H16：state 封板记录结构（sealedAt/sealHash/main/appendix + 与产物一致） (9.4384ms)
+✔ HO-31：同一会话重复触发 N 次 → 目录里始终只有 1 个主表 + 1 个附表 (8.4765ms)
+✔ HO-29 补充：封板双记不一致 → skip + warn handover: seal mismatch（以 state 为准） (6.2989ms)
+✔ V0.6.2 布局：写端只写 交接表/；老库一级文件可读；同名以新目录优先 (7.6298ms)
+✔ selectHandoverContextEvents：取到"第一条入账轮次的 turn/start 之前" (0.2227ms)
+✔ 参数校验：非法 sessKey/generator/时间/events 必须早失败（E_HANDOVER_BAD_ARGS） (0.3351ms)
+✔ truncateUtf8：只保留完整 UTF-8 字符边界 (0.1222ms)
+✔ ① 十列版式：表头 10 列；机器只填 编码/原始凭证/时间/状态默认/审计待审，人工列填 —；说明页按模板章节 (10.9468ms)
+✔ ② 三组下拉 + 编码校验真写进 xlsx（D/H/I 列位、showErrorMessage=false） (7.7506ms)
+✔ ③ 草稿可重生成；封板后 skipped:sealed 且字节不变；state 丢失→不重写+告警 (60.8165ms)
+✔ ④ 原始凭证四态：绑定 / 补记 / 已清理(RPT-…) / 缺凭证；清册新旧格式都兼容 (8.2308ms)
+✔ ⑤ 补记册：一级落盘、只追加、编号连续、补记hash 可独立复算、不改正册 (17.3209ms)
+✔ ⑥ 解包冒烟：ZIP 结构完整、sheet XML 解得出、关键字符串都在、封板hash 可只凭文件复算（stored+deflate） (28.6434ms)
+✔ 附加：封板 hash 不含生成时间/人工列；内容指纹含版式版本 (19.8334ms)
+✔ 附加2：单日 121 条 → 只落 120 行、周统计 C13=1（数字字面量）并告警 (41.307ms)
+✔ 附加3：同编码重复传入 → 只落 1 行 + duplicate-code 告警（不重复记账） (6.9053ms)
+✖ P0-4：源 120/121/122 封板哈希互不相同；溢出先写补记再封板；journal 行即不可变快照 (188.2491ms)
+✔ P1-6：补记编号 99/100/101 连续不丢不重；截断尾块可恢复；验证器不忽略未知块 (31.5514ms)
+✔ P1-10：清册已清理按结论列判定（新旧 schema；备注含“已删除”不算） (1.4016ms)
+✔ CH-18：文件在但封板标记无法解析 → E_SEAL_UNKNOWN，跳过且字节一个不改 (10.5516ms)
+✔ INV-15/17：只有 sourceRowCount / overflow / 补记码不同、正册行完全相同时，封板 hash 也必须互异 (0.2898ms)
+✔ 审计#4：journal 末尾是半行（上次崩在写行中途）→ 追加前取证+截断（re3 K-6），新封板必须可读 (7.0728ms)
+✔ WK-S1：草稿写 草稿- 前缀；正式名只在封板时出现 (15.5373ms)
+✔ WK-S2：封板 = sealed 内容 rename 正式名 + 删除草稿；正式名带封板标记 (17.4087ms)
+✔ WK-S3：封板后再写 skips:sealed 且正式名字节不变 (17.0727ms)
+✔ WK-S5：历史无标记正式名 → rename 为草稿（字节不改）且本轮不重写 (2.1927ms)
+✔ WK-S5b：正式名与草稿并存 → 冲突告警，保正式名、拒绝写入 (1.9056ms)
+✔ WK-S6：正式名状态不明（含封板字样但解析不出标记）→ E_SEAL_UNKNOWN，字节不改 (2.2558ms)
+✔ P1-1：孤儿轮次（只有 start、被下一轮 start 顶掉）→ 记 partial，不静默丢 (105.773ms)
+✔ P1-2：坏游标（落在帧中间）→ 自动归零并补回后续轮次 (103.3749ms)
+✔ P1-3：超大单帧 → 跳过该帧，前后帧仍能解出（不再整份会话判死） (1.9246ms)
+✔ P3-4：未配置 checkupEnabled 时，体检不应意外开启 (27.3954ms)
+✖ P3-1 / P3-2：时区变更触发重写；生成时间是 +08:00 (10.2557ms)
+✖ F1：改 offsetMinutes 触发周记账全量重写（端到端） (61.4982ms)
+✔ F2：非法/过短 Session ID → 报错，不静默跳过 (16.7453ms)
+✔ ① 同 code 同内容二次写：返回 reused=true，文件字节与 mtime 均未变 (14.5237ms)
+✔ ② 同 code 异内容：抛 ORIGINAL_CONFLICT（含路径与两个 hash），文件字节未变 (10.9022ms)
+✔ ②·补 写前自检：bodyHash 与正文重算不一致 → ORIGINAL_HASH_MISMATCH，且不建文件 (0.9967ms)
+✔ ③ 双实例：子进程持锁时第二个 acquire 抢不到且不写；子进程释放后第二个才能写 (83.6877ms)
+✔ ③·日志 第二个实例抢不到锁：ctx.logger 输出含 LOCK_HELD + ERROR「拒绝执行」，且账本零写入 (94.4799ms)
+✔ ③·补 进程退出释放：子进程 acquire 后直接 exit(0) → 锁文件被退出钩子删掉 (57.1722ms)
+✔ ④ 僵死锁（跨机/判不了死活）：第一轮只记疑、第二轮才夺取；旧锁 rename 成 .lock.stale-* 原样留证 (6.5087ms)
+✔ ④·同机 僵死锁：pid 已死 → 立即夺取（不等第二轮）；旧锁同样 rename 留证 (5.3949ms)
+✔ ④·补 契约常量：锁文件 = <root>/ledger/.lock，心跳 30s，僵死阈值 3× (0.6294ms)
+✔ ⑤ 尾行无换行：追加先补 \n，两条各自可 JSON.parse，且新文件末尾有换行 (10.3632ms)
+✔ ⑥ 坏帧：readTurnsFrom 报 failed>0 → .lost.jsonl 留痕（会话/缺失区间/sha256/帧偏移/时间） (17.8483ms)
+（P0 夹具：本脚本合成 C:\Users\<user>\AppData\Local\Temp\dsh-selftest-p0-lAjeAK\orig-led01b.bin）
+
+=== 1. frames 层（K-4）：结构分帧 / magic-in-payload / 半尾帧 / 中间坏帧 ===
+
+=== 2. P0 LED-01 全链路：尾帧截断 20B → 恢复后不重复、不坏行、游标不卡 EOF ===
+
+=== 2b. 坏帧跨越轮次：不落"半轮"，游标退回该轮起点，修复后补齐 ===
+
+=== 3. M-01：v3-only 会话日期段取最早可信时刻（头 createdAt 不可信） ===
+
+=== 结果 ===
+[PASS] magic-in-payload：frameSpan 按结构算长度（不吃载荷里的魔数）
+[PASS] magic-in-payload：帧头解析（FCS=1 字节、single_segment）
+[PASS] magic-in-payload：2 帧全部解出（旧实现会把载荷魔数当新帧 → failed>0）
+[PASS] magic-in-payload：载荷内容逐字还原（魔数字节仍在数据里）
+[PASS] 半尾帧：halted=true 且 stopReason=truncated-tail
+[PASS] 半尾帧：停止位置=坏帧起点（不是文件尾）
+[PASS] 半尾帧：已解出的帧照常交付（parts 只含好帧）
+[PASS] 半尾帧：坏帧区间可复算 [坏帧起点, 文件尾)
+[PASS] 中间坏帧：两侧好帧都解出（一帧坏不拖垮整轮）
+[PASS] 中间坏帧：halted / haltOffset / 坏帧精确区间
+[PASS] 超大单帧：skipped>=1 且不把整份会话判死（badMagic=false）
+[PASS] 超大单帧：不 halted / 无 haltOffset（超大 ≠ 坏帧，K-4 只针对真坏帧）
+[PASS] 超大单帧：前后帧都解出（跳过并继续）
+[PASS] 超大单帧：loss 区间带 oversized 标记（可复算/可统计）
+[PASS] ledger：坏帧时已解出的闭合轮照常返回（不被清空）
+[PASS] ledger：坏帧 halt 时游标收窄到"跨坏帧轮"起点（K-14：blocked=true / haltOffset=坏帧起点 / nextOffset=min(haltOffset, 边界轮 startByte)=0）
+[PASS] ledger：loss 结构化（failedRanges/failedOffsets/reasons 可复算）
+[PASS] P0 tick1：已解出的 6 轮全部落账（旧实现 written=0 整批丢弃）
+[PASS] P0 tick1：坏帧错误可见（errors 含 source blocked + truncated-tail + retryable）
+[PASS] P0 tick1：游标停在前缀末尾（>0 且 < 截断后大小，不是 EOF）
+[PASS] P0 tick1：游标记录的 haltOffset=被截断帧起点（可重试点）
+[PASS] P0 tick1：.lost.jsonl 一条，写清文件/偏移/原因/可重试/可复算区间
+[PASS] P0 tick2（未修复）：不重复写（written=0、仍是 6 行）
+[PASS] P0 tick2（未修复）：错误仍每 tick 可见（不许静默）
+[PASS] P0 tick2（未修复）：游标原地（不前进、不跳 EOF）
+[PASS] P0 恢复后 1 tick：6 行全部在账（0 重复、0 坏行）
+[PASS] P0 恢复后 1 tick：游标到 EOF（size），不再 blocked
+[PASS] P0 恢复后：错误消失（不再 source blocked）
+[PASS] P0 恢复后：落账码唯一（无重号）
+[PASS] P0 tick4：源没变时安静（written=0、6 行、0 错误）
+[PASS] 跨坏帧轮次：坏的这一轮（turn1）不落半轮（账里只有 turn2）
+[PASS] 跨坏帧轮次：deferred 记数 + errors 说清（不静默）
+[PASS] 跨坏帧轮次：游标不越过坏帧（无游标 = 从 0 重试；有游标则必须 ≤ 该轮 startByte）
+[PASS] 跨坏帧轮次·修复后：turn1 补齐（2 行、唯一）
+[PASS] 跨坏帧轮次·修复后：错误消失、游标到 EOF
+[PASS] M-01：v3-only 会话两轮都入账
+[PASS] M-01：日期段=首轮最早时刻所在日（20261108，不是头 createdAt 的 20261110）
+[PASS] M-01：逐行 code[0:8] <= ts 本地日（审计不变量）
+[PASS] M-01：第二轮那条的 ts 是次日（2026-11-09）而编码日期段仍是 20261108
+
+共 39 项：PASS 39 / FAIL 0（365 ms）
+SELF-TEST OK
+✔ docs\自测-审计修复-P0.mjs (428.7781ms)
+       ③ severity=warn｜源会话 1 / 可见 1 / 不支持版本 0 / v3 只读源 0；state 正常（lastRunAt 2026-11-15T13:16:46+08:00，0.0h 前）；pending 0 条；告警：活动写入宽限 1 个源（正在写/有未闭合轮，游标暂未到 EOF，按 P0-2 设计不判红）：session-acpt0000test 文件 200→400 B，游标仍 180
+       宽限口径：游标卡住=red iff 源 size>游标 size 且源 mtime 静止 > 2×intervalSeconds 且该源无未闭合轮 pending；源 mtime 在宽限窗内（正在被写）或该源有未闭合轮 pending → 活动源宽限（ok/warn，不判红）
+[PASS] ACPT-01① 活跃写入（源 mtime 在 2×interval 宽限窗内、游标未到 EOF）→ ③ 不判红
+       2-a pending 宽限：severity=warn｜源会话 1 / 可见 1 / 不支持版本 0 / v3 只读源 0；state 正常（lastRunAt 2026-11-15T13:16:46+08:00，0.0h 前）；pending 1 条；告警：活动写入宽限 1 个源（正在写/有未闭合轮，游标暂未到 EOF，按 P0-2 设计不判红）：session-acpt0000test 文件 200→400 B，游标仍 180
+       2-b 真卡住：severity=red｜游标卡住 1 个：session-acpt0000test 文件 200→400 B，游标仍 180
+[PASS] ACPT-01② 未闭合轮 pending → 宽限不红；源静止 >2×interval 且无 pending → 仍红（不假绿）
+[PASS] DEF-03① 库内锚（== root / root 子路径 / root 祖先）→ 拒绝生成、errors 含 ANCHOR_INSIDE_ROOT、零收据写出
+[PASS] DEF-03② 库外锚（root 同级）→ 收据正常生成、幂等不重写、root 内零收据
+
+自测-审计修复：4/4 PASS，全绿
+✔ docs\自测-审计修复.mjs (97.9969ms)
+✔ P1-13：干净封板册交叉核验通过；改一格机器列必须报 mismatch 并定位；删行必须报 missing (47.7405ms)
+✔ SEALJ-W1 幂等：同组重复 append → already-sealed 且字节/mtime 不变；不同组正常追加 (10.465ms)
+✔ SEALJ-W8 幂等键含 kind：同 key 的 weekly-seal 与 handover-seal 是两个组 (5.6301ms)
+✔ SEALJ-W2 兼容 0.9.5 旧册：追加后旧字节逐字节不动，事件数/顺序正确，字段顺序与 sealHash 口径不变 (4.8245ms)
+✔ SEALJ-W3 增量尾读：别的进程追加的新事件只读尾区即可识别幂等；不同 key 正常追加 (5.9097ms)
+✔ SEALJ-W4 失效重建：journal 被缩水/替换后 → 不认旧索引、不读漏 (8.7798ms)
+✔ SEALJ-W5 torn-tail：末尾半行 → 追加前取证+截断修复（K-6）、新事件可读、坏行 0、证据可复核 (10.7145ms)
+✔ SEALJ-W9 torn-tail 只修末行：中间坏行存在 → 一律不修（旧字节逐字不动，坏行照报） (4.8533ms)
+✔ SEALJ-W10 journal 缺失三态：state 称已封板 → 判红；无 state → ok 但 verifiable=false (4.8161ms)
+✔ SEALJ-W11 rowsSha256 缺失/null/非法/不符 → 判红；交接表（rows 恒 null）不得误伤 (4.2528ms)
+✔ SEALJ-W12 at 格式强校验：非法/缺失记结构化违规，且不污染其后合法封板的时间基准 (1.8612ms)
+✔ SEALJ-W13 repairJournalTornTail：三条件缺一不修；取证排他（同号不同 sha 拒修） (9.3223ms)
+✔ SEALJ-W6 读字节：冷启动一次整读重建，稳态 append ≤64 KiB；readSealEvents 仍整读（API 不变） (41.0049ms)
+✔ SEALJ-W7 readSealJournalState 语义不变：追加后计数/坏行/readError/seals 同步，摘要仍不含 rows (9.8775ms)
+✔ S-11/C42 ①摘要含 firstCode（=台账首条）且落盘 日结摘要 TXT (8.0647ms)
+✔ S-11/C42 ②同日二次改台账：只补发 v2，v1 JSON/TXT 逐字节不变（永不覆盖） (6.6589ms)
+✔ S-11/C42 ③连续 3 次无变化不产新版；TXT 缺失只补同版本 TXT (7.5576ms)
+✔ S-11/C42 ⑤originalCount 当日口径：多日视图不串日；verifyReceipts 校验；旧 v2 可重出 (22.0006ms)
+✔ S-11/C42 ④ensureReceipts 返回 versions（已发版本数 + 最新版本号） (5.2887ms)
+✔ CL-01 RPT 文件名匹配 ^RPT-\d{8}-\d+\.md$，报告编号==文件名去 .md（D16 不回绕） (20.1272ms)
+✔ CL-02 报告 UTF-8 无 BOM、LF、恰一个结尾换行（CRLF 输入归一层） (15.3327ms)
+✔ CL-03 YAML 恰 17 键、顺序固定（报告编号…复核时间）、数值带引号 (13.7277ms)
+✔ CL-04 YAML 字段值：清理对象=完整原文、日期 YYYY-MM-DD、三类固定串、6 计数非负整数 (13.7667ms)
+✔ CL-05 抬头表恰 7 行且与 YAML 逐字段一致（S7） (12.8292ms)
+✔ CL-06 声明段落逐字 == 模板原文（口径 11） (9.9937ms)
+✔ CL-07 统计自洽：S1 计划=成功+失败+跳过；S2 剩余=总数-成功；句/表/YAML 一致 (15.281ms)
+✔ CL-08 明细行数：≤50 正文==planned；>50 正文 50 + CSV 数据行==planned（S3） (77.5685ms)
+✔ CL-09 明细行结构：^\| \d+ \| 编码 \| YYYY-MM-DD HH:MM:SS \| (已删除|未删除|跳过) \| … \|$ (12.3654ms)
+✔ CL-10 明细按产生时间升序（同刻按编码），不按编码排序（口径 5） (14.2852ms)
+✔ 安全回归：默认零删除 + 双开关缺一不可 + 旧工具封锁（P0-6 / INV-25 / INV-26） (91.2157ms)
+✔ CL-11 结论三值枚举（已删除/未删除/跳过）；跳过备注非空（口径 3） (22.7718ms)
+✔ CL-12 失败项：行数==failed、编码集合==明细未删除集合（双向，S4） (15.8946ms)
+✔ CL-13 附录 CSV：{id}-明细.csv、BOM、5 列、数据行==planned、引号转义、第 51+ 条可读回 (104.7004ms)
+✔ CL-14 复核行逐字格式 + 剩余数==remaining (14.63ms)
+✔ CL-15 无模板残留（<!-- / {{ }} / 口径注释），用户内容合法 {{ }} 不误报 (12.2584ms)
+✔ CL-16 时间/日期格式：时间 YYYY-MM-DD HH:MM:SS、日期 YYYY-MM-DD、全文无 Z (14.1004ms)
+✔ CL-17 编码格式 32 位；与 journal 记录/原文文件名逐个一致（S8） (14.5036ms)
+✔ CL-18 留档行：**留档：** 时间（UTC+08:00）· RPT-… · 生成器 \S+ (10.4434ms)
+✔ CL-19 S1–S8 逐条拒写盘并报 E_CLEANUP_S<n>；journal 保留现场（S6 真实注入） (19.0471ms)
+✔ CL-20 编号扫目录（删 state 接续）；未完成 journal 不破坏；已出终稿号不复用 (23.5507ms)
+✔ CL-21 同日递增不复用；序号 \d+（99→100→101→102→103） (23.3918ms)
+✔ CL-22 dry-run 文件名独立前缀；正式扫描不匹配、不占正式号（D16 \d+） (12.6238ms)
+✔ CL-23 dry-run 行为：零删除、全 跳过+试运行、正式号不前进、上一轮报告=（试运行） (11.6799ms)
+✔ CL-24 journal 路径/后缀/行数：ledger/.cleanup-<id>.journal，行数==2+planned (13.9829ms)
+✔ CL-25 journal 内容：plan + N×result + finalize，每行 JSON、at 格式、终稿后保留 (14.0826ms)
+✔ CL-26 删除中途 kill：无正式报告/无"待删"中间报告，journal 留完整现场 (213.0519ms)
+✔ CL-27 排他写：目标编号已存在 → E_CLEANUP_ID_CONFLICT，不覆盖（字节不变） (14.9929ms)
+✔ CL-28 删除范围：只删第 3 级；台账/周账/交接表/既有清册字节不变；删除数==成功数 (19.9252ms)
+✖ CL-29 新格式解析：v1.3 明细→编码/RPT 号，只认结论=已删除（含附录 CSV） (3.2001ms)
+✔ CL-30 旧格式（v0.4）兼容：结果列=已删除 同样解析成功（必须） (1.3865ms)
+✔ CL-31 统计三处一致：统计句/统计表/YAML 逐字段相等（口径 10） (24.2077ms)
+✔ CL-32 无 Z：全文（含 CSV）不含 Z 结尾时间 (20.4712ms)
+✖ 坏 CSV 行 → 计数+报错，不静默通过（readErrors 必须非空且逐行可定位） (2.5244ms)
+✔ 跨零点：23:50 开始、两轮跨到次日 00:10 → 编码日期段均为 20261107，台账分落 11-07 与 11-08 两个日文件 (87.7258ms)
+✔ 跨月：2026-01-31T23:59 开始、两轮跨到 2/1 00:01 → 编码日期段均为 20260131，台账分落 01-31 与 02-01 两个日文件 (48.9367ms)
+✔ 坏事件守卫：缺 time 与缺 data.turn 的 turn/start → collectTurnsDetailed.malformed=2、closed 为空 (3.3005ms)
+✔ 坏事件守卫：同一会话驱动 runOnce → 不写任何行，stat.malformedTurns=2 且 errors 有条目 (15.8938ms)
+✔ 孤儿轮次·进行中：只有 turn/start、mtime=现在（quietSeconds=120）→ written=0、openTurns=1，不写 partial (23.3011ms)
+✔ 孤儿轮次·不写 partial（审计 A-01）：两扫均只留 pending，补 turn/end 后恰好一条 ok (62.3907ms)
+✔ 规模：单会话 1200 轮 → written=1200、code 唯一 1200、(sid,turn) 唯一 1200；二次 runOnce written=0、skipped=1200 (10672.9072ms)
+ℹ 1200 轮首跑耗时 10414.3 ms（仅记录，不比阈值）
+ℹ 1200 轮二次跑耗时 7.9 ms（仅记录，不比阈值）
+✔ INV-04：截短重写后追加新 Turn → 新内容必须被读到（written>0、unchanged=0） (65.4005ms)
+✔ 黄金样本：10 条冻结用例全部可重算（拒改编码规则） (1.8427ms)
+ℹ tests 635
+ℹ suites 0
+ℹ pass 593
+ℹ fail 42
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59023.9554
+
+✖ failing tests:
+
+test at docs\自测-agenttools.mjs:428:1
+✖ V0.9/AG-04：工具面 9 个、schema/卡片齐全、每次调用写读日志 (32.5704ms)
+  AssertionError [ERR_ASSERTION]: 工具总数 9、顺序固定（原 5 个在前）
+  + actual - expected
+  
+    [
+      'ledger_search',
+      'ledger_turn',
+  -   'ledger_context',
+  -   'ledger_whoami',
+      'ledger_health',
+  -   'ledger_reconcile',
+  -   'ledger_anchor',
+  -   'ledger_cleanup_preview',
+  -   'ledger_cleanup_apply'
+    ]
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-agenttools.mjs:447:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ledger_search', 'ledger_turn', 'ledger_health' ],
+    expected: [ 'ledger_search', 'ledger_turn', 'ledger_context', 'ledger_whoami', 'ledger_health', 'ledger_reconcile', 'ledger_anchor', 'ledger_cleanup_preview', 'ledger_cleanup_apply' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-agenttools.mjs:509:1
+✖ V0.9/AG-05：越界拒绝——非法 root/未知参数 → 拒绝且不写盘 (27.4363ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'execute')
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-agenttools.mjs:517:58)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at docs\自测-agenttools.mjs:715:1
+✖ V0.9/CT-06：清理后 reconcile 不误报缺凭证 (57.5731ms)
+  AssertionError [ERR_ASSERTION]: 清册有据的删除不许被误报成缺凭证
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-agenttools.mjs:727:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-agenttools.mjs:760:1
+✖ V0.9/CT-08：默认关闭（缺省配置时物理执行被拒绝） (28.0691ms)
+  AssertionError [ERR_ASSERTION]: 工具面必须始终注册 apply（开关只影响执行，不影响可见性）
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-agenttools.mjs:773:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at docs\自测-index-integration.mjs:148:1
+✖ P1-7/CH-13：首轮入账 → 主表+附表落盘、journal 恰 1 条 handover-seal（字段齐/链 ok）、state 有封板缓存 (61.401ms)
+  AssertionError [ERR_ASSERTION]: 首轮必须 generate 交接表
+  
+  0 !== 1
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:159:12
+      at async withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:57:12)
+      at async TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:153:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-index-integration.mjs:223:1
+✖ HO-22/23/CH-17：封板后 skip 且字节不动；删主表只报 sealed but file missing 不重建；删 state 仍不重建 (31.8456ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:230:12
+      at async withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:57:12)
+      at async TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:226:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-index-integration.mjs:274:1
+✖ HO-24：旧主表存在（无封板两键）→ adopt 只补 state+journal，文件字节/mtime 不变、不补写附表 (30.3681ms)
+  AssertionError [ERR_ASSERTION]: HO-24：必须 adopt 认领
+  
+  0 !== 1
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:291:12
+      at async withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:57:12)
+      at async TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:277:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-index-integration.mjs:315:1
+✖ CH-14：交接表写盘失败 → runOnce 不抛穿、errors 含 handover failed、台账照常入账、下轮可重试 (32.1692ms)
+  AssertionError [ERR_ASSERTION]: CH-14：errors 必须含 handover failed，实际=[]
+  
+  false !== true
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:333:12
+      at async withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:57:12)
+      at async TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:318:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-index-integration.mjs:703:1
+✖ V0.6.2-总目录：每日一次刷新（state.catalogDate，+08:00 口径）；失败只 warn 不拖垮记账 (33.0885ms)
+  AssertionError [ERR_ASSERTION]: 本轮写进 交接表/ 的主表+附表必须被总目录按"新目录"数到（写端/读端同一套 layout）
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:719:12
+      at async withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:57:12)
+      at async TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-index-integration.mjs:706:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '# 账簿总目录\n\n> 本文件是**人读导航**，**不是账务记录本身**，不参与对账。\n> 审计以台账、完整原文、周记账、收据与清册为准；本文件可随时删除重建（生成器：`lib/catalog.js`）。\n\n## 一、账库\n\n| 项目 | 值 |\n|---|---|\n| 账库根路径 | `C:\Users\<user>\\AppData\\Local\\Temp\\dl-int-Dl3X8h\\data` |\n| rootId | `197ac8d6-2168-4c60-9e5f-627263e2b3ae` |\n| 布局版本 | 2 · 新布局（单据已在分类子目录）（marker layoutVersion=2） |\n| `.ledger-root` | 有效 |\n| 生成时间 | 2026-11-15 13:16:28 +08:00 |\n\n## 二、月份目录（原文 / 周账）\n\n| 月份 | 原文份数 | 周账份数 | 最近修改 |\n|---|---:|---:|---|\n| 2026年11月 | 1 | 0 | 2026-11-15 13:16:28 |\n| **合计** | **1** | **0** | — |\n\n> 原文按「完整原文」编码去重（`.vN` 历史版本只算一份）；周账按 `NN月第W周-…的周记账.xlsx` 计。\n\n## 三、分类单据\n\n| 分类 | 份数 | 新目录 | 一级老位置 | 明细 | 最近一份编号 |\n|---|---:|---:|---:|---|---|\n| 交接表 | 0 | 0 | 0 | 主表 0 / 附表 0 | — |\n| 清册 | 0 | 0 | 0 | 清册 0 / 明细 0 / dry-run 0 | — |\n| 体检 | 0 | 0 | 0 | — | — |\n\n> 「新目录」= `交接表/`、`清册/`、`体检/`；「一级老位置」= 尚未迁移的旧布局文件（读侧双路径兼容：不迁移也能读）。\n> 「最近一份编号」：交接表取最近修改时间的 13 位编号（12 位 Session ID + 代差）；清册/体检取日期+序号最大者（清册无正式报告时用 dry-run 编号兜底）。\n\n## 四、账务状态（只读快照）\n\n| 项目 | 值 |\n|---|---|\n| 台账行数 | 1（文件 1 个；可读=是；坏行 0） |\n| 最近对账结论 | `unknown` |\n| knownGaps | （无） |\n| 无法表示意见的原因 | 无运行报告（账库尚未跑过对账） |\n| 判定依据 | 无运行报告（尚未跑过对账） |\n\n> `ok` = 无保留；`degraded` = 有保留（knownGaps 可枚举）；`unknown` = 无法表示意见（台账没读全 / 没有运行报告 / 链断等）。\n\n## 五、声明\n\n**本文件不是账务记录本身。** 它只是人读导航与汇总数字，不承载任何账务事实；\n任何审计/对账以台账（`ledger/*.jsonl`）、完整原文（`YYYY年MM月/*完整原文.md`）、\n周记账（`YYYY年MM月/*.xlsx`）、收据与清册（`清册/RPT-*`）为准。\n本文件可安全删除，再次生成会重建（`lib/catalog.js` 或 `docs/工具-迁移布局.mjs --write`）。\n',
+    expected: /\| 交接表 \| 2 \| 2 \| 0 \| 主表 1 \/ 附表 1 \|/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at docs\自测-legacy基线.mjs:97:1
+✖ LM-03：基线行被篡改 → chainOk=false (15.0231ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:108:10
+      at withRoot (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:38:16)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:97:44)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-legacy基线.mjs:123:1
+✖ LM-05：collectLegacyCandidates 只收缺证据行；reconcile 对未标记行按缺凭证计 (10.4045ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:132:10
+      at withRoot (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:38:16)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-legacy%E5%9F%BA%E7%BA%BF.mjs:123:73)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-manifestanchor.mjs:137:1
+✖ MA-08：index 接锚（集成）——每日快照一次 + 包锚幂等 + 锚目录越界拒绝 (114.2406ms)
+  AssertionError [ERR_ASSERTION]: 必须生成库外锚文件
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-manifestanchor.mjs:149:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-panelapi.mjs:231:1
+✖ V0.6/panelapi A1：7 条 exact GET 路由全部 ok:true，字段齐全 (35.5847ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-panelapi.mjs:320:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:138:1
+✖ REC-01 §1.1/§1.2：flat 路径、恰 10 键且键序固定、字段口径全对 (6.5254ms)
+  AssertionError [ERR_ASSERTION]: 恰 10 键，实际 11
+  
+  11 !== 10
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:159:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:139:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 11,
+    expected: 10,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:181:1
+✖ REC-02：ledgerSha256/ledgerBytes/ledgerRows/lastCode 与实算全等 (4.2017ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '1ccd513421abe684ca93f3cace4b8cb86333d203165337e9e89748381a894267'
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:190:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:182:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '1ccd513421abe684ca93f3cace4b8cb86333d203165337e9e89748381a894267',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:201:1
+✖ REC-03：当日无台账仍生成收据（rows=0/bytes=0/sha256("")/lastCode=""），originalCount 实盘 (4.3332ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:215:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:202:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:233:1
+✖ REC-04：连续两日链——D1 prev=""、D2 prev==sha256(D1 收据文件字节) (5.0582ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== ''
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:242:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:234:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:253:1
+✖ REC-05：改台账/删台账/删中间收据 → 校验器报出且 exit 2；运行前后文件 sha256 集合不变 (59.8178ms)
+  AssertionError [ERR_ASSERTION]: changed：stdout 未报 LEDGER_CHANGED
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:279:14
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:271:11)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:370:1
+✖ REC-08：同证据重跑幂等（decision:"idempotent"，旧收据 sha 不变）；证据变化 RECEIPT_CONFLICT 不覆盖 (58.7568ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:390:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:371:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:483:1
+✖ 兼容：旧 v2.0 格式（receipts/ 子目录、12 键）两日链仍可校验，CLI exit 0 (4.2056ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:495:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:484:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt-v21.mjs:515:1
+✖ 兼容：旧 receipts/ 前链 → 新 flat 收据续链可校验（迁移不破链） (4.0379ms)
+  AssertionError [ERR_ASSERTION]: 同日旧收据已存在，不应重复写新 flat 收据
+  
+  true !== false
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:524:12
+      at withLab (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:59:18)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt-v21.mjs:516:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt.mjs:53:1
+✖ 收据：字段齐全、ledgerSha256 可独立复算、originalCount 只数有 doc 的行 (4.9886ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 1
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt.mjs:67:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt.mjs:83:1
+✖ 收据：两日串链（次日 prev == 前日收据文件 sha256） (4.5527ms)
+  AssertionError [ERR_ASSERTION]: 收据对象必须恰 10 键且顺序 == §1.2（prevReceiptDate 出现即失败）
+  + actual - expected
+  
+    [
+      'v',
+      'date',
+      'offsetMinutes',
+  -   'lastCode',
+      'ledgerRows',
+      'ledgerBytes',
+  +   'firstCode',
+  +   'lastCode',
+  -   'ledgerSha256',
+      'originalCount',
+  +   'partialCount',
+  +   'badLines',
+  -   'prevReceiptSha256',
+      'generatedAt'
+    ]
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt.mjs:94:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [
+      'v',             'date',
+      'offsetMinutes', 'ledgerRows',
+      'ledgerBytes',   'firstCode',
+      'lastCode',      'originalCount',
+      'partialCount',  'badLines',
+      'generatedAt'
+    ],
+    expected: [ 'v', 'date', 'offsetMinutes', 'lastCode', 'ledgerRows', 'ledgerBytes', 'ledgerSha256', 'originalCount', 'prevReceiptSha256', 'generatedAt' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt.mjs:105:1
+✖ 收据：台账被改一个字节 → LEDGER_CHANGED（且不改台账） (4.1812ms)
+  AssertionError [ERR_ASSERTION]: [{"type":"SUMMARY_MISMATCH","kind":"SUMMARY_MISMATCH","date":"2026-11-09","field":"ledgerRows","expected":"1","actual":"2","detail":"摘要与实际台账不一致（ledgerRows）—— 该日摘要过期/损坏，重出即可"},{"type":"SUMMARY_MISMATCH","kind":"SUMMARY_MISMATCH","date":"2026-11-09","field":"ledgerBytes","expected":"107","actual":"214","detail":"摘要与实际台账不一致（ledgerBytes）—— 该日摘要过期/损坏，重出即可"},{"type":"SUMMARY_MISMATCH","kind":"SUMMARY_MISMATCH","date":"2026-11-09","field":"lastCode","expected":"c1","actual":"c2","detail":"摘要与实际台账不一致（lastCode）—— 该日摘要过期/损坏，重出即可"}]
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt.mjs:114:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt.mjs:120:1
+✖ 收据：删掉当日台账 → LEDGER_MISSING；删一张收据 → 后续链断 (19.3116ms)
+  AssertionError [ERR_ASSERTION]: [{"type":"LEDGER_MISSING","kind":"LEDGER_MISSING","date":"2026-11-09","expected":"ledger/2026-11-09.jsonl","actual":"台账文件不存在","detail":"摘要说这天有账，台账文件却不见了"}]
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt.mjs:133:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at docs\自测-receipt.mjs:155:1
+✖ 收据：同内容幂等（written=false）；台账变化后重写 → RECEIPT_CONFLICT 且原收据不变 (4.1547ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-receipt.mjs:166:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-reconcile.mjs:381:1
+✖ reconcile：收据链浅检 —— 正确链无断；改前日收据 → CHAIN_BREAK (22.3163ms)
+  AssertionError [ERR_ASSERTION]: []
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:404:12
+      at withWork (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:43:12)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:383:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at docs\自测-reconcile.mjs:410:1
+✖ reconcile：封板 journal 篡改 → sealChain.ok=false（只报不修） (22.2794ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:431:12
+      at withWork (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:43:12)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:412:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-reconcile.mjs:589:1
+✖ W5：无证据行未标记 → 按缺凭证计；经 legacy 基线标记后才单列、不压 ok (12.2189ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'NO_BINDING_EVIDENCE'
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:608:12
+      at withWork (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:43:12)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:593:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'NO_BINDING_EVIDENCE',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-reconcile.mjs:643:1
+✖ W5b（反伪装）：把一条带证据的 v0.5 行删字段伪装 legacy → 必须仍按缺凭证计 (15.0744ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'NO_BINDING_EVIDENCE'
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:675:12
+      at withWork (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:43:12)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:646:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'NO_BINDING_EVIDENCE',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-reconcile.mjs:681:1
+✖ W5c：基线标记后行被改动（指纹不符）→ 按缺凭证计并计数 mismatched (18.303ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:705:12
+      at withWork (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:43:12)
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-reconcile.mjs:681:59)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-toolcards.mjs:161:1
+✖ V0.6/toolcards：原 5 个工具 name/description/parameters 未被改动（回归） (1.5378ms)
+  AssertionError [ERR_ASSERTION]: V0.9 起工具面共 9 个（原 5 + 新增 4），实际 3
+  
+  3 !== 9
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolcards.mjs:164:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-toolcards.mjs:193:1
+✖ V0.6/toolcards：5 个工具真实执行后，presentResult 全部返回合法卡片 (8.7495ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'execute')
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolcards.mjs:202:37)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at docs\自测-toolface.mjs:72:1
+✖ V0.6/toolface：9 个工具的定义齐全，描述里带"先查 Session ID"提示 (2.0118ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'ledger_search',
+      'ledger_turn',
+  -   'ledger_context',
+  -   'ledger_whoami',
+      'ledger_health',
+  -   'ledger_reconcile',
+  -   'ledger_anchor',
+  -   'ledger_cleanup_preview',
+  -   'ledger_cleanup_apply'
+    ]
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolface.mjs:74:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ledger_search', 'ledger_turn', 'ledger_health' ],
+    expected: [ 'ledger_search', 'ledger_turn', 'ledger_context', 'ledger_whoami', 'ledger_health', 'ledger_reconcile', 'ledger_anchor', 'ledger_cleanup_preview', 'ledger_cleanup_apply' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-toolface.mjs:92:1
+✖ V0.6/toolface：工具执行返回正确结果，并写入读日志 (2.7589ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'execute')
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolface.mjs:99:40)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at docs\自测-toolface.mjs:152:1
+✖ V0.6/toolface：能注册/撤销；没有 tools 服务时静默跳过不抛错 (0.4724ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 9
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolface.mjs:166:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-toolface.mjs:177:1
+✖ V0.6/toolface：apply() 带 tools 服务时注册 9 个工具，卸载时全部撤销 (83.965ms)
+  AssertionError [ERR_ASSERTION]: 带工具服务时必须注册 9 个工具（实际 ["ledger_search","ledger_turn","ledger_health"]）
+  
+  3 !== 9
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-toolface.mjs:194:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-周记账封板.mjs:976:1
+✖ P0-4：源 120/121/122 封板哈希互不相同；溢出先写补记再封板；journal 行即不可变快照 (188.2491ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - '3ae01bf2f996c8d721eb58e49a44d19644b02b26448f3576b90b9979c712681b'
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-%E5%91%A8%E8%AE%B0%E8%B4%A6%E5%B0%81%E6%9D%BF.mjs:1070:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: '3ae01bf2f996c8d721eb58e49a44d19644b02b26448f3576b90b9979c712681b',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-回归-v03.mjs:150:1
+✖ P3-1 / P3-2：时区变更触发重写；生成时间是 +08:00 (10.2557ms)
+  AssertionError [ERR_ASSERTION]: 改 offsetMinutes 必须重写（P3-1）
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-%E5%9B%9E%E5%BD%92-v03.mjs:160:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-回归-v03.mjs:166:1
+✖ F1：改 offsetMinutes 触发周记账全量重写（端到端） (61.4982ms)
+  AssertionError [ERR_ASSERTION]: 改偏移后必须重写（F1 端到端）
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-%E5%9B%9E%E5%BD%92-v03.mjs:181:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'groups=1,written=0,sealed=0',
+    expected: /written=[1-9]/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at docs\自测-清册v13.mjs:1373:1
+✖ CL-29 新格式解析：v1.3 明细→编码/RPT 号，只认结论=已删除（含附录 CSV） (3.2001ms)
+  AssertionError [ERR_ASSERTION]: ★ CL-29/CH-20 不成立：附录第 51 条未命中
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-%E6%B8%85%E5%86%8Cv13.mjs:1398:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at docs\自测-清册v13.mjs:1499:1
+✖ 坏 CSV 行 → 计数+报错，不静默通过（readErrors 必须非空且逐行可定位） (2.5244ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///<work-dir>/pkg/docs/%E8%87%AA%E6%B5%8B-%E6%B8%85%E5%86%8Cv13.mjs:1540:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+[看护] 结束: exit=1 用时 59.1s
+[看护] 物理内存: 1.01 GB 可用（跑完）
+[看护] 用例统计: tests=635 pass=593 fail=42 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-report-25032-mwhdt67e.txt）
+[看护] 失败明细: 解析到 42 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+[看护] 退役登记: 42 条（<work-dir>\pkg\docs\退役登记.json；schema=dsh-retired-tests/1，baseline=v1.0.0-re4）
+       分组: A 14 + B 2 + C 6 + D 3 + E 2 + F 6 + G 9 = 42
+[看护] 对账✓ 红数 42 与登记 42 条**逐名相等**（未登记红点 0、销号 0）—— 这才叫"无未登记红"。
+[看护] 红名单已落盘: C:\Users\<user>\AppData\Local\Temp\dsh-跑测试-对账-25032-mwhduftg.json（failNames 42 条 / 未登记 0 / 销号提示 0）
+[看护] 注意：非 0 可能是"测试失败"，也可能是"堆上限触发 OOM" —— 请先看上面的报错类型。

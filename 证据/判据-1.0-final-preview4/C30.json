@@ -1,0 +1,86 @@
+{
+  "schema": "criteria-1.0/1#C30",
+  "at": "2026-11-15T05:23:47.315Z",
+  "id": "C30",
+  "status": "GREEN",
+  "summary": "小库 3 个区间逐 code 一致（12/8/8 行）；大库 3 个区间逐 code 一致（1338/690/678 行）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-preview4/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-preview4/child-判据-0.9.4",
+    "childEvidence": {
+      "per": [
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\c01-lab\\root",
+          "label": "小库",
+          "cases": [
+            {
+              "range": "20261005..20261007",
+              "indexRows": 12,
+              "bruteRows": 12,
+              "equal": true,
+              "mismatched": 0
+            },
+            {
+              "range": "20261005..20261006",
+              "indexRows": 8,
+              "bruteRows": 8,
+              "equal": true,
+              "mismatched": 0
+            },
+            {
+              "range": "20261006..20261007",
+              "indexRows": 8,
+              "bruteRows": 8,
+              "equal": true,
+              "mismatched": 0
+            }
+          ]
+        },
+        {
+          "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0-preview4\\lab-e3-accept\\root",
+          "label": "大库",
+          "cases": [
+            {
+              "range": "20260901..20261015",
+              "indexRows": 1338,
+              "bruteRows": 1338,
+              "equal": true,
+              "mismatched": 0
+            },
+            {
+              "range": "20260901..20260923",
+              "indexRows": 690,
+              "bruteRows": 690,
+              "equal": true,
+              "mismatched": 0
+            },
+            {
+              "range": "20260923..20261015",
+              "indexRows": 678,
+              "bruteRows": 678,
+              "equal": true,
+              "mismatched": 0
+            }
+          ]
+        }
+      ],
+      "problems": []
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "按时间范围查 → 与\"暴力扫台账\"结果集完全一致",
+  "how": "两条路对撞",
+  "zonggang": "总纲 §7 L594",
+  "caliber": ""
+}

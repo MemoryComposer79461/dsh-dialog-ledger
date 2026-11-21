@@ -1,0 +1,22 @@
+{
+  "schema": "v05-ac/1",
+  "id": "HL-03",
+  "family": "HL",
+  "acId": "AC-V05-HL-03",
+  "product": "xlsx",
+  "requirement": "草稿缺：action=`weekly-draft-regenerate`；执行后 xlsx 存在、可 openpyxl 打开、说明页状态=草稿；再 scan 不报该组",
+  "implementation": "`lib/selfheal.js` + `lib/weekly.js`",
+  "coverage": "单元级",
+  "status": "仅单元覆盖（未逐条）",
+  "note": "运行报告由 docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs 覆盖；自愈周期接线未做",
+  "directCase": null,
+  "scenario": null,
+  "familyEvidence": {
+    "suite": "docs\\自测-reconcile.mjs + docs\\自测-index-integration.mjs",
+    "result": "docs\\自测-reconcile.mjs（12 例）",
+    "cases": [],
+    "casesStatus": []
+  },
+  "generatedAt": "2026-11-09 21:18:41 +08:00",
+  "generatedBy": "docs/验收-v0.5/工具-生成判据总表.mjs"
+}
