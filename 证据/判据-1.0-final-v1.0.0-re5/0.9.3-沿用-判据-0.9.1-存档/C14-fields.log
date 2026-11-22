@@ -1,0 +1,15 @@
+$ node docs/replay-verify.mjs --root=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root --sessions=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions --fields
+exit=0
+
+重放核验（离线只读，不进 tick）· C14–C16 · 模式=fields
+  root     = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root
+  sessions = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions
+
+【源】 会话源 3 个（v4=3 ｜ v3 只读=0） ｜ 已闭合轮=12 ｜ 不可解析=0 ｜ v3 不参与比对=0
+【账】 行=12 ｜ 文件=3 ｜ 坏行=0 ｜ code 唯一 ✓ ｜ (sid,turn) 唯一 ✓
+【比】 配对=12/12 ｜ 不符=0 ｜ 缺行=0 ｜ 多行=0
+【时】 16 ms
+
+结论：全绿 —— 台账与原文重放逐字段一致（C14），附件与原文文件均通过复核；C15/C16 未见红。
+边界：seq/gen 按全量重放分配（要求 --sessions 是该账库的全集来源）；v3 只读、未修改；本工具不写账库。
+

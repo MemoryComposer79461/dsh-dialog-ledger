@@ -1,0 +1,11 @@
+$ node 工具-manifest.mjs --root=D:\ledger-work\re5\pkg --verify
+exit=1 ms=281
+
+--- stdout ---
+[MANIFEST 校验] root=D:\ledger-work\re5\pkg
+  MANIFEST: D:\ledger-work\re5\pkg\MANIFEST.sha256
+  声明 734 / 实际 784 / 缺 0 / 多 50 / 改 0
+  多（前 20）: 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C01-语料四数.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C02-自测-index.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C03-自测-v02.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C04-自测-index+边界.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C05-自测-守卫.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C06-自测-边界.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C07-边界+ledger.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C08-P0回归.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C09-originals.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C10-views.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C11-自测-original.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C12-自测-original.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C13-自测-边界.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C14-fields.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-attachment.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-code.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-doc.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-seq.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-sid.log, 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-status.log …共 50
+  [FAIL] 有差异
+
+--- stderr ---

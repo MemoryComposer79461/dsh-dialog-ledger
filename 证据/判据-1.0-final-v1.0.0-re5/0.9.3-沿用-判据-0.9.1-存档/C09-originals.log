@@ -1,0 +1,15 @@
+$ node docs/replay-verify.mjs --root=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root --sessions=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions --originals
+exit=0
+
+C09 原始事件附件逐字节复核（离线只读，不进 tick）· --originals
+  root     = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root
+  sessions = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions
+
+【源】 会话源=3 ｜ 已闭合轮=12 ｜ 不可解析=0
+【账】 行=12 ｜ 配对=12 ｜ 缺行=0 ｜ 多行=0
+【比】 范围=台账里有的行（默认） ｜ 覆盖=12 份 ｜ 已比=12 ｜ 逐字节相等=12 ｜ 不符=0
+         （比较口径：长度 + sha256 + Buffer.equals；逐字节，不抽样）
+【时】 14 ms
+
+结论：全绿 —— 每份「原始事件.json」与源会话重放序列化逐字节相等（C09）。
+

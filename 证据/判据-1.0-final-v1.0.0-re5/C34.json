@@ -1,0 +1,67 @@
+{
+  "schema": "criteria-1.0/1#C34",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C34",
+  "status": "GREEN",
+  "summary": "今天（=数据最新日） 4.03 ms/100 ms（1 分片）；90 天 31.09 ms/1000 ms（45 分片）；指定冷月 21.63 ms/2000 ms（30 分片）；规模=45 天，3 年档未测",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+      "measured": [
+        {
+          "name": "今天（=数据最新日）",
+          "range": "20261015..20261015",
+          "thresholdMs": 100,
+          "note": "系统日 2026-11-13 当天无台账，取数据最新日 20261015",
+          "ms": 4.03,
+          "rows": 18,
+          "shardsRead": 1,
+          "bytesRead": 1947,
+          "ok": true
+        },
+        {
+          "name": "90 天",
+          "range": "20260718..20261015",
+          "thresholdMs": 1000,
+          "note": "E3 只有 45 天/37 分片：90 天档请求退化为全部分片（可测的最坏档）",
+          "ms": 31.09,
+          "rows": 1338,
+          "shardsRead": 45,
+          "bytesRead": 145167,
+          "ok": true
+        },
+        {
+          "name": "指定冷月",
+          "range": "20260901..20260930",
+          "thresholdMs": 2000,
+          "note": "冷月取最早月 202609",
+          "ms": 21.63,
+          "rows": 900,
+          "shardsRead": 30,
+          "bytesRead": 97650,
+          "ok": true
+        }
+      ],
+      "problems": [],
+      "caliber": "E3 规模（1,338 行/37 分片/45 天）：90 天档=全部分片；3 年规模（真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB）未建合成库 → 不外推为绿"
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "性能：查今天 < 100 ms；查 90 天 < 1 s；查指定冷月 < 2 s",
+  "how": "三档计时",
+  "zonggang": "总纲 §7 L598",
+  "caliber": ""
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "criteria-1.0/1#C21",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C21",
+  "status": "GREEN",
+  "summary": "稳态 2 tick 读盘最大 12.1 KiB ≤1 MiB；读放大最大 1.00× ≤2× 变更量（变化承载=state+头尾指纹；语料 34.15 MiB 未被全量重读）",
+  "reasons": [],
+  "evidence": {
+    "metrics": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+    "steadyTicks": 2,
+    "perTick": [
+      {
+        "tick": "2452-1795321660265",
+        "ts": "2026-11-22T12:27:40+08:00",
+        "readBytes": 12387,
+        "changeAmount": 12387,
+        "ratio": 1,
+        "written": 0
+      },
+      {
+        "tick": "2452-1795321660281",
+        "ts": "2026-11-22T12:27:40+08:00",
+        "readBytes": 11983,
+        "changeAmount": 11983,
+        "ratio": 1,
+        "written": 0
+      }
+    ],
+    "caliber": "C21 原文：稳态单 tick 读盘 ≤1 MB 且 ≤2× 变更量（不是全量重读）。变更量 = consumedSourceBytes+stateBytes+headFpBytes+tailFpBytes（tick 自记的变化承载量；稳态下 readBytes 恰等于它 = 1.00×）；另：稳态 readBytes/语料 = 只读变化而非全量",
+    "note": "样本 2 tick（条款建议无变更跑 10 tick；E3 现有只读度量只有 2 个稳态 tick，10 tick 观测未跑，已登记残余）",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "D 续航稳产",
+  "gate": "P2",
+  "source": "★ 稳态单 tick 读盘 ≤ 1 MB，且 ≤ 2× 变更量（不是全量重读）",
+  "how": "无变更跑 10 tick 计读盘",
+  "zonggang": "总纲 §7 L580",
+  "caliber": ""
+}

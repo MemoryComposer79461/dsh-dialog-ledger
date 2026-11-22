@@ -1,0 +1,44 @@
+{
+  "schema": "criteria-1.0/1#C23",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C23",
+  "status": "GREEN",
+  "summary": "扫描 2815 文件：扩展名分布 (none)=2/.json=1356/.md=1354/.jsonl=100/.xlsx=3；白名单外 0（例外：周账 xlsx 3、外发摘要 txt 0；根标记 .ledger-root 2）",
+  "reasons": [],
+  "evidence": {
+    "roots": [
+      {
+        "label": "E3 大库",
+        "root": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root",
+        "files": 2773
+      },
+      {
+        "label": "c01 小库",
+        "root": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+        "files": 42
+      }
+    ],
+    "filesTotal": 2815,
+    "extCount": {
+      "(none)": 2,
+      ".json": 1356,
+      ".md": 1354,
+      ".jsonl": 100,
+      ".xlsx": 3
+    },
+    "exceptions": {
+      "xlsx": 3,
+      "txt": 0,
+      "rootMarker": 2
+    },
+    "violations": [],
+    "caliber": "§5.9①/C23：台账/索引/游标/报告只用 .jsonl/.md/.json；仅两个例外——周账视图 .xlsx、外发日结摘要 .txt；.ledger-root 是账库根标记（lib/layout.js，非判据产物），允许存在",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "D 续航稳产",
+  "gate": "P2",
+  "source": "判据产物（台账/索引/游标/报告）只用 `.jsonl` / `.md` / `.json`；**例外**：周账视图 `.xlsx`、外发日结摘要 `.txt`",
+  "how": "按白名单扫扩展名",
+  "zonggang": "总纲 §7 L582",
+  "caliber": "§5.9① 落盘格式；B11 已把两个例外写进判据与 §5.9①"
+}

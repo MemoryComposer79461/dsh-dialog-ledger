@@ -1,0 +1,33 @@
+{
+  "id": "C35",
+  "title": "★ 冷层（按月）查询不加载其他月份索引（按实际读取的 .index 分片验）",
+  "status": "GREEN",
+  "evidence": {
+    "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+    "coldMonth": "202609",
+    "range": "20260901..20260930",
+    "inRangeShards": 30,
+    "shardsRead": 30,
+    "monthsRead": [
+      "202609"
+    ],
+    "outOfRange": [],
+    "rowsReturned": 900,
+    "bruteRows": 900,
+    "filesRead": [
+      "idx-20260901.jsonl",
+      "idx-20260902.jsonl",
+      "idx-20260903.jsonl",
+      "idx-20260904.jsonl",
+      "idx-20260905.jsonl",
+      "idx-20260906.jsonl",
+      "idx-20260907.jsonl",
+      "idx-20260908.jsonl",
+      "idx-20260909.jsonl",
+      "idx-20260910.jsonl"
+    ],
+    "caliber": "以 fs.readFileSync 钩子记录实际打开的 .index 分片；命中行的台账 hydrate 另计（不属\"索引加载\"）",
+    "problems": []
+  },
+  "summary": "冷月 202609 range=20260901..20260930：只读该月 30 个分片、月份集={202609}、范围外 0；命中 900=暴力 900"
+}

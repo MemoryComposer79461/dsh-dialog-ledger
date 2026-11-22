@@ -1,0 +1,41 @@
+$ node docs/跑测试.mjs docs/自测-index.mjs docs/自测-边界.mjs
+exit=0
+
+[看护] 物理内存: 3.21 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 2 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-index.mjs docs/自测-边界.mjs
+
+✔ runOnce A：只有 turn/start 且文件很新 → written=0、openTurns=1（进行中轮次不入账） (46.6073ms)
+✔ runOnce B：未闭合轮次不写 partial（审计 A-01）；闭合后恰好一条 ok，重跑幂等 (81.3641ms)
+✔ runOnce C：全新 root + 2 小时前的老会话（hotWindow=3600）→ 首跑仍全量扫并写入 (38.5114ms)
+✔ runOnce D：同一 root 次跑 → 老会话被热窗口跳过（scanned 减一） (41.4727ms)
+✔ runOnce E：同一 root 连跑两次 → 第二次 written=0、账本总数不变 (40.2341ms)
+✔ runOnce F：跑完存在 ledger/.state.json，initialized=true 且留痕；次跑 firstRun=false (39.2483ms)
+✔ apply：有 ctx.effect 时返回 undefined，且通过 effect 注册了清理函数；调用后 clearInterval 生效 (26.3082ms)
+✔ apply：无 ctx.effect 时退化为返回清理函数；调用它同样 clearInterval (17.8618ms)
+✔ apply：enabled=false → 不起定时器、不注册 effect，返回空清理函数 (1.4087ms)
+✔ 跨零点：23:50 开始、两轮跨到次日 00:10 → 编码日期段均为 20261107，台账分落 11-07 与 11-08 两个日文件 (88.3753ms)
+✔ 跨月：2026-01-31T23:59 开始、两轮跨到 2/1 00:01 → 编码日期段均为 20260131，台账分落 01-31 与 02-01 两个日文件 (49.9978ms)
+✔ 坏事件守卫：缺 time 与缺 data.turn 的 turn/start → collectTurnsDetailed.malformed=2、closed 为空 (3.1566ms)
+✔ 坏事件守卫：同一会话驱动 runOnce → 不写任何行，stat.malformedTurns=2 且 errors 有条目 (15.8871ms)
+✔ 孤儿轮次·进行中：只有 turn/start、mtime=现在（quietSeconds=120）→ written=0、openTurns=1，不写 partial (21.4952ms)
+✔ 孤儿轮次·不写 partial（审计 A-01）：两扫均只留 pending，补 turn/end 后恰好一条 ok (59.3015ms)
+✔ 规模：单会话 1200 轮 → written=1200、code 唯一 1200、(sid,turn) 唯一 1200；二次 runOnce written=0、skipped=1200 (12386.6521ms)
+ℹ 1200 轮首跑耗时 12123.4 ms（仅记录，不比阈值）
+ℹ 1200 轮二次跑耗时 8.9 ms（仅记录，不比阈值）
+✔ INV-04：截短重写后追加新 Turn → 新内容必须被读到（written>0、unchanged=0） (72.0559ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13269.7388
+
+[看护] 结束: exit=0 用时 13.3s
+[看护] 物理内存: 3.21 GB 可用（跑完）
+[看护] 用例统计: tests=17 pass=17 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\ADMINI~1\AppData\Local\Temp\dsh-跑测试-report-5192-mwrc8efh.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

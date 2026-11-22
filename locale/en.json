@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Dialog ledger",
-    "description": "Records every AI–human dialog turn into a local ledger (JSONL entries, verbatim originals, weekly Excel workbooks). Ships 3 read-only agent tools and 7 read-only panel APIs; zero dependencies, offline, no model calls, no context injection; the default ledger root is the desktop folder \"会话账本\". This is a lite-line snapshot, not the production-admission release.",
+    "title": "Zhangshi · Dialog Ledger",
+    "description": "Records every AI–human dialog turn into a local ledger (JSONL entries, verbatim originals, weekly Excel workbooks) so that the ledger and the verbatim originals reconcile. Ships 3 read-only agent tools and 7 read-only panel APIs; zero dependencies, offline, no model calls, no context injection; default ledger root is the desktop folder \"会话账本\". \"Zhangshi\" (账实) means \"ledger matches reality\" — the core test in auditing. v1.0.0 stable.",
     "detail": "README.md"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "schema": "criteria-1.0/1#C06",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C06",
+  "status": "GREEN",
+  "summary": "1 项全过（自测-边界）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "自测-边界",
+        "file": "docs/跑测试.mjs",
+        "exit": 0,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "A 保存正确",
+  "gate": "P1",
+  "source": "文件换成更小的（尾部不同）→ 新内容入账、游标停在新文件边界",
+  "how": "截短文件，看游标位置",
+  "zonggang": "总纲 §7 L550",
+  "caliber": ""
+}

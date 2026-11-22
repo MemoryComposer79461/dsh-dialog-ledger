@@ -1,0 +1,84 @@
+{
+  "schema": "criteria-1.0/1#C25",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C25",
+  "status": "GREEN",
+  "summary": "大会话 34.15 MiB：3 tick 入账 1338 行无重复（written=1338，唯一 code/(sid,turn)=1338/1338）；3 tick 耗时 7659/8403/1246 ms ≤30 s；消费 15.97 MiB/15.98 MiB/2.20 MiB ≤17 MiB、读盘 32.59 MiB/32.61 MiB/4.50 MiB ≤40 MiB；游标 34.15 MiB/34.15 MiB（100.00%）",
+  "reasons": [],
+  "evidence": {
+    "bigSession": {
+      "rel": "wsE3/session-e3accept0001-1111-2222-3333-444444444401/session.v4.jsonl.zstd",
+      "size": 35812336
+    },
+    "metrics": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+    "ticks": [
+      {
+        "written": 626,
+        "ms": 7659,
+        "consumed": 16750779,
+        "readBytes": 34173302,
+        "stateBytes": 0,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 626,
+        "ms": 8403,
+        "consumed": 16758963,
+        "readBytes": 34196837,
+        "stateBytes": 7167,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 86,
+        "ms": 1246,
+        "consumed": 2302594,
+        "readBytes": 4718581,
+        "stateBytes": 6999,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 0,
+        "ms": 14,
+        "consumed": 0,
+        "readBytes": 12387,
+        "stateBytes": 4195,
+        "headFp": 4096,
+        "tailFp": 4096
+      },
+      {
+        "written": 0,
+        "ms": 13,
+        "consumed": 0,
+        "readBytes": 11983,
+        "stateBytes": 3791,
+        "headFp": 4096,
+        "tailFp": 4096
+      }
+    ],
+    "rowsCount": 1338,
+    "uniqueCode": 1338,
+    "uniqueSidTurn": 1338,
+    "endToEndTicks": 3,
+    "cursor": {
+      "size": 35812336,
+      "offset": 35812336,
+      "pct": "100.00%"
+    },
+    "limits": {
+      "ms": 30000,
+      "consumed": 17825792,
+      "read": 41943040
+    },
+    "caliber": "S-9①：保留「3 tick 内完整入账 + 单 tick ≤30 s + 游标前进」；读盘改为「消费 ≤17 MiB/tick、读放大 ≤2.5×（≤40 MB/tick）」；无重复 = written 合计=台账行数 且 code/(sid,turn) 唯一",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "D 续航稳产",
+  "gate": "P2",
+  "source": "★★ 38.82 MB 会话：单 tick ≤ 30 秒、读盘 ≤ 8 MB、游标前进；连续 3 tick 内完整入账、无重复",
+  "how": "单会话大文件压测",
+  "zonggang": "总纲 §7 L584",
+  "caliber": "S-9① 改判：保留 3 tick/≤30 s；读盘改为「消费 ≤17 MiB/tick、读放大 ≤2.5×（≤40 MB/tick）」"
+}

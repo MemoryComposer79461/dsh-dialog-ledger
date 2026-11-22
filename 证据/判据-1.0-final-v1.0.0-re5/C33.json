@@ -1,0 +1,111 @@
+{
+  "schema": "criteria-1.0/1#C33",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C33",
+  "status": "GREEN",
+  "summary": "2 例未命中均返回 searchedRange+olderAvailable+hint（code 例 exit 1、空档 olderAvailable=true 且 searchedRange=20261016..20261022）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+      "gap": {
+        "from": "20261016",
+        "to": "20261022"
+      },
+      "missCode": "20260901-e3accept0001-A-99999999",
+      "checks": [
+        {
+          "name": "不存在 code",
+          "arg": "--code=20260901-e3accept0001-A-99999999",
+          "json": {
+            "command": "index query",
+            "ok": false,
+            "exitCode": 1,
+            "found": false,
+            "count": 0,
+            "rows": [],
+            "searchedRange": {
+              "fromYmd": "20260901",
+              "toYmd": "20261015"
+            },
+            "olderAvailable": false,
+            "newerAvailable": false,
+            "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。",
+            "allShardDays": 45,
+            "shardsRead": 45,
+            "bytesRead": 145167,
+            "rowsRead": 0,
+            "limitHit": false,
+            "extraScan": false,
+            "pointerProblems": [],
+            "ms": 9
+          },
+          "status": 1,
+          "found": false,
+          "fields": true,
+          "searchedRange": {
+            "fromYmd": "20260901",
+            "toYmd": "20261015"
+          },
+          "olderAvailable": false,
+          "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。"
+        },
+        {
+          "name": "空档 range",
+          "arg": "--range=20261016..20261022",
+          "json": {
+            "command": "index query",
+            "ok": false,
+            "exitCode": 1,
+            "found": false,
+            "count": 0,
+            "rows": [],
+            "searchedRange": {
+              "fromYmd": "20261016",
+              "toYmd": "20261022"
+            },
+            "olderAvailable": true,
+            "newerAvailable": false,
+            "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。",
+            "allShardDays": 45,
+            "shardsRead": 0,
+            "bytesRead": 0,
+            "rowsRead": 0,
+            "limitHit": false,
+            "extraScan": false,
+            "pointerProblems": [],
+            "ms": 6
+          },
+          "status": 1,
+          "found": false,
+          "fields": true,
+          "searchedRange": {
+            "fromYmd": "20261016",
+            "toYmd": "20261022"
+          },
+          "olderAvailable": true,
+          "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。"
+        }
+      ],
+      "problems": [],
+      "note": "CLI 无 keyword 条件 → 用\"不存在 code\"+\"空档 range\"两例代替\"查不存在的词\""
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "★★ 查不到必须返回 `searchedRange` + `olderAvailable` + `hint`",
+  "how": "查一个不存在的词",
+  "zonggang": "总纲 §7 L597",
+  "caliber": ""
+}

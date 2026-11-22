@@ -1,0 +1,709 @@
+{
+  "schema": "lite-daily/1",
+  "toolVersion": "1.0",
+  "generatedAt": "2026-11-22T12:30:54.835+08:00",
+  "date": "20261122",
+  "exitCode": 0,
+  "verdict": "green",
+  "ok": true,
+  "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root",
+  "sessions": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions",
+  "argv": [
+    "--root=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root",
+    "--sessions=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions",
+    "--json"
+  ],
+  "elapsedMs": 261,
+  "toolPaths": {
+    "self": "D:\\ledger-work\\re5\\pkg\\docs\\工具-日检.mjs",
+    "replay": "D:\\ledger-work\\re5\\pkg\\docs\\replay-verify.mjs",
+    "doctor": "D:\\ledger-work\\re5\\pkg\\tools\\doctor.mjs",
+    "node": "v24.21.0"
+  },
+  "criteria": {
+    "id": "C19",
+    "name": "中段改写（只改中段、头尾不动）→ 当天全量核发现",
+    "how": "复用 docs/replay-verify.mjs --fields：台账行 vs 源会话重放的应有行逐字段比（含附件 sha256/bytes）",
+    "scopeNote": "只保证\"下次日检发现\"，不承诺当场发现；中段改写不在 size/mtime 采样能力内"
+  },
+  "broken": {
+    "isBroken": false,
+    "reasons": []
+  },
+  "summary": {
+    "checks": 3,
+    "ok": 3,
+    "warn": 0,
+    "red": 0,
+    "unknown": 0,
+    "c19": {
+      "ok": true,
+      "mismatches": 0,
+      "locatedTurns": 0,
+      "byKind": {},
+      "ledgerRows": 12,
+      "replayedTurns": 12,
+      "compared": 12
+    },
+    "doctor": {
+      "ok": 5,
+      "warn": 0,
+      "red": 0,
+      "unknown": 0
+    }
+  },
+  "checks": [
+    {
+      "id": "C19-replay-fields",
+      "name": "C19 中段改写检测（账 vs 源逐轮全量重放）",
+      "ok": true,
+      "severity": "ok",
+      "message": "台账 12 行 / 重放 12 轮 / 逐字段比 12 轮；坏行 0、坏帧源 0、跳过 0；全量一致",
+      "details": {
+        "replayExitCode": 0,
+        "counts": {
+          "ledgerFiles": 3,
+          "ledgerBadLines": 0,
+          "ledgerReadErrors": 0,
+          "ledgerDirExists": true,
+          "ledgerEmptyProven": false,
+          "replayedSessions": 3,
+          "v4Sources": 3,
+          "v3Sources": 0,
+          "v3PrefixSessions": 0,
+          "pairs": 12,
+          "missing": 0,
+          "extra": 0,
+          "codeUnique": true,
+          "sidTurnUnique": true
+        },
+        "skipped": {
+          "v3": 0,
+          "unparsable": 0,
+          "unsupported": 0,
+          "v3Rows": 0,
+          "frameFailedSources": 0
+        },
+        "elapsedMs": 16,
+        "invariants": [
+          {
+            "id": "replay-exists",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "replay-spawn",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "replay-exit-code",
+            "ok": true,
+            "detail": "exit=0"
+          },
+          {
+            "id": "replay-json",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "replay-schema",
+            "ok": true,
+            "detail": "schema=v091-replay-verify/1"
+          },
+          {
+            "id": "replay-mode",
+            "ok": true,
+            "detail": "mode=fields"
+          },
+          {
+            "id": "replay-echo-root",
+            "ok": true,
+            "detail": "root=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root"
+          },
+          {
+            "id": "replay-echo-sessions",
+            "ok": true,
+            "detail": "sessions=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions"
+          },
+          {
+            "id": "replay-self-consistent",
+            "ok": true,
+            "detail": "ok=true exitCode=0 mismatches=0"
+          },
+          {
+            "id": "replay-coverage",
+            "ok": true,
+            "detail": "compared=12 pairs=12 replayedTurns=12 ledgerRows=12 replayedSessions=3 elapsedMs=16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "doctor-5checks",
+      "name": "每日体检（tools/doctor.mjs 5 类）",
+      "ok": true,
+      "severity": "ok",
+      "message": "绿 5 / 黄 0 / 红 0 / 未知 0",
+      "details": {
+        "doctorExitCode": 0,
+        "summary": {
+          "ok": 5,
+          "warn": 0,
+          "red": 0,
+          "unknown": 0
+        },
+        "items": [
+          {
+            "id": "data-integrity",
+            "name": "①数据完整性",
+            "severity": "ok",
+            "dailySeverity": "ok",
+            "message": "台账 12 行（有效 12）/ 原文视图 12 / 附件 12；坏行 0、读错 0；缺凭证 0、孤儿 0；缺口留痕 0",
+            "ms": 42
+          },
+          {
+            "id": "code-consistency",
+            "name": "②编码一致性",
+            "severity": "ok",
+            "dailySeverity": "ok",
+            "message": "code 唯一 / (sid,turn) 唯一；抽样 12 份全文 sha256 全符；entryHash 已被 S-6 否决，不检",
+            "ms": 22
+          },
+          {
+            "id": "ingest-health",
+            "name": "③采集健康",
+            "severity": "ok",
+            "dailySeverity": "ok",
+            "message": "源会话 3 / 可见 3 / 不支持版本 0 / v3 只读源 0；state 正常（lastRunAt 2026-11-22T12:27:19+08:00，0.1h 前）；pending 0 条",
+            "ms": 4
+          },
+          {
+            "id": "storage-health",
+            "name": "④存储健康",
+            "severity": "ok",
+            "dailySeverity": "ok",
+            "message": "体积 607.0 KB / 文件 42；最大单文件 181.0 KB（账务上限 4.00 MB；运行度量上限 64.00 MB）；pending 0 B / 1.00 MB；语料倍率 skipped",
+            "ms": 5
+          },
+          {
+            "id": "run-report",
+            "name": "⑤运行报告",
+            "severity": "ok",
+            "dailySeverity": "ok",
+            "message": "最近 7 天：1 天有报告 / 缺 0 天；最近 gate=ok；采集字节 0 B（耗时口径无数据源）",
+            "ms": 1
+          }
+        ],
+        "invariants": [
+          {
+            "id": "doctor-exists",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "doctor-spawn",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "doctor-json",
+            "ok": true,
+            "detail": ""
+          },
+          {
+            "id": "doctor-schema",
+            "ok": true,
+            "detail": "schema=doctor/1"
+          },
+          {
+            "id": "doctor-exit-code",
+            "ok": true,
+            "detail": "exit=0"
+          },
+          {
+            "id": "doctor-exit-echo",
+            "ok": true,
+            "detail": "json.exitCode=0 进程=0"
+          },
+          {
+            "id": "doctor-5checks",
+            "ok": true,
+            "detail": "checks=data-integrity,code-consistency,ingest-health,storage-health,run-report"
+          },
+          {
+            "id": "doctor-summary",
+            "ok": true,
+            "detail": "summary={\"ok\":5,\"warn\":0,\"red\":0,\"unknown\":0} 实测={\"ok\":5,\"warn\":0,\"red\":0,\"unknown\":0}"
+          },
+          {
+            "id": "doctor-exit-consistent",
+            "ok": true,
+            "detail": "exitCode=0 red=0 unknown=0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "readonly-guard",
+      "name": "只读守卫（除 报告/ 外账库零写入）",
+      "ok": true,
+      "severity": "ok",
+      "message": "账库 42 文件 / 5 目录；前后快照一致（排除 报告/；stat：size+mtime）",
+      "details": {
+        "before": {
+          "mode": "stat",
+          "errors": [],
+          "files": 42,
+          "dirs": 5,
+          "totalBytes": 621598,
+          "digest": "d6487a0a5cb035b363e0a2ca0f626c5f9d49fb36c22f3f9288b9dde0b17df21b",
+          "elapsedMs": 6
+        },
+        "after": {
+          "mode": "stat",
+          "errors": [],
+          "files": 42,
+          "dirs": 5,
+          "totalBytes": 621598,
+          "digest": "d6487a0a5cb035b363e0a2ca0f626c5f9d49fb36c22f3f9288b9dde0b17df21b",
+          "elapsedMs": 5
+        },
+        "diff": {
+          "added": [],
+          "removed": [],
+          "changed": [],
+          "clean": true
+        }
+      }
+    }
+  ],
+  "c19": {
+    "replayPath": "D:\\ledger-work\\re5\\pkg\\docs\\replay-verify.mjs",
+    "replayExitCode": 0,
+    "replayOk": true,
+    "mode": "fields",
+    "ledgerRows": 12,
+    "replayedTurns": 12,
+    "compared": 12,
+    "skipped": {
+      "v3": 0,
+      "unparsable": 0,
+      "unsupported": 0,
+      "v3Rows": 0,
+      "frameFailedSources": 0
+    },
+    "counts": {
+      "ledgerFiles": 3,
+      "ledgerBadLines": 0,
+      "ledgerReadErrors": 0,
+      "ledgerDirExists": true,
+      "ledgerEmptyProven": false,
+      "replayedSessions": 3,
+      "v4Sources": 3,
+      "v3Sources": 0,
+      "v3PrefixSessions": 0,
+      "pairs": 12,
+      "missing": 0,
+      "extra": 0,
+      "codeUnique": true,
+      "sidTurnUnique": true
+    },
+    "elapsedMs": 16,
+    "byKind": {},
+    "mismatches": [],
+    "locatedTurns": [],
+    "notes": [],
+    "sources": [
+      {
+        "sid": "session-c01lab0001-1111-2222-3333-444444444401",
+        "source": "v4",
+        "version": 4,
+        "dir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsA\\session-c01lab0001-1111-2222-3333-444444444401",
+        "path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsA\\session-c01lab0001-1111-2222-3333-444444444401\\session.v4.jsonl.zstd",
+        "file": "session.v4.jsonl.zstd",
+        "bytes": 508,
+        "mtimeMs": 1795321639640.7505
+      },
+      {
+        "sid": "session-c01lab0002-1111-2222-3333-444444444402",
+        "source": "v4",
+        "version": 4,
+        "dir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsB\\session-c01lab0002-1111-2222-3333-444444444402",
+        "path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsB\\session-c01lab0002-1111-2222-3333-444444444402\\session.v4.jsonl.zstd",
+        "file": "session.v4.jsonl.zstd",
+        "bytes": 488,
+        "mtimeMs": 1795321639641.748
+      },
+      {
+        "sid": "session-c01lab0003-1111-2222-3333-444444444403",
+        "source": "v4",
+        "version": 4,
+        "dir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsC\\session-c01lab0003-1111-2222-3333-444444444403",
+        "path": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\\wsC\\session-c01lab0003-1111-2222-3333-444444444403\\session.v4.jsonl.zstd",
+        "file": "session.v4.jsonl.zstd",
+        "bytes": 482,
+        "mtimeMs": 1795321639642.745
+      }
+    ],
+    "sourcesUnsupported": [],
+    "sourceDrift": null,
+    "ledgerReadError": "",
+    "invariants": [
+      {
+        "id": "replay-exists",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "replay-spawn",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "replay-exit-code",
+        "ok": true,
+        "detail": "exit=0"
+      },
+      {
+        "id": "replay-json",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "replay-schema",
+        "ok": true,
+        "detail": "schema=v091-replay-verify/1"
+      },
+      {
+        "id": "replay-mode",
+        "ok": true,
+        "detail": "mode=fields"
+      },
+      {
+        "id": "replay-echo-root",
+        "ok": true,
+        "detail": "root=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root"
+      },
+      {
+        "id": "replay-echo-sessions",
+        "ok": true,
+        "detail": "sessions=C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions"
+      },
+      {
+        "id": "replay-self-consistent",
+        "ok": true,
+        "detail": "ok=true exitCode=0 mismatches=0"
+      },
+      {
+        "id": "replay-coverage",
+        "ok": true,
+        "detail": "compared=12 pairs=12 replayedTurns=12 ledgerRows=12 replayedSessions=3 elapsedMs=16"
+      }
+    ]
+  },
+  "doctor": {
+    "doctorPath": "D:\\ledger-work\\re5\\pkg\\tools\\doctor.mjs",
+    "exitCode": 0,
+    "summary": {
+      "ok": 5,
+      "warn": 0,
+      "red": 0,
+      "unknown": 0
+    },
+    "checks": [
+      {
+        "id": "data-integrity",
+        "name": "①数据完整性",
+        "ok": true,
+        "severity": "ok",
+        "details": {
+          "message": "台账 12 行（有效 12）/ 原文视图 12 / 附件 12；坏行 0、读错 0；缺凭证 0、孤儿 0；缺口留痕 0",
+          "ledgerRows": 12,
+          "effectiveRows": 12,
+          "distinctSidTurn": 12,
+          "ledgerFiles": 3,
+          "ledgerDirExists": true,
+          "emptyProven": false,
+          "badLines": 0,
+          "readErrorCount": 0,
+          "views": 12,
+          "attachments": 12,
+          "originalMissing": 0,
+          "originalOrphan": 0,
+          "originalOrphanCodes": 0,
+          "lostGaps": 0,
+          "lostBadLines": 0,
+          "ledgerDir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root\\ledger",
+          "warnings": []
+        },
+        "ms": 42
+      },
+      {
+        "id": "code-consistency",
+        "name": "②编码一致性",
+        "ok": true,
+        "severity": "ok",
+        "details": {
+          "message": "code 唯一 / (sid,turn) 唯一；抽样 12 份全文 sha256 全符；entryHash 已被 S-6 否决，不检",
+          "rows": 12,
+          "uniqueCodes": 12,
+          "uniqueSidTurn": 12,
+          "invalidCode": 0,
+          "duplicateCodeGroups": 0,
+          "duplicateSidTurnGroups": 0,
+          "dateSegmentInvalid": 0,
+          "dateSegmentClashes": 0,
+          "hashSampled": 12,
+          "hashVerified": 12,
+          "hashMismatch": 0,
+          "hashProblems": [],
+          "checkHash": "sha256(full file) of 完整原文.md（expectedFullHash = 台账 docFileSha256）",
+          "entryHash": "not present (S-6 rejected)",
+          "warnings": []
+        },
+        "ms": 22
+      },
+      {
+        "id": "ingest-health",
+        "name": "③采集健康",
+        "ok": true,
+        "severity": "ok",
+        "details": {
+          "message": "源会话 3 / 可见 3 / 不支持版本 0 / v3 只读源 0；state 正常（lastRunAt 2026-11-22T12:27:19+08:00，0.1h 前）；pending 0 条",
+          "sessionsBase": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions",
+          "sourceSessions": 3,
+          "visibleSources": 3,
+          "unsupportedVersions": 0,
+          "unsupportedList": [],
+          "unreadableSources": [],
+          "v3ReadOnlySources": 0,
+          "sourcePairs": 0,
+          "state": {
+            "exists": true,
+            "ok": true,
+            "lastRunAt": "2026-11-22T12:27:19+08:00",
+            "firstRunAt": "2026-11-22T12:27:19+08:00",
+            "cursorCount": 3,
+            "error": null
+          },
+          "lastRunAgeSeconds": 216,
+          "cursors": {
+            "total": 3,
+            "stuck": [],
+            "active": [],
+            "activeCount": 0,
+            "shrunk": [],
+            "gone": [],
+            "mtimeChanged": [],
+            "notIngested": [],
+            "graceBasis": "mtime-recent=源 mtime 在宽限窗内（正在被写）；pending-unclosed=该源有未闭合轮 pending（等 turn/end）"
+          },
+          "pending": {
+            "records": 0,
+            "badLines": 0,
+            "readError": "",
+            "bytes": 0
+          },
+          "thresholds": {
+            "stateStaleWarnMs": 86400000,
+            "pendingMaxBytes": 1048576,
+            "cursorStuckGraceMs": 120000,
+            "cursorStuckRule": "游标卡住=red iff 源 size>游标 size 且源 mtime 静止 > 2×intervalSeconds 且该源无未闭合轮 pending；源 mtime 在宽限窗内（正在被写）或该源有未闭合轮 pending → 活动源宽限（ok/warn，不判红）"
+          },
+          "warnings": []
+        },
+        "ms": 4
+      },
+      {
+        "id": "storage-health",
+        "name": "④存储健康",
+        "ok": true,
+        "severity": "ok",
+        "details": {
+          "message": "体积 607.0 KB / 文件 42；最大单文件 181.0 KB（账务上限 4.00 MB；运行度量上限 64.00 MB）；pending 0 B / 1.00 MB；语料倍率 skipped",
+          "rootBytes": 621598,
+          "fileCount": 42,
+          "maxFile": {
+            "path": "2026年10月\\10月第2周-c01lab000111A的周记账.xlsx",
+            "bytes": 185352
+          },
+          "bigFiles": [],
+          "bigXlsxAllowed": [],
+          "bigMetricsAllowed": [],
+          "bigMetricsOverLimit": [],
+          "pendingBytes": 0,
+          "pendingMaxBytes": 1048576,
+          "corpus": "not given（语料倍率检查 skipped）",
+          "corpusBytes": null,
+          "ratio": null,
+          "corpusRatios": null,
+          "growth": {
+            "prevReport": null,
+            "skipped": "没有上一份 doctor 报告"
+          },
+          "thresholds": {
+            "maxSingleFileBytes": 4194304,
+            "maxMetricsFileBytes": 67108864,
+            "pendingMaxBytes": 1048576,
+            "growthWarnRatio": 0.5,
+            "corpusR1Expect": [
+              3,
+              3.6
+            ],
+            "corpusR2Range": [
+              1,
+              1.35
+            ],
+            "corpusR3Max": 0.05,
+            "corpusRatioMaxDeprecated": "1.25×（0.9.2 旧口径；S-10⑤ 作废，不再判红 —— 旧口径拿压缩语料当分母，必然 3.49×）"
+          },
+          "walkErrors": [],
+          "warnings": []
+        },
+        "ms": 5
+      },
+      {
+        "id": "run-report",
+        "name": "⑤运行报告",
+        "ok": true,
+        "severity": "ok",
+        "details": {
+          "message": "最近 7 天：1 天有报告 / 缺 0 天；最近 gate=ok；采集字节 0 B（耗时口径无数据源）",
+          "reportDir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root\\ledger",
+          "days": 7,
+          "expectedDays": 1,
+          "reportFiles": 1,
+          "missingDays": [],
+          "latest": {
+            "name": ".run-report-20261122.json",
+            "date": "20261122",
+            "parseOk": true,
+            "generatedAt": "2026-11-22 12:27:19",
+            "gate": "ok",
+            "ingestBytes": 0
+          },
+          "latestBatches": 3,
+          "ingestBytes": 0,
+          "eventOversize": 0,
+          "unavailable": [
+            "stuckSources",
+            "integrityFailures"
+          ],
+          "knownStructuralUnavailable": [
+            "stuckSources",
+            "integrityFailures"
+          ],
+          "perTick": false,
+          "perTickReason": "lib/report.js:36 当日覆盖写；报告无 elapsedMs/durationMs 字段 → \"最近 N 次 tick 耗时\"无数据源",
+          "daily": [
+            {
+              "date": "20261122",
+              "present": true,
+              "name": ".run-report-20261122.json",
+              "generatedAt": "2026-11-22 12:27:19",
+              "gate": "ok",
+              "counts": {
+                "ledgerRows": 12,
+                "originalMissing": 0,
+                "originalOrphan": 0,
+                "lostGaps": 0,
+                "errors": 0,
+                "warnings": 0,
+                "batches": 3
+              },
+              "errors": 0,
+              "warnings": 0,
+              "tornTailRepaired": 0,
+              "ingestBytes": 0
+            }
+          ],
+          "warnings": []
+        },
+        "ms": 1
+      }
+    ],
+    "invariants": [
+      {
+        "id": "doctor-exists",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "doctor-spawn",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "doctor-json",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "id": "doctor-schema",
+        "ok": true,
+        "detail": "schema=doctor/1"
+      },
+      {
+        "id": "doctor-exit-code",
+        "ok": true,
+        "detail": "exit=0"
+      },
+      {
+        "id": "doctor-exit-echo",
+        "ok": true,
+        "detail": "json.exitCode=0 进程=0"
+      },
+      {
+        "id": "doctor-5checks",
+        "ok": true,
+        "detail": "checks=data-integrity,code-consistency,ingest-health,storage-health,run-report"
+      },
+      {
+        "id": "doctor-summary",
+        "ok": true,
+        "detail": "summary={\"ok\":5,\"warn\":0,\"red\":0,\"unknown\":0} 实测={\"ok\":5,\"warn\":0,\"red\":0,\"unknown\":0}"
+      },
+      {
+        "id": "doctor-exit-consistent",
+        "ok": true,
+        "detail": "exitCode=0 red=0 unknown=0"
+      }
+    ],
+    "reportWrittenByDoctor": false,
+    "note": "doctor 以 --json --no-write 调用：报告由本文件统一落盘（报告/ 只出现一份日检）"
+  },
+  "readonly": {
+    "mode": "stat",
+    "excluded": [
+      "报告/"
+    ],
+    "before": {
+      "files": 42,
+      "dirs": 5,
+      "totalBytes": 621598,
+      "digest": "d6487a0a5cb035b363e0a2ca0f626c5f9d49fb36c22f3f9288b9dde0b17df21b",
+      "elapsedMs": 6
+    },
+    "after": {
+      "files": 42,
+      "dirs": 5,
+      "totalBytes": 621598,
+      "digest": "d6487a0a5cb035b363e0a2ca0f626c5f9d49fb36c22f3f9288b9dde0b17df21b",
+      "elapsedMs": 5
+    },
+    "diff": {
+      "added": [],
+      "removed": [],
+      "changed": [],
+      "clean": true
+    },
+    "snapshotErrors": [],
+    "note": "前后 stat(size+mtime) 一致 = 除 报告/ 外零写入（要抓\"改字节又还原 mtime\"请加 --readonly-sha）"
+  },
+  "maxDetail": 20,
+  "sourceSha": false,
+  "reportId": "日检-20261122-01",
+  "reportPath": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root\\报告\\日检-20261122-01.json",
+  "text": "日检 · 2026-11-22T12:30:54.835+08:00 · 第 01 份 · 结论 绿（exit 0）\n账库：C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root\n源  ：C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\dsh-home\\sessions\n──────────────────────────────────────────────────────────────────────────────\n[绿] C19 中段改写检测（账 vs 源逐轮全量重放）：台账 12 行 / 重放 12 轮 / 逐字段比 12 轮；坏行 0、坏帧源 0、跳过 0；全量一致\n[绿] 每日体检（tools/doctor.mjs 5 类）：绿 5 / 黄 0 / 红 0 / 未知 0\n[绿] 只读守卫（除 报告/ 外账库零写入）：账库 42 文件 / 5 目录；前后快照一致（排除 报告/；stat：size+mtime）\n──────────────────────────────────────────────────────────────────────────────\n结论：绿（exit 0）；检查 3 项 —— 绿 3 / 黄 0 / 红 0 / 未知 0；doctor 绿 5/5\n报告：C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\c19-20261122-122937\\root\\报告\\日检-20261122-01.json"
+}

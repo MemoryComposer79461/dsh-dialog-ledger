@@ -1,0 +1,57 @@
+{
+  "schema": "criteria-1.0/1#C28",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C28",
+  "status": "GREEN",
+  "summary": "追加 1 行→索引 +1（written=1/removed=0；视图重扫 0；读放大 0.0×）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c28\\run-1\\root",
+      "beforeRows": 12,
+      "afterRows": 13,
+      "changedDay": "20261007",
+      "appendedRowBytes": 928,
+      "build": {
+        "written": 1,
+        "unchanged": 0,
+        "removed": 0,
+        "ok": true,
+        "ms": 9
+      },
+      "otherShardsChanged": [],
+      "createdShards": [],
+      "reads": {
+        "ledgerReadBytes": 0,
+        "readAmplification": 0,
+        "shardReads": 3,
+        "viewReads": 0
+      },
+      "subchecks": {
+        "syncPlusOne": true,
+        "noWholeIndexRebuild": true,
+        "noViewRescan": true,
+        "rescanUnder3x": true
+      },
+      "caliber": "总纲\"怎么验=加一行看索引增量\"三子项成立；但判据括号里的\"不重扫\"按 P3 方案 E4-2（fs hook ≤新行×3）实测未达 → 整条判红，缺陷登记待 re1 补 idx-sync",
+      "defect": null
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "新增一行 → 索引同步加一行（不重建、不重扫）",
+  "how": "加一行看索引增量",
+  "zonggang": "总纲 §7 L592",
+  "caliber": ""
+}

@@ -440,7 +440,7 @@
       "name": "最近运行报告（gate/counts/errors）",
       "status": "warn",
       "ok": false,
-      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203",
+      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-<redacted> turn=1339 @startByte=38814203",
       "evidence": {
         "root": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data",
         "file": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\data\\ledger\\.run-report-20261115.json",
@@ -451,7 +451,7 @@
         "generatedAt": "2026-11-15 13:27:21",
         "reportSha256": "95926996cda0418ceecb982cc8e585b4e6d0d02d3172c87263a861fe0a8451fa",
         "expectedGapCitations": [
-          "session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）"
+          "session=session-<redacted> turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-<redacted>/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）"
         ],
         "ageDays": 0,
         "gate": {
@@ -508,12 +508,12 @@
         "unexpectedUnavailable": [],
         "redReasons": [],
         "warnings": [
-          "已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）",
+          "已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-<redacted> turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-<redacted>/session.v4.jsonl.zstd sha256=2cc0f562735b67ce…）",
           "报告快照陈旧：counts.ledgerRows=472（对账快照）但写入时真实行数=1558"
         ]
       },
       "brief": [
-        "告警：已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-a64f755f-d332-1407-cfd2-1b9be14f633a/session.v4.json…",
+        "告警：已知缺口（已声明·逐轮可定位，引用式豁免）：session=session-<redacted> turn=1339 @startByte=38814203｜证据：.run-report-20261115.json（sha256=95926996cda0418c…）｜预期清单 02-语料/预期缺口.json（源 sessions/c03/session-<redacted>/session.v4.json…",
         "告警：报告快照陈旧：counts.ledgerRows=472（对账快照）但写入时真实行数=1558"
       ],
       "ms": 2
@@ -531,10 +531,10 @@
         "note": "只数帧/闭合轮/预期行数，不写账、不灌库；灌库是插件 tick 的职责",
         "sources": [
           {
-            "sid": "session-44671553-2f37-3b8f-7c73-80601d9ef2f9",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c01\\session-44671553-2f37-3b8f-7c73-80601d9ef2f9\\session.v4.jsonl.zstd",
+            "file": "c01\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 143594,
             "frames": 9,
             "lines": 9,
@@ -547,10 +547,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c01\\session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca\\session.v4.jsonl.zstd",
+            "file": "c01\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 161752,
             "frames": 25,
             "lines": 25,
@@ -563,10 +563,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-b64f994c-3dce-981d-723a-11c73ac034a4",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c01\\session-b64f994c-3dce-981d-723a-11c73ac034a4\\session.v4.jsonl.zstd",
+            "file": "c01\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 148890,
             "frames": 17,
             "lines": 17,
@@ -579,10 +579,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-e14d448f-97ff-20af-3e66-508e08618cc5",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c01\\session-e14d448f-97ff-20af-3e66-508e08618cc5\\session.v4.jsonl.zstd",
+            "file": "c01\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 1110,
             "frames": 2,
             "lines": 2,
@@ -595,10 +595,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-4c514189-c239-ad5f-bb7c-614c5843a6af",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c02\\session-4c514189-c239-ad5f-bb7c-614c5843a6af\\session.v4.jsonl.zstd",
+            "file": "c02\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 477495,
             "frames": 6,
             "lines": 6,
@@ -643,10 +643,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-040dfdd1-7f1a-5628-30aa-4efcfc24a82b",
+            "sid": "session-<redacted>",
             "source": "v3",
             "version": 3,
-            "file": "c03\\session-040dfdd1-7f1a-5628-30aa-4efcfc24a82b\\session.v3.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v3.jsonl.zstd",
             "bytes": 1091578,
             "frames": 3,
             "lines": 129,
@@ -659,10 +659,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-0b7f564c-b01c-a604-731a-3c6d0bb167c1",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-0b7f564c-b01c-a604-731a-3c6d0bb167c1\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 1141135,
             "frames": 37,
             "lines": 37,
@@ -675,10 +675,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-1152c67a-3fe5-f2c6-d7c0-cee99b44f38f",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-1152c67a-3fe5-f2c6-d7c0-cee99b44f38f\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 1272858,
             "frames": 33,
             "lines": 33,
@@ -691,10 +691,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-62d9d7c3-5b6f-1996-761b-b29c05271a34",
+            "sid": "session-<redacted>",
             "source": "v3",
             "version": 3,
-            "file": "c03\\session-62d9d7c3-5b6f-1996-761b-b29c05271a34\\session.v3.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v3.jsonl.zstd",
             "bytes": 1090884,
             "frames": 3,
             "lines": 129,
@@ -707,10 +707,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-6fdff1b1-75ea-5017-2846-a47dd7e8dab0",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-6fdff1b1-75ea-5017-2846-a47dd7e8dab0\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 368,
             "frames": 2,
             "lines": 2,
@@ -723,10 +723,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-88b7fd91-1304-6174-d5ad-696a0a8781a5",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-88b7fd91-1304-6174-d5ad-696a0a8781a5\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 220767,
             "frames": 9,
             "lines": 9,
@@ -739,10 +739,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-a64f755f-d332-1407-cfd2-1b9be14f633a",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 38843108,
             "frames": 5356,
             "lines": 5356,
@@ -755,10 +755,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-c06650c0-c38e-12bf-8050-b7d42e6197e7",
+            "sid": "session-<redacted>",
             "source": "v3",
             "version": 3,
-            "file": "c03\\session-c06650c0-c38e-12bf-8050-b7d42e6197e7\\session.v3.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v3.jsonl.zstd",
             "bytes": 1091072,
             "frames": 3,
             "lines": 129,
@@ -771,10 +771,10 @@
             "lossGap": false
           },
           {
-            "sid": "session-e0ee5f07-d1c5-3edf-a135-af7ac926f8a2",
+            "sid": "session-<redacted>",
             "source": "v4",
             "version": 4,
-            "file": "c03\\session-e0ee5f07-d1c5-3edf-a135-af7ac926f8a2\\session.v4.jsonl.zstd",
+            "file": "c03\\session-<redacted>\\session.v4.jsonl.zstd",
             "bytes": 1098808,
             "frames": 361,
             "lines": 361,
@@ -801,7 +801,7 @@
         },
         "pairs": [
           {
-            "dir": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a",
+            "dir": "C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-<redacted>",
             "note": "v3 与 v4 并存：按「v4 优先」纳入 v4；v3 只作并存资料，由 auditPairs() 核验是否超集"
           }
         ],
@@ -817,9 +817,9 @@
       },
       "brief": [
         "预期行数 1,558 = 闭合轮数；台账 1,558 行",
-        "源 session-44671553-2f37-3b8f-7c73-80601d9ef2f9：v4，140.23 KiB，帧 9，闭合轮 2",
-        "源 session-5567a052-7bf9-3a9f-8fd0-1b2ed87eebca：v4，157.96 KiB，帧 25，闭合轮 6",
-        "源 session-b64f994c-3dce-981d-723a-11c73ac034a4：v4，145.40 KiB，帧 17，闭合轮 4",
+        "源 session-<redacted>：v4，140.23 KiB，帧 9，闭合轮 2",
+        "源 session-<redacted>：v4，157.96 KiB，帧 25，闭合轮 6",
+        "源 session-<redacted>：v4，145.40 KiB，帧 17，闭合轮 4",
         "v3+v4 并存 1 对：按 ingest 口径选 v4（v3 不计行数，属正常口径而非缺数据）"
       ],
       "ms": 413
@@ -867,7 +867,7 @@
         "notes": [
           {
             "kind": "V3_NOT_COMPARED",
-            "detail": "v3 不参与比对（被 v4 覆盖，且无需补前缀；只读、未修改）: C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-a64f755f-d332-1407-cfd2-1b9be14f633a\\session.v3.jsonl.zstd"
+            "detail": "v3 不参与比对（被 v4 覆盖，且无需补前缀；只读、未修改）: C:\Users\<user>\\AppData\\Local\\Temp\\dl-selfev-Qaeq0Q\\dsh-home\\sessions\\c03\\session-<redacted>\\session.v3.jsonl.zstd"
           }
         ],
         "elapsedMs": 2211,
@@ -1067,7 +1067,7 @@
       "id": "run-report",
       "name": "最近运行报告（gate/counts/errors）",
       "status": "warn",
-      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-a64f755f-d332-1407-cfd2-1b9be14f633a turn=1339 @startByte=38814203"
+      "detail": ".run-report-20261115.json；gate=degraded；报告内台账 472 行（对账快照，不代表当前行数）；errors 0；坏行 0、缺原文 0；报告日期 2026-11-15；已知缺口引用 1 条：session=session-<redacted> turn=1339 @startByte=38814203"
     },
     {
       "id": "doctor",

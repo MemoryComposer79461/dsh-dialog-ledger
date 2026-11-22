@@ -1,0 +1,88 @@
+{
+  "schema": "criteria-1.0/1#C43",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C43",
+  "status": "GREEN",
+  "summary": "冻结未被绕过：6 tick 全程 handover* 计数全 0、交接表产物 0 个；删除哨兵后 3 tick 未重建",
+  "reasons": [],
+  "evidence": {
+    "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+    "preexisting": [],
+    "fixture": {
+      "relocateState": true,
+      "sessions": 3,
+      "cursors": 3
+    },
+    "ticks1Count": 3,
+    "ticks2Count": 3,
+    "driverParseError": [],
+    "ticks1": [
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      },
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      },
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      }
+    ],
+    "ticks2": [
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      },
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      },
+      {
+        "ok": true,
+        "written": 0,
+        "handoverGenerated": 0,
+        "handoverAdopted": 0,
+        "handoverSkipped": 0,
+        "handoverSealedTotal": 0,
+        "errors": []
+      }
+    ],
+    "driverLog": "证据/判据-1.0-final-v1.0.0-re5/logs/tick-driver-3t.log",
+    "problems": [],
+    "caliber": "机主 2026-11-14 早会裁定 C43 反向判据：交接表在 lite 冻结（S-1/§5.3）——造 2 会话各跑 3 tick，交接表目录/文件数必须不增加；删后 3 tick 内不得重建；出现任何交接表生成即 RED",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "G 给人看与能恢复",
+  "gate": "P4",
+  "source": "交接表：每会话一份、删了不补（机主 2026-11-14 裁定改为**反向判据**：验交接表冻结不被绕过）",
+  "how": "造 2 会话各跑 3 tick；交接表目录/文件数不得增加；删后 3 tick 内不得重建；出现任何交接表生成即 RED",
+  "zonggang": "总纲 §7 L0",
+  "caliber": "lite 冻结交接表（S-1/§5.3）：handoverGenerated/Adopted/Skipped/SealedTotal 必须恒 0"
+}

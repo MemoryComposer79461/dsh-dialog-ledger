@@ -1,0 +1,33 @@
+$ node docs/跑测试.mjs docs/自测-守卫.mjs
+exit=0
+
+[看护] 物理内存: 3.22 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-守卫.mjs
+
+✔ ① 同 code 同内容二次写：返回 reused=true，文件字节与 mtime 均未变 (14.3995ms)
+✔ ② 同 code 异内容：抛 ORIGINAL_CONFLICT（含路径与两个 hash），文件字节未变 (13.7058ms)
+✔ ②·补 写前自检：bodyHash 与正文重算不一致 → ORIGINAL_HASH_MISMATCH，且不建文件 (0.8443ms)
+✔ ③ 双实例：子进程持锁时第二个 acquire 抢不到且不写；子进程释放后第二个才能写 (72.3917ms)
+✔ ③·日志 第二个实例抢不到锁：ctx.logger 输出含 LOCK_HELD + ERROR「拒绝执行」，且账本零写入 (97.1689ms)
+✔ ③·补 进程退出释放：子进程 acquire 后直接 exit(0) → 锁文件被退出钩子删掉 (59.1316ms)
+✔ ④ 僵死锁（跨机/判不了死活）：第一轮只记疑、第二轮才夺取；旧锁 rename 成 .lock.stale-* 原样留证 (6.7697ms)
+✔ ④·同机 僵死锁：pid 已死 → 立即夺取（不等第二轮）；旧锁同样 rename 留证 (5.8282ms)
+✔ ④·补 契约常量：锁文件 = <root>/ledger/.lock，心跳 30s，僵死阈值 3× (0.6731ms)
+✔ ⑤ 尾行无换行：追加先补 \n，两条各自可 JSON.parse，且新文件末尾有换行 (9.1205ms)
+✔ ⑥ 坏帧：readTurnsFrom 报 failed>0 → .lost.jsonl 留痕（会话/缺失区间/sha256/帧偏移/时间） (18.1587ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 380.1089
+
+[看护] 结束: exit=0 用时 0.4s
+[看护] 物理内存: 3.20 GB 可用（跑完）
+[看护] 用例统计: tests=11 pass=11 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\ADMINI~1\AppData\Local\Temp\dsh-跑测试-report-10668-mwrc8oqn.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

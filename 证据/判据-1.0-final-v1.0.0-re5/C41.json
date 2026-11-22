@@ -1,0 +1,187 @@
+{
+  "schema": "criteria-1.0/1#C41",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C41",
+  "status": "GREEN",
+  "summary": "周账 4 组里抽 10月第5周 / 10月第4周 / 11月第1周（含跨月周=true）：逐日表对账 13 行，100% 相符（缺行 0/多行 0/时间不符 0）",
+  "reasons": [],
+  "evidence": {
+    "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-weeks/root",
+    "weeks": [
+      "10月第4周",
+      "10月第5周",
+      "11月第1周",
+      "11月第2周"
+    ],
+    "selected": [
+      "10月第5周",
+      "10月第4周",
+      "11月第1周"
+    ],
+    "crossMonth": true,
+    "checkedRows": 13,
+    "matchedRows": 13,
+    "files": [
+      {
+        "week": "10月第5周",
+        "file": "2026年10月/10月第5周-weeks0000011A的周记账.xlsx",
+        "sessKey": "weeks0000011A",
+        "perDay": [
+          {
+            "sheet": "周一",
+            "day": "2026-10-26",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周二",
+            "day": "2026-10-27",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周三",
+            "day": "2026-10-28",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周四",
+            "day": "2026-10-29",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周五",
+            "day": "2026-10-30",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周六",
+            "day": "2026-10-31",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          }
+        ]
+      },
+      {
+        "week": "10月第4周",
+        "file": "2026年10月/10月第4周-weeks0000011A的周记账.xlsx",
+        "sessKey": "weeks0000011A",
+        "perDay": [
+          {
+            "sheet": "周二",
+            "day": "2026-10-20",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周三",
+            "day": "2026-10-21",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周四",
+            "day": "2026-10-22",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周五",
+            "day": "2026-10-23",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周六",
+            "day": "2026-10-24",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          },
+          {
+            "sheet": "周日",
+            "day": "2026-10-25",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          }
+        ]
+      },
+      {
+        "week": "11月第1周",
+        "file": "2026年11月/11月第1周-weeks0000011A的周记账.xlsx",
+        "sessKey": "weeks0000011A",
+        "perDay": [
+          {
+            "sheet": "周日",
+            "day": "2026-11-01",
+            "empty": false,
+            "expected": 1,
+            "actual": 1,
+            "missing": 0,
+            "extra": 0,
+            "badTime": 0
+          }
+        ]
+      }
+    ],
+    "problems": [],
+    "caliber": "S-11 C41：抽 3 个不同周（含 1 个跨月周）逐行对（编码集合＋时间列），3 周 100% 相符；xlsx 不得缺行/多行",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "G 给人看与能恢复",
+  "gate": "P4",
+  "source": "周账 xlsx 内容与台账一致 —— 抽 3 周（含一个跨月周）逐行对，3 周 100% 相符",
+  "how": "解 xlsx 逐日表与台账逐码对",
+  "zonggang": "总纲 §7 L0",
+  "caliber": "S-11 C41：xlsx 不得缺行、不得多行；时间列 hh:mm 与台账 ts 一致"
+}

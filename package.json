@@ -2,7 +2,7 @@
   "name": "dsh-dialog-ledger",
   "version": "1.0.0",
   "type": "module",
-  "description": "DSH 插件：会话账本 —— 会话原文、账簿、周账、收据，仅追加、可对账、可回滚",
+  "description": "DSH 插件：账实（会话账本）—— 让对话台账与逐字原文对得上；仅追加、可对账、可回滚",
   "main": "./index.js",
   "exports": {
     ".": "./index.js",

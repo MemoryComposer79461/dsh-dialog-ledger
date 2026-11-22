@@ -1,0 +1,40 @@
+{
+  "schema": "criteria-1.0/1#C19",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C19",
+  "status": "GREEN",
+  "summary": "日检全量重放一致：台账 3 文件/12 对，重放 3 会话、坏行 0、跳 0（日检 exit 0）",
+  "reasons": [],
+  "evidence": {
+    "workCopy": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-criteria-work/c19-20261122-122937",
+    "sessionsReadOnly": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/dsh-home/sessions",
+    "daycheckLog": "证据/判据-1.0-final-v1.0.0-re5/logs/C19-日检-run.log",
+    "report": "证据/判据-1.0-final-v1.0.0-re5/C19-日检-run.json",
+    "counts": {
+      "ledgerFiles": 3,
+      "ledgerBadLines": 0,
+      "ledgerReadErrors": 0,
+      "ledgerDirExists": true,
+      "ledgerEmptyProven": false,
+      "replayedSessions": 3,
+      "v4Sources": 3,
+      "v3Sources": 0,
+      "v3PrefixSessions": 0,
+      "pairs": 12,
+      "missing": 0,
+      "extra": 0,
+      "codeUnique": true,
+      "sidTurnUnique": true
+    },
+    "invariantsBroken": [],
+    "mismatches": 0,
+    "mode": "注入=改中段台账行+还原 mtime（--proof 做）；本体=对未改写副本跑一次全量核",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "C 不假绿",
+  "gate": "P2",
+  "source": "★★ 人为改\"中段\"（不改头尾、恢复 mtime）→ 当天周期全量核必须发现",
+  "how": "改一字节＋还原 mtime，跑每日全量核（**依赖 P2 第 5 项，故不在 P1 验**）",
+  "zonggang": "总纲 §7 L573",
+  "caliber": ""
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "criteria-1.0/1#C32",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C32",
+  "status": "GREEN",
+  "summary": "起始分片定位正确（3 个 code）；E3 最坏 6.60 ms ≤ 阈值 50 ms（口径：非 O(1)，code 日起向后有界扫描；3 年 402 MB 未测）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+    "child": "判据-0.9.4",
+    "childExit": 0,
+    "childCounts": {
+      "green": 13,
+      "red": 0,
+      "na": 0,
+      "skip": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+    "childEvidence": {
+      "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+      "cases": [
+        {
+          "code": "20260901-e3accept0001-A-00000001",
+          "codeDay": "20260901",
+          "expectedStartShard": "20260901",
+          "firstShardRead": "20260901",
+          "startLocated": true,
+          "found": true,
+          "ms": 3.62,
+          "shardsRead": 1,
+          "bytesRead": 3255,
+          "indexReads": 1
+        },
+        {
+          "code": "20260901-e3accept0001-A-00000670",
+          "codeDay": "20260901",
+          "expectedStartShard": "20260901",
+          "firstShardRead": "20260901",
+          "startLocated": true,
+          "found": true,
+          "ms": 5.39,
+          "shardsRead": 23,
+          "bytesRead": 74865,
+          "indexReads": 23
+        },
+        {
+          "code": "20260901-e3accept0001-A-00001338",
+          "codeDay": "20260901",
+          "expectedStartShard": "20260901",
+          "firstShardRead": "20260901",
+          "startLocated": true,
+          "found": true,
+          "ms": 6.6,
+          "shardsRead": 45,
+          "bytesRead": 145167,
+          "indexReads": 45
+        }
+      ],
+      "worstMs": 6.6,
+      "thresholdMs": 50,
+      "caliber": "★ 口径（不许假装 O(1)）：code 前 8 位=code 日 → 直接确定起始日分片（不遍历/不读任何别的分片），然后从该分片起向后扫到命中（limit=1 命中即停）；台账日≠code 日时最多扫到末分片。E3 实测 3–9 ms（37 分片全扫上限 145,287 B）；阈值 50 ms（≈5× 余量）。3 年最坏 ≈402 MB 全扫（推算）未测 —— 不在 O(1) 承诺内，登记为已知风险。",
+      "problems": []
+    }
+  },
+  "group": "E 扩容查询",
+  "gate": "P3",
+  "source": "按 code 查 → O(1) 定位月份目录（编码前 8 位即日期）",
+  "how": "计步数",
+  "zonggang": "总纲 §7 L596",
+  "caliber": "实测口径：非 O(1)、code 日起向后有界扫描（阈值 50 ms）"
+}

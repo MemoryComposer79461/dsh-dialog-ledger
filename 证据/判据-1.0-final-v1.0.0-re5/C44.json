@@ -1,0 +1,59 @@
+{
+  "schema": "criteria-1.0/1#C44",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C44",
+  "status": "GREEN",
+  "summary": "doctor 5 类故障各报一次红并转绿（5/5）：data-integrity=red→ok、code-consistency=red→ok、ingest-health=red→ok、storage-health=red→ok、storage-health=red→ok",
+  "reasons": [],
+  "evidence": {
+    "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+    "sub": [
+      {
+        "fault": "①台账行数≠原文份数",
+        "target": "data-integrity",
+        "redSeverity": "red",
+        "greenSeverity": "ok",
+        "error": ""
+      },
+      {
+        "fault": "②原文 sha256 复算失败（S-11 写 entryHash；该字段已被 S-6 否决，落到\"原文整文件 sha256\"）",
+        "target": "code-consistency",
+        "redSeverity": "red",
+        "greenSeverity": "ok",
+        "error": ""
+      },
+      {
+        "fault": "③游标卡住",
+        "target": "ingest-health",
+        "redSeverity": "red",
+        "greenSeverity": "ok",
+        "error": ""
+      },
+      {
+        "fault": "④pending 积压超阈",
+        "target": "storage-health",
+        "redSeverity": "red",
+        "greenSeverity": "ok",
+        "error": ""
+      },
+      {
+        "fault": "⑤单文件 >4 MB",
+        "target": "storage-health",
+        "redSeverity": "red",
+        "greenSeverity": "ok",
+        "error": ""
+      }
+    ],
+    "passed": 5,
+    "total": 5,
+    "problems": [],
+    "caliber": "S-11 C44：5 类故障各报一次红（先红后绿）；不许\"报黄了事\"（要求 severity=red）",
+    "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+  },
+  "group": "G 给人看与能恢复",
+  "gate": "P4",
+  "source": "doctor 能对 5 类已知故障各报一次红（先红后绿）：①台账行数≠原文份数 ②原文 sha256 复算失败 ③游标卡住 ④pending 积压超阈 ⑤单文件>4MB",
+  "how": "五类各注入一次 → doctor 目标检查必须 severity=red → 还原 → 必须不红",
+  "zonggang": "总纲 §7 L0",
+  "caliber": "S-11 写「entryHash 复算失败」；该字段已被 S-6 否决（全树 0 命中），落到 doctor ② 的「原文整文件 sha256 复算」，口径差如实登记"
+}

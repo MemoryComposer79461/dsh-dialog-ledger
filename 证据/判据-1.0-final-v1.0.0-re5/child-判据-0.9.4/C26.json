@@ -1,0 +1,41 @@
+{
+  "id": "C26",
+  "title": "索引条数＝台账行数（同天），每条 code 在台账里存在",
+  "status": "GREEN",
+  "evidence": {
+    "per": [
+      {
+        "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+        "label": "小库",
+        "ledgerDays": 3,
+        "indexDays": 3,
+        "ledgerRows": 12,
+        "indexRows": 12,
+        "countMismatch": 0,
+        "missingInIndex": 0,
+        "indexNotInLedger": 0,
+        "duplicateIndexCodes": 0,
+        "ledgerBadLines": 0,
+        "samples": [],
+        "ok": true
+      },
+      {
+        "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+        "label": "大库",
+        "ledgerDays": 45,
+        "indexDays": 45,
+        "ledgerRows": 1338,
+        "indexRows": 1338,
+        "countMismatch": 0,
+        "missingInIndex": 0,
+        "indexNotInLedger": 0,
+        "duplicateIndexCodes": 0,
+        "ledgerBadLines": 0,
+        "samples": [],
+        "ok": true
+      }
+    ],
+    "problems": []
+  },
+  "summary": "小库 3 日/台账 12 行=索引 12 行，缺/多/重复 0；大库 45 日/台账 1338 行=索引 1338 行，缺/多/重复 0"
+}

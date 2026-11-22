@@ -1,0 +1,35 @@
+{
+  "schema": "criteria-1.0/1#C09",
+  "at": "2026-11-22T04:29:37.738Z",
+  "id": "C09",
+  "status": "GREEN",
+  "summary": "1 项全过（originals）",
+  "reasons": [],
+  "evidence": {
+    "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+    "child": "判据-0.9.1",
+    "childExit": 0,
+    "childCounts": {
+      "green": 18,
+      "red": 0,
+      "na": 0,
+      "skipped": 0
+    },
+    "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+    "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+    "perCriterion": [
+      {
+        "name": "originals",
+        "file": "docs/replay-verify.mjs",
+        "exit": 0,
+        "errors": ""
+      }
+    ]
+  },
+  "group": "B 内容保真",
+  "gate": "P1",
+  "source": "★★★ 每份 原始事件.json 与源会话对应轮次**逐字节相等**",
+  "how": "全量重比（实测曾 46,564/46,564 行相等）",
+  "zonggang": "总纲 §7 L558",
+  "caliber": ""
+}

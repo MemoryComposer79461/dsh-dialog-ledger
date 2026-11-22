@@ -1,0 +1,31 @@
+$ node docs/跑测试.mjs docs/自测-index.mjs
+exit=0
+
+[看护] 物理内存: 3.22 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 1 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-index.mjs
+
+✔ runOnce A：只有 turn/start 且文件很新 → written=0、openTurns=1（进行中轮次不入账） (77.4672ms)
+✔ runOnce B：未闭合轮次不写 partial（审计 A-01）；闭合后恰好一条 ok，重跑幂等 (80.7175ms)
+✔ runOnce C：全新 root + 2 小时前的老会话（hotWindow=3600）→ 首跑仍全量扫并写入 (40.1179ms)
+✔ runOnce D：同一 root 次跑 → 老会话被热窗口跳过（scanned 减一） (46.1941ms)
+✔ runOnce E：同一 root 连跑两次 → 第二次 written=0、账本总数不变 (47.594ms)
+✔ runOnce F：跑完存在 ledger/.state.json，initialized=true 且留痕；次跑 firstRun=false (46.4814ms)
+✔ apply：有 ctx.effect 时返回 undefined，且通过 effect 注册了清理函数；调用后 clearInterval 生效 (33.2203ms)
+✔ apply：无 ctx.effect 时退化为返回清理函数；调用它同样 clearInterval (18.3098ms)
+✔ apply：enabled=false → 不起定时器、不注册 effect，返回空清理函数 (1.341ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 518.2146
+
+[看护] 结束: exit=0 用时 0.6s
+[看护] 物理内存: 3.20 GB 可用（跑完）
+[看护] 用例统计: tests=9 pass=9 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\ADMINI~1\AppData\Local\Temp\dsh-跑测试-report-11200-mwrc8dmf.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

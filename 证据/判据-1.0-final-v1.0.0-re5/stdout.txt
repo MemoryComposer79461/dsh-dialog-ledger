@@ -1,0 +1,66 @@
+=== 判据执行器 1.0（lite 线）· 45 条聚合 · V1.0 毕业口径 ===
+小库：C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root
+大库：C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root
+三层夹具：C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-094-3layer/root
+
+| 判据 | 结果 | 证据 |
+|---|---|---|
+| C01 | GREEN | 判据-0.9.1：1 项全过（语料四数） |
+| C02 | GREEN | 判据-0.9.1：1 项全过（自测-index） |
+| C03 | GREEN | 判据-0.9.1：1 项全过（自测-v02） |
+| C04 | GREEN | 判据-0.9.1：1 项全过（自测-index+边界） |
+| C05 | GREEN | 判据-0.9.1：1 项全过（自测-守卫） |
+| C06 | GREEN | 判据-0.9.1：1 项全过（自测-边界） |
+| C07 | GREEN | 判据-0.9.1：1 项全过（边界+ledger） |
+| C08 | GREEN | 判据-0.9.1：1 项全过（P0回归） |
+| C09 | GREEN | 判据-0.9.1：1 项全过（originals） |
+| C10 | GREEN | 判据-0.9.1：1 项全过（views） |
+| C11 | GREEN | 判据-0.9.1：1 项全过（自测-original） |
+| C12 | GREEN | 判据-0.9.1：1 项全过（自测-original） |
+| C13 | GREEN | 判据-0.9.1：1 项全过（自测-边界） |
+| C14 | GREEN | 判据-0.9.1：1 项全过（fields） |
+| C15 | GREEN | 判据-0.9.1：8 项全过（mutate-sid、mutate-turn、mutate-ts、mutate-seq、mutate-status、mutate-doc、mutate-attachment、mutate-code） |
+| C16 | GREEN | 判据-0.9.1：4 项全过（destroy-delete-row、destroy-extra-row、destroy-delete-attachment、destroy-flip-attachment-byte） |
+| C17 | GREEN | 判据-0.9.1：1 项全过（变异反证） |
+| C18 | GREEN | 判据-0.9.1：1 项全过（自测-gate） |
+| C19 | GREEN | 日检全量重放一致：台账 3 文件/12 对，重放 3 会话、坏行 0、跳 0（日检 exit 0） |
+| C20 | GREEN | 34.15 MiB 语料端到端 3 个 tick 入账 1338 行（written 合计 1338，code/(sid,turn) 唯一 1338/1338，坏行 0）；⚠ 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记 |
+| C21 | GREEN | 稳态 2 tick 读盘最大 12.1 KiB ≤1 MiB；读放大最大 1.00× ≤2× 变更量（变化承载=state+头尾指纹；语料 34.15 MiB 未被全量重读） |
+| C22 | GREEN | 套账/压缩语料 3.861% ≤5%（台账 1.18 MiB+索引 145.3 KiB / 语料 34.15 MiB）；原文+视图 1.1904× ∈[1.00,1.35]（54.06 MiB/45.42 MiB）；单文件最大 34.8 KiB ≤4 MB；索引分片最大 3.5 KiB ≤4 MiB |
+| C23 | GREEN | 扫描 2815 文件：扩展名分布 (none)=2/.json=1356/.md=1354/.jsonl=100/.xlsx=3；白名单外 0（例外：周账 xlsx 3、外发摘要 txt 0；根标记 .ledger-root 2） |
+| C24 | GREEN | 判据-0.9.4：复算 364.0 GiB ≈364 GiB；Plan §4.7 GiB 命中 0 处、推算标记 0 处、签字单 GiB 命中 0 处、包内交付文档回退命中 7 份（交付-v0.9.4/02-验收记录.md、交付-v0.9.4/00-交付清单.md、交付-v0.9.4/05-已知未覆盖项.md、交付-v0.9.5/02-验收记录.md、交付-v0.9.5/05-已知未覆盖项.md、交付-v1.0.0-re/02-验收记录 |
+| C25 | GREEN | 大会话 34.15 MiB：3 tick 入账 1338 行无重复（written=1338，唯一 code/(sid,turn)=1338/1338）；3 tick 耗时 7659/8403/1246 ms ≤30 s；消费 15.97 MiB/15.98 MiB/2.20 MiB ≤17 MiB、读盘 32.59 MiB/32.61 MiB/4.50 MiB ≤40 MiB；游标 34.15 MiB/34.15 MiB（100.00 |
+| C26 | GREEN | 判据-0.9.4：小库 3 日/台账 12 行=索引 12 行，缺/多/重复 0；大库 45 日/台账 1338 行=索引 1338 行，缺/多/重复 0 |
+| C27 | GREEN | 判据-0.9.4：小库 12 行+大库 1338 行：指针区间/台账 docFileSha256/原文 md 整文件 sha 全部独立复算一致；h/entryHash 字段 0 |
+| C28 | GREEN | 判据-0.9.4：追加 1 行→索引 +1（written=1/removed=0；视图重扫 0；读放大 0.0×） |
+| C29 | GREEN | 判据-0.9.4：删 .index（3 分片/12 行）→ stat 检出 index-missing → 重建 3 分片逐字节相等、rows=12、stat.ok=true；形态=按日分片≤4 MiB（S-10④） |
+| C30 | GREEN | 判据-0.9.4：小库 3 个区间逐 code 一致（12/8/8 行）；大库 3 个区间逐 code 一致（1338/690/678 行） |
+| C31 | GREEN | 判据-0.9.4：三层夹具 anchor=2026-11-22（今天）：hot(session-three00… 2 行/202611) · warm(session-three00… 2 行/202606+202608) · cold(session-three00… 2 行/202508+202510)；按 sid 查三路（索引 2/2/2 行 · 暴力台账 · 公共 searchLedger）逐 code 一致；指针问题 0；窗口 |
+| C32 | GREEN | 判据-0.9.4：起始分片定位正确（3 个 code）；E3 最坏 6.60 ms ≤ 阈值 50 ms（口径：非 O(1)，code 日起向后有界扫描；3 年 402 MB 未测） |
+| C33 | GREEN | 判据-0.9.4：2 例未命中均返回 searchedRange+olderAvailable+hint（code 例 exit 1、空档 olderAvailable=true 且 searchedRange=20261016..20261022） |
+| C34 | GREEN | 判据-0.9.4：今天（=数据最新日） 4.03 ms/100 ms（1 分片）；90 天 31.09 ms/1000 ms（45 分片）；指定冷月 21.63 ms/2000 ms（30 分片）；规模=45 天，3 年档未测 |
+| C35 | GREEN | 判据-0.9.4：冷月 202609 range=20260901..20260930：只读该月 30 个分片、月份集={202609}、范围外 0；命中 900=暴力 900 |
+| C36 | GREEN | 判据-0.9.4：E3 索引 141.8 KB/台账 1.18 MB=11.76%（主判）；/整库包 0.250%；含 state 12.05% → 均 ≤15% |
+| C37 | GREEN | 判据-0.9.4：全量拷 37 文件→追加 1 行→增量只拷 1 文件（4584 B；unchanged 36）→verify ok；备份目录整拷后 verify ok（38 文件/607.9 KB） |
+| C38 | GREEN | 抽查 6 组数字全部可追溯（生成器 8/8 在；tests/criteriaRun/E3 行数/doctor r2r3 与日志/现场复算一致）；交付五件齐、04 演练 A/B/C 已填、05 已知未覆盖项齐 |
+| C39 | GREEN | 清单 734 / 磁盘 784 / 缺 0 / 多 50（其中 P4 验具 0、本执行器运行产物 50，不计红）/ 改 0（其中运行产物 0 不计红、实判 0）；交叉核 docs/工具-manifest.mjs exit=1（与本文件同结论） |
+| C40 | GREEN | 版本台账 26 行（v0.9.0-lite-base … v1.0.0）；编号连续/版本唯一/正式版由同号 -re 升；builtFrom/baselineTag/builtFromCommit 三链对上；副本追加第 26 行链仍成立；删中间行可抓；04 演练 A/B/C 已填 |
+| C41 | GREEN | 周账 4 组里抽 10月第5周 / 10月第4周 / 11月第1周（含跨月周=true）：逐日表对账 13 行，100% 相符（缺行 0/多行 0/时间不符 0） |
+| C42 | GREEN | 日结摘要 17 天抽 3 天（2026-10-20/2026-10-28/2026-11-05）：JSON+TXT 与台账 100% 相符；改台账后旧版逐字节不变、已补发 v2（JSON+TXT 成对）、run-report 版本账可见；无变化 2 tick 不产新版 |
+| C43 | GREEN | 冻结未被绕过：6 tick 全程 handover* 计数全 0、交接表产物 0 个；删除哨兵后 3 tick 未重建 |
+| C44 | GREEN | doctor 5 类故障各报一次红并转绿（5/5）：data-integrity=red→ok、code-consistency=red→ok、ingest-health=red→ok、storage-health=red→ok、storage-health=red→ok |
+| C45 | GREEN | 恢复演练通过：backup exit 0 → verify exit 0 → 删库重建 restore exit 0；台账 1338 码随机抽 100 行（种子 3302a9e4）逐字节相等 100/100 |
+
+汇总：GREEN=45 RED=0 NA=0 SKIP=0 → 全绿
+子执行器 判据-0.9.1：exit=0，GREEN=18 RED=0 NA=0 SKIP=undefined；证据 证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档
+子执行器 判据-0.9.4：exit=0，GREEN=13 RED=0 NA=0 SKIP=0；证据 证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4
+
+残余/口径说明：
+  · C20 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记
+  · C21 样本 2 tick（条款建议无变更跑 10 tick；E3 现有只读度量只有 2 个稳态 tick，10 tick 观测未跑，已登记残余）
+  · C39 另有 50 个"清单外新增"是本执行器运行产物（包内 证据/判据-1.0-<时间戳>/，跑一次多一套），已单独登记、不计红；清单内已声明文件仍逐文件核 sha256（缺/改必须 0）
+  · C22 r1（整库/压缩语料，仅报告）=1.3298；S-9 实测解压 3.49× 是全语料口径，E3 现存语料子集不同，不参与判红
+  · C40 append-only 的"从未删过旧行"在无 git 史下不可证；已改为"结构+三链+追加验链+删行可抓"四件可验
+  · F 组（C38–C40）判定对象 = 当前包内最新交付五件（交付-v*）＋ VERSION.json/版本台账/MANIFEST；出包顺序：交付五件更新 → MANIFEST 重生成 → 再跑本执行器（C38/C39/C40 以新包为对象）。C38 的 VERSION.criteriaRun.evidence 必须是**包内相对路径**（如 证据/判据-1.0-final-<stamp>/summary.md），VERSION.tests 的来源日志须在包内 证据/跑测试-*.log；C40 要求版本台账末行与 VERSION.json 同版（VERSION 版本 bump 后必须追加台账行）
+
+证据目录：D:\ledger-work\re5\pkg\证据\判据-1.0-final-v1.0.0-re5

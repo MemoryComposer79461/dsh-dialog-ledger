@@ -1,0 +1,7 @@
+$ node driver-tick.mjs D:\ledger-work\re5\pkg C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-criteria-work\c42-immutable-20261122-122937\dsh-home C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-criteria-work\c42-immutable-20261122-122937\root 2 0 C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-criteria-work\c42-immutable-20261122-122937\receipts
+exit=0 ms=231
+
+--- stdout ---
+{"ticks":[{"ok":true,"written":0,"handoverGenerated":0,"handoverAdopted":0,"handoverSkipped":0,"handoverSealedTotal":0,"errors":[]},{"ok":true,"written":0,"handoverGenerated":0,"handoverAdopted":0,"handoverSkipped":0,"handoverSealedTotal":0,"errors":[]}]}
+
+--- stderr ---

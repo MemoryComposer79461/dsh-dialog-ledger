@@ -33,7 +33,9 @@
  *      源 mtime 在 `CURSOR_STUCK_GRACE_MS`（2×intervalSeconds）内、或该源有未闭合轮 pending 留痕
  *      → 判 ok/warn（活动源，进 `details.cursors.active`）；只有「源静止超过宽限窗且游标仍停在旧位置」
  *      才算真·游标卡住判红。宽限口径见常量注释，并写进 `details.thresholds`。
- *   ④ storage-health  存储健康：只 stat 不读内容地 walk `<root>`（体积/文件数/最大单文件 ≤ 4 MB，xlsx 除外）
+ *   ④ storage-health  存储健康：只 stat 不读内容地 walk `<root>`（体积/文件数/最大单文件 ≤ 4 MB，xlsx 除外；
+ *                      ★ re5/P-01：`ledger/.tick-metrics*.jsonl` 属**运行度量**、按设计无界追加，
+ *                      单列 64 MiB 度量档，不与账务数据文件同一个 4 MiB 哨兵）
  *      + `pending` 体积 vs `pendingMaxBytes`（默认 1 MiB）+ `--corpus=` 时按 **S-9②/S-10⑤ 拆口径**查三条倍率
  *        （r1 整库/压缩语料只报告；r2 原文+视图 1.00–1.35× 解压语料代理；r3 套账(台账+索引) ≤0.05× 压缩语料；
  *         旧 1.25× 单口径作废，见 0.9.4-P3 方案 §4.7c）
@@ -94,6 +96,24 @@ const OFFSET_MINUTES = 480;
 
 /** 单文件上限：总纲 §5.9 硬约束（xlsx 除外）。 */
 const MAX_SINGLE_FILE_BYTES = 4 * 1024 * 1024;
+/**
+ * ★ re5 / P-01：运行度量档单文件上限。
+ * @why 账务数据文件的 4 MiB 哨兵被误套到 `ledger/.tick-metrics.jsonl` 上——该文件按设计
+ *      **每 tick 追加一行、无界增长**（实测 1,440 tick/天 × ≈2.32 KB ≈ 3.2 MB/天，约 1.3 天破 4 MiB），
+ *      任何 ≥2 天的真实运行必然判红，把 storage-health 变成常红噪音。
+ *      2026-11-15 装机起 7 天实跑证据：2,330 行台账期间该文件 18.10 MB，账务面 0 异常（四路对账一致）。
+ *      故按"运行度量 / 账务数据"分档：度量档 64 MiB（≈20 天），超限仍判红（不静默）。
+ *      根因侧（轮转/上限）登记为 1.1 待办，见 `交付-v1.0.0-re5/05-已知未覆盖项.md`。
+ */
+const MAX_METRICS_FILE_BYTES = 64 * 1024 * 1024;
+
+/**
+ * 是否运行度量文件（`ledger/.tick-metrics.jsonl` 及其轮转档 `.tick-metrics-YYYYMM.jsonl`）。
+ * @param {string} relPath 相对账库根的路径（两种分隔符都接受）
+ */
+function isRuntimeMetricsPath(relPath) {
+  return /(^|\/)ledger\/\.tick-metrics[^/]*\.jsonl$/.test(String(relPath).replace(/\\/g, '/'));
+}
 /** pending 体积上限：`cordis.patch.yml` 的 pendingMaxBytes 默认值。 */
 const PENDING_MAX_BYTES = 1024 * 1024;
 /**
@@ -864,6 +884,7 @@ export function checkStorageHealth(ctx) {
   const details = {
     thresholds: {
       maxSingleFileBytes: MAX_SINGLE_FILE_BYTES,
+      maxMetricsFileBytes: MAX_METRICS_FILE_BYTES,
       pendingMaxBytes: PENDING_MAX_BYTES,
       growthWarnRatio: GROWTH_WARN_RATIO,
       // ★ S-10⑤：三条倍率口径（旧 1.25× 单口径作废，仅留名可追溯）
@@ -884,12 +905,22 @@ export function checkStorageHealth(ctx) {
   const maxFile = sorted[0] || null;
   details.maxFile = maxFile ? { path: maxFile.rel, bytes: maxFile.size } : null;
 
-  const bigNonXlsx = sorted.filter((f) => f.size > MAX_SINGLE_FILE_BYTES && !/\.xlsx$/i.test(f.path));
+  const relOf = (f) => String(f.rel).split(path.sep).join('/');
+  const isMetrics = (f) => isRuntimeMetricsPath(relOf(f));
+  const bigNonXlsx = sorted.filter((f) => f.size > MAX_SINGLE_FILE_BYTES && !/\.xlsx$/i.test(f.path) && !isMetrics(f));
   const bigXlsx = sorted.filter((f) => f.size > MAX_SINGLE_FILE_BYTES && /\.xlsx$/i.test(f.path));
+  const bigMetrics = sorted.filter((f) => isMetrics(f) && f.size > MAX_METRICS_FILE_BYTES);
+  const metricsOverData = sorted.filter((f) => isMetrics(f) && f.size > MAX_SINGLE_FILE_BYTES);
   details.bigFiles = bigNonXlsx.slice(0, 10).map((f) => ({ path: f.rel, bytes: f.size }));
   details.bigXlsxAllowed = bigXlsx.slice(0, 10).map((f) => ({ path: f.rel, bytes: f.size }));
+  // 运行度量档：>4 MiB 属设计内（不判红、只报告），>64 MiB 才判红
+  details.bigMetricsAllowed = metricsOverData.slice(0, 10).map((f) => ({ path: f.rel, bytes: f.size }));
+  details.bigMetricsOverLimit = bigMetrics.slice(0, 10).map((f) => ({ path: f.rel, bytes: f.size }));
   if (bigNonXlsx.length) {
     reds.push(`单文件超 ${fmtBytes(MAX_SINGLE_FILE_BYTES)} 上限 ${bigNonXlsx.length} 个：${shortList(bigNonXlsx.map((f) => `${f.rel}（${fmtBytes(f.size)}）`))}`);
+  }
+  if (bigMetrics.length) {
+    reds.push(`运行度量文件超 ${fmtBytes(MAX_METRICS_FILE_BYTES)} 上限 ${bigMetrics.length} 个：${shortList(bigMetrics.map((f) => `${f.rel}（${fmtBytes(f.size)}）`))}（P-01：metric 档 64 MiB，超限请先归档轮转）`);
   }
 
   // pending 体积
@@ -1017,9 +1048,10 @@ export function checkStorageHealth(ctx) {
   } else {
     const parts = [
       `体积 ${fmtBytes(walk.totalBytes)} / 文件 ${walk.files.length}`,
-      `最大单文件 ${maxFile ? fmtBytes(maxFile.size) : '无'}（上限 ${fmtBytes(MAX_SINGLE_FILE_BYTES)}）`,
+      `最大单文件 ${maxFile ? fmtBytes(maxFile.size) : '无'}（账务上限 ${fmtBytes(MAX_SINGLE_FILE_BYTES)}；运行度量上限 ${fmtBytes(MAX_METRICS_FILE_BYTES)}）`,
       `pending ${fmtBytes(pendingBytes)} / ${fmtBytes(PENDING_MAX_BYTES)}`,
     ];
+    if (metricsOverData.length) parts.push(`运行度量 ${metricsOverData.length} 个 >${fmtBytes(MAX_SINGLE_FILE_BYTES)}（设计内：最大 ${fmtBytes(Math.max(...metricsOverData.map((f) => f.size)))} / ${fmtBytes(MAX_METRICS_FILE_BYTES)}）`);
     if (details.corpusRatios) {
       const cr = details.corpusRatios;
       parts.push(`r1 整库/语料 ${cr.r1.value.toFixed(2)}×（报告项）`);
@@ -1038,6 +1070,8 @@ export function checkStorageHealth(ctx) {
     maxFile: details.maxFile,
     bigFiles: details.bigFiles,
     bigXlsxAllowed: details.bigXlsxAllowed,
+    bigMetricsAllowed: details.bigMetricsAllowed,
+    bigMetricsOverLimit: details.bigMetricsOverLimit,
     pendingBytes,
     pendingMaxBytes: PENDING_MAX_BYTES,
     corpus: details.corpus || 'not given',

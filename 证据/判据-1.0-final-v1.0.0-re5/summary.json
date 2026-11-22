@@ -1,0 +1,3081 @@
+{
+  "schema": "criteria-1.0/1",
+  "at": "2026-11-22T04:29:37.738Z",
+  "lite": ".",
+  "liteAbs": "D:/ledger-work/re5/pkg",
+  "proof": null,
+  "labs": {
+    "small": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+    "smallOk": true,
+    "smallWhy": "",
+    "big": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root",
+    "bigOk": true,
+    "bigWhy": "",
+    "threeLayer": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-094-3layer/root",
+    "threeLayerOk": true,
+    "threeLayerWhy": "",
+    "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0",
+    "fingerprintOk": true,
+    "fingerprintWhy": "",
+    "ensure": {
+      "built": false,
+      "why": "",
+      "fingerprintOk": true,
+      "fingerprintWhy": "",
+      "labsRoot": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0"
+    }
+  },
+  "counts": {
+    "green": 45,
+    "red": 0,
+    "na": 0,
+    "skip": 0
+  },
+  "ok": true,
+  "evaluated": 45,
+  "children": [
+    {
+      "label": "判据-0.9.1",
+      "script": "docs/判据-0.9.1.mjs",
+      "exit": 0,
+      "ms": 75814,
+      "counts": {
+        "green": 18,
+        "red": 0,
+        "na": 0,
+        "skipped": 0
+      },
+      "ok": true,
+      "parseError": "",
+      "evidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+      "log": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+      "note": "子执行器退出码 1 若因 NA 也如实保留（NA≠绿）"
+    },
+    {
+      "label": "判据-0.9.4",
+      "script": "docs/判据-0.9.4.mjs",
+      "exit": 0,
+      "ms": 1201,
+      "counts": {
+        "green": 13,
+        "red": 0,
+        "na": 0,
+        "skip": 0
+      },
+      "ok": true,
+      "parseError": "",
+      "evidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+      "log": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+      "note": "子执行器退出码 1 若因 NA 也如实保留（NA≠绿）"
+    }
+  ],
+  "childEvidenceArchive091": {
+    "archived": 28,
+    "dest": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+    "mode": "子执行器直接写入 --evid-dir（不写包外、不再跑后搬运）"
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（语料四数）",
+      "reasons": [],
+      "source": "真实 N 会话 → 台账行数 ＝ 真实轮数（当前基准 1558）、(sid,turn) 唯一、code 唯一、坏行 0",
+      "how": "四个数同时对（别把 1558 当永久阈值）",
+      "src": "删 1＋稳 1",
+      "zonggang": "总纲 §7 L545（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "语料四数",
+            "file": "docs/工具-语料四数.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-index）",
+      "reasons": [],
+      "source": "重复 ingest 幂等",
+      "how": "第二次跑，`written = 0`",
+      "src": "删 2＋稳 2",
+      "zonggang": "总纲 §7 L546（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-index",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-v02）",
+      "reasons": [],
+      "source": "追加一轮只写 1 行，不重复旧轮",
+      "how": "加一轮再 ingest，diff 台账",
+      "src": "删 3＋稳 3",
+      "zonggang": "总纲 §7 L547（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-v02",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-index+边界）",
+      "reasons": [],
+      "source": "未闭合轮只进 pending，不进台账",
+      "how": "造一个半截轮，查两处",
+      "src": "删 4＋稳 4",
+      "zonggang": "总纲 §7 L548（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-index+边界",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-守卫）",
+      "reasons": [],
+      "source": "单实例：两进程同跑，第二个跳过并留日志",
+      "how": "同时起两个，看锁文件与日志",
+      "src": "删 5",
+      "zonggang": "总纲 §7 L549（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-守卫",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-边界）",
+      "reasons": [],
+      "source": "文件换成更小的（尾部不同）→ 新内容入账、游标停在新文件边界",
+      "how": "截短文件，看游标位置",
+      "src": "稳 6",
+      "zonggang": "总纲 §7 L550（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-边界",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（边界+ledger）",
+      "reasons": [],
+      "source": "文件正在写（半截）→ 本轮跳过、下轮入账、无 partial 残留",
+      "how": "边写边跑 tick，查目录残留",
+      "src": "稳 7",
+      "zonggang": "总纲 §7 L551（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "边界+ledger",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "group": "A 保存正确",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（P0回归）",
+      "reasons": [],
+      "source": "kill -9 → 重启从游标继续，不重复不丢",
+      "how": "跑到一半强杀，重启对账",
+      "src": "稳 10",
+      "zonggang": "总纲 §7 L552（A 保存正确·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "P0回归",
+            "file": "P0验收/P0回归-v2.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "group": "B 内容保真",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（originals）",
+      "reasons": [],
+      "source": "★★★ 每份 原始事件.json 与源会话对应轮次**逐字节相等**",
+      "how": "全量重比（实测曾 46,564/46,564 行相等）",
+      "src": "删 6",
+      "zonggang": "总纲 §7 L558（B 内容保真·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "originals",
+            "file": "docs/replay-verify.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "group": "B 内容保真",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（views）",
+      "reasons": [],
+      "source": "每份视图 md 的正文 hash 可独立复算",
+      "how": "独立脚本重算",
+      "src": "删 7",
+      "zonggang": "总纲 §7 L559（B 内容保真·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "views",
+            "file": "docs/replay-verify.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "group": "B 内容保真",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-original）",
+      "reasons": [],
+      "source": "★ md 头明确写\"视图非全集\"且含省略条数",
+      "how": "打开任意 md 看头三行",
+      "src": "删 8",
+      "zonggang": "总纲 §7 L560（B 内容保真·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-original",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C12",
+      "group": "B 内容保真",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-original）",
+      "reasons": [],
+      "source": "截断披露行与附件名/sha256 一致",
+      "how": "三处交叉核",
+      "src": "删 9",
+      "zonggang": "总纲 §7 L561（B 内容保真·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-original",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C13",
+      "group": "B 内容保真",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-边界）",
+      "reasons": [],
+      "source": "编码 date 段 ＝ 会话开始日（跨月不拆）",
+      "how": "造一个跨零点会话",
+      "src": "删 10",
+      "zonggang": "总纲 §7 L562（B 内容保真·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-边界",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C14",
+      "group": "C 不假绿",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（fields）",
+      "reasons": [],
+      "source": "每行 entryHash 可复算",
+      "how": "逐行重算",
+      "src": "删 11",
+      "zonggang": "总纲 §7 L568（C 不假绿·P1 门）",
+      "caliber": "S-7：改为「原文重放式对账」（不引入 entryHash，S-6 否决）",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "fields",
+            "file": "docs/replay-verify.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C15",
+      "group": "C 不假绿",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "8 项全过（mutate-sid、mutate-turn、mutate-ts、mutate-seq、mutate-status、mutate-doc、mutate-attachment、mutate-code）",
+      "reasons": [],
+      "source": "改任一字段（turn/ts/seq/sid/doc/attachment/code）→ `verify` exit≠0",
+      "how": "七次单字段变异",
+      "src": "删 12",
+      "zonggang": "总纲 §7 L569（C 不假绿·P1 门）",
+      "caliber": "S-7 修订版：8 种单字段变异（含 status/code）",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "mutate-sid",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-turn",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-ts",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-seq",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-status",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-doc",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-attachment",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "mutate-code",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C16",
+      "group": "C 不假绿",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "4 项全过（destroy-delete-row、destroy-extra-row、destroy-delete-attachment、destroy-flip-attachment-byte）",
+      "reasons": [],
+      "source": "删整行 / 追加伪造行 / 删附件 / 改附件一字节 → exit≠0",
+      "how": "四类破坏各一次",
+      "src": "删 13",
+      "zonggang": "总纲 §7 L570（C 不假绿·P1 门）",
+      "caliber": "S-7 修订版",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "destroy-delete-row",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "destroy-extra-row",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "destroy-delete-attachment",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          },
+          {
+            "name": "destroy-flip-attachment-byte",
+            "file": "docs/replay-verify.mjs",
+            "exit": 1,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C17",
+      "group": "C 不假绿",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（变异反证）",
+      "reasons": [],
+      "source": "★ 变异反证：删掉某条修复逻辑 → **对应用例**必须变红（不是\"一堆红\"）",
+      "how": "逐个拔，记录谁红",
+      "src": "删 14",
+      "zonggang": "总纲 §7 L571（C 不假绿·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "变异反证",
+            "file": "docs/工具-变异反证.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C18",
+      "group": "C 不假绿",
+      "gate": "P1",
+      "status": "GREEN",
+      "summary": "1 项全过（自测-gate）",
+      "reasons": [],
+      "source": "gate 三级输入 4 项，每项都有\"怎么变 degraded\"的构造用例",
+      "how": "四项各造一次",
+      "src": "删 15",
+      "zonggang": "总纲 §7 L572（C 不假绿·P1 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.1.mjs",
+        "child": "判据-0.9.1",
+        "childExit": 0,
+        "childCounts": {
+          "green": 18,
+          "red": 0,
+          "na": 0,
+          "skipped": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档",
+        "perCriterion": [
+          {
+            "name": "自测-gate",
+            "file": "docs/跑测试.mjs",
+            "exit": 0,
+            "errors": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "C19",
+      "group": "C 不假绿",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "日检全量重放一致：台账 3 文件/12 对，重放 3 会话、坏行 0、跳 0（日检 exit 0）",
+      "reasons": [],
+      "source": "★★ 人为改\"中段\"（不改头尾、恢复 mtime）→ 当天周期全量核必须发现",
+      "how": "改一字节＋还原 mtime，跑每日全量核（**依赖 P2 第 5 项，故不在 P1 验**）",
+      "src": "稳 5",
+      "zonggang": "总纲 §7 L573（C 不假绿·P2 门）",
+      "caliber": "",
+      "evidence": {
+        "workCopy": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-criteria-work/c19-20261122-122937",
+        "sessionsReadOnly": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/dsh-home/sessions",
+        "daycheckLog": "证据/判据-1.0-final-v1.0.0-re5/logs/C19-日检-run.log",
+        "report": "证据/判据-1.0-final-v1.0.0-re5/C19-日检-run.json",
+        "counts": {
+          "ledgerFiles": 3,
+          "ledgerBadLines": 0,
+          "ledgerReadErrors": 0,
+          "ledgerDirExists": true,
+          "ledgerEmptyProven": false,
+          "replayedSessions": 3,
+          "v4Sources": 3,
+          "v3Sources": 0,
+          "v3PrefixSessions": 0,
+          "pairs": 12,
+          "missing": 0,
+          "extra": 0,
+          "codeUnique": true,
+          "sidTurnUnique": true
+        },
+        "invariantsBroken": [],
+        "mismatches": 0,
+        "mode": "注入=改中段台账行+还原 mtime（--proof 做）；本体=对未改写副本跑一次全量核",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C20",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "34.15 MiB 语料端到端 3 个 tick 入账 1338 行（written 合计 1338，code/(sid,turn) 唯一 1338/1338，坏行 0）；⚠ 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+      "reasons": [],
+      "source": "48 MB 语料端到端 ≤ **3** 个 tick（原 2 作废 → R-3）",
+      "how": "压测",
+      "src": "删 16",
+      "zonggang": "总纲 §7 L579（D 续航稳产·P2 门）",
+      "caliber": "R-3：48 MB 语料与单会话 38.82 MB 统一取 ≤3 tick",
+      "evidence": {
+        "metrics": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+        "ticks": [
+          {
+            "written": 626,
+            "ms": 7659,
+            "consumed": 16750779,
+            "readBytes": 34173302,
+            "stateBytes": 0,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 626,
+            "ms": 8403,
+            "consumed": 16758963,
+            "readBytes": 34196837,
+            "stateBytes": 7167,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 86,
+            "ms": 1246,
+            "consumed": 2302594,
+            "readBytes": 4718581,
+            "stateBytes": 6999,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 0,
+            "ms": 14,
+            "consumed": 0,
+            "readBytes": 12387,
+            "stateBytes": 4195,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 0,
+            "ms": 13,
+            "consumed": 0,
+            "readBytes": 11983,
+            "stateBytes": 3791,
+            "headFp": 4096,
+            "tailFp": 4096
+          }
+        ],
+        "rowsCount": 1338,
+        "uniqueCode": 1338,
+        "uniqueSidTurn": 1338,
+        "endToEndTicks": 3,
+        "writtenTotal": 1338,
+        "corpusBytesTotal": 35812336,
+        "ingestableBytes": 35812336,
+        "caveat": "语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+        "caliber": "R-3：48 MB 语料端到端 ≤3 tick；E3 度量口径 = ledger/.tick-metrics.jsonl 的 written 逐 tick 累计",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C21",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "稳态 2 tick 读盘最大 12.1 KiB ≤1 MiB；读放大最大 1.00× ≤2× 变更量（变化承载=state+头尾指纹；语料 34.15 MiB 未被全量重读）",
+      "reasons": [],
+      "source": "★ 稳态单 tick 读盘 ≤ 1 MB，且 ≤ 2× 变更量（不是全量重读）",
+      "how": "无变更跑 10 tick 计读盘",
+      "src": "删 17＋稳 9",
+      "zonggang": "总纲 §7 L580（D 续航稳产·P2 门）",
+      "caliber": "",
+      "evidence": {
+        "metrics": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+        "steadyTicks": 2,
+        "perTick": [
+          {
+            "tick": "2452-1795321660265",
+            "ts": "2026-11-22T12:27:40+08:00",
+            "readBytes": 12387,
+            "changeAmount": 12387,
+            "ratio": 1,
+            "written": 0
+          },
+          {
+            "tick": "2452-1795321660281",
+            "ts": "2026-11-22T12:27:40+08:00",
+            "readBytes": 11983,
+            "changeAmount": 11983,
+            "ratio": 1,
+            "written": 0
+          }
+        ],
+        "caliber": "C21 原文：稳态单 tick 读盘 ≤1 MB 且 ≤2× 变更量（不是全量重读）。变更量 = consumedSourceBytes+stateBytes+headFpBytes+tailFpBytes（tick 自记的变化承载量；稳态下 readBytes 恰等于它 = 1.00×）；另：稳态 readBytes/语料 = 只读变化而非全量",
+        "note": "样本 2 tick（条款建议无变更跑 10 tick；E3 现有只读度量只有 2 个稳态 tick，10 tick 观测未跑，已登记残余）",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C22",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "套账/压缩语料 3.861% ≤5%（台账 1.18 MiB+索引 145.3 KiB / 语料 34.15 MiB）；原文+视图 1.1904× ∈[1.00,1.35]（54.06 MiB/45.42 MiB）；单文件最大 34.8 KiB ≤4 MB；索引分片最大 3.5 KiB ≤4 MiB",
+      "reasons": [],
+      "source": "账库体积 ≤ 1.25× 语料；单文件 ≤ 4 MB",
+      "how": "量目录",
+      "src": "删 18",
+      "zonggang": "总纲 §7 L581（D 续航稳产·P2 门）",
+      "caliber": "S-9② 拆两条：套账(台账+索引) ≤0.05× 压缩语料；原文+视图 = 1.00–1.35× 解压语料（§5.9② 单文件 ≤4 MB，xlsx 除外）",
+      "evidence": {
+        "corpusBytes": 35812336,
+        "ingestableBytes": 35812336,
+        "ledgerDayBytes": 1234098,
+        "indexBytes": 148770,
+        "originalsBytes": 47622603,
+        "originalsCount": 1338,
+        "viewsBytes": 9065871,
+        "viewsCount": 1338,
+        "attachmentBytes": 47622603,
+        "r3_settle": 0.038614292013791005,
+        "r2_original_view": 1.1903690774735687,
+        "r1_decompress_report_only": 1.32978208961292,
+        "maxFile": {
+          "rel": "2026年09月/09月总“完整原文”/20260901-e3accept0001-A-00001000 原始事件.json",
+          "size": 35599
+        },
+        "maxIndexShard": {
+          "rel": "ledger/.index/.idx-state.json",
+          "size": 3603
+        },
+        "caliber": "S-9②：套账(台账日文件+索引) ≤0.05× 压缩语料；原文+视图(原始事件.json+完整原文.md) = 1.00–1.35× 解压语料（Σ台账 attachment.bytes，S-10⑤ doctor 同一分母代理）；§5.9② 单文件 ≤4 MB（xlsx 除外）；S-10④ 索引分片 ≤4 MiB。r1 只报告（S-9 实测解压 3.49× 是全语料；E3 现存语料子集 r1=1.3298，差异已登记）",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C23",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "扫描 2815 文件：扩展名分布 (none)=2/.json=1356/.md=1354/.jsonl=100/.xlsx=3；白名单外 0（例外：周账 xlsx 3、外发摘要 txt 0；根标记 .ledger-root 2）",
+      "reasons": [],
+      "source": "判据产物（台账/索引/游标/报告）只用 `.jsonl` / `.md` / `.json`；**例外**：周账视图 `.xlsx`、外发日结摘要 `.txt`",
+      "how": "按白名单扫扩展名",
+      "src": "删 19",
+      "zonggang": "总纲 §7 L582（D 续航稳产·P2 门）",
+      "caliber": "§5.9① 落盘格式；B11 已把两个例外写进判据与 §5.9①",
+      "evidence": {
+        "roots": [
+          {
+            "label": "E3 大库",
+            "root": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root",
+            "files": 2773
+          },
+          {
+            "label": "c01 小库",
+            "root": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+            "files": 42
+          }
+        ],
+        "filesTotal": 2815,
+        "extCount": {
+          "(none)": 2,
+          ".json": 1356,
+          ".md": 1354,
+          ".jsonl": 100,
+          ".xlsx": 3
+        },
+        "exceptions": {
+          "xlsx": 3,
+          "txt": 0,
+          "rootMarker": 2
+        },
+        "violations": [],
+        "caliber": "§5.9①/C23：台账/索引/游标/报告只用 .jsonl/.md/.json；仅两个例外——周账视图 .xlsx、外发日结摘要 .txt；.ledger-root 是账库根标记（lib/layout.js，非判据产物），允许存在",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C24",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "复算 364.0 GiB ≈364 GiB；Plan §4.7 GiB 命中 0 处、推算标记 0 处、签字单 GiB 命中 0 处、包内交付文档回退命中 7 份（交付-v0.9.4/02-验收记录.md、交付-v0.9.4/00-交付清单.md、交付-v0.9.4/05-已知未覆盖项.md、交付-v0.9.5/02-验收记录.md、交付-v0.9.5/05-已知未覆盖项.md、交付-v1.0.0-re/02-验收记录.md、交付-v1.0.0-re/05-已知未覆盖项.md）（交付文档 04 待出包复述）",
+      "reasons": [],
+      "source": "★ 一年后的账库预估（给定每天 N 轮 → 体积与查询耗时）写在文档里",
+      "how": "读文档",
+      "src": "删 20",
+      "zonggang": "总纲 §7 L583（D 续航稳产·P2 门）",
+      "caliber": "S-10③ 单位统一 GiB，条款 ≈364 GiB",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "model": {
+            "roundsPerDay": 3168,
+            "years": 3,
+            "rounds": 3468960,
+            "compressionPerRoundKiB": 31.5,
+            "decompressRatio": 3.4928,
+            "totalKiB": 381661513,
+            "GiB": 363.98,
+            "clause": "≈364 GiB（S-10③ 复算 363.9）",
+            "mark": "推算（31.5 KiB/轮压缩 × 3.4928 解压 × 3,468,960 轮）"
+          },
+          "docs": {
+            "planPath": "计划\\0.9.4-P3扩容方案.md",
+            "planExists": false,
+            "planGiB": [],
+            "planTuiSuan": [],
+            "signPath": "新的开始-V0.9.0新版本\\签字单-已签-20261113.md",
+            "signExists": false,
+            "signGiB": [],
+            "fallbackDocs": [
+              {
+                "doc": "交付-v0.9.4/02-验收记录.md",
+                "gibHits": [
+                  {
+                    "line": 84,
+                    "text": "| C24 | 三年体积预估写在文档：GiB 口径 **≈364 GiB** 且标\"推算\"（S-10③） | **GREEN** | 复算 **363.98 GiB ≈364 GiB**（3,468,960 轮 × 31.5 KiB × 3.4928 解压）；计划 §4.7 GiB 命中 **6 处**、推算标记 **8 处**、签字单 GiB 命中 **1 处** | L7；`C24.json` |"
+                  },
+                  {
+                    "line": 273,
+                    "text": "| C24 的 363.98 GiB、6/8/1 处命中 | 判据执行器按 `31.5 KiB × 3.4928 × 3,468,960` 复算 + 读 `_工作\\计划\\0.9.4-P3扩容方案.md` 与签字单 | `C24.json` |"
+                  }
+                ],
+                "tuiSuan": 5
+              },
+              {
+                "doc": "交付-v0.9.4/00-交付清单.md",
+                "gibHits": [
+                  {
+                    "line": 26,
+                    "text": "3. **C24 的 ≈364 GiB、C32 的 402 MB、C34 的真实 90 天/冷月、C35 的 1,095 分片、C36 的三年 12.6% 全是推算或小库实测**（05 #3）；"
+                  }
+                ],
+                "tuiSuan": 4
+              },
+              {
+                "doc": "交付-v0.9.4/05-已知未覆盖项.md",
+                "gibHits": [
+                  {
+                    "line": 14,
+                    "text": "| **3** | **三年规模判据全为推算或小库实测**——C24 的 ≈364 GiB 是模型复算（363.98 GiB）；C32 的\"3 年 402 MB 全扫\"、C34 的\"真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB\"、C35 的\"1,095 个日分片\"、C36 的\"三年 12.6%\"都**没有建三年合成库**（纪律：500 MB 预算/磁盘纪律不落 3.19 GB 台账） | 13 条判据的**格式/正确性**结论可信；**到量后的性能与体积**没有实测。真实 3 年的 C34 会不会超 1 s/2 s、C35 会不会加载别的月份、C36 会不会破 15%，本版**没有数字** | ⏳ 后续版本按 E4-1/E4-3 的合成阶梯补测；本版不把推算当实测（02 §七 #5） |"
+                  },
+                  {
+                    "line": 19,
+                    "text": "| **8** | **K-3（`readAll` 热窗）留 0.9.5**——本版 tick 仍每轮全读台账；三年期 tick `readAll` ≈3.19 GB/轮、heap 推算 ≈4.0 GB（§3.3），**没有 K-3 就会在到量后爆内存/超时** | 本版只把这件事变成**可提前发现**：容量告警（`CATALOG_BUDGET` 台账行数 15 万 warn/33 万 red、账库体积 291/363 GiB）＋`.tick-metrics` 的 `phases`/`budget`；**真正的修法（K-3 内核改动）不在本版** | ⏳ K-3 需机主签（`lib/ledger.js` 增 `sinceYmd`，默认行为不变），列 0.9.5 第一优先；本版不宣称大库 tick 可持续 |"
+                  }
+                ],
+                "tuiSuan": 7
+              },
+              {
+                "doc": "交付-v0.9.5/02-验收记录.md",
+                "gibHits": [
+                  {
+                    "line": 70,
+                    "text": "| C24 | 三年体积预估写在文档：GiB 口径 **≈364 GiB** 且标\"推算\" | 0.9.4 子执行器 | **GREEN** | 复算 **364.0 GiB ≈364 GiB**；Plan §4.7 GiB 命中 **6 处**、推算标记 **8 处**、签字单 GiB 命中 **1 处** | `202818\\C24.json`；`094-criteria-20261113-202915\\C24.json` |"
+                  },
+                  {
+                    "line": 242,
+                    "text": "| 6 | **三年规模全为推算** | C24 的 ≈364 GiB 是模型复算；C32 的 3 年 402 MB 全扫、C34 真实 90 天/冷月、C35 1,095 分片、C36 三年 12.6% 都是推算或 45 天实测（05 #9） |"
+                  }
+                ],
+                "tuiSuan": 3
+              },
+              {
+                "doc": "交付-v0.9.5/05-已知未覆盖项.md",
+                "gibHits": [
+                  {
+                    "line": 27,
+                    "text": "| **9** | **三年规模全为推算**——C24 的 **≈364 GiB** 是模型复算（364.0）；C32 的\"3 年 **402 MB** 全扫\"、C34 的\"真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB\"、C35 的\"**1,095** 个日分片\"、C36 的\"三年 **12.6%**\"都是**推算或 45 天实测**，没有建三年合成库（纪律：500 MB 预算，不落 3.19 GB 台账） | 40 条的**格式/正确性**结论可信；**到量后的性能与体积没有实测**。真实 3 年的 C34 会不会超 1 s/2 s、C35 会不会加载别的月份、C36 会不会破 15%，本版**没有数字** | ⏳ 后续版本按 E4-1/E4-3 合成阶梯补测；本版不把推算当实测 |"
+                  },
+                  {
+                    "line": 32,
+                    "text": "| **14** | **K-3（`readAll` 热窗）留 1.0**——本版 tick 仍每轮全读台账；三年期 tick `readAll` ≈3.19 GB/轮、heap 推算 ≈4.0 GB，**没有 K-3 就会在到量后爆内存/超时** | 本版只是把这件事变成**可提前发现**（容量告警：台账行数 15 万 warn/33 万 red、账库体积 291/363 GiB）＋`.tick-metrics` 的 `phases`/`budget`；**真正的修法（K-3 内核改动）不在本版** | ⏳ K-3 需机主签（`lib/ledger.js` 增 `sinceYmd`，默认行为不变），列 `v1.0.0-re` 第一优先；本版不宣称大库 tick 可持续 |"
+                  }
+                ],
+                "tuiSuan": 5
+              },
+              {
+                "doc": "交付-v1.0.0-re/02-验收记录.md",
+                "gibHits": [
+                  {
+                    "line": 50,
+                    "text": "| C24 | GREEN | 判据-0.9.4：复算 **364.0 GiB** ≈ 364 GiB；Plan §4.7 GiB 命中 6 处、推算标记 8 处、签字单 1 处 |"
+                  }
+                ],
+                "tuiSuan": 1
+              },
+              {
+                "doc": "交付-v1.0.0-re/05-已知未覆盖项.md",
+                "gibHits": [
+                  {
+                    "line": 41,
+                    "text": "| ❌3 | **不保证真实账库/跨机/三年性能** | 只在 c01/E3 只读/三层夹具上验，只在 TSG-33 + Win10 + Node v26.13.1 跑过；三年数字（364 GiB、402 MB、≈42 s 等）**全是推算** | 真实库 + 三台设备 + 三年合成库实测 |"
+                  }
+                ],
+                "tuiSuan": 2
+              }
+            ],
+            "source": "package-fallback",
+            "pending": "0.9.4 交付文档 04 尚未生成（出包时须按 S-10③ 复述 ≈364 GiB + 标\"推算\"）；计划 §1.1 仍留 S-9 历史口径 \"≈363 GB\"，已在 §4.7 更正为 GiB"
+          }
+        }
+      }
+    },
+    {
+      "id": "C25",
+      "group": "D 续航稳产",
+      "gate": "P2",
+      "status": "GREEN",
+      "summary": "大会话 34.15 MiB：3 tick 入账 1338 行无重复（written=1338，唯一 code/(sid,turn)=1338/1338）；3 tick 耗时 7659/8403/1246 ms ≤30 s；消费 15.97 MiB/15.98 MiB/2.20 MiB ≤17 MiB、读盘 32.59 MiB/32.61 MiB/4.50 MiB ≤40 MiB；游标 34.15 MiB/34.15 MiB（100.00%）",
+      "reasons": [],
+      "source": "★★ 38.82 MB 会话：单 tick ≤ 30 秒、读盘 ≤ 8 MB、游标前进；连续 3 tick 内完整入账、无重复",
+      "how": "单会话大文件压测",
+      "src": "稳 8",
+      "zonggang": "总纲 §7 L584（D 续航稳产·P2 门）",
+      "caliber": "S-9① 改判：保留 3 tick/≤30 s；读盘改为「消费 ≤17 MiB/tick、读放大 ≤2.5×（≤40 MB/tick）」",
+      "evidence": {
+        "bigSession": {
+          "rel": "wsE3/session-e3accept0001-1111-2222-3333-444444444401/session.v4.jsonl.zstd",
+          "size": 35812336
+        },
+        "metrics": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root/ledger/.tick-metrics.jsonl",
+        "ticks": [
+          {
+            "written": 626,
+            "ms": 7659,
+            "consumed": 16750779,
+            "readBytes": 34173302,
+            "stateBytes": 0,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 626,
+            "ms": 8403,
+            "consumed": 16758963,
+            "readBytes": 34196837,
+            "stateBytes": 7167,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 86,
+            "ms": 1246,
+            "consumed": 2302594,
+            "readBytes": 4718581,
+            "stateBytes": 6999,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 0,
+            "ms": 14,
+            "consumed": 0,
+            "readBytes": 12387,
+            "stateBytes": 4195,
+            "headFp": 4096,
+            "tailFp": 4096
+          },
+          {
+            "written": 0,
+            "ms": 13,
+            "consumed": 0,
+            "readBytes": 11983,
+            "stateBytes": 3791,
+            "headFp": 4096,
+            "tailFp": 4096
+          }
+        ],
+        "rowsCount": 1338,
+        "uniqueCode": 1338,
+        "uniqueSidTurn": 1338,
+        "endToEndTicks": 3,
+        "cursor": {
+          "size": 35812336,
+          "offset": 35812336,
+          "pct": "100.00%"
+        },
+        "limits": {
+          "ms": 30000,
+          "consumed": 17825792,
+          "read": 41943040
+        },
+        "caliber": "S-9①：保留「3 tick 内完整入账 + 单 tick ≤30 s + 游标前进」；读盘改为「消费 ≤17 MiB/tick、读放大 ≤2.5×（≤40 MB/tick）」；无重复 = written 合计=台账行数 且 code/(sid,turn) 唯一",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C26",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "小库 3 日/台账 12 行=索引 12 行，缺/多/重复 0；大库 45 日/台账 1338 行=索引 1338 行，缺/多/重复 0",
+      "reasons": [],
+      "source": "索引条数 ＝ 台账行数（同天），每条 code 在台账里存在",
+      "how": "对账（口径见 R-5）",
+      "src": "扩 1",
+      "zonggang": "总纲 §7 L590（E 扩容查询·P3 门）",
+      "caliber": "R-5：索引行＝台账行＝轮",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "per": [
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+              "label": "小库",
+              "ledgerDays": 3,
+              "indexDays": 3,
+              "ledgerRows": 12,
+              "indexRows": 12,
+              "countMismatch": 0,
+              "missingInIndex": 0,
+              "indexNotInLedger": 0,
+              "duplicateIndexCodes": 0,
+              "ledgerBadLines": 0,
+              "samples": [],
+              "ok": true
+            },
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+              "label": "大库",
+              "ledgerDays": 45,
+              "indexDays": 45,
+              "ledgerRows": 1338,
+              "indexRows": 1338,
+              "countMismatch": 0,
+              "missingInIndex": 0,
+              "indexNotInLedger": 0,
+              "duplicateIndexCodes": 0,
+              "ledgerBadLines": 0,
+              "samples": [],
+              "ok": true
+            }
+          ],
+          "problems": []
+        }
+      }
+    },
+    {
+      "id": "C27",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "小库 12 行+大库 1338 行：指针区间/台账 docFileSha256/原文 md 整文件 sha 全部独立复算一致；h/entryHash 字段 0",
+      "reasons": [],
+      "source": "★ 索引每条 `h` 与台账行复算一致",
+      "how": "重算比对",
+      "src": "扩 2",
+      "zonggang": "总纲 §7 L591（E 扩容查询·P3 门）",
+      "caliber": "S-10①：四字段（code/docFileSha256/offset/bytes）由原文独立复算；不引入 entryHash",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "per": [
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+              "label": "小库",
+              "indexRows": 12,
+              "ledgerRows": 12,
+              "thinBad": 0,
+              "entryHashFields": 0,
+              "pointerBad": 0,
+              "docShaVsLedgerBad": 0,
+              "docShaMissing": 0,
+              "viewChecked": 12,
+              "viewBad": 0,
+              "viewMissing": 0,
+              "ok": true,
+              "samples": []
+            },
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+              "label": "大库",
+              "indexRows": 1338,
+              "ledgerRows": 1338,
+              "thinBad": 0,
+              "entryHashFields": 0,
+              "pointerBad": 0,
+              "docShaVsLedgerBad": 0,
+              "docShaMissing": 0,
+              "viewChecked": 1338,
+              "viewBad": 0,
+              "viewMissing": 0,
+              "ok": true,
+              "samples": []
+            }
+          ],
+          "problems": [],
+          "caliber": "S-10①：四字段由原文/台账复算；不引入 entryHash（S-6 否决）"
+        }
+      }
+    },
+    {
+      "id": "C28",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "追加 1 行→索引 +1（written=1/removed=0；视图重扫 0；读放大 0.0×）",
+      "reasons": [],
+      "source": "新增一行 → 索引同步加一行（不重建、不重扫）",
+      "how": "加一行看索引增量",
+      "src": "扩 3",
+      "zonggang": "总纲 §7 L592（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c28\\run-1\\root",
+          "beforeRows": 12,
+          "afterRows": 13,
+          "changedDay": "20261007",
+          "appendedRowBytes": 928,
+          "build": {
+            "written": 1,
+            "unchanged": 0,
+            "removed": 0,
+            "ok": true,
+            "ms": 9
+          },
+          "otherShardsChanged": [],
+          "createdShards": [],
+          "reads": {
+            "ledgerReadBytes": 0,
+            "readAmplification": 0,
+            "shardReads": 3,
+            "viewReads": 0
+          },
+          "subchecks": {
+            "syncPlusOne": true,
+            "noWholeIndexRebuild": true,
+            "noViewRescan": true,
+            "rescanUnder3x": true
+          },
+          "caliber": "总纲\"怎么验=加一行看索引增量\"三子项成立；但判据括号里的\"不重扫\"按 P3 方案 E4-2（fs hook ≤新行×3）实测未达 → 整条判红，缺陷登记待 re1 补 idx-sync",
+          "defect": null
+        }
+      }
+    },
+    {
+      "id": "C29",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "删 .index（3 分片/12 行）→ stat 检出 index-missing → 重建 3 分片逐字节相等、rows=12、stat.ok=true；形态=按日分片≤4 MiB（S-10④）",
+      "reasons": [],
+      "source": "★ 删掉索引文件 → 能从台账重建（索引是派生物，不是权威）",
+      "how": "删了重建，逐行等",
+      "src": "扩 4",
+      "zonggang": "总纲 §7 L593（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c29\\run-2\\root",
+          "rowsBefore": 12,
+          "rowsAfter": 12,
+          "shards": 3,
+          "deletionDetected": true,
+          "deletionProblems": [
+            "index-missing",
+            "count-mismatch",
+            "missing-index-row",
+            "missing-index-row",
+            "missing-index-row"
+          ],
+          "rebuilt": {
+            "ok": true,
+            "written": 3,
+            "removed": 0,
+            "ms": 14
+          },
+          "mismatchedShards": [],
+          "missingShards": [],
+          "statOk": true,
+          "stateMatch": true,
+          "shardForm": {
+            "rule": "S-10④：按日分片 idx-YYYYMMDD.jsonl，单分片 ≤4 MiB",
+            "badFormShards": [],
+            "dayShardOk": true,
+            "shardLimitBytes": 4194304
+          }
+        }
+      }
+    },
+    {
+      "id": "C30",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "小库 3 个区间逐 code 一致（12/8/8 行）；大库 3 个区间逐 code 一致（1338/690/678 行）",
+      "reasons": [],
+      "source": "按时间范围查 → 与\"暴力扫台账\"结果集完全一致",
+      "how": "两条路对撞",
+      "src": "扩 5",
+      "zonggang": "总纲 §7 L594（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "per": [
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+              "label": "小库",
+              "cases": [
+                {
+                  "range": "20261005..20261007",
+                  "indexRows": 12,
+                  "bruteRows": 12,
+                  "equal": true,
+                  "mismatched": 0
+                },
+                {
+                  "range": "20261005..20261006",
+                  "indexRows": 8,
+                  "bruteRows": 8,
+                  "equal": true,
+                  "mismatched": 0
+                },
+                {
+                  "range": "20261006..20261007",
+                  "indexRows": 8,
+                  "bruteRows": 8,
+                  "equal": true,
+                  "mismatched": 0
+                }
+              ]
+            },
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+              "label": "大库",
+              "cases": [
+                {
+                  "range": "20260901..20261015",
+                  "indexRows": 1338,
+                  "bruteRows": 1338,
+                  "equal": true,
+                  "mismatched": 0
+                },
+                {
+                  "range": "20260901..20260923",
+                  "indexRows": 690,
+                  "bruteRows": 690,
+                  "equal": true,
+                  "mismatched": 0
+                },
+                {
+                  "range": "20260923..20261015",
+                  "indexRows": 678,
+                  "bruteRows": 678,
+                  "equal": true,
+                  "mismatched": 0
+                }
+              ]
+            }
+          ],
+          "problems": []
+        }
+      }
+    },
+    {
+      "id": "C31",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "三层夹具 anchor=2026-11-22（今天）：hot(session-three00… 2 行/202611) · warm(session-three00… 2 行/202606+202608) · cold(session-three00… 2 行/202508+202510)；按 sid 查三路（索引 2/2/2 行 · 暴力台账 · 公共 searchLedger）逐 code 一致；指针问题 0；窗口 0 / [90,180] / [366,∞] 天；跨 5 个月份",
+      "reasons": [],
+      "source": "★ 按 sid 查 → 跨热/温/冷三层都正确",
+      "how": "三个 sid 各一层",
+      "src": "扩 6",
+      "zonggang": "总纲 §7 L595（E 扩容查询·P3 门）",
+      "caliber": "夹具 lab-094-3layer：热=锚点日 / 温=90–180 天 / 冷=>365 天；锚点≠今天 → NA",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "threeLayer": {
+            "lab": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-094-3layer",
+            "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-094-3layer\\root",
+            "manifestPath": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-094-3layer\\manifest.json",
+            "anchor": "2026-11-22",
+            "today": "2026-11-22",
+            "anchorAgeDays": 0,
+            "hotIsToday": true,
+            "caliber": {
+              "hot": {
+                "name": "热",
+                "fromDays": 0,
+                "toDays": 0,
+                "desc": "锚点日（生成当日=今天）"
+              },
+              "warm": {
+                "name": "温",
+                "fromDays": 90,
+                "toDays": 180,
+                "desc": "90–180 天前"
+              },
+              "cold": {
+                "name": "冷",
+                "fromDays": 366,
+                "toDays": null,
+                "desc": "超过 1 年（>365 天）"
+              }
+            },
+            "pipeline": null,
+            "fixtureDigest": null
+          },
+          "perLayer": [
+            {
+              "layer": "hot",
+              "sid": "session-three00001-1111-2222-3333-444444444401",
+              "expectedRows": 2,
+              "ledgerRows": 2,
+              "indexQueryRows": 2,
+              "apiRows": 2,
+              "offsets": [
+                0,
+                0
+              ],
+              "days": [
+                "20261122"
+              ],
+              "months": [
+                "202611"
+              ],
+              "shardsRead": 5,
+              "bytesRead": 632,
+              "missingInLedger": [],
+              "extraInLedger": [],
+              "checks": {
+                "ledgerMatchesManifest": true,
+                "indexHasAllExpected": true,
+                "queryMatchesManifest": true,
+                "queryNoPointerProblems": true,
+                "apiMatchesManifest": true,
+                "allThreePathsEqual": true
+              }
+            },
+            {
+              "layer": "warm",
+              "sid": "session-three00002-1111-2222-3333-444444444402",
+              "expectedRows": 2,
+              "ledgerRows": 2,
+              "indexQueryRows": 2,
+              "apiRows": 2,
+              "offsets": [
+                100,
+                160
+              ],
+              "days": [
+                "20260615",
+                "20260814"
+              ],
+              "months": [
+                "202606",
+                "202608"
+              ],
+              "shardsRead": 5,
+              "bytesRead": 632,
+              "missingInLedger": [],
+              "extraInLedger": [],
+              "checks": {
+                "ledgerMatchesManifest": true,
+                "indexHasAllExpected": true,
+                "queryMatchesManifest": true,
+                "queryNoPointerProblems": true,
+                "apiMatchesManifest": true,
+                "allThreePathsEqual": true
+              }
+            },
+            {
+              "layer": "cold",
+              "sid": "session-three00003-1111-2222-3333-444444444403",
+              "expectedRows": 2,
+              "ledgerRows": 2,
+              "indexQueryRows": 2,
+              "apiRows": 2,
+              "offsets": [
+                400,
+                460
+              ],
+              "days": [
+                "20250819",
+                "20251018"
+              ],
+              "months": [
+                "202508",
+                "202510"
+              ],
+              "shardsRead": 5,
+              "bytesRead": 632,
+              "missingInLedger": [],
+              "extraInLedger": [],
+              "checks": {
+                "ledgerMatchesManifest": true,
+                "indexHasAllExpected": true,
+                "queryMatchesManifest": true,
+                "queryNoPointerProblems": true,
+                "apiMatchesManifest": true,
+                "allThreePathsEqual": true
+              }
+            }
+          ],
+          "coverage": {
+            "ledgerRows": 6,
+            "indexRows": 6,
+            "shards": 5,
+            "ledgerDays": 5,
+            "indexDays": 5,
+            "months": [
+              "202508",
+              "202510",
+              "202606",
+              "202608",
+              "202611"
+            ],
+            "warmMonths": [
+              "202606",
+              "202608"
+            ],
+            "coldMonths": [
+              "202508",
+              "202510"
+            ],
+            "ledgerByteIdentical": false,
+            "indexByteIdentical": false,
+            "indexStatOk": true
+          },
+          "problems": [],
+          "caliber": "判据原文\"三个 sid 各一层\"：热=锚点日、温=90–180 天前、冷=>365 天前；每层用索引查询/独立台账暴力扫/公共 searchLedger 三路对撞；窗口越界、缺行、缺分片、指针坏都算 RED"
+        }
+      }
+    },
+    {
+      "id": "C32",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "起始分片定位正确（3 个 code）；E3 最坏 6.60 ms ≤ 阈值 50 ms（口径：非 O(1)，code 日起向后有界扫描；3 年 402 MB 未测）",
+      "reasons": [],
+      "source": "按 code 查 → O(1) 定位月份目录（编码前 8 位即日期）",
+      "how": "计步数",
+      "src": "扩 7",
+      "zonggang": "总纲 §7 L596（E 扩容查询·P3 门）",
+      "caliber": "实测口径：非 O(1)、code 日起向后有界扫描（阈值 50 ms）",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+          "cases": [
+            {
+              "code": "20260901-e3accept0001-A-00000001",
+              "codeDay": "20260901",
+              "expectedStartShard": "20260901",
+              "firstShardRead": "20260901",
+              "startLocated": true,
+              "found": true,
+              "ms": 3.62,
+              "shardsRead": 1,
+              "bytesRead": 3255,
+              "indexReads": 1
+            },
+            {
+              "code": "20260901-e3accept0001-A-00000670",
+              "codeDay": "20260901",
+              "expectedStartShard": "20260901",
+              "firstShardRead": "20260901",
+              "startLocated": true,
+              "found": true,
+              "ms": 5.39,
+              "shardsRead": 23,
+              "bytesRead": 74865,
+              "indexReads": 23
+            },
+            {
+              "code": "20260901-e3accept0001-A-00001338",
+              "codeDay": "20260901",
+              "expectedStartShard": "20260901",
+              "firstShardRead": "20260901",
+              "startLocated": true,
+              "found": true,
+              "ms": 6.6,
+              "shardsRead": 45,
+              "bytesRead": 145167,
+              "indexReads": 45
+            }
+          ],
+          "worstMs": 6.6,
+          "thresholdMs": 50,
+          "caliber": "★ 口径（不许假装 O(1)）：code 前 8 位=code 日 → 直接确定起始日分片（不遍历/不读任何别的分片），然后从该分片起向后扫到命中（limit=1 命中即停）；台账日≠code 日时最多扫到末分片。E3 实测 3–9 ms（37 分片全扫上限 145,287 B）；阈值 50 ms（≈5× 余量）。3 年最坏 ≈402 MB 全扫（推算）未测 —— 不在 O(1) 承诺内，登记为已知风险。",
+          "problems": []
+        }
+      }
+    },
+    {
+      "id": "C33",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "2 例未命中均返回 searchedRange+olderAvailable+hint（code 例 exit 1、空档 olderAvailable=true 且 searchedRange=20261016..20261022）",
+      "reasons": [],
+      "source": "★★ 查不到必须返回 `searchedRange` + `olderAvailable` + `hint`",
+      "how": "查一个不存在的词",
+      "src": "扩 8",
+      "zonggang": "总纲 §7 L597（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+          "gap": {
+            "from": "20261016",
+            "to": "20261022"
+          },
+          "missCode": "20260901-e3accept0001-A-99999999",
+          "checks": [
+            {
+              "name": "不存在 code",
+              "arg": "--code=20260901-e3accept0001-A-99999999",
+              "json": {
+                "command": "index query",
+                "ok": false,
+                "exitCode": 1,
+                "found": false,
+                "count": 0,
+                "rows": [],
+                "searchedRange": {
+                  "fromYmd": "20260901",
+                  "toYmd": "20261015"
+                },
+                "olderAvailable": false,
+                "newerAvailable": false,
+                "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。",
+                "allShardDays": 45,
+                "shardsRead": 45,
+                "bytesRead": 145167,
+                "rowsRead": 0,
+                "limitHit": false,
+                "extraScan": false,
+                "pointerProblems": [],
+                "ms": 9
+              },
+              "status": 1,
+              "found": false,
+              "fields": true,
+              "searchedRange": {
+                "fromYmd": "20260901",
+                "toYmd": "20261015"
+              },
+              "olderAvailable": false,
+              "hint": "未命中（code=20260901-e3accept0001-A-99999999）。已查 45 个日分片（20260901..20261015）。若确定数据存在，索引可能过期：跑 index build。"
+            },
+            {
+              "name": "空档 range",
+              "arg": "--range=20261016..20261022",
+              "json": {
+                "command": "index query",
+                "ok": false,
+                "exitCode": 1,
+                "found": false,
+                "count": 0,
+                "rows": [],
+                "searchedRange": {
+                  "fromYmd": "20261016",
+                  "toYmd": "20261022"
+                },
+                "olderAvailable": true,
+                "newerAvailable": false,
+                "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。",
+                "allShardDays": 45,
+                "shardsRead": 0,
+                "bytesRead": 0,
+                "rowsRead": 0,
+                "limitHit": false,
+                "extraScan": false,
+                "pointerProblems": [],
+                "ms": 6
+              },
+              "status": 1,
+              "found": false,
+              "fields": true,
+              "searchedRange": {
+                "fromYmd": "20261016",
+                "toYmd": "20261022"
+              },
+              "olderAvailable": true,
+              "hint": "未命中（range=20261016..20261022）。已查 0 个日分片（20261016..20261022）；更早还有分片（最早 20260901），需要时加 --range/--sid。若确定数据存在，索引可能过期：跑 index build。"
+            }
+          ],
+          "problems": [],
+          "note": "CLI 无 keyword 条件 → 用\"不存在 code\"+\"空档 range\"两例代替\"查不存在的词\""
+        }
+      }
+    },
+    {
+      "id": "C34",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "今天（=数据最新日） 4.03 ms/100 ms（1 分片）；90 天 31.09 ms/1000 ms（45 分片）；指定冷月 21.63 ms/2000 ms（30 分片）；规模=45 天，3 年档未测",
+      "reasons": [],
+      "source": "性能：查今天 < 100 ms；查 90 天 < 1 s；查指定冷月 < 2 s",
+      "how": "三档计时",
+      "src": "扩 9",
+      "zonggang": "总纲 §7 L598（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+          "measured": [
+            {
+              "name": "今天（=数据最新日）",
+              "range": "20261015..20261015",
+              "thresholdMs": 100,
+              "note": "系统日 2026-11-13 当天无台账，取数据最新日 20261015",
+              "ms": 4.03,
+              "rows": 18,
+              "shardsRead": 1,
+              "bytesRead": 1947,
+              "ok": true
+            },
+            {
+              "name": "90 天",
+              "range": "20260718..20261015",
+              "thresholdMs": 1000,
+              "note": "E3 只有 45 天/37 分片：90 天档请求退化为全部分片（可测的最坏档）",
+              "ms": 31.09,
+              "rows": 1338,
+              "shardsRead": 45,
+              "bytesRead": 145167,
+              "ok": true
+            },
+            {
+              "name": "指定冷月",
+              "range": "20260901..20260930",
+              "thresholdMs": 2000,
+              "note": "冷月取最早月 202609",
+              "ms": 21.63,
+              "rows": 900,
+              "shardsRead": 30,
+              "bytesRead": 97650,
+              "ok": true
+            }
+          ],
+          "problems": [],
+          "caliber": "E3 规模（1,338 行/37 分片/45 天）：90 天档=全部分片；3 年规模（真实 90 天≈27 万行/30 MiB、冷月≈9.7 万行/11 MiB）未建合成库 → 不外推为绿"
+        }
+      }
+    },
+    {
+      "id": "C35",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "冷月 202609 range=20260901..20260930：只读该月 30 个分片、月份集={202609}、范围外 0；命中 900=暴力 900",
+      "reasons": [],
+      "source": "★ 冷层查询不加载其他月份索引",
+      "how": "看文件句柄 / 读盘量",
+      "src": "扩 10",
+      "zonggang": "总纲 §7 L599（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+          "coldMonth": "202609",
+          "range": "20260901..20260930",
+          "inRangeShards": 30,
+          "shardsRead": 30,
+          "monthsRead": [
+            "202609"
+          ],
+          "outOfRange": [],
+          "rowsReturned": 900,
+          "bruteRows": 900,
+          "filesRead": [
+            "idx-20260901.jsonl",
+            "idx-20260902.jsonl",
+            "idx-20260903.jsonl",
+            "idx-20260904.jsonl",
+            "idx-20260905.jsonl",
+            "idx-20260906.jsonl",
+            "idx-20260907.jsonl",
+            "idx-20260908.jsonl",
+            "idx-20260909.jsonl",
+            "idx-20260910.jsonl"
+          ],
+          "caliber": "以 fs.readFileSync 钩子记录实际打开的 .index 分片；命中行的台账 hydrate 另计（不属\"索引加载\"）",
+          "problems": []
+        }
+      }
+    },
+    {
+      "id": "C36",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "E3 索引 141.8 KB/台账 1.18 MB=11.76%（主判）；/整库包 0.250%；含 state 12.05% → 均 ≤15%",
+      "reasons": [],
+      "source": "索引总大小 ≤ 台账总大小 15%",
+      "how": "量目录（R-5 口径下 ≈49 MB vs 104 GB，远低于 15%）",
+      "src": "扩 11",
+      "zonggang": "总纲 §7 L600（E 扩容查询·P3 门）",
+      "caliber": "S-10②：分母＝整包（排除 .git/MANIFEST）＋台账双读法，两者都 ≤15%",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "per": [
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+              "label": "大库",
+              "shardFiles": 45,
+              "shardBytes": 145167,
+              "stateBytes": 3603,
+              "indexTotalBytes": 148770,
+              "ledgerFiles": 45,
+              "ledgerBytes": 1234098,
+              "packageFiles": 2773,
+              "packageBytes": 58090985,
+              "ratioLedger": 0.117630042346718,
+              "ratioLedgerWithState": 0.12054958358250317,
+              "ratioPackage": 0.002498959175851468,
+              "threshold": 0.15,
+              "ok": true
+            },
+            {
+              "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+              "label": "小库",
+              "shardFiles": 3,
+              "shardBytes": 1284,
+              "stateBytes": 521,
+              "indexTotalBytes": 1805,
+              "ledgerFiles": 3,
+              "ledgerBytes": 10968,
+              "packageFiles": 42,
+              "packageBytes": 621598,
+              "ratioLedger": 0.11706783369803063,
+              "ratioLedgerWithState": 0.16456965718453684,
+              "ratioPackage": 0.0020656437118523547,
+              "threshold": 0.15,
+              "ok": true
+            }
+          ],
+          "problems": [],
+          "threshold": 0.15,
+          "caliber": "S-10② 分母＝整包体积（排除 .git 与 MANIFEST）；VERSION/签字单\"11.8×%\"可复现的读法是\"索引分片/台账日文件\"，本执行器两种都算：①索引分片/台账日文件（主判，E3 实测 11.81%）；②索引分片/整库包（排除 .git/MANIFEST，E3 0.10%）；③参考：含 .idx-state.json / 台账（E3 12.00%）。三者都 ≤15% 才判绿 → 任一读法下都过。"
+        }
+      }
+    },
+    {
+      "id": "C37",
+      "group": "E 扩容查询",
+      "gate": "P3",
+      "status": "GREEN",
+      "summary": "全量拷 37 文件→追加 1 行→增量只拷 1 文件（4584 B；unchanged 36）→verify ok；备份目录整拷后 verify ok（38 文件/607.9 KB）",
+      "reasons": [],
+      "source": "★ 增量备份只拷\"上次之后新写的\"；整库搬走 ＝ 拷目录 + 一条命令验证可读",
+      "how": "备份演练",
+      "src": "扩 12",
+      "zonggang": "总纲 §7 L601（E 扩容查询·P3 门）",
+      "caliber": "",
+      "evidence": {
+        "judgedBy": "filesystem:docs/判据-0.9.4.mjs",
+        "child": "判据-0.9.4",
+        "childExit": 0,
+        "childCounts": {
+          "green": 13,
+          "red": 0,
+          "na": 0,
+          "skip": 0
+        },
+        "childLog": "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+        "childEvidenceDir": "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4",
+        "childEvidence": {
+          "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\run-3\\root",
+          "backupDir": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-criteria-work\\094-work\\c37\\backup1",
+          "steps": [
+            {
+              "step": "backup#1 全量",
+              "ok": true,
+              "exitCode": 0,
+              "mode": "full",
+              "scanned": {
+                "files": 37,
+                "bytes": 617714
+              },
+              "copied": {
+                "files": 37,
+                "bytes": 617714,
+                "byKind": {
+                  "view": {
+                    "files": 12,
+                    "bytes": 21254
+                  },
+                  "attachment": {
+                    "files": 12,
+                    "bytes": 6806
+                  },
+                  "ledger": {
+                    "files": 3,
+                    "bytes": 10968
+                  },
+                  "weekly": {
+                    "files": 3,
+                    "bytes": 556056
+                  },
+                  "other": {
+                    "files": 7,
+                    "bytes": 22630
+                  }
+                }
+              },
+              "skipped": [
+                {
+                  "rule": "index",
+                  "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+                  "files": 1,
+                  "bytes": 0
+                },
+                {
+                  "rule": "metrics",
+                  "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+                  "files": 1,
+                  "bytes": 2079
+                }
+              ]
+            },
+            {
+              "step": "verify#1",
+              "ok": true,
+              "exitCode": 0,
+              "counts": {
+                "missing": 0,
+                "extra": 0,
+                "changed": 0
+              },
+              "manifestEntries": 38
+            },
+            {
+              "step": "backup#2 增量（追加 1 行）",
+              "ok": true,
+              "exitCode": 0,
+              "mode": "incremental",
+              "copied": {
+                "files": 1,
+                "bytes": 4584,
+                "byKind": {
+                  "view": {
+                    "files": 0,
+                    "bytes": 0
+                  },
+                  "attachment": {
+                    "files": 0,
+                    "bytes": 0
+                  },
+                  "ledger": {
+                    "files": 1,
+                    "bytes": 4584
+                  },
+                  "weekly": {
+                    "files": 0,
+                    "bytes": 0
+                  },
+                  "other": {
+                    "files": 0,
+                    "bytes": 0
+                  }
+                }
+              },
+              "added": 0,
+              "changed": 1,
+              "copiedRels": [
+                "ledger/2026-10-07.jsonl"
+              ],
+              "unchangedFiles": 36,
+              "policy": {
+                "includeIndex": false,
+                "includeMetrics": false,
+                "skipped": [
+                  {
+                    "rule": "index",
+                    "why": "外置索引可重建（方案 §4.1；默认不备份，--include-index 可打开）",
+                    "files": 1,
+                    "bytes": 0
+                  },
+                  {
+                    "rule": "metrics",
+                    "why": "运行度量非账务事实（容量按容量阈值告警另管；默认不备份，--include-metrics 可打开）",
+                    "files": 1,
+                    "bytes": 2079
+                  }
+                ]
+              }
+            },
+            {
+              "step": "verify#2",
+              "ok": true,
+              "exitCode": 0,
+              "counts": {
+                "missing": 0,
+                "extra": 0,
+                "changed": 0
+              }
+            },
+            {
+              "step": "verify#3（整库搬走=拷目录后一条命令）",
+              "ok": true,
+              "exitCode": 0,
+              "counts": {
+                "missing": 0,
+                "extra": 0,
+                "changed": 0
+              }
+            }
+          ],
+          "problems": [],
+          "firstFiles": 37,
+          "fullCopiedFiles": 37,
+          "appendedFile": "2026-10-07.jsonl",
+          "appendedBytes": 928,
+          "verifyCopy": {
+            "ok": true,
+            "counts": {
+              "missing": 0,
+              "extra": 0,
+              "changed": 0
+            },
+            "manifestEntries": 38
+          },
+          "caliber": "增量身份 = 相对路径 + 内容 sha256（backup.mjs 口径）；\"整库搬走\"= 目录级拷贝备份目录 → 一条 verify 命令全量校验 sha256 可读"
+        }
+      }
+    },
+    {
+      "id": "C38",
+      "group": "F 交付纪律",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "抽查 6 组数字全部可追溯（生成器 8/8 在；tests/criteriaRun/E3 行数/doctor r2r3 与日志/现场复算一致）；交付五件齐、04 演练 A/B/C 已填、05 已知未覆盖项齐",
+      "reasons": [],
+      "source": "数字脚本生成，不手写",
+      "how": "抽查任意数字有没有生成脚本",
+      "src": "删 21",
+      "zonggang": "总纲 §7 L607（F 交付纪律·P4 门）",
+      "caliber": "",
+      "evidence": {
+        "versionFile": "VERSION.json",
+        "generators": [
+          {
+            "name": "C01–C18 判据",
+            "path": "docs/判据-0.9.1.mjs",
+            "exists": true
+          },
+          {
+            "name": "C24＋C26–C37 判据",
+            "path": "docs/判据-0.9.4.mjs",
+            "exists": true
+          },
+          {
+            "name": "测试四数",
+            "path": "docs/跑测试.mjs",
+            "exists": true
+          },
+          {
+            "name": "语料四数",
+            "path": "docs/工具-语料四数.mjs",
+            "exists": true
+          },
+          {
+            "name": "doctor 指标",
+            "path": "tools/doctor.mjs",
+            "exists": true
+          },
+          {
+            "name": "MANIFEST 生成/校验",
+            "path": "docs/工具-manifest.mjs",
+            "exists": true
+          },
+          {
+            "name": "E3 逐 tick 度量",
+            "path": "docs/工具-measure-tick.mjs",
+            "exists": true
+          },
+          {
+            "name": "交付包导出",
+            "path": "docs/工具-export.mjs",
+            "exists": true
+          }
+        ],
+        "samples": [
+          {
+            "name": "VERSION.tests 635/593/42 ← 包内 证据/跑测试-v1.0.0-re5.log",
+            "ok": true,
+            "detail": "日志含 tests 635、pass 593、fail 42"
+          },
+          {
+            "name": "VERSION.criteriaRun.result 与本版 criteria 数组自洽（首跑：证据/判据-1.0-final-v1.0.0-re5/summary.md 由本次运行生成）",
+            "ok": true,
+            "detail": "自洽：GREEN=45 RED=0 NA=0 SKIP=0（与 criteria 四数组长度逐项相等）"
+          },
+          {
+            "name": "VERSION.p3.index「1,338 行库」← 现场台账/度量复算",
+            "ok": true,
+            "detail": "声明 1338 / 实测台账 1338 / written 合计 1338 / 端到端 3 tick"
+          },
+          {
+            "name": "VERSION.doctorCorpus r2/r3 ← 现场只读复算",
+            "ok": true,
+            "detail": "声明 r2=1.1904 r3=0.03861 / 实测 r2=1.1904 r3=0.03861"
+          },
+          {
+            "name": "04 回滚演练填写（A/B/C 实跑通过、无占位符）",
+            "ok": true,
+            "detail": "演练结果=true A/B/C=true 实跑通过×3 占位符=false"
+          },
+          {
+            "name": "05 已知未覆盖项齐（文档在、含编号缺口与\"未验/不覆盖\"登记）",
+            "ok": true,
+            "detail": "编号缺口行≈40 含未验登记=true"
+          }
+        ],
+        "deliveryDocs": [
+          {
+            "name": "00-交付清单.md",
+            "exists": true,
+            "size": 4289
+          },
+          {
+            "name": "02-验收记录.md",
+            "exists": true,
+            "size": 4254
+          },
+          {
+            "name": "03-变更说明.md",
+            "exists": true,
+            "size": 5788
+          },
+          {
+            "name": "04-回滚方式.md",
+            "exists": true,
+            "size": 4061
+          },
+          {
+            "name": "05-已知未覆盖项.md",
+            "exists": true,
+            "size": 4891
+          }
+        ],
+        "caliber": "总纲 §7.7 C38「数字脚本生成，不手写」＋ §7.8② ；\"怎么验：抽查任意数字有没有生成脚本\"——本判据抽查 VERSION.json 的 tests/criteriaRun/p3.index/doctorCorpus 四组数字与交付五件/04 演练/05 缺口登记，全部要有生成脚本与现场日志可追",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C39",
+      "group": "F 交付纪律",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "清单 734 / 磁盘 784 / 缺 0 / 多 50（其中 P4 验具 0、本执行器运行产物 50，不计红）/ 改 0（其中运行产物 0 不计红、实判 0）；交叉核 docs/工具-manifest.mjs exit=1（与本文件同结论）",
+      "reasons": [],
+      "source": "清单与磁盘 0 差异（今天\"缺 126\"的教训）",
+      "how": "对 MANIFEST",
+      "src": "删 22",
+      "zonggang": "总纲 §7 L608（F 交付纪律·P4 门）",
+      "caliber": "",
+      "evidence": {
+        "packageRoot": "D:/ledger-work/re5/pkg",
+        "manifest": "MANIFEST.sha256",
+        "declared": 734,
+        "actual": 784,
+        "diskBytes": 11061777,
+        "missing": [],
+        "extra": [
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C01-语料四数.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C02-自测-index.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C03-自测-v02.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C04-自测-index+边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C05-自测-守卫.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C06-自测-边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C07-边界+ledger.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C08-P0回归.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C09-originals.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C10-views.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C11-自测-original.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C12-自测-original.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C13-自测-边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C14-fields.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-attachment.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-code.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-doc.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-seq.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-sid.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-status.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-ts.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-turn.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-delete-attachment.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-delete-row.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-extra-row.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-flip-attachment-byte.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C17-变异反证.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C18-自测-gate.log",
+          "证据/判据-1.0-final-v1.0.0-re5/C19-日检-run.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.1.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C24.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C26.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C27.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C28.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C29.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C30.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C31.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C32.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C33.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C34.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C35.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C36.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C37.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/summary.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/summary.md",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4.json",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/C19-日检-run.log",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+          "证据/判据-1.0-final-v1.0.0-re5/stdout.txt"
+        ],
+        "changed": [],
+        "changedKnownRunArtifacts": [],
+        "changedUnknown": [],
+        "extraKnownP4": [],
+        "extraKnownRunArtifacts": [
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C01-语料四数.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C02-自测-index.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C03-自测-v02.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C04-自测-index+边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C05-自测-守卫.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C06-自测-边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C07-边界+ledger.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C08-P0回归.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C09-originals.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C10-views.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C11-自测-original.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C12-自测-original.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C13-自测-边界.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C14-fields.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-attachment.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-code.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-doc.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-seq.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-sid.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-status.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-ts.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C15-mutate-turn.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-delete-attachment.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-delete-row.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-extra-row.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C16-destroy-flip-attachment-byte.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C17-变异反证.log",
+          "证据/判据-1.0-final-v1.0.0-re5/0.9.3-沿用-判据-0.9.1-存档/C18-自测-gate.log",
+          "证据/判据-1.0-final-v1.0.0-re5/C19-日检-run.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.1.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C24.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C26.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C27.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C28.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C29.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C30.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C31.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C32.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C33.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C34.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C35.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C36.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/C37.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/summary.json",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4/summary.md",
+          "证据/判据-1.0-final-v1.0.0-re5/child-判据-0.9.4.json",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/C19-日检-run.log",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.1.log",
+          "证据/判据-1.0-final-v1.0.0-re5/logs/子进程-判据-0.9.4.log",
+          "证据/判据-1.0-final-v1.0.0-re5/stdout.txt"
+        ],
+        "crossCheck": {
+          "exit": 1,
+          "declared": 734,
+          "actual": 784,
+          "missing": 0,
+          "extra": 50,
+          "changed": 0,
+          "log": "证据/判据-1.0-final-v1.0.0-re5/logs/C39-manifest-verify.log"
+        },
+        "caliber": "总纲 §7.7 C39「清单与磁盘 0 差异」；口径沿用出包脚本 docs/工具-manifest.mjs（包内版；与 _工作/tools/manifest.mjs 同源）：排除 .git/ 与 MANIFEST.sha256 自身、路径 / 分隔、sha256 逐文件。`docs/判据-1.0.mjs` 是本版（P4）允许新增的验具，出包最后一步重生成 MANIFEST 时并入 → 本判据把它单独登记为\"已知 P4 新增\"；★ 本执行器**运行产物**（包内 `证据/判据-1.0-<时间戳>/`）单独登记（extraKnownRunArtifacts），只豁免\"清单外新增\"，清单内证据文件仍逐文件核 sha256；其余缺/多/改必须 0",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C40",
+      "group": "F 交付纪律",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "版本台账 26 行（v0.9.0-lite-base … v1.0.0）；编号连续/版本唯一/正式版由同号 -re 升；builtFrom/baselineTag/builtFromCommit 三链对上；副本追加第 26 行链仍成立；删中间行可抓；04 演练 A/B/C 已填",
+      "reasons": [],
+      "source": "版本台账 append-only，**版本台账链**不断（≠ 封板链，R-9）",
+      "how": "追加一条验链",
+      "src": "删 23",
+      "zonggang": "总纲 §7 L609（F 交付纪律·P4 门）",
+      "caliber": "R-9：版本台账链（保留，防改版历史）≠ 封板链（砍，只留封板事实）",
+      "evidence": {
+        "ledger": "版本台账.md",
+        "rows": 26,
+        "first": "v0.9.0-lite-base",
+        "last": "v1.0.0",
+        "currentVersion": "1.0.0",
+        "chainProblems": [],
+        "links": [
+          {
+            "name": "builtFrom",
+            "declared": "lite-v1.0.0-re5",
+            "matched": "v1.0.0-re5",
+            "ok": true
+          },
+          {
+            "name": "baselineTag",
+            "declared": "lite-v0.9.4",
+            "matched": "v0.9.4",
+            "ok": true
+          }
+        ],
+        "rollbackDrill": {
+          "keys": [
+            "A_gitReset",
+            "B_snapshotRestore",
+            "C_checkoutFiles"
+          ],
+          "filled": [],
+          "f04Filled": false
+        },
+        "appendTest": {
+          "appendedRow": 26,
+          "rows": 27,
+          "lastN": 26,
+          "ok": true,
+          "problems": []
+        },
+        "breakTest": {
+          "removedRow": 13,
+          "ok": true,
+          "problems": [
+            "第 14 行编号应为 13，实际 14",
+            "第 15 行编号应为 14，实际 15",
+            "第 16 行编号应为 15，实际 16",
+            "第 17 行编号应为 16，实际 17",
+            "第 18 行编号应为 17，实际 18",
+            "第 19 行编号应为 18，实际 19",
+            "第 20 行编号应为 19，实际 20",
+            "第 21 行编号应为 20，实际 21",
+            "第 22 行编号应为 21，实际 22",
+            "第 23 行编号应为 22，实际 23",
+            "第 24 行编号应为 23，实际 24",
+            "第 25 行编号应为 24，实际 25",
+            "第 26 行编号应为 25，实际 26",
+            "正式版 v0.9.4（第 14 行）前面不是同号 -re（上一行 v0.9.4-snap）"
+          ]
+        },
+        "appendOnlyNote": "append-only 的\"从未删过旧行\"在无 git 史下无法证明；本判据验的是：①表结构编号连续/版本唯一/正式版由同号 -re 升；②VERSION.json 的 builtFrom/baselineTag/builtFromCommit 三链在台账里可对上；③\"追加一条\"后链仍成立（副本上做）；④删中间一行能被抓（副本反证）。不写产品台账、不做 git 操作",
+        "caliber": "总纲 §7.7 C40 + R-9：版本台账链（保留，防改版历史）≠ 封板链（砍）；\"怎么验：追加一条验链\"",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C41",
+      "group": "G 给人看与能恢复",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "周账 4 组里抽 10月第5周 / 10月第4周 / 11月第1周（含跨月周=true）：逐日表对账 13 行，100% 相符（缺行 0/多行 0/时间不符 0）",
+      "reasons": [],
+      "source": "周账 xlsx 内容与台账一致 —— 抽 3 周（含一个跨月周）逐行对，3 周 100% 相符",
+      "how": "解 xlsx 逐日表与台账逐码对",
+      "src": "S-11 §4 C41",
+      "zonggang": "总纲 §7 L0（G 给人看与能恢复·P4 门）",
+      "caliber": "S-11 C41：xlsx 不得缺行、不得多行；时间列 hh:mm 与台账 ts 一致",
+      "evidence": {
+        "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-weeks/root",
+        "weeks": [
+          "10月第4周",
+          "10月第5周",
+          "11月第1周",
+          "11月第2周"
+        ],
+        "selected": [
+          "10月第5周",
+          "10月第4周",
+          "11月第1周"
+        ],
+        "crossMonth": true,
+        "checkedRows": 13,
+        "matchedRows": 13,
+        "files": [
+          {
+            "week": "10月第5周",
+            "file": "2026年10月/10月第5周-weeks0000011A的周记账.xlsx",
+            "sessKey": "weeks0000011A",
+            "perDay": [
+              {
+                "sheet": "周一",
+                "day": "2026-10-26",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周二",
+                "day": "2026-10-27",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周三",
+                "day": "2026-10-28",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周四",
+                "day": "2026-10-29",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周五",
+                "day": "2026-10-30",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周六",
+                "day": "2026-10-31",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              }
+            ]
+          },
+          {
+            "week": "10月第4周",
+            "file": "2026年10月/10月第4周-weeks0000011A的周记账.xlsx",
+            "sessKey": "weeks0000011A",
+            "perDay": [
+              {
+                "sheet": "周二",
+                "day": "2026-10-20",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周三",
+                "day": "2026-10-21",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周四",
+                "day": "2026-10-22",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周五",
+                "day": "2026-10-23",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周六",
+                "day": "2026-10-24",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              },
+              {
+                "sheet": "周日",
+                "day": "2026-10-25",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              }
+            ]
+          },
+          {
+            "week": "11月第1周",
+            "file": "2026年11月/11月第1周-weeks0000011A的周记账.xlsx",
+            "sessKey": "weeks0000011A",
+            "perDay": [
+              {
+                "sheet": "周日",
+                "day": "2026-11-01",
+                "empty": false,
+                "expected": 1,
+                "actual": 1,
+                "missing": 0,
+                "extra": 0,
+                "badTime": 0
+              }
+            ]
+          }
+        ],
+        "problems": [],
+        "caliber": "S-11 C41：抽 3 个不同周（含 1 个跨月周）逐行对（编码集合＋时间列），3 周 100% 相符；xlsx 不得缺行/多行",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C42",
+      "group": "G 给人看与能恢复",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "日结摘要 17 天抽 3 天（2026-10-20/2026-10-28/2026-11-05）：JSON+TXT 与台账 100% 相符；改台账后旧版逐字节不变、已补发 v2（JSON+TXT 成对）、run-report 版本账可见；无变化 2 tick 不产新版",
+      "reasons": [],
+      "source": "日结摘要（JSON＋TXT）与台账一致 —— 抽 3 天 100% 相符；★ 发出后不许重写，只能补发新版",
+      "how": "摘要首/末条与行数字段独立复算 + 改台账真跑 tick：旧版逐字节不变、必须新增 vN JSON/TXT、run-report 版本账可见、无变化不产新版",
+      "src": "S-11 §4 C42",
+      "zonggang": "总纲 §7 L0（G 给人看与能恢复·P4 门）",
+      "caliber": "S-11 C42 后签优先于 lite S-1 旧口径（旧：\"10 键、坏了重出直接覆盖\"）；v1.0.0-re2 产品已改为 11 键（含 firstCode）+ 版本化补发 + 永不覆盖 + run-report 版本账",
+      "evidence": {
+        "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-weeks/root",
+        "receiptsDir": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-weeks/receipts",
+        "days": 17,
+        "picked": [
+          "2026-10-20",
+          "2026-10-28",
+          "2026-11-05"
+        ],
+        "detail": [
+          {
+            "day": "2026-10-20",
+            "receipt": "RECEIPT-20261020.json",
+            "version": 1,
+            "txt": "日结摘要-20261020.txt",
+            "txtOk": true,
+            "ledger": {
+              "rows": 1,
+              "firstCode": "20261020-weeks0000011-A-00000001",
+              "lastCode": "20261020-weeks0000011-A-00000001"
+            },
+            "originalCount": {
+              "declared": 17,
+              "dayViews": 17,
+              "allViews": 17
+            },
+            "bad": []
+          },
+          {
+            "day": "2026-10-28",
+            "receipt": "RECEIPT-20261028.json",
+            "version": 1,
+            "txt": "日结摘要-20261028.txt",
+            "txtOk": true,
+            "ledger": {
+              "rows": 1,
+              "firstCode": "20261020-weeks0000011-A-00000009",
+              "lastCode": "20261020-weeks0000011-A-00000009"
+            },
+            "originalCount": {
+              "declared": 0,
+              "dayViews": 0,
+              "allViews": 17
+            },
+            "bad": []
+          },
+          {
+            "day": "2026-11-05",
+            "receipt": "RECEIPT-20261105.json",
+            "version": 1,
+            "txt": "日结摘要-20261105.txt",
+            "txtOk": true,
+            "ledger": {
+              "rows": 1,
+              "firstCode": "20261020-weeks0000011-A-00000017",
+              "lastCode": "20261020-weeks0000011-A-00000017"
+            },
+            "originalCount": {
+              "declared": 0,
+              "dayViews": 0,
+              "allViews": 17
+            },
+            "bad": []
+          }
+        ],
+        "views": 17,
+        "originalCountCaliber": "v3（re3/审计②P2-6，D1 线）：originalCount = **该日**第三级「完整原文.md」视图份数；旧 v1/v2 摘要是\"全库累计\"旧口径（实现缺陷），已由 D1 修；判据断言与实现同一次改为当日口径，S-11 C42 阈值未动",
+        "immutability": {
+          "day": "2026-10-20",
+          "versionsBefore": 1,
+          "changed": [],
+          "wantJson": "RECEIPT-20261020.v2.json",
+          "wantTxt": "日结摘要-20261020.v2.txt",
+          "hasNext": true,
+          "digest": {
+            "dates": 17,
+            "versionsTotal": 18,
+            "latest": {
+              "date": "2026-10-20",
+              "version": 2,
+              "path": "RECEIPT-20261020.v2.json",
+              "txt": "日结摘要-20261020.v2.txt"
+            },
+            "written": 0,
+            "appended": 0,
+            "repairedTxt": 0,
+            "skipped": 17,
+            "errors": 0
+          },
+          "afterV2": 2,
+          "afterSteady": 2,
+          "tickExit": 0
+        },
+        "problems": [],
+        "caliber": "S-11 C42：抽 3 天摘要与台账 100% 相符（含首/末条 code；originalCount 按 v3 当日口径）；★ 发出后不许重写，只能补发新版（本实现真跑 tick 实测：旧版 sha 不变 + 新增 vN JSON/TXT + run-report 版本账可见；无变化不产新版）",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C43",
+      "group": "G 给人看与能恢复",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "冻结未被绕过：6 tick 全程 handover* 计数全 0、交接表产物 0 个；删除哨兵后 3 tick 未重建",
+      "reasons": [],
+      "source": "交接表：每会话一份、删了不补（机主 2026-11-14 裁定改为**反向判据**：验交接表冻结不被绕过）",
+      "how": "造 2 会话各跑 3 tick；交接表目录/文件数不得增加；删后 3 tick 内不得重建；出现任何交接表生成即 RED",
+      "src": "S-11 §4 C43 + 早会裁定",
+      "zonggang": "总纲 §7 L0（G 给人看与能恢复·P4 门）",
+      "caliber": "lite 冻结交接表（S-1/§5.3）：handoverGenerated/Adopted/Skipped/SealedTotal 必须恒 0",
+      "evidence": {
+        "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+        "preexisting": [],
+        "fixture": {
+          "relocateState": true,
+          "sessions": 3,
+          "cursors": 3
+        },
+        "ticks1Count": 3,
+        "ticks2Count": 3,
+        "driverParseError": [],
+        "ticks1": [
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          },
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          },
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          }
+        ],
+        "ticks2": [
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          },
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          },
+          {
+            "ok": true,
+            "written": 0,
+            "handoverGenerated": 0,
+            "handoverAdopted": 0,
+            "handoverSkipped": 0,
+            "handoverSealedTotal": 0,
+            "errors": []
+          }
+        ],
+        "driverLog": "证据/判据-1.0-final-v1.0.0-re5/logs/tick-driver-3t.log",
+        "problems": [],
+        "caliber": "机主 2026-11-14 早会裁定 C43 反向判据：交接表在 lite 冻结（S-1/§5.3）——造 2 会话各跑 3 tick，交接表目录/文件数必须不增加；删后 3 tick 内不得重建；出现任何交接表生成即 RED",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C44",
+      "group": "G 给人看与能恢复",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "doctor 5 类故障各报一次红并转绿（5/5）：data-integrity=red→ok、code-consistency=red→ok、ingest-health=red→ok、storage-health=red→ok、storage-health=red→ok",
+      "reasons": [],
+      "source": "doctor 能对 5 类已知故障各报一次红（先红后绿）：①台账行数≠原文份数 ②原文 sha256 复算失败 ③游标卡住 ④pending 积压超阈 ⑤单文件>4MB",
+      "how": "五类各注入一次 → doctor 目标检查必须 severity=red → 还原 → 必须不红",
+      "src": "S-11 §4 C44",
+      "zonggang": "总纲 §7 L0（G 给人看与能恢复·P4 门）",
+      "caliber": "S-11 写「entryHash 复算失败」；该字段已被 S-6 否决（全树 0 命中），落到 doctor ② 的「原文整文件 sha256 复算」，口径差如实登记",
+      "evidence": {
+        "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/c01-lab/root",
+        "sub": [
+          {
+            "fault": "①台账行数≠原文份数",
+            "target": "data-integrity",
+            "redSeverity": "red",
+            "greenSeverity": "ok",
+            "error": ""
+          },
+          {
+            "fault": "②原文 sha256 复算失败（S-11 写 entryHash；该字段已被 S-6 否决，落到\"原文整文件 sha256\"）",
+            "target": "code-consistency",
+            "redSeverity": "red",
+            "greenSeverity": "ok",
+            "error": ""
+          },
+          {
+            "fault": "③游标卡住",
+            "target": "ingest-health",
+            "redSeverity": "red",
+            "greenSeverity": "ok",
+            "error": ""
+          },
+          {
+            "fault": "④pending 积压超阈",
+            "target": "storage-health",
+            "redSeverity": "red",
+            "greenSeverity": "ok",
+            "error": ""
+          },
+          {
+            "fault": "⑤单文件 >4 MB",
+            "target": "storage-health",
+            "redSeverity": "red",
+            "greenSeverity": "ok",
+            "error": ""
+          }
+        ],
+        "passed": 5,
+        "total": 5,
+        "problems": [],
+        "caliber": "S-11 C44：5 类故障各报一次红（先红后绿）；不许\"报黄了事\"（要求 severity=red）",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    },
+    {
+      "id": "C45",
+      "group": "G 给人看与能恢复",
+      "gate": "P4",
+      "status": "GREEN",
+      "summary": "恢复演练通过：backup exit 0 → verify exit 0 → 删库重建 restore exit 0；台账 1338 码随机抽 100 行（种子 3302a9e4）逐字节相等 100/100",
+      "reasons": [],
+      "source": "恢复演练：从备份重建 → verify 绿 → 随机抽 100 行与源逐字节相等",
+      "how": "backup → verify → 删工作库 → restore → 抽 100 行逐字节比",
+      "src": "S-11 §4 C45",
+      "zonggang": "总纲 §7 L0（G 给人看与能恢复·P4 门）",
+      "caliber": "S-11 C45：没有演练过的备份等于没有备份；耗时记入证据",
+      "evidence": {
+        "lab": "C:/Users/ADMINI~1/AppData/Local/Temp/dsh-ledger-labs-1.0.0/lab-e3-accept/root",
+        "backup": {
+          "exit": 0,
+          "logRel": "证据/判据-1.0-final-v1.0.0-re5/logs/C45-backup.log"
+        },
+        "verify": {
+          "exit": 0,
+          "logRel": "证据/判据-1.0-final-v1.0.0-re5/logs/C45-verify.log"
+        },
+        "restore": {
+          "exit": 0,
+          "logRel": "证据/判据-1.0-final-v1.0.0-re5/logs/C45-restore.log"
+        },
+        "sample": {
+          "totalCodes": 1338,
+          "picked": 100,
+          "equal": 100,
+          "mismatch": [],
+          "seed": "3302a9e4",
+          "sampling": "fisher-yates(mulberry32)，seed=sha256(.state.json)[:8]"
+        },
+        "proofInject": "",
+        "problems": [],
+        "caliber": "S-11 C45：备份→删工作库→重建→verify 绿→随机抽 100 行与源逐字节相等（没有演练过的备份等于没有备份）",
+        "judgedBy": "docs/判据-1.0.mjs（本地实现）"
+      }
+    }
+  ],
+  "naList": [],
+  "redList": [],
+  "residual": [
+    "C20 语料 34.15 MiB（可入账源 34.15 MiB）< 条款 48 MB；48 MB 原始语料未留存，本判据在 E3 现有只读语料上判，规模差已登记",
+    "C21 样本 2 tick（条款建议无变更跑 10 tick；E3 现有只读度量只有 2 个稳态 tick，10 tick 观测未跑，已登记残余）",
+    "C39 另有 50 个\"清单外新增\"是本执行器运行产物（包内 证据/判据-1.0-<时间戳>/，跑一次多一套），已单独登记、不计红；清单内已声明文件仍逐文件核 sha256（缺/改必须 0）",
+    "C22 r1（整库/压缩语料，仅报告）=1.3298；S-9 实测解压 3.49× 是全语料口径，E3 现存语料子集不同，不参与判红",
+    "C40 append-only 的\"从未删过旧行\"在无 git 史下不可证；已改为\"结构+三链+追加验链+删行可抓\"四件可验",
+    "F 组（C38–C40）判定对象 = 当前包内最新交付五件（交付-v*）＋ VERSION.json/版本台账/MANIFEST；出包顺序：交付五件更新 → MANIFEST 重生成 → 再跑本执行器（C38/C39/C40 以新包为对象）。C38 的 VERSION.criteriaRun.evidence 必须是**包内相对路径**（如 证据/判据-1.0-final-<stamp>/summary.md），VERSION.tests 的来源日志须在包内 证据/跑测试-*.log；C40 要求版本台账末行与 VERSION.json 同版（VERSION 版本 bump 后必须追加台账行）"
+  ]
+}

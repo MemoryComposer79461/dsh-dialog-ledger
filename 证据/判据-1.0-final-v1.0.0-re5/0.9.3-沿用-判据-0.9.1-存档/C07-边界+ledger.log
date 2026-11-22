@@ -1,0 +1,88 @@
+$ node docs/跑测试.mjs docs/自测-边界.mjs docs/自测-ledger.mjs
+exit=0
+
+[看护] 物理内存: 3.23 GB 可用 / 7.65 GB 总量
+[看护] 测试进程堆上限: 384 MB ；测试文件串行执行（--test-concurrency=1）
+[看护] 目标 2 个测试文件（指定文件模式：不做全量对账）
+       docs/自测-边界.mjs docs/自测-ledger.mjs
+
+✔ decompressMultiFrame：单帧 → frames=1/ok=1/failed=0，原文还原 (2.2549ms)
+✔ decompressMultiFrame：3 帧拼接 → frames=3/ok=3/failed=0，顺序拼接 (0.4924ms)
+✔ decompressMultiFrame：空 Buffer → 全零、空文本 (0.6929ms)
+✔ decompressMultiFrame：非 Buffer 入参 → 按空处理（不抛错） (0.1405ms)
+✔ decompressMultiFrame：非 zstd 裸文本 → frames=0/ok=0/failed=0，原文返回 (0.1533ms)
+✔ decompressMultiFrame：好帧 + 坏帧 → frames=2/ok=1/failed=1，好帧内容还在 (0.9579ms)
+✔ decompressMultiFrame：好-坏-好 三帧 → 只丢坏帧，两侧内容都保留 (0.412ms)
+✔ decompressMultiFrame：合法空载荷帧 → 算 1 帧、ok=1、文本为空 (0.2098ms)
+✔ readSessionEvents：多帧文件把会话头摘出来、坏行计数、事件顺序不变 (3.7522ms)
+✔ readSessionEvents：文件不存在 → head=null/events=[]/meta 全零（不抛错） (0.7109ms)
+✔ appendTurn：首写落盘到 ledger/YYYY-MM-DD.jsonl，文件末尾必须有换行 (5.4366ms)
+✔ appendTurn：同一 code 第二次 skipped=true，文件一字节都不长 (5.095ms)
+✔ appendTurn：只追加不改写 —— 后一条写入后，前一条的原文前缀不变 (6.9533ms)
+✔ appendTurn：坏 ts 一律拒绝，且不创建 ledger 目录、不写盘 (1.509ms)
+✔ appendTurn：缺 code / code 非字符串 / 空串 → missing code (0.5758ms)
+✔ appendTurn：传 knownCodes 命中 → 直接 skipped，连盘都不读 (0.5865ms)
+✔ appendTurn：传 knownCodes 未命中 → 正常写入；调用方补进集合后即幂等 (4.0805ms)
+✔ appendTurn：第三参数不是 Set → 回退 hasCode 查盘（行为不变） (4.8932ms)
+✔ appendTurn + readAll：跨日按 ts 落到两个文件，逐个文件各一行 (8.1949ms)
+✔ readAll：没有 ledger 目录 → 空结果（不抛错） (0.5439ms)
+✔ readAll：坏行计数、空行忽略、非 .jsonl 文件（含 .state.json）不当账读 (2.1569ms)
+✔ hasCode：账本不存在 → false；写入后 → true；其它 code 仍 false (4.3853ms)
+✔ ledgerDir / ledgerPath：路径拼装契约 (0.4723ms)
+✔ collectTurns：正常 start/end 配对 → 恰好一轮，endMs/reason 正确 (0.3228ms)
+✔ collectTurns：多个已闭合轮次按发生顺序全部返回 (0.1484ms)
+✔ collectTurns：有 start 无 end → 空数组（进行中的轮次不许入库） (0.0954ms)
+✔ collectTurns/openTurn：turn 号不匹配不算闭合，未闭合的是 start 那条 (0.0981ms)
+✔ collectTurns/openTurn：前一轮已闭合、后一轮进行中 → 只交闭合的那轮 (0.1046ms)
+✔ collectTurns：turn/end 缺 reason.kind → reason 为空串 (0.1174ms)
+✔ collectTurns/openTurn：无 start 的 turn/end、脏事件都被忽略 (0.1124ms)
+✔ collectTurns：重复的 turn/end 不会产生第二轮 (0.0949ms)
+✔ scanSessions：深一层目录里的 session.v4.jsonl.zstd 能扫到，sid/s12/size 正确 (2.3855ms)
+✔ scanSessions：多个会话目录（含更深嵌套）全部收集 (4.1079ms)
+✔ scanSessions：非会话文件/非会话文件名不误收 (3.5381ms)
+✔ scanSessions：根目录不存在 → 空数组（不抛错） (0.4838ms)
+✔ 全链路：多帧会话文件 → readSessionEvents → collectTurns 只交闭合轮 + openTurn 交进行中轮 (2.2442ms)
+✔ P1-5：坏帧不推进游标 —— blocked/nextOffset=haltOffset（不推 EOF）/loss 结构化，已解出的轮仍返回 (3.6125ms)
+✔ P1-5：坏帧落永久错误清单（.lost.jsonl、只追加、同一现场不重复） (12.3669ms)
+✔ P1-5：末帧半截（文件被截断）→ failed=1 且游标不推进 (1.764ms)
+✔ P0-3：readTurnsFrom 每轮带 startByte/endByte；abandoned 的 endByte=下一轮 start 帧起点 (1.9026ms)
+✔ P0-3：readTurnEventsBatch 流式过滤 + offsets 出参 + fromByte 续扫（内存与文件大小无关） (2.3118ms)
+✔ P1-8：readAll 读取失败结构化（ok=false/readErrors）；坏行有行号+sha256+原文 (2.0204ms)
+✔ P1-2：坏行取证 quarantine（目录/排他创建/幂等/台账字节一个不改） (8.023ms)
+✔ P1-8：账读不全时 appendTurn 拒绝写（无法证明 code 不存在 → 不许重复入账） (4.4942ms)
+✔ P1-2：尾行缺换行时追加不粘结（先补 \n 再写） (4.3214ms)
+✔ P1-8：readStateEx 区分"没有 state"与"state 读坏" (1.9141ms)
+✔ P1-5/D9：坏帧同时进 .errors.jsonl（FRAME_FAILED，fingerprint 去重） (13.5932ms)
+✔ P1-9：state 丢失只影响性能，不影响封板证据语义（journal 权威、state 是缓存） (10.4324ms)
+✔ R-02：.errors.jsonl 契约级节流 —— 同一 (kind,source,offset) 每窗口最多 1 行，次数不丢 (140.0853ms)
+✔ P0-3-resume：撕裂尾巴（末行半行 + 无结尾换行 + 唯一坏行）→ 取证 + 截断 + 可读全 (12.398ms)
+✔ P0-3-resume/红线：中间行坏 → 不修、ok=false、文件字节一个不变 (1.6362ms)
+✔ P0-3-resume/红线：末行有结尾换行但 JSON 坏 → 不修、ok=false、文件字节一个不变 (1.3993ms)
+✔ P0-3-resume/红线：末行撕裂 + 文件里还有别处坏行 → 不修（"只有这一处坏行"） (1.7303ms)
+✔ P0-3-resume：repairTornTail=false 可关闭（只读取证工具零副作用） (4.9009ms)
+✔ A-07（已签）：撕裂尾修复 fsync 失败 → durability=unknown + fsyncError，绝不静默吞 (9.1803ms)
+✔ A-10（已签）：严格读只认真账行 —— 合法 JSON 非账行按坏行计，不许静默少算 (4.5931ms)
+✔ 跨零点：23:50 开始、两轮跨到次日 00:10 → 编码日期段均为 20261107，台账分落 11-07 与 11-08 两个日文件 (96.0205ms)
+✔ 跨月：2026-01-31T23:59 开始、两轮跨到 2/1 00:01 → 编码日期段均为 20260131，台账分落 01-31 与 02-01 两个日文件 (47.1862ms)
+✔ 坏事件守卫：缺 time 与缺 data.turn 的 turn/start → collectTurnsDetailed.malformed=2、closed 为空 (3.1382ms)
+✔ 坏事件守卫：同一会话驱动 runOnce → 不写任何行，stat.malformedTurns=2 且 errors 有条目 (17.4259ms)
+✔ 孤儿轮次·进行中：只有 turn/start、mtime=现在（quietSeconds=120）→ written=0、openTurns=1，不写 partial (24.4033ms)
+✔ 孤儿轮次·不写 partial（审计 A-01）：两扫均只留 pending，补 turn/end 后恰好一条 ok (66.742ms)
+✔ 规模：单会话 1200 轮 → written=1200、code 唯一 1200、(sid,turn) 唯一 1200；二次 runOnce written=0、skipped=1200 (13501.1997ms)
+ℹ 1200 轮首跑耗时 13242.4 ms（仅记录，不比阈值）
+ℹ 1200 轮二次跑耗时 8.2 ms（仅记录，不比阈值）
+✔ INV-04：截短重写后追加新 Turn → 新内容必须被读到（written>0、unchanged=0） (71.7456ms)
+ℹ tests 64
+ℹ suites 0
+ℹ pass 64
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14350.1014
+
+[看护] 结束: exit=0 用时 14.4s
+[看护] 物理内存: 3.17 GB 可用（跑完）
+[看护] 用例统计: tests=64 pass=64 fail=0 skipped=0 cancelled=0 todo=0（机读报告: C:\Users\ADMINI~1\AppData\Local\Temp\dsh-跑测试-report-3064-mwrc8z7b.txt）
+[看护] 失败明细: 解析到 0 条失败用例名（spec 明细段 `test at` + `✖` 配对）
+

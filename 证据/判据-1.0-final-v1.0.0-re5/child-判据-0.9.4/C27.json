@@ -1,0 +1,44 @@
+{
+  "id": "C27",
+  "title": "★ 索引瘦行四字段（code+docFileSha256+offset+bytes）由原文/台账独立复算（S-10①，不查 entryHash）",
+  "status": "GREEN",
+  "evidence": {
+    "per": [
+      {
+        "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\c01-lab\\root",
+        "label": "小库",
+        "indexRows": 12,
+        "ledgerRows": 12,
+        "thinBad": 0,
+        "entryHashFields": 0,
+        "pointerBad": 0,
+        "docShaVsLedgerBad": 0,
+        "docShaMissing": 0,
+        "viewChecked": 12,
+        "viewBad": 0,
+        "viewMissing": 0,
+        "ok": true,
+        "samples": []
+      },
+      {
+        "root": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dsh-ledger-labs-1.0.0\\lab-e3-accept\\root",
+        "label": "大库",
+        "indexRows": 1338,
+        "ledgerRows": 1338,
+        "thinBad": 0,
+        "entryHashFields": 0,
+        "pointerBad": 0,
+        "docShaVsLedgerBad": 0,
+        "docShaMissing": 0,
+        "viewChecked": 1338,
+        "viewBad": 0,
+        "viewMissing": 0,
+        "ok": true,
+        "samples": []
+      }
+    ],
+    "problems": [],
+    "caliber": "S-10①：四字段由原文/台账复算；不引入 entryHash（S-6 否决）"
+  },
+  "summary": "小库 12 行+大库 1338 行：指针区间/台账 docFileSha256/原文 md 整文件 sha 全部独立复算一致；h/entryHash 字段 0"
+}

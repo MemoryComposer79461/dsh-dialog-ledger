@@ -1,0 +1,18 @@
+$ node docs/replay-verify.mjs --root=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root --sessions=C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions --mutate=attachment
+exit=1
+
+重放核验（离线只读，不进 tick）· C14–C16 · 自检模式
+  root     = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\root
+  sessions = C:\Users\ADMINI~1\AppData\Local\Temp\dsh-ledger-labs-1.0.0\c01-lab\dsh-home\sessions
+
+自检：--mutate=attachment
+【基线】 克隆副本：全绿（12/12 配对，0 不符）
+【注入】 code=20261005-c01lab000111-A-00000001 行#1 attachment
+         attachment: {"path":"2026年10月\\10月总“完整原文”\\20261005-c01lab000111-A-00000001 原始事件.json","name":"20261005-c01lab000111-A-00000001 原始事件… → {"path":"2026年10月\\10月总“完整原文”\\20261005-c01lab000111-A-00000001 原始事件.json","name":"20261005-c01lab000111-A-00000001 原始事件…
+【结果】 ✅ 如期变红：FIELD_MISMATCH attachment.sha256（code=20261005-c01lab000111-A-00000001）
+         期望=c73ff004f3bf039aacb9b7e25f3f2bc13ebd68cd57dfdf22464e9c65c9a224ef
+         实际=073ff004f3bf039aacb9b7e25f3f2bc13ebd68cd57dfdf22464e9c65c9a224ef
+【隔离】 原账库未被改动：✓（27 个见证文件 sha256 前后一致）
+结论：校验器有效 —— 注入必红（C15）。exit=1（预期红）
+【时】 48 ms
+
