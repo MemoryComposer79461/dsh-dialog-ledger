@@ -1,5 +1,5 @@
 /**
- * dsh-dialog-ledger-v05 · V0.6 Client 半边（左栏面板 UI）
+ * dsh-dialog-ledger · V0.6 Client 半边（左栏面板 UI）
  *
  * 只读面板：左栏图标（sidebar.panellist）+ 主面板（main）。
  * 全部数据取自同源只读 HTTP API `/dialog-ledger/api/*`；本文件不做任何写操作，
@@ -16,7 +16,7 @@
  *   面板正文依赖下一次重渲染）；如实测不刷新，再接入 locale tick。
  */
 window.__ModuleLoader__.load({
-  id: 'dsh-dialog-ledger-v05',
+  id: 'dsh-dialog-ledger',
   factory(require) {
     'use strict';
 
@@ -28,7 +28,7 @@ window.__ModuleLoader__.load({
     const useRef = React.useRef;
     const Fragment = React.Fragment;
 
-    const PLUGIN_ID = 'dsh-dialog-ledger-v05';
+    const PLUGIN_ID = 'dsh-dialog-ledger';
     const NS = 'dialog-ledger';
     const API_PREFIX = '/dialog-ledger/api/';
 
@@ -1462,7 +1462,7 @@ window.__ModuleLoader__.load({
 
     // ---------------------------------------------------------------------
     // 样式：只用 docs/验收-v0.6/接口契约.md 允许的 host 主题 token；
-    // 由 apply 插入 <style data-plugin="dsh-dialog-ledger-v05">，卸载时移除。
+    // 由 apply 插入 <style data-plugin="dsh-dialog-ledger">，卸载时移除。
     // ---------------------------------------------------------------------
     const CSS = `
 .dl-panel {
